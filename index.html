@@ -347,7 +347,25 @@ footer{background:var(--ft-bg);border-top:1px solid var(--bdr);padding:44px clam
 .mbs:hover{border-color:var(--arrow-bdr);color:var(--txt)}
 .mbs.ig:hover{border-color:var(--rosa);color:var(--rosa)}
 .mbs.fv:hover{border-color:var(--mc,var(--fucsia));color:var(--mc,var(--fucsia))}
+/* botón reservar evento (Komvo) en el modal */
+.mbev{flex:1;min-width:150px;background:var(--mc,var(--fucsia));color:#fff;border:none;padding:13px 22px;border-radius:11px;cursor:pointer;font-family:'Montserrat',sans-serif;font-weight:700;font-size:12px;letter-spacing:.05em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:7px;transition:transform .2s,box-shadow .2s}
+.mbev:hover{transform:translateY(-2px);box-shadow:0 5px 20px rgba(var(--lcr,231,47,138),.4)}
 @media(max-width:540px){.minfo{grid-template-columns:1fr}.mgallery img{height:108px}}
+
+/* ════════════ KOMVO — visor de reservas a pantalla completa ════════════ */
+#kv{position:fixed;inset:0;z-index:900;display:flex;flex-direction:column;background:var(--bg);opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
+#kv.on{opacity:1;pointer-events:all}
+.kv-bar{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:13px clamp(16px,4vw,30px);background:var(--surface);border-bottom:1px solid var(--bdr2);flex-shrink:0}
+.kv-title{display:flex;align-items:center;gap:10px;font-family:'Archivo Black',sans-serif;font-size:13px;letter-spacing:.05em;text-transform:uppercase}
+.kv-title .od{width:8px;height:8px;border-radius:50%;background:#4ade80;animation:odPulse 1.6s ease-in-out infinite}
+.kv-close{display:flex;align-items:center;gap:7px;background:none;border:1px solid var(--bdr2);border-radius:100px;padding:8px 16px;cursor:pointer;color:var(--txt);font-family:'Montserrat',sans-serif;font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;transition:border-color .2s,color .2s}
+.kv-close:hover{border-color:var(--fucsia);color:var(--fucsia)}
+.kv-stage{flex:1;position:relative;background:#fff}
+.kv-frame{position:absolute;inset:0;width:100%;height:100%;border:none}
+.kv-load{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--bg);color:var(--txt3);font-size:12px;letter-spacing:.1em;text-transform:uppercase;z-index:1;transition:opacity .3s}
+.kv-load::before{content:'';width:34px;height:34px;border:3px solid var(--bdr2);border-top-color:var(--fucsia);border-radius:50%;margin-right:14px;animation:kvSpin .8s linear infinite}
+@keyframes kvSpin{to{transform:rotate(360deg)}}
+#kv.loaded .kv-load{opacity:0;pointer-events:none}
 
 /* ════════════ ABIERTO AHORA ════════════ */
 #ahora{padding:clamp(40px,6vw,64px) clamp(20px,5vw,72px) 0;max-width:1480px;margin:0 auto}
@@ -382,7 +400,10 @@ footer{background:var(--ft-bg);border-top:1px solid var(--bdr);padding:44px clam
 .ev-t{font-family:'Archivo Black',sans-serif;font-size:19px;text-transform:uppercase;margin-bottom:10px}
 .ev-p{font-size:13px;line-height:1.7;color:var(--txt2);margin-bottom:20px}
 .ev-link{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgb(var(--evc));display:inline-flex;align-items:center;gap:7px}
-.ev-mail{text-align:center;font-size:13px;color:var(--txt2);margin-top:30px}
+.ev-cta{display:flex;flex-direction:column;align-items:center;gap:18px;margin-top:40px}
+.btn-ev{display:inline-flex;align-items:center;gap:10px;background:var(--fucsia);color:#fff;border:none;font-family:'Montserrat',sans-serif;font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:17px 34px;border-radius:100px;cursor:pointer;transition:transform .3s var(--easeSnap),box-shadow .3s;will-change:transform}
+.btn-ev:hover{box-shadow:0 10px 32px rgba(231,47,138,.45)}
+.ev-mail{text-align:center;font-size:13px;color:var(--txt2)}
 .ev-mail a{color:var(--rosa);font-weight:700;border-bottom:1px solid transparent;transition:border-color .2s}
 .ev-mail a:hover{border-color:var(--rosa)}
 @media(max-width:860px){.ev-grid{grid-template-columns:1fr}}
@@ -701,7 +722,13 @@ footer{background:var(--ft-bg);border-top:1px solid var(--bdr);padding:44px clam
       <span class="ev-link">Lo quiero →</span>
     </a>
   </div>
-  <p class="ev-mail rev">¿Algo más a medida? Escríbenos a <a href="mailto:hola@grupodospuntocero.com?subject=Evento%20con%20Grupo%202.0">hola@grupodospuntocero.com</a></p>
+  <div class="ev-cta rev">
+    <button class="btn-ev mag" type="button" onclick="openKv(KV_ALL,'Reservar evento')">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      Reservar mi evento online
+    </button>
+    <p class="ev-mail">¿Algo más a medida? Escríbenos a <a href="mailto:hola@grupodospuntocero.com?subject=Evento%20con%20Grupo%202.0">hola@grupodospuntocero.com</a></p>
+  </div>
 </section>
 
 <!-- SOCIOS -->
@@ -838,6 +865,10 @@ footer{background:var(--ft-bg);border-top:1px solid var(--bdr);padding:44px clam
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.124 1.527 5.854L0 24l6.335-1.508A11.956 11.956 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.848 0-3.584-.479-5.096-1.32l-.364-.217-3.763.896.944-3.669-.235-.378A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
         Reservar por WhatsApp
       </a>
+      <button class="mbev" id="mkv" type="button">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        Reservar evento
+      </button>
       <a class="mbs" id="mmaps" href="#" target="_blank" rel="noopener">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
         Cómo llegar
@@ -855,6 +886,18 @@ footer{background:var(--ft-bg);border-top:1px solid var(--bdr);padding:44px clam
         Entradas / Lista
       </a>
     </div>
+  </div>
+</div>
+
+<!-- KOMVO — visor de reservas -->
+<div id="kv" role="dialog" aria-modal="true" aria-label="Reservar evento">
+  <div class="kv-bar">
+    <span class="kv-title"><span class="od"></span><span id="kv-name">Reservar evento</span></span>
+    <button class="kv-close" onclick="closeKv()" aria-label="Cerrar reservas">Cerrar ✕</button>
+  </div>
+  <div class="kv-stage">
+    <div class="kv-load">Cargando reservas…</div>
+    <iframe id="kv-frame" class="kv-frame" title="Reservas de eventos — Komvo" allow="payment"></iframe>
   </div>
 </div>
 
@@ -1216,6 +1259,30 @@ D.green.carta='cartas/green.png';
 D.traviesa.carta='cartas/traviesa.pdf';
 D.pequeña.carta='cartas/pequena.png';
 
+/* ════════════ KOMVO — reservas de eventos por local ════════════ */
+const KV_BASE='https://grupodospuntocero.komvoapp.com';
+const KV_ALL=KV_BASE+'/restaurantes';
+const KV_SLUG={tablas:'las-tablas-20',pequeña:'la-pequena-20',chula:'la-chula-20',peluca:'la-peluqueria-20',traviesa:'la-traviesa-20',juanita:'juanita-20',green:'green-20'};
+Object.keys(KV_SLUG).forEach(k=>{if(D[k])D[k].kv=KV_BASE+'/if/restaurantes/'+KV_SLUG[k]});
+function openKv(url,name){
+  const kv=document.getElementById('kv'),f=document.getElementById('kv-frame');
+  kv.classList.remove('loaded');
+  document.getElementById('kv-name').textContent=name||'Reservar evento';
+  f.src=url;
+  kv.classList.add('on');
+  document.body.style.overflow='hidden';
+}
+document.getElementById('kv-frame').addEventListener('load',function(){
+  if(this.src&&this.src!=='about:blank')document.getElementById('kv').classList.add('loaded');
+});
+function closeKv(){
+  const kv=document.getElementById('kv');
+  kv.classList.remove('on');
+  document.body.style.overflow='';
+  setTimeout(()=>{document.getElementById('kv-frame').src='about:blank';kv.classList.remove('loaded')},350);
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.getElementById('kv').classList.contains('on'))closeKv()});
+
 /* ════════════ MODAL ════════════ */
 function openM(id){
   const d=D[id];if(!d)return;
@@ -1234,6 +1301,8 @@ function openM(id){
   if(d.fv){fvBtn.href=d.fv;fvBtn.style.display=''}else{fvBtn.style.display='none'}
   const cBtn=document.getElementById('mcarta');
   if(d.carta){cBtn.href=d.carta;cBtn.style.display=''}else{cBtn.style.display='none'}
+  const kvBtn=document.getElementById('mkv');
+  if(d.kv){kvBtn.style.display='';kvBtn.onclick=()=>openKv(d.kv,'Reservar evento · '+(NOMBRES[id]||''))}else{kvBtn.style.display='none'}
   const bar=document.getElementById('mbar');
   bar.style.background=d.color;bar.style.boxShadow=`0 0 20px ${d.color}`;
   document.getElementById('mbox').style.setProperty('--mc',d.color);
