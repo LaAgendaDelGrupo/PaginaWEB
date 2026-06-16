@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Grupo 2.0 — Somos las vacaciones dentro de tu rutina</title>
 <meta name="description" content="7 locales en Madrid: Las Tablas 2.0, La Pequeña 2.0, La Chula 2.0, La Peluquería 2.0, La Traviesa 2.0, Juanita 2.0 y Green 2.0. Restaurantes, bares y discotecas.">
+<meta name="theme-color" content="#0a0908" id="theme-color-meta">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
@@ -12,7 +13,7 @@
 /* ════════════ TOKENS ════════════ */
 :root{
   --bg:#0a0908; --surface:#11100e; --txt:#f0ebe4; --txt2:rgba(240,235,228,.62);
-  --txt3:rgba(240,235,228,.35); --bdr:rgba(255,255,255,.06); --bdr2:rgba(255,255,255,.1);
+  --txt3:rgba(240,235,228,.52); --bdr:rgba(255,255,255,.06); --bdr2:rgba(255,255,255,.1);
   --fucsia:#e72f8a; --rosa:#ef89b0;
   --c-tablas:#e51d1e; --c-pequena:#3a4ba8; --c-chula:#e72f8a; --c-peluca:#1db7d9;
   --c-traviesa:#8a7fc0; --c-juanita:#da1f87; --c-green:#4ade80;
@@ -24,13 +25,13 @@
   --mbs-bdr:rgba(255,255,255,.14); --mbs-c:rgba(240,235,228,.78);
   --arrow-bdr:rgba(255,255,255,.22); --arrow-c:rgba(240,235,228,.7);
   --row-bdr:rgba(255,255,255,.06); --bico-bg:rgba(231,47,138,.1);
-  --nos-p:rgba(240,235,228,.4); --lc-meta:rgba(255,255,255,.3);
+  --nos-p:rgba(240,235,228,.6); --lc-meta:rgba(255,255,255,.3);
   --soc-bg:rgba(255,255,255,.05); --ft-bg:#080706;
   --outline:rgba(240,235,228,.07); --photo-shadow:rgba(0,0,0,.5);
 }
 [data-theme="day"]{
   --bg:#f5f0e8; --surface:#ece5da; --txt:#1a1510; --txt2:rgba(26,21,16,.66);
-  --txt3:rgba(26,21,16,.4); --bdr:rgba(0,0,0,.07); --bdr2:rgba(0,0,0,.1);
+  --txt3:rgba(26,21,16,.64); --bdr:rgba(0,0,0,.07); --bdr2:rgba(0,0,0,.1);
   --ab-op:.26; --nav-scrolled:rgba(245,240,232,.78); --nav-bdr:rgba(0,0,0,.06);
   --tag-bg:rgba(0,0,0,.06); --tag-txt:rgba(26,21,16,.72);
   --mover-bg:rgba(245,240,232,.66); --modal-bg:#fbf7f0; --modal-bdr:rgba(0,0,0,.08);
@@ -38,7 +39,7 @@
   --mbs-bdr:rgba(0,0,0,.16); --mbs-c:rgba(26,21,16,.8);
   --arrow-bdr:rgba(0,0,0,.24); --arrow-c:rgba(26,21,16,.7);
   --row-bdr:rgba(0,0,0,.07); --bico-bg:rgba(231,47,138,.12);
-  --nos-p:rgba(26,21,16,.48); --lc-meta:rgba(26,21,16,.4);
+  --nos-p:rgba(26,21,16,.62); --lc-meta:rgba(26,21,16,.55);
   --soc-bg:rgba(0,0,0,.06); --ft-bg:#ebe4d8;
   --outline:rgba(26,21,16,.08); --photo-shadow:rgba(0,0,0,.22);
 }
@@ -52,6 +53,7 @@ a:focus-visible,button:focus-visible,[role=button]:focus-visible,[tabindex]:focu
 .skip-link:focus{top:12px}
 body{background:var(--bg);color:var(--txt);font-family:'Montserrat',sans-serif;overflow-x:hidden;transition:background .5s,color .5s}
 a{color:inherit;text-decoration:none}
+a,button,[role=button]{touch-action:manipulation} /* elimina retardo de 300ms en táctil */
 img{user-select:none;-webkit-user-drag:none}
 body,#nav,.lc,.mbox,.socios-card,footer,.ct-link,.ticker,.mover{transition:background .5s,border-color .5s,color .5s}
 
@@ -91,6 +93,7 @@ html.copa-cursor #cur-r{display:none}
 #rail-bar{width:1px;height:48px;background:var(--bdr2);position:relative;overflow:hidden;border-radius:2px}
 #rail-fill{position:absolute;top:0;left:0;right:0;height:0%;background:var(--fucsia)}
 @media(max-width:760px){#rail{display:none}}
+@media(hover:none){#rail{display:none}} /* oculto en táctil: puntos demasiado pequeños para tocar */
 
 /* ════════════ THEME BTN ════════════ */
 #theme-btn{position:fixed;bottom:96px;right:24px;z-index:700;width:46px;height:46px;border-radius:50%;border:1px solid var(--bdr2);background:var(--surface);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .3s var(--easeSnap),background .5s,border-color .5s;box-shadow:0 4px 18px rgba(0,0,0,.25)}
@@ -136,7 +139,7 @@ html.copa-cursor #cur-r{display:none}
 @media(max-width:760px){.nav-links{display:none}#burger{display:flex}.nav-res{display:none}}
 
 /* ════════════ HERO ════════════ */
-#hero{height:100vh;min-height:640px;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;text-align:center}
+#hero{height:100vh;height:100dvh;min-height:640px;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;text-align:center}
 #stars{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .aurora{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .aurora-blob{position:absolute;border-radius:50%;filter:blur(110px);opacity:var(--ab-op);animation:aFloat 17s ease-in-out infinite}
@@ -334,7 +337,7 @@ footer{background:var(--ft-bg);border-top:1px solid var(--bdr);padding:44px clam
 .mgallery{display:flex;gap:10px;overflow-x:auto;margin:0 0 22px;padding-bottom:6px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .mgallery::-webkit-scrollbar{display:none}
 .mgallery:empty{display:none;margin:0}
-.mgallery img{height:130px;width:auto;flex:0 0 auto;border-radius:12px;object-fit:cover;scroll-snap-align:start;cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s var(--ease);box-shadow:0 4px 16px rgba(0,0,0,.18)}
+.mgallery img{height:130px;width:auto;aspect-ratio:3/2;flex:0 0 auto;border-radius:12px;object-fit:cover;scroll-snap-align:start;cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s var(--ease);box-shadow:0 4px 16px rgba(0,0,0,.18)}
 .mgallery img:hover{transform:scale(1.03);box-shadow:0 6px 22px rgba(0,0,0,.28)}
 .minfo{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
 .mic{background:var(--mic-bg);border-radius:11px;padding:14px;display:flex;flex-direction:column;gap:5px}
@@ -568,15 +571,15 @@ footer{background:var(--ft-bg);border-top:1px solid var(--bdr);padding:44px clam
   <div class="lc-inner">
     <div>
       <span class="lc-num">01 / 07 — BAR DE COPAS<span class="lc-open" data-open="tablas" hidden><span class="od"></span><span class="ot"></span></span></span>
-      <div class="lc-logo"><img src="logos/Las Tablas-06-trans.png" alt="Las Tablas 2.0" draggable="false"></div>
+      <div class="lc-logo"><img src="logos/Las Tablas-06-trans.webp" alt="Las Tablas 2.0" draggable="false"></div>
       <p class="lc-tagline">"Detrás de la cortina no nos ve la vecina. Y nos importa tres copas."</p>
       <div class="lc-tag-row"><span class="lc-tag">Jue–Sáb · 20:00–02:00</span><span class="lc-tag">C/ General Oraá, 26</span></div>
       <span class="lc-cta">Ver local<span class="lc-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></span>
     </div>
     <div class="lc-photos" aria-hidden="true">
-      <div class="lph"><img src="fotos/tablas/1.jpg" alt="" loading="lazy"></div>
-      <div class="lph"><img src="fotos/tablas/2.jpg" alt="" loading="lazy"></div>
-      <div class="lph"><img src="fotos/tablas/3.jpg" alt="" loading="lazy"></div>
+      <div class="lph"><img src="fotos/tablas/1.webp" alt="" loading="lazy"></div>
+      <div class="lph"><img src="fotos/tablas/2.webp" alt="" loading="lazy"></div>
+      <div class="lph"><img src="fotos/tablas/3.webp" alt="" loading="lazy"></div>
     </div>
   </div>
 </article>
@@ -587,15 +590,15 @@ footer{background:var(--ft-bg);border-top:1px solid var(--bdr);padding:44px clam
   <div class="lc-inner">
     <div>
       <span class="lc-num">02 / 07 — BAR DE BARRIO<span class="lc-open" data-open="pequeña" hidden><span class="od"></span><span class="ot"></span></span></span>
-      <div class="lc-logo"><img src="logos/La pequeña_Mesa de trabajo 1-trans.png" alt="La Pequeña 2.0" draggable="false"></div>
+      <div class="lc-logo"><img src="logos/La pequeña_Mesa de trabajo 1-trans.webp" alt="La Pequeña 2.0" draggable="false"></div>
       <p class="lc-tagline">"Tan de barrio que hasta el camarero sabe lo que vas a pedir."</p>
       <div class="lc-tag-row"><span class="lc-tag">L–M 08–16 · J–V 08–02 · S 18–02</span><span class="lc-tag">C/ General Oraá, 27</span></div>
       <span class="lc-cta">Ver local<span class="lc-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></span>
     </div>
     <div class="lc-photos" aria-hidden="true">
-      <div class="lph"><img src="fotos/pequeña/1.jpg" alt="" loading="lazy"></div>
-      <div class="lph"><img src="fotos/pequeña/2.jpg" alt="" loading="lazy"></div>
-      <div class="lph"><img src="fotos/pequeña/3.jpg" alt="" loading="lazy"></div>
+      <div class="lph"><img src="fotos/pequeña/1.webp" alt="" loading="lazy"></div>
+      <div class="lph"><img src="fotos/pequeña/2.webp" alt="" loading="lazy"></div>
+      <div class="lph"><img src="fotos/pequeña/3.webp" alt="" loading="lazy"></div>
     </div>
   </div>
 </article>
@@ -606,15 +609,15 @@ footer{background:var(--ft-bg);border-top:1px solid var(--bdr);padding:44px clam
   <div class="lc-inner">
     <div>
       <span class="lc-num">03 / 07 — COPAS Y NEÓN<span class="lc-open" data-open="chula" hidden><span class="od"></span><span class="ot"></span></span></span>
-      <div class="lc-logo"><img src="logos/La Chula_Mesa de trabajo 1-trans.png" alt="La Chula 2.0" draggable="false"></div>
+      <div class="lc-logo"><img src="logos/La Chula_Mesa de trabajo 1-trans.webp" alt="La Chula 2.0" draggable="false"></div>
       <p class="lc-tagline">"Noches de neón, chupito de tregua y besos con lengua."</p>
       <div class="lc-tag-row"><span class="lc-tag">Jue–Sáb · 22:00–03:30</span><span class="lc-tag">C/ Claudio Coello, 116</span></div>
       <span class="lc-cta">Ver local<span class="lc-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></span>
     </div>
     <div class="lc-photos" aria-hidden="true">
-      <div class="lph"><img src="fotos/la chula/1.jpg" alt="" loading="lazy"></div>
-      <div class="lph"><img src="fotos/la chula/2.jpg" alt="" loading="lazy"></div>
-      <div class="lph"><img src="fotos/la chula/3.jpg" alt="" loading="lazy"></div>
+      <div class="lph"><img src="fotos/la chula/1.webp" alt="" loading="lazy"></div>
+      <div class="lph"><img src="fotos/la chula/2.webp" alt="" loading="lazy"></div>
+      <div class="lph"><img src="fotos/la chula/3.webp" alt="" loading="lazy"></div>
     </div>
   </div>
 </article>
@@ -625,15 +628,15 @@ footer{background:var(--ft-bg);border-top:1px solid var(--bdr);padding:44px clam
   <div class="lc-inner">
     <div>
       <span class="lc-num">04 / 07 — BAR DE COPAS<span class="lc-open" data-open="peluca" hidden><span class="od"></span><span class="ot"></span></span></span>
-      <div class="lc-logo"><img src="logos/La Peluquería-04-trans.png" alt="La Peluquería 2.0" draggable="false"></div>
+      <div class="lc-logo"><img src="logos/La Peluquería-04-trans.webp" alt="La Peluquería 2.0" draggable="false"></div>
       <p class="lc-tagline">"¿Nos volamos la peluca? Mientras nos quede pelo, aquí seguimos."</p>
       <div class="lc-tag-row"><span class="lc-tag">L–M 18–00 · J–S 18–02</span><span class="lc-tag">C/ Alberto Alcocer, 32</span></div>
       <span class="lc-cta">Ver local<span class="lc-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></span>
     </div>
     <div class="lc-photos" aria-hidden="true">
-      <div class="lph"><img src="fotos/la peluqueria/1.jpg" alt="" loading="lazy"></div>
-      <div class="lph"><img src="fotos/la peluqueria/2.jpg" alt="" loading="lazy"></div>
-      <div class="lph"><img src="fotos/la peluqueria/3.jpg" alt="" loading="lazy"></div>
+      <div class="lph"><img src="fotos/la peluqueria/1.webp" alt="" loading="lazy"></div>
+      <div class="lph"><img src="fotos/la peluqueria/2.webp" alt="" loading="lazy"></div>
+      <div class="lph"><img src="fotos/la peluqueria/3.webp" alt="" loading="lazy"></div>
     </div>
   </div>
 </article>
@@ -644,15 +647,15 @@ footer{background:var(--ft-bg);border-top:1px solid var(--bdr);padding:44px clam
   <div class="lc-inner">
     <div>
       <span class="lc-num">05 / 07 — RESTAURANTE<span class="lc-open" data-open="traviesa" hidden><span class="od"></span><span class="ot"></span></span></span>
-      <div class="lc-logo"><img src="logos/La traviesa_Mesa de trabajo 1-trans.png" alt="La Traviesa 2.0" draggable="false"></div>
+      <div class="lc-logo"><img src="logos/La traviesa_Mesa de trabajo 1-trans.webp" alt="La Traviesa 2.0" draggable="false"></div>
       <p class="lc-tagline">"La glotona de la familia. Come, bebe, y repite."</p>
       <div class="lc-tag-row"><span class="lc-tag">L–M 08–22 · J–V 08–00</span><span class="lc-tag">C/ López de Hoyos, 7</span></div>
       <span class="lc-cta">Ver local<span class="lc-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></span>
     </div>
     <div class="lc-photos" aria-hidden="true">
-      <div class="lph"><img src="fotos/la traviesa/1.jpg" alt="" loading="lazy"></div>
-      <div class="lph"><img src="fotos/la traviesa/2.jpg" alt="" loading="lazy"></div>
-      <div class="lph"><img src="fotos/la traviesa/3.jpg" alt="" loading="lazy"></div>
+      <div class="lph"><img src="fotos/la traviesa/1.webp" alt="" loading="lazy"></div>
+      <div class="lph"><img src="fotos/la traviesa/2.webp" alt="" loading="lazy"></div>
+      <div class="lph"><img src="fotos/la traviesa/3.webp" alt="" loading="lazy"></div>
     </div>
   </div>
 </article>
@@ -663,15 +666,15 @@ footer{background:var(--ft-bg);border-top:1px solid var(--bdr);padding:44px clam
   <div class="lc-inner">
     <div>
       <span class="lc-num">06 / 07 — DISCOTECA<span class="lc-open" data-open="juanita" hidden><span class="od"></span><span class="ot"></span></span></span>
-      <div class="lc-logo"><img src="logos/Juanita-04-trans.png" alt="Juanita 2.0" draggable="false"></div>
+      <div class="lc-logo"><img src="logos/Juanita-04-trans.webp" alt="Juanita 2.0" draggable="false"></div>
       <p class="lc-tagline">"¿Te vas de rositas? Nadie sale de Juanita de rositas."</p>
       <div class="lc-tag-row"><span class="lc-tag">Mié / Vie / Sáb · 00:00–06:00</span><span class="lc-tag">C/ Alberto Alcocer, 33</span></div>
       <span class="lc-cta">Ver local<span class="lc-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></span>
     </div>
     <div class="lc-photos" aria-hidden="true">
-      <div class="lph"><img src="fotos/Juanita/1.jpg" alt="" loading="lazy"></div>
-      <div class="lph"><img src="fotos/Juanita/2.jpg" alt="" loading="lazy"></div>
-      <div class="lph"><img src="fotos/Juanita/3.jpg" alt="" loading="lazy"></div>
+      <div class="lph"><img src="fotos/Juanita/1.webp" alt="" loading="lazy"></div>
+      <div class="lph"><img src="fotos/Juanita/2.webp" alt="" loading="lazy"></div>
+      <div class="lph"><img src="fotos/Juanita/3.webp" alt="" loading="lazy"></div>
     </div>
   </div>
 </article>
@@ -682,15 +685,15 @@ footer{background:var(--ft-bg);border-top:1px solid var(--bdr);padding:44px clam
   <div class="lc-inner">
     <div>
       <span class="lc-num">07 / 07 — RESTAURANTE · BAR · DISCOTECA<span class="lc-open" data-open="green" hidden><span class="od"></span><span class="ot"></span></span></span>
-      <div class="lc-logo"><img src="logos/Green 2.0-trans.png" alt="Green 2.0" draggable="false"></div>
+      <div class="lc-logo"><img src="logos/Green 2.0-trans.webp" alt="Green 2.0" draggable="false"></div>
       <p class="lc-tagline">"Tres en uno: restaurante, bar y discoteca. Como la navaja suiza, pero con más alcohol."</p>
       <div class="lc-tag-row"><span class="lc-tag">L–M 08–22 · J–V 08–06 · S 18–06</span><span class="lc-tag">P.º de la Castellana, 40 bis</span></div>
       <span class="lc-cta">Ver local<span class="lc-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></span>
     </div>
     <div class="lc-photos" aria-hidden="true">
-      <div class="lph"><img src="fotos/green/1.jpg" alt="" loading="lazy"></div>
-      <div class="lph"><img src="fotos/green/2.jpg" alt="" loading="lazy"></div>
-      <div class="lph"><img src="fotos/green/3.jpg" alt="" loading="lazy"></div>
+      <div class="lph"><img src="fotos/green/1.webp" alt="" loading="lazy"></div>
+      <div class="lph"><img src="fotos/green/2.webp" alt="" loading="lazy"></div>
+      <div class="lph"><img src="fotos/green/3.webp" alt="" loading="lazy"></div>
     </div>
   </div>
 </article>
@@ -904,13 +907,13 @@ footer{background:var(--ft-bg);border-top:1px solid var(--bdr);padding:44px clam
 <script>
 /* ════════════ DATA ════════════ */
 const D={
-  tablas:{logo:'<img src="logos/Las Tablas-06-trans.png" alt="Las Tablas 2.0" style="height:60px;width:auto">',photos:['fotos/tablas/1.jpg','fotos/tablas/2.jpg','fotos/tablas/3.jpg','fotos/tablas/4.jpg'],tagline:'"Detrás de la cortina no nos ve la vecina. Y nos importa tres copas."',dir:'C/ General Oraá, 26, Madrid',hor:'Jue–Sáb · 20:00–02:00h',wa:'https://wa.me/34656485099?text=Quiero%20reservar%20en%20Las%20Tablas%202.0',maps:'https://maps.google.com/?q=C+General+Oraá+26+Madrid',ig:'https://www.instagram.com/lastablas2.0',color:'#e51d1e'},
-  pequeña:{logo:'<img src="logos/La pequeña_Mesa de trabajo 1-trans.png" alt="La Pequeña 2.0" style="height:60px;width:auto">',photos:['fotos/pequeña/1.jpg','fotos/pequeña/2.jpg','fotos/pequeña/3.jpg','fotos/pequeña/4.jpg'],tagline:'"Tan de barrio que hasta el camarero sabe lo que vas a pedir."',dir:'C/ General Oraá, 27, Madrid',hor:'L–M 08–16h · J–V 08–02h<br>S 18:00–02:00h',wa:'https://wa.me/34656485099?text=Quiero%20reservar%20en%20La%20Peque%C3%B1a%202.0',maps:'https://maps.google.com/?q=C+General+Oraá+27+Madrid',ig:'https://www.instagram.com/lapequena2.0',color:'#3a4ba8'},
-  chula:{logo:'<img src="logos/La Chula_Mesa de trabajo 1-trans.png" alt="La Chula 2.0" style="height:60px;width:auto">',photos:['fotos/la chula/1.jpg','fotos/la chula/2.jpg','fotos/la chula/3.jpg','fotos/la chula/4.jpg'],tagline:'"Noches de neón, chupito de tregua y besos con lengua."',dir:'C/ Claudio Coello, 116, Madrid',hor:'Jue–Sáb · 22:00–03:30h',wa:'https://wa.me/34656485099?text=Quiero%20reservar%20en%20La%20Chula%202.0',maps:'https://maps.google.com/?q=C+Claudio+Coello+116+Madrid',ig:'https://www.instagram.com/lachula2.0',color:'#e72f8a'},
-  peluca:{logo:'<img src="logos/La Peluquería-04-trans.png" alt="La Peluquería 2.0" style="height:60px;width:auto">',photos:['fotos/la peluqueria/1.jpg','fotos/la peluqueria/2.jpg','fotos/la peluqueria/3.jpg','fotos/la peluqueria/4.jpg'],tagline:'"¿Nos volamos la peluca? Mientras nos quede pelo, aquí seguimos."',dir:'C/ Alberto Alcocer, 32, Madrid',hor:'L–M 18–00h · J–S 18:00–02:00h',wa:'https://wa.me/34656485099?text=Quiero%20reservar%20en%20La%20Peluquer%C3%ADa%202.0',maps:'https://maps.google.com/?q=C+Alberto+Alcocer+32+Madrid',ig:'https://www.instagram.com/lapeluqueria_2.0',color:'#1db7d9'},
-  traviesa:{logo:'<img src="logos/La traviesa_Mesa de trabajo 1-trans.png" alt="La Traviesa 2.0" style="height:60px;width:auto">',photos:['fotos/la traviesa/1.jpg','fotos/la traviesa/2.jpg','fotos/la traviesa/3.jpg','fotos/la traviesa/4.jpg'],tagline:'"La glotona de la familia. Come, bebe, y repite."',dir:'C/ López de Hoyos, 7, Madrid',hor:'L–M 08–22h · J–V 08–00h<br>Sábado cerrado',wa:'https://wa.me/34656485099?text=Quiero%20reservar%20en%20La%20Traviesa%202.0',maps:'https://maps.google.com/?q=C+Lopez+de+Hoyos+7+Madrid',ig:'https://www.instagram.com/latraviesa_2.0',color:'#8a7fc0'},
-  juanita:{logo:'<img src="logos/Juanita-04-trans.png" alt="Juanita 2.0" style="height:60px;width:auto">',fv:'https://www.fourvenues.com/luis-ruiz-ramos/events/miercoles-juanita-summer-10-06-2026-WNWT',photos:['fotos/Juanita/1.jpg','fotos/Juanita/2.jpg','fotos/Juanita/3.jpg','fotos/Juanita/4.jpg'],tagline:'"¿Te vas de rositas? Nadie sale de Juanita de rositas."',dir:'C/ Alberto Alcocer, 33, Madrid',hor:'Mié / Vie / Sáb · 00:00–06:00h',wa:'https://wa.me/34656485099?text=Quiero%20reservar%20en%20Juanita%202.0',maps:'https://maps.google.com/?q=C+Alberto+Alcocer+33+Madrid',ig:'https://www.instagram.com/juanita2.0',color:'#da1f87'},
-  green:{logo:'<img src="logos/Green 2.0-trans.png" alt="Green 2.0" style="height:60px;width:auto">',photos:['fotos/green/1.jpg','fotos/green/2.jpg','fotos/green/3.jpg','fotos/green/4.jpg'],tagline:'"Tres en uno: restaurante, bar y discoteca. Como la navaja suiza, pero con más alcohol."',dir:'P.º de la Castellana, 40 bis, Madrid',hor:'L–M 08–22h · J–V 08–06h<br>S 18:00–06:00h',wa:'https://wa.me/34656485099?text=Quiero%20reservar%20en%20Green%202.0',maps:'https://maps.google.com/?q=Paseo+de+la+Castellana+40+bis+Madrid',ig:'https://www.instagram.com/green.madrid_2.0',color:'#4ade80'}
+  tablas:{logo:'<img src="logos/Las Tablas-06-trans.webp" alt="Las Tablas 2.0" style="height:60px;width:auto">',photos:['fotos/tablas/1.webp','fotos/tablas/2.webp','fotos/tablas/3.webp','fotos/tablas/4.webp'],tagline:'"Detrás de la cortina no nos ve la vecina. Y nos importa tres copas."',dir:'C/ General Oraá, 26, Madrid',hor:'Jue–Sáb · 20:00–02:00h',wa:'https://wa.me/34656485099?text=Quiero%20reservar%20en%20Las%20Tablas%202.0',maps:'https://maps.google.com/?q=C+General+Oraá+26+Madrid',ig:'https://www.instagram.com/lastablas2.0',color:'#e51d1e'},
+  pequeña:{logo:'<img src="logos/La pequeña_Mesa de trabajo 1-trans.webp" alt="La Pequeña 2.0" style="height:60px;width:auto">',photos:['fotos/pequeña/1.webp','fotos/pequeña/2.webp','fotos/pequeña/3.webp','fotos/pequeña/4.webp'],tagline:'"Tan de barrio que hasta el camarero sabe lo que vas a pedir."',dir:'C/ General Oraá, 27, Madrid',hor:'L–M 08–16h · J–V 08–02h<br>S 18:00–02:00h',wa:'https://wa.me/34656485099?text=Quiero%20reservar%20en%20La%20Peque%C3%B1a%202.0',maps:'https://maps.google.com/?q=C+General+Oraá+27+Madrid',ig:'https://www.instagram.com/lapequena2.0',color:'#3a4ba8'},
+  chula:{logo:'<img src="logos/La Chula_Mesa de trabajo 1-trans.webp" alt="La Chula 2.0" style="height:60px;width:auto">',photos:['fotos/la chula/1.webp','fotos/la chula/2.webp','fotos/la chula/3.webp','fotos/la chula/4.webp'],tagline:'"Noches de neón, chupito de tregua y besos con lengua."',dir:'C/ Claudio Coello, 116, Madrid',hor:'Jue–Sáb · 22:00–03:30h',wa:'https://wa.me/34656485099?text=Quiero%20reservar%20en%20La%20Chula%202.0',maps:'https://maps.google.com/?q=C+Claudio+Coello+116+Madrid',ig:'https://www.instagram.com/lachula2.0',color:'#e72f8a'},
+  peluca:{logo:'<img src="logos/La Peluquería-04-trans.webp" alt="La Peluquería 2.0" style="height:60px;width:auto">',photos:['fotos/la peluqueria/1.webp','fotos/la peluqueria/2.webp','fotos/la peluqueria/3.webp','fotos/la peluqueria/4.webp'],tagline:'"¿Nos volamos la peluca? Mientras nos quede pelo, aquí seguimos."',dir:'C/ Alberto Alcocer, 32, Madrid',hor:'L–M 18–00h · J–S 18:00–02:00h',wa:'https://wa.me/34656485099?text=Quiero%20reservar%20en%20La%20Peluquer%C3%ADa%202.0',maps:'https://maps.google.com/?q=C+Alberto+Alcocer+32+Madrid',ig:'https://www.instagram.com/lapeluqueria_2.0',color:'#1db7d9'},
+  traviesa:{logo:'<img src="logos/La traviesa_Mesa de trabajo 1-trans.webp" alt="La Traviesa 2.0" style="height:60px;width:auto">',photos:['fotos/la traviesa/1.webp','fotos/la traviesa/2.webp','fotos/la traviesa/3.webp','fotos/la traviesa/4.webp'],tagline:'"La glotona de la familia. Come, bebe, y repite."',dir:'C/ López de Hoyos, 7, Madrid',hor:'L–M 08–22h · J–V 08–00h<br>Sábado cerrado',wa:'https://wa.me/34656485099?text=Quiero%20reservar%20en%20La%20Traviesa%202.0',maps:'https://maps.google.com/?q=C+Lopez+de+Hoyos+7+Madrid',ig:'https://www.instagram.com/latraviesa_2.0',color:'#8a7fc0'},
+  juanita:{logo:'<img src="logos/Juanita-04-trans.webp" alt="Juanita 2.0" style="height:60px;width:auto">',fv:'https://www.fourvenues.com/luis-ruiz-ramos/events/miercoles-juanita-summer-10-06-2026-WNWT',photos:['fotos/Juanita/1.webp','fotos/Juanita/2.webp','fotos/Juanita/3.webp','fotos/Juanita/4.webp'],tagline:'"¿Te vas de rositas? Nadie sale de Juanita de rositas."',dir:'C/ Alberto Alcocer, 33, Madrid',hor:'Mié / Vie / Sáb · 00:00–06:00h',wa:'https://wa.me/34656485099?text=Quiero%20reservar%20en%20Juanita%202.0',maps:'https://maps.google.com/?q=C+Alberto+Alcocer+33+Madrid',ig:'https://www.instagram.com/juanita2.0',color:'#da1f87'},
+  green:{logo:'<img src="logos/Green 2.0-trans.webp" alt="Green 2.0" style="height:60px;width:auto">',photos:['fotos/green/1.webp','fotos/green/2.webp','fotos/green/3.webp','fotos/green/4.webp'],tagline:'"Tres en uno: restaurante, bar y discoteca. Como la navaja suiza, pero con más alcohol."',dir:'P.º de la Castellana, 40 bis, Madrid',hor:'L–M 08–22h · J–V 08–06h<br>S 18:00–06:00h',wa:'https://wa.me/34656485099?text=Quiero%20reservar%20en%20Green%202.0',maps:'https://maps.google.com/?q=Paseo+de+la+Castellana+40+bis+Madrid',ig:'https://www.instagram.com/green.madrid_2.0',color:'#4ade80'}
 };
 const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -940,7 +943,8 @@ const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
   const initial=saved||detectTheme();
   document.documentElement.setAttribute('data-theme',initial);
   const btn=document.getElementById('theme-btn');
-  function updateBtn(t){btn.setAttribute('aria-label',t==='day'?'Cambiar a modo noche':'Cambiar a modo día');btn.title=t==='day'?'Modo noche':'Modo día'}
+  const tcMeta=document.getElementById('theme-color-meta');
+  function updateBtn(t){btn.setAttribute('aria-label',t==='day'?'Cambiar a modo noche':'Cambiar a modo día');btn.title=t==='day'?'Modo noche':'Modo día';if(tcMeta)tcMeta.setAttribute('content',t==='day'?'#f5f0e8':'#0a0908')}
   updateBtn(initial);
   btn.addEventListener('click',()=>{
     const cur=document.documentElement.getAttribute('data-theme');
@@ -961,7 +965,7 @@ document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
     document.documentElement.classList.add('copa-cursor');
     img.alt='';$c.appendChild(img);
   };
-  img.src='logos/copa.png';
+  img.src='logos/copa.webp';
 })();
 (function loop(){
   rx+=(mx-rx)*.13;ry+=(my-ry)*.13;
@@ -1255,9 +1259,9 @@ document.querySelectorAll('.lc').forEach(el=>{
 });
 
 /* ════════════ CARTAS (solo los locales que tienen) ════════════ */
-D.green.carta='cartas/green.png';
+D.green.carta='cartas/green.webp';
 D.traviesa.carta='cartas/traviesa.pdf';
-D.pequeña.carta='cartas/pequena.png';
+D.pequeña.carta='cartas/pequena.webp';
 
 /* ════════════ KOMVO — reservas de eventos por local ════════════ */
 const KV_BASE='https://grupodospuntocero.komvoapp.com';
