@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1A2A5E">
+<title>Menú del día · Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1A2A5E;--gold:#C8963E;--cream:#F5F0E8;--ink:#2b2b2b;--accent:#1A2A5E}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--cream);color:var(--ink);font-family:'Lato',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased}
+  body{min-height:100vh;min-height:100dvh;padding:24px 16px calc(40px + env(safe-area-inset-bottom))}
+  .wrap{max-width:520px;margin:0 auto}
+  h1{font-family:'Playfair Display',serif;color:var(--navy);font-size:26px;font-weight:800}
+  .sub{color:#888;font-size:13px;margin-top:2px;margin-bottom:20px}
+  /* PIN */
+  .pin-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:70vh;text-align:center}
+  .pin-screen h1{margin-bottom:18px}
+  .pin-input{font-size:30px;letter-spacing:.5em;text-align:center;width:200px;padding:14px;border:2px solid var(--navy);border-radius:14px;background:#fff;color:var(--navy);font-weight:700}
+  .pin-err{color:#d23;font-size:14px;height:20px;margin-top:12px}
+  /* panel */
+  .panel{display:none}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+  .chip{border:1.5px solid rgba(26,42,94,.25);background:#fff;color:var(--navy);border-radius:999px;padding:8px 14px;font-size:14px;font-weight:700;cursor:pointer;transition:.12s}
+  .chip.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .field{margin-bottom:14px}
+  .field label{display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:6px}
+  .field input,.field textarea{width:100%;padding:12px 14px;border:1.5px solid rgba(26,42,94,.2);border-radius:12px;font-family:inherit;font-size:16px;background:#fff;color:var(--ink)}
+  .field textarea{resize:vertical;min-height:52px}
+  .row{display:flex;gap:12px}
+  .row .field{flex:1}
+  .btn{width:100%;background:var(--accent);color:#fff;border:none;border-radius:14px;padding:16px;font-size:17px;font-weight:700;font-family:inherit;cursor:pointer;margin-top:6px}
+  .btn:disabled{opacity:.5}
+  .btn-ghost{background:transparent;color:#999;border:none;font-size:13px;cursor:pointer;text-decoration:underline;margin-top:18px;display:block;width:100%;text-align:center}
+  .estado-pub{text-align:center;font-size:13px;color:#777;margin-top:14px;min-height:18px}
+  .estado-pub b{color:var(--navy)}
+  .toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(80px);background:var(--navy);color:#fff;padding:13px 22px;border-radius:12px;font-weight:700;opacity:0;transition:.25s;z-index:50}
+  .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+  .toast.err{background:#c0392b}
+  .links{text-align:center;margin-top:22px;font-size:13px}
+  .links a{color:var(--gold);font-weight:700;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- PIN -->
+  <div class="pin-screen" id="pinScreen">
+    <h1>Menú del día</h1>
+    <p class="sub" style="margin-top:-10px;margin-bottom:24px">Panel de oficina</p>
+    <input class="pin-input" id="pinInput" type="tel" inputmode="numeric" maxlength="6" placeholder="••••" autocomplete="off">
+    <div class="pin-err" id="pinErr"></div>
+  </div>
+
+  <!-- PANEL -->
+  <div class="panel" id="panel">
+    <h1>Menú del día</h1>
+    <p class="sub">Edita y publica el menú de cada local.</p>
+    <div class="chips" id="chips"></div>
+
+    <div class="field"><label>Fecha (texto libre)</label><input id="f_fecha" placeholder="Ej: Lunes 30 de junio"></div>
+    <div class="field"><label>Primero</label><textarea id="f_primero" placeholder="Ej: Ensalada de tomate y ventresca"></textarea></div>
+    <div class="field"><label>Segundo</label><textarea id="f_segundo" placeholder="Ej: Lubina a la espalda"></textarea></div>
+    <div class="field"><label>Postre</label><textarea id="f_postre" placeholder="Ej: Tarta de queso casera"></textarea></div>
+    <div class="row">
+      <div class="field"><label>Incluye</label><input id="f_incluye" placeholder="Pan, bebida y café"></div>
+      <div class="field"><label>Precio</label><input id="f_precio" placeholder="16,50 €"></div>
+    </div>
+
+    <button class="btn" id="btnPub">Guardar y publicar</button>
+    <div class="estado-pub" id="estadoPub"></div>
+
+    <div class="links">
+      <a href="menu.html?local=la_pequena" target="_blank">Ver página pública ↗</a> &nbsp;·&nbsp;
+      <a href="qrs.html">Generar QR ↗</a>
+    </div>
+    <button class="btn-ghost" id="btnSalir">Salir / cambiar usuario</button>
+  </div>
+
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+'use strict';
+var PIN='2024';
+var SUPA_URL='https://mveidasopqzphghnoyxc.supabase.co';
+var SUPA_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im12ZWlkYXNvcHF6cGhnaG5veXhjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4MzA3NTMsImV4cCI6MjA5MzQwNjc1M30.N2z4A7A-5c0cmRBM_q9Zdgj6yKo60uO6A2wCA8Qer_g';
+
+var LOCALES=[
+  {id:'la_pequena',   nombre:'La Pequeña',   color:'#1A2A5E'},
+  {id:'las_tablas',   nombre:'Las Tablas',   color:'#e51d1e'},
+  {id:'la_chula',     nombre:'La Chula',     color:'#e72f8a'},
+  {id:'la_traviesa',  nombre:'La Traviesa',  color:'#5b4f8a'},
+  {id:'la_peluqueria',nombre:'La Peluquería',color:'#da1f87'},
+  {id:'juanita',      nombre:'Juanita',      color:'#9c27b0'},
+  {id:'green',        nombre:'Green',        color:'#16a34a'}
+];
+
+var $=function(id){return document.getElementById(id);};
+function toast(msg,err){var t=$('toast');t.textContent=msg;t.className='toast show'+(err?' err':'');setTimeout(function(){t.className='toast';},2600);}
+function fmtFecha(iso){if(!iso)return'';try{var d=new Date(iso);return d.toLocaleDateString('es-ES',{day:'numeric',month:'short'})+' '+d.toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'});}catch(e){return'';}}
+
+/* ── PIN ── */
+function entrar(){
+  $('pinScreen').style.display='none';
+  $('panel').style.display='block';
+  initPanel();
+}
+(function checkPin(){
+  if(localStorage.getItem('menudia_pin_ok')==='1'){entrar();return;}
+  var inp=$('pinInput');inp.focus();
+  inp.addEventListener('input',function(){
+    $('pinErr').textContent='';
+    if(inp.value.length>=PIN.length){
+      if(inp.value===PIN){localStorage.setItem('menudia_pin_ok','1');entrar();}
+      else{$('pinErr').textContent='PIN incorrecto';inp.value='';}
+    }
+  });
+})();
+$('btnSalir').addEventListener('click',function(){localStorage.removeItem('menudia_pin_ok');location.reload();});
+
+/* ── Panel ── */
+var localActual=null;
+function initPanel(){
+  var cont=$('chips');cont.innerHTML='';
+  LOCALES.forEach(function(l){
+    var b=document.createElement('button');b.className='chip';b.textContent=l.nombre;b.dataset.id=l.id;
+    b.addEventListener('click',function(){seleccionar(l);});
+    cont.appendChild(b);
+  });
+  seleccionar(LOCALES[0]);
+}
+
+function seleccionar(l){
+  localActual=l;
+  document.documentElement.style.setProperty('--accent',l.color);
+  Array.prototype.forEach.call(document.querySelectorAll('.chip'),function(c){c.classList.toggle('on',c.dataset.id===l.id);});
+  // limpiar mientras carga
+  ['f_fecha','f_primero','f_segundo','f_postre','f_incluye','f_precio'].forEach(function(id){$(id).value='';});
+  $('estadoPub').textContent='Cargando…';
+  var url=SUPA_URL+'/rest/v1/menus_dia?local_id=eq.'+encodeURIComponent(l.id)+'&select=*';
+  fetch(url,{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,'Accept':'application/json'}})
+    .then(function(r){if(!r.ok)throw new Error(r.status);return r.json();})
+    .then(function(rows){
+      var d=rows&&rows[0];
+      if(d){
+        $('f_fecha').value=d.fecha_texto||'';$('f_primero').value=d.primero||'';
+        $('f_segundo').value=d.segundo||'';$('f_postre').value=d.postre||'';
+        $('f_incluye').value=d.incluye||'';$('f_precio').value=d.precio||'';
+        mostrarEstado(d);
+      }else{$('estadoPub').innerHTML='Sin menú publicado todavía.';}
+    })
+    .catch(function(e){$('estadoPub').textContent='No se pudo cargar ('+e.message+')';});
+}
+
+function mostrarEstado(d){
+  if(d&&d.actualizado_en){
+    $('estadoPub').innerHTML='Publicado: <b>'+fmtFecha(d.actualizado_en)+'</b>'+(d.actualizado_por?' por <b>'+d.actualizado_por+'</b>':'');
+  }else{$('estadoPub').textContent='';}
+}
+
+function pedirAutor(){
+  var a=localStorage.getItem('menudia_autor');
+  if(!a){a=prompt('¿Quién publica? (nombre o rol, se recuerda en este dispositivo)')||'Oficina';localStorage.setItem('menudia_autor',a);}
+  return a;
+}
+
+$('btnPub').addEventListener('click',function(){
+  if(!localActual)return;
+  var btn=$('btnPub');btn.disabled=true;btn.textContent='Publicando…';
+  var autor=pedirAutor();
+  var row={
+    local_id:localActual.id,
+    fecha_texto:$('f_fecha').value.trim(),
+    primero:$('f_primero').value.trim(),
+    segundo:$('f_segundo').value.trim(),
+    postre:$('f_postre').value.trim(),
+    incluye:$('f_incluye').value.trim(),
+    precio:$('f_precio').value.trim(),
+    actualizado_en:new Date().toISOString(),
+    actualizado_por:autor
+  };
+  var ctrl=new AbortController();var t=setTimeout(function(){ctrl.abort();},8000);
+  fetch(SUPA_URL+'/rest/v1/menus_dia?on_conflict=local_id',{
+    method:'POST',
+    headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,'Content-Type':'application/json','Prefer':'resolution=merge-duplicates,return=minimal'},
+    body:JSON.stringify(row),
+    signal:ctrl.signal
+  })
+  .then(function(r){clearTimeout(t);if(!r.ok)return r.text().then(function(tx){throw new Error(r.status+': '+tx);});})
+  .then(function(){toast('Publicado ✓');mostrarEstado(row);})
+  .catch(function(e){clearTimeout(t);toast('Error al publicar',true);$('estadoPub').textContent='Error: '+e.message.slice(0,60);})
+  .then(function(){btn.disabled=false;btn.textContent='Guardar y publicar';});
+});
+</script>
+</body>
+</html>

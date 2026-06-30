@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1A2A5E">
+<title>Menú del día</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1A2A5E; --gold:#C8963E; --cream:#F5F0E8; --ink:#2b2b2b;
+    --accent:#1A2A5E; /* sobrescrito por local */
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--cream);color:var(--ink);font-family:'Lato',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased}
+  body{min-height:100vh;min-height:100dvh;display:flex;align-items:flex-start;justify-content:center;padding:24px 16px calc(40px + env(safe-area-inset-bottom))}
+  .card{width:100%;max-width:440px;background:#fffdf8;border-radius:18px;box-shadow:0 10px 40px rgba(26,42,94,.10);overflow:hidden;border:1px solid rgba(200,150,62,.18)}
+  .top{background:var(--accent);color:#fff;text-align:center;padding:28px 22px 22px}
+  .top .marca{font-size:12px;letter-spacing:.22em;text-transform:uppercase;opacity:.85;font-weight:700}
+  .top h1{font-family:'Playfair Display',serif;font-weight:800;font-size:30px;line-height:1.1;margin-top:8px}
+  .top .titulo{margin-top:14px;display:inline-block;font-family:'Playfair Display',serif;font-style:italic;font-size:17px;border-top:1px solid rgba(255,255,255,.35);border-bottom:1px solid rgba(255,255,255,.35);padding:6px 16px}
+  .fecha{text-align:center;color:var(--gold);font-weight:700;letter-spacing:.04em;font-size:14px;padding:18px 22px 4px;text-transform:capitalize}
+  .body{padding:6px 26px 24px}
+  .plato{padding:16px 0;border-bottom:1px dashed rgba(26,42,94,.18)}
+  .plato:last-of-type{border-bottom:none}
+  .plato .et{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .plato .val{font-family:'Playfair Display',serif;font-size:19px;line-height:1.35;margin-top:4px;color:var(--navy)}
+  .incluye{text-align:center;font-size:14px;color:#6b6b6b;margin-top:18px;font-style:italic}
+  .precio{text-align:center;margin-top:14px}
+  .precio .num{display:inline-block;background:var(--accent);color:#fff;font-family:'Playfair Display',serif;font-weight:700;font-size:24px;padding:8px 22px;border-radius:999px}
+  .pie{text-align:center;font-size:11px;color:#aaa;padding:16px 22px 0}
+  .estado{text-align:center;padding:60px 28px}
+  .estado .ico{font-size:46px}
+  .estado h2{font-family:'Playfair Display',serif;color:var(--navy);font-size:22px;margin-top:14px}
+  .estado p{color:#888;margin-top:8px;font-size:14px}
+  .skel{height:18px;background:linear-gradient(90deg,#eee,#f6f6f6,#eee);background-size:200% 100%;animation:sh 1.2s infinite;border-radius:6px;margin:10px 0}
+  @keyframes sh{0%{background-position:200% 0}100%{background-position:-200% 0}}
+</style>
+</head>
+<body>
+<main class="card" id="card">
+  <div class="estado"><div class="skel" style="width:60%;margin:0 auto"></div><div class="skel" style="width:80%;margin:18px auto"></div><div class="skel" style="width:50%;margin:0 auto"></div></div>
+</main>
+<script>
+'use strict';
+var SUPA_URL='https://mveidasopqzphghnoyxc.supabase.co';
+var SUPA_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im12ZWlkYXNvcHF6cGhnaG5veXhjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4MzA3NTMsImV4cCI6MjA5MzQwNjc1M30.N2z4A7A-5c0cmRBM_q9Zdgj6yKo60uO6A2wCA8Qer_g';
+
+var LOCALES={
+  la_pequena:   {nombre:'La Pequeña 2.0',   color:'#1A2A5E'},
+  las_tablas:   {nombre:'Las Tablas 2.0',   color:'#e51d1e'},
+  la_chula:     {nombre:'La Chula 2.0',     color:'#e72f8a'},
+  la_traviesa:  {nombre:'La Traviesa 2.0',  color:'#5b4f8a'},
+  la_peluqueria:{nombre:'La Peluquería 2.0',color:'#da1f87'},
+  juanita:      {nombre:'Juanita 2.0',      color:'#9c27b0'},
+  green:        {nombre:'Green 2.0',        color:'#16a34a'}
+};
+
+function esc(s){return (s==null?'':String(s)).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function param(n){return new URLSearchParams(location.search).get(n);}
+
+function pintarVacio(local){
+  document.getElementById('card').innerHTML=
+    '<div class="top"><div class="marca">Grupo 2.0</div><h1>'+esc(local?local.nombre:'Menú del día')+'</h1></div>'+
+    '<div class="estado"><div class="ico">🍽️</div><h2>Hoy no hay menú del día</h2><p>Vuelve a consultarlo más tarde.</p></div>';
+}
+
+function pintarMenu(d,local){
+  var partes='';
+  if(d.primero){partes+='<div class="plato"><div class="et">Primero</div><div class="val">'+esc(d.primero)+'</div></div>';}
+  if(d.segundo){partes+='<div class="plato"><div class="et">Segundo</div><div class="val">'+esc(d.segundo)+'</div></div>';}
+  if(d.postre){ partes+='<div class="plato"><div class="et">Postre</div><div class="val">'+esc(d.postre)+'</div></div>';}
+  document.getElementById('card').innerHTML=
+    '<div class="top"><div class="marca">Grupo 2.0</div><h1>'+esc(local.nombre)+'</h1><div class="titulo">Menú del día</div></div>'+
+    (d.fecha_texto?'<div class="fecha">'+esc(d.fecha_texto)+'</div>':'')+
+    '<div class="body">'+partes+
+      (d.incluye?'<div class="incluye">'+esc(d.incluye)+'</div>':'')+
+      (d.precio?'<div class="precio"><span class="num">'+esc(d.precio)+'</span></div>':'')+
+    '</div>';
+}
+
+function cargar(){
+  var id=param('local');
+  var local=id?LOCALES[id]:null;
+  if(local){document.documentElement.style.setProperty('--accent',local.color);document.querySelector('meta[name=theme-color]').setAttribute('content',local.color);}
+  if(!id||!local){pintarVacio(local);return;}
+
+  var url=SUPA_URL+'/rest/v1/menus_dia?local_id=eq.'+encodeURIComponent(id)+'&select=*';
+  var ctrl=new AbortController();var t=setTimeout(function(){ctrl.abort();},8000);
+  fetch(url,{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,'Accept':'application/json'},signal:ctrl.signal})
+    .then(function(r){clearTimeout(t);if(!r.ok)throw new Error(r.status);return r.json();})
+    .then(function(rows){
+      var d=rows&&rows[0];
+      if(d&&(d.primero||d.segundo||d.postre)){pintarMenu(d,local);}else{pintarVacio(local);}
+    })
+    .catch(function(){clearTimeout(t);pintarVacio(local);});
+}
+cargar();
+</script>
+</body>
+</html>

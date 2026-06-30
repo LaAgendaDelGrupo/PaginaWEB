@@ -482,6 +482,16 @@ footer{background:var(--ft-bg);border-top:1px solid var(--bdr);padding:44px clam
   .lph img{animation:none;transform:scale(1)}
   #stars{display:none}
 }
+/* ════════════ RENDIMIENTO MÓVIL/TÁCTIL ════════════
+   blur animados, blend-modes y ken-burns son lo que más lastra el móvil */
+@media(hover:none),(max-width:760px){
+  #stars{display:none}                                   /* partículas off (también en JS) */
+  .aurora-blob{animation:none!important;filter:blur(55px)} /* auroras estáticas y blur menor */
+  #nav.scrolled{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:var(--bg)!important} /* sin re-blur al hacer scroll */
+  .lph img{animation:none;transform:scale(1.04)}          /* fotos sin ken-burns */
+  .lph::after{display:none}                               /* sin mix-blend-mode (caro al hacer scroll) */
+  .lc-logo img{filter:none!important}                     /* sin drop-shadow continuo en logos */
+}
 </style>
 </head>
 <body>
@@ -947,10 +957,13 @@ const D={
 };
 const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* ════════════ PRELOADER ════════════ */
+/* ════════════ PRELOADER (solo 1 vez por sesión) ════════════ */
 (function(){
-  const fill=document.getElementById('ldfill'),pct=document.getElementById('ldpct');
   const loader=document.getElementById('loader'),cl=document.getElementById('curtainL'),cr=document.getElementById('curtainR');
+  /* si ya se vio en esta sesión, lo quitamos al instante (cargas posteriores sin espera) */
+  if(sessionStorage.getItem('g20seen')){loader.remove();cl.remove();cr.remove();return}
+  sessionStorage.setItem('g20seen','1');
+  const fill=document.getElementById('ldfill'),pct=document.getElementById('ldpct');
   let p=0;
   const iv=setInterval(()=>{
     p=Math.min(100,p+Math.random()*26+14);
@@ -984,36 +997,33 @@ const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
   });
 })();
 
-/* ════════════ CURSOR (copa 2.0) ════════════ */
-const $c=document.getElementById('cur'),$r=document.getElementById('cur-r');
-let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my,lastMx=mx,tilt=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
-/* la copa de Grupo 2.0 como cursor; si falta el archivo, se queda el punto */
-(function(){
+/* ════════════ CURSOR (copa 2.0) — solo en dispositivos con ratón ════════════ */
+const noHover = !matchMedia('(hover: hover)').matches; /* true en móvil/táctil */
+if(!noHover){
+  const $c=document.getElementById('cur'),$r=document.getElementById('cur-r');
+  let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my,lastMx=mx,tilt=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+  /* la copa de Grupo 2.0 como cursor; si falta el archivo, se queda el punto */
   const img=new Image();
-  img.onload=()=>{
-    document.documentElement.classList.add('copa-cursor');
-    img.alt='';$c.appendChild(img);
-  };
+  img.onload=()=>{document.documentElement.classList.add('copa-cursor');img.alt='';$c.appendChild(img)};
   img.src='logos/copa.webp';
-})();
-(function loop(){
-  rx+=(mx-rx)*.13;ry+=(my-ry)*.13;
-  /* balanceo según velocidad horizontal */
-  tilt+=((mx-lastMx)*.9-tilt)*.14;lastMx=mx;
-  const t=Math.max(-22,Math.min(22,tilt));
-  $c.style.cssText=`left:${mx}px;top:${my}px;transform:translate(-50%,-50%) rotate(${t}deg)`;
-  $r.style.cssText=`left:${rx}px;top:${ry}px`;
-  requestAnimationFrame(loop);
-})();
-document.querySelectorAll('a,button,[role=button]').forEach(el=>{
-  el.addEventListener('mouseenter',()=>document.body.classList.add('hovering'));
-  el.addEventListener('mouseleave',()=>document.body.classList.remove('hovering'));
-});
+  (function loop(){
+    rx+=(mx-rx)*.13;ry+=(my-ry)*.13;
+    tilt+=((mx-lastMx)*.9-tilt)*.14;lastMx=mx;
+    const t=Math.max(-22,Math.min(22,tilt));
+    $c.style.cssText=`left:${mx}px;top:${my}px;transform:translate(-50%,-50%) rotate(${t}deg)`;
+    $r.style.cssText=`left:${rx}px;top:${ry}px`;
+    requestAnimationFrame(loop);
+  })();
+  document.querySelectorAll('a,button,[role=button]').forEach(el=>{
+    el.addEventListener('mouseenter',()=>document.body.classList.add('hovering'));
+    el.addEventListener('mouseleave',()=>document.body.classList.remove('hovering'));
+  });
+}
 
-/* ════════════ PARTICLE CONSTELLATION (hero) ════════════ */
+/* ════════════ PARTICLE CONSTELLATION (hero) — desactivado en móvil/táctil ════════════ */
 (function(){
-  if(reduceMotion)return;
+  if(reduceMotion||noHover||innerWidth<760)return;
   const cv=document.getElementById('stars'),ctx=cv.getContext('2d');
   const COLORS=['#e51d1e','#3a4ba8','#e72f8a','#1db7d9','#8a7fc0','#da1f87','#4ade80'];
   const devicePixelRatio=Math.min(window.devicePixelRatio||1,1.75); /* cap para retina/móvil */
@@ -1094,7 +1104,7 @@ function onScroll(){
   nav.classList.toggle('scrolled',y>60);
   const max=document.documentElement.scrollHeight-innerHeight;
   railFill.style.height=Math.min(100,y/max*100)+'%';
-  if(!reduceMotion){
+  if(!reduceMotion&&!noHover){ /* parallax/skew solo en desktop con ratón */
     const v=y-lastY;lastY=y;
     skew+=(Math.max(-4,Math.min(4,v*.06))-skew)*.3;
     for(const ph of allPhotos){
