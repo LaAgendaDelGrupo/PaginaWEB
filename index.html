@@ -157,7 +157,8 @@ html.copa-cursor #cur-r{display:none}
 @media(max-width:760px){.nav-links{display:none}#burger{display:flex}.nav-res{display:none}}
 
 /* ════════════ HERO ════════════ */
-#hero{height:100vh;height:100dvh;min-height:640px;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;text-align:center}
+/* padding-top reserva el hueco del menú fijo; el contenido se centra por debajo */
+#hero{height:100vh;height:100dvh;min-height:600px;padding:96px 0 64px;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;text-align:center}
 #stars{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .aurora{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .aurora-blob{position:absolute;border-radius:50%;filter:blur(110px);opacity:var(--ab-op);animation:aFloat 17s ease-in-out infinite}
@@ -167,12 +168,13 @@ html.copa-cursor #cur-r{display:none}
 @keyframes aFloat{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(4vw,-3vh) scale(1.08)}66%{transform:translate(-3vw,3vh) scale(.94)}}
 .hero-inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:18px;padding:0 18px}
 .hero-label{font-size:10px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;opacity:0;animation:fadeUp .7s .15s both}
-.hero-grupo{display:inline-flex;align-items:center;border:2px solid var(--txt);border-radius:100px;padding:12px 40px;font-family:'Archivo Black',sans-serif;font-size:clamp(20px,3.8vw,48px);letter-spacing:.14em;text-transform:uppercase;opacity:0;animation:heroScale .8s var(--ease) .25s both;position:relative;overflow:hidden}
+.hero-grupo{display:inline-flex;align-items:center;border:2px solid var(--txt);border-radius:100px;padding:12px 40px;font-family:'Archivo Black',sans-serif;font-size:clamp(18px,min(3.8vw,4.4vh),48px);letter-spacing:.14em;text-transform:uppercase;opacity:0;animation:heroScale .8s var(--ease) .25s both;position:relative;overflow:hidden}
 .hero-grupo::after{content:'';position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.08),transparent 70%);animation:shimmer 4s 1.4s infinite}
 @keyframes shimmer{0%{transform:translateX(-100%)}55%,100%{transform:translateX(100%)}}
 @keyframes heroScale{from{opacity:0;transform:scale(.85) translateY(16px)}to{opacity:1;transform:scale(1) translateY(0)}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
-.hero-slogan{font-family:'Archivo Black',sans-serif;font-size:clamp(38px,9.5vw,128px);line-height:.88;text-transform:uppercase}
+/* min(vw,vh) → el título también encoge en pantallas bajas y no invade el header */
+.hero-slogan{font-family:'Archivo Black',sans-serif;font-size:clamp(36px,min(9.5vw,11.5vh),128px);line-height:.88;text-transform:uppercase}
 .hero-slogan .hl-line{display:block;overflow:hidden}
 .hero-slogan .hl-line span{display:inline-block;transform:translateY(110%);animation:lineUp 1s var(--ease) both}
 .hero-slogan .l1 span{animation-delay:.35s}
