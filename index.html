@@ -359,17 +359,13 @@ footer{background:var(--ft-bg);border-top:1px solid var(--bdr);padding:44px clam
 .mcls{width:34px;height:34px;border-radius:8px;background:var(--tag-bg);border:none;cursor:pointer;color:var(--lbl-c);display:flex;align-items:center;justify-content:center;font-size:17px;transition:all .2s;flex-shrink:0}
 .mcls:hover{background:var(--bdr2);color:var(--txt)}
 .mtag{font-size:13px;font-style:italic;color:var(--txt2);line-height:1.65;margin-bottom:22px;padding:14px 16px;border-left:2px solid var(--mc,var(--fucsia));background:var(--mic-bg);border-radius:0 8px 8px 0}
-.mgallery-wrap{position:relative;margin:0 0 22px}
-.mgallery-wrap:empty,.mgallery-wrap:has(.mgallery:empty){display:none;margin:0}
-/* degradado-pista a la derecha: indica que hay más fotos; se oculta al llegar al final */
-.mgallery-wrap::after{content:'';position:absolute;top:0;right:0;bottom:6px;width:52px;pointer-events:none;background:linear-gradient(to left,var(--modal-bg),transparent);opacity:1;transition:opacity .3s;border-radius:0 12px 12px 0}
-.mgallery-wrap.at-end::after{opacity:0}
-.mgallery{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;cursor:grab}
-.mgallery.dragging{cursor:grabbing;scroll-snap-type:none;scroll-behavior:auto}
-.mgallery::-webkit-scrollbar{display:none}
+.mgallery-wrap{margin:0 0 22px}
+.mgallery-wrap:has(.mgallery:empty){display:none;margin:0}
+/* todas las fotos a la vez en cuadrícula: nada de scroll ni arrastres */
+.mgallery{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
 .mgallery:empty{display:none;margin:0}
-.mgallery img{height:130px;width:auto;aspect-ratio:3/2;flex:0 0 auto;border-radius:12px;object-fit:cover;scroll-snap-align:start;cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s var(--ease);box-shadow:0 4px 16px rgba(0,0,0,.18)}
-.mgallery img:hover{transform:scale(1.03);box-shadow:0 6px 22px rgba(0,0,0,.28)}
+.mgallery img{width:100%;aspect-ratio:4/3;border-radius:12px;object-fit:cover;cursor:pointer;display:block;transition:transform .25s var(--ease),box-shadow .25s var(--ease);box-shadow:0 4px 16px rgba(0,0,0,.18)}
+.mgallery img:hover{transform:scale(1.02);box-shadow:0 6px 22px rgba(0,0,0,.28)}
 .minfo{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
 .mic{background:var(--mic-bg);border-radius:11px;padding:14px;display:flex;flex-direction:column;gap:5px}
 .mil{font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--lbl-c)}
@@ -1343,8 +1339,6 @@ function openM(id){
   document.getElementById('mtag').textContent=d.tagline;
   const gal=document.getElementById('mgallery');
   gal.innerHTML=(d.photos||[]).map((src,i)=>`<img src="${src}" alt="Foto ${i+1} del local" loading="lazy" draggable="false">`).join('');
-  gal.scrollLeft=0;
-  if(window.gal_updateHint)requestAnimationFrame(window.gal_updateHint);
   document.getElementById('mdir').textContent=d.dir;
   document.getElementById('mhor').innerHTML=d.hor;
   const op=isOpen(id);
@@ -1367,42 +1361,6 @@ function openM(id){
 function closeM(){document.getElementById('mover').classList.remove('on');document.body.style.overflow=''}
 function closeMBg(e){if(e.target===document.getElementById('mover'))closeM()}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
-
-/* ════════════ GALERÍA: scroll con rueda + arrastrar (desktop) + pista ════════════ */
-(function(){
-  const gal=document.getElementById('mgallery'), wrap=document.getElementById('mgallery-wrap');
-  if(!gal||!wrap)return;
-  /* pista de "hay más": ocultar el degradado al llegar al final */
-  function updateHint(){
-    const atEnd = gal.scrollLeft + gal.clientWidth >= gal.scrollWidth - 4;
-    const noScroll = gal.scrollWidth <= gal.clientWidth + 4;
-    wrap.classList.toggle('at-end', atEnd || noScroll);
-  }
-  gal.addEventListener('scroll', updateHint, {passive:true});
-  window.gal_updateHint = updateHint; /* se llama también al abrir el modal */
-  /* rueda vertical del ratón → desplazamiento horizontal */
-  gal.addEventListener('wheel', e=>{
-    if(gal.scrollWidth<=gal.clientWidth)return;
-    if(Math.abs(e.deltaY) > Math.abs(e.deltaX)){ gal.scrollLeft += e.deltaY; e.preventDefault(); }
-  }, {passive:false});
-  /* arrastrar con el ratón para desplazar (click and drag) */
-  let down=false, startX=0, startScroll=0, moved=0;
-  gal.addEventListener('pointerdown', e=>{
-    if(e.pointerType==='touch')return; /* en móvil ya funciona el táctil nativo */
-    down=true; moved=0; startX=e.clientX; startScroll=gal.scrollLeft;
-    gal.classList.add('dragging'); gal.setPointerCapture(e.pointerId);
-  });
-  gal.addEventListener('pointermove', e=>{
-    if(!down)return;
-    const dx=e.clientX-startX; moved=Math.abs(dx);
-    gal.scrollLeft = startScroll - dx;
-  });
-  function endDrag(){ down=false; gal.classList.remove('dragging'); }
-  gal.addEventListener('pointerup', endDrag);
-  gal.addEventListener('pointercancel', endDrag);
-  /* evitar que el arrastre dispare el click/ampliación al soltar */
-  gal.addEventListener('click', e=>{ if(moved>6){ e.preventDefault(); e.stopPropagation(); } }, true);
-})();
 </script>
 
 <!-- LEGAL -->
