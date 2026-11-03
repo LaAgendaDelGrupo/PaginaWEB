@@ -909,6 +909,10 @@ footer{background:var(--ft-bg);border-top:1px solid var(--bdr);padding:44px clam
       <div class="mic" style="grid-column:1/-1"><span class="mil">Estado</span><span class="miv" id="mopen"></span></div>
     </div>
     <div class="mbtns">
+      <button class="mbev" id="mbk" type="button" style="display:none">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 11h18M5 11V7a7 7 0 0 1 14 0v4M4 11l1.5 9h13L20 11"/></svg>
+        Reservar mesa
+      </button>
       <a class="mbwa" id="mwa" href="#" target="_blank" rel="noopener">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.124 1.527 5.854L0 24l6.335-1.508A11.956 11.956 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.848 0-3.584-.479-5.096-1.32l-.364-.217-3.763.896.944-3.669-.235-.378A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
         Habla con nosotros
@@ -1306,6 +1310,8 @@ document.querySelectorAll('.lc').forEach(el=>{
 /* ════════════ CARTAS (solo los locales que tienen) ════════════ */
 D.green.carta='cartas/green.webp';
 D.traviesa.carta='cartas/traviesa.pdf';
+/* Reserva de mesa (Ágora Bookings) — solo locales que lo usan */
+D.traviesa.bk='https://bookings.agorapos.com/reservas/widget/2169/calendar/82fc0510ac7baef2f81df0cb3bd03bcc59e3d54e';
 D.pequeña.carta='cartas/pequena.webp';
 
 /* ════════════ KOMVO — reservas de eventos por local ════════════ */
@@ -1352,6 +1358,10 @@ function openM(id){
   if(d.carta){cBtn.href=d.carta;cBtn.style.display=''}else{cBtn.style.display='none'}
   const kvBtn=document.getElementById('mkv');
   if(d.kv){kvBtn.style.display='';kvBtn.onclick=()=>openKv(d.kv,'Reservar evento · '+(NOMBRES[id]||''))}else{kvBtn.style.display='none'}
+  const bkBtn=document.getElementById('mbk');
+  /* Ágora no funciona dentro de iframe (cookie de sesión SameSite=Lax) → pestaña nueva */
+  if(d.bk){bkBtn.style.display='';bkBtn.onclick=()=>window.open(d.bk,'_blank','noopener')}else{bkBtn.style.display='none'}
+  kvBtn.className=d.bk?'mbs':'mbev'; /* un solo CTA principal por modal */
   const bar=document.getElementById('mbar');
   bar.style.background=d.color;bar.style.boxShadow=`0 0 20px ${d.color}`;
   document.getElementById('mbox').style.setProperty('--mc',d.color);
