@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Menús de Navidad · La Traviesa 2.0</title>
+<meta name="description" content="Comidas y cenas de Navidad para grupos y empresas en La Traviesa 2.0. Menús desde 45 € con bebida incluida.">
+<link rel="canonical" href="https://grupodospuntocero.com/traviesa/">
+<meta name="theme-color" content="#413d5d">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="La Traviesa 2.0">
+<meta property="og:url" content="https://grupodospuntocero.com/traviesa/">
+<meta property="og:title" content="Menús de Navidad · La Traviesa 2.0">
+<meta property="og:description" content="Comidas y cenas de Navidad para grupos y empresas en López de Hoyos, 7 (Madrid). Menús desde 45 € con bebida incluida.">
+<meta property="og:image" content="https://grupodospuntocero.com/fotos/la%20traviesa/2.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Restaurant","name":"La Traviesa 2.0","url":"https://grupodospuntocero.com/traviesa/","image":"https://grupodospuntocero.com/fotos/la%20traviesa/2.webp","telephone":"+34656485099","servesCuisine":"Española","priceRange":"€€","address":{"@type":"PostalAddress","streetAddress":"Calle de López de Hoyos, 7","postalCode":"28006","addressLocality":"Madrid","addressCountry":"ES"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday"],"opens":"08:00","closes":"17:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Thursday","Friday"],"opens":"08:00","closes":"01:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"18:00","closes":"01:00"}],"sameAs":["https://www.instagram.com/latraviesa_2.0"]}
+</script>
+<script>
+  // Seguimiento de campañas — pegar aquí los IDs cuando los tengamos; vacíos = no se carga nada
+  const META_PIXEL_ID = '';   // p. ej. '123456789012345'
+  const GA4_ID = '';          // p. ej. 'G-XXXXXXXXXX'
+  if (META_PIXEL_ID) {
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', META_PIXEL_ID); fbq('track', 'PageView');
+  }
+  if (GA4_ID) {
+    const g = document.createElement('script'); g.async = true; g.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA4_ID; document.head.appendChild(g);
+    window.dataLayer = window.dataLayer || []; window.gtag = function(){ dataLayer.push(arguments); };
+    gtag('js', new Date()); gtag('config', GA4_ID);
+  }
+  // Envía un evento a los píxeles activos (no hace nada si no hay ninguno)
+  function track(metaEvent, gaEvent, params) {
+    if (window.fbq) fbq('track', metaEvent, params || {});
+    if (window.gtag) gtag('event', gaEvent, params || {});
+  }
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --morado:#413d5d;
+    --amarillo:#fff192;
+    --crema:#fff8e7;
+    --negro:#2e332e;
+    --blanco:#ffffff;
+    --oro:#b08d57;
+    --linea:#e6dcc2;
+    --muted:#6e6a80;
+    --radius:22px;
+    --serif:'Playfair Display', Georgia, serif;
+    --sans:'Nunito Sans', system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--crema);color:var(--morado);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{width:min(1120px,100% - 32px);margin-inline:auto}
+  h1,h2,h3{font-family:var(--serif);font-weight:500;font-style:italic;line-height:1.08}
+  h2{font-size:clamp(2.1rem,4.6vw,3.2rem);margin-bottom:.8rem}
+  .eyebrow{font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;font-weight:800;margin-bottom:1rem}
+  .eyebrow::after{content:"";display:inline-block;vertical-align:middle;margin-left:12px;width:44px;height:3px;border-radius:3px;background:var(--oro)}
+  .lead{color:var(--muted);font-size:1.08rem;max-width:58ch}
+  section{padding:96px 0}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:15px 28px;border-radius:999px;font-weight:800;font-size:.95rem;transition:transform .15s,background .15s,color .15s;border:2px solid transparent;cursor:pointer;font-family:var(--sans)}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-amarillo{background:var(--amarillo);color:var(--morado)}
+  .btn-amarillo:hover{background:#ffe95c}
+  .btn-morado{background:var(--morado);color:var(--blanco)}
+  .btn-morado:hover{background:#34304d}
+  .btn-ghost{border-color:currentColor}
+  .checker{height:22px;background-color:var(--amarillo);background-image:conic-gradient(var(--morado) 25%,transparent 0 50%,var(--morado) 0 75%,transparent 0);background-size:22px 22px;opacity:.9}
+
+  /* Nav */
+  .nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .25s,box-shadow .25s;color:var(--blanco)}
+  .nav.scrolled{background:var(--morado);box-shadow:0 6px 20px rgba(0,0,0,.15)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:76px;gap:16px}
+  .logo svg{height:26px;width:auto;display:block}
+  .nav ul{display:flex;gap:28px;list-style:none;font-size:.92rem;font-weight:700}
+  .nav ul a:hover{color:var(--amarillo)}
+  .nav .btn{padding:10px 20px}
+  @media (max-width:820px){.nav ul{display:none}.logo svg{height:20px}}
+
+  /* Hero */
+  .hero{background:var(--morado);color:var(--crema);padding:150px 0 90px;position:relative;overflow:hidden}
+  .hero .grid{display:grid;grid-template-columns:1.25fr .75fr;gap:48px;align-items:center}
+  .hero .eyebrow{color:var(--amarillo)}
+  .hero h1{font-size:clamp(3rem,8vw,6rem);margin-bottom:1.4rem}
+  .hero h1 span{color:var(--amarillo)}
+  .hero p{font-size:1.15rem;max-width:44ch;opacity:.9;margin-bottom:2.2rem}
+  .hero .ctas{display:flex;gap:12px;flex-wrap:wrap}
+  /* Marcos de foto (placeholder) */
+  .ph{position:relative;border-radius:var(--radius);overflow:hidden;background:#d9d3c4 repeating-linear-gradient(135deg,rgba(65,61,93,.07) 0 14px,transparent 14px 28px);box-shadow:inset 0 0 0 2px rgba(65,61,93,.18),0 18px 40px rgba(46,51,46,.18);display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;color:var(--morado)}
+  .ph span{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;font-weight:800;background:rgba(255,248,231,.85);padding:8px 14px;border-radius:999px}
+  .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .ph-hero{aspect-ratio:4/5;width:100%}
+  .galeria{padding:0 0 96px}
+  .galeria .grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:20px}
+  .galeria .ph{aspect-ratio:4/5}
+  .galeria .ph:first-child{aspect-ratio:auto}
+  @media (max-width:760px){.galeria .grid{grid-template-columns:1fr 1fr}.galeria .ph:first-child{grid-column:1/-1;aspect-ratio:16/10}}
+
+  .badge{background:var(--crema);color:var(--morado);border-radius:var(--radius);padding:30px;transform:rotate(2deg);box-shadow:0 20px 50px rgba(0,0,0,.25);position:absolute;left:-60px;bottom:-40px;width:290px}
+  .badge small{display:block;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;font-weight:800}
+  .badge .precio{font-family:var(--sans);font-weight:800;font-size:4.4rem;line-height:1;margin:.3rem 0}
+  .badge .precio sup{font-size:1.6rem}
+  .badge ul{list-style:none;margin-top:14px;display:grid;gap:8px;font-weight:600}
+  .badge li::before{content:"✦ ";color:var(--oro)}
+  .sticker{position:absolute;top:-14px;right:-10px;z-index:2;background:var(--amarillo);color:var(--morado);font-weight:800;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;padding:8px 14px;border-radius:999px;transform:rotate(-6deg)}
+  .badge-wrap{position:relative;margin-bottom:40px}
+  @media (max-width:860px){.hero{padding-top:120px}.hero .grid{grid-template-columns:1fr}.badge-wrap{margin-bottom:0}.ph-hero{aspect-ratio:4/3}.badge{position:relative;left:auto;bottom:auto;width:auto;max-width:420px;margin:-60px 16px 0;transform:rotate(-1deg)}}
+
+  /* Ventajas */
+  .ventajas .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:44px}
+  .ventaja{background:var(--blanco);border:1px solid var(--linea);border-radius:var(--radius);padding:26px}
+  .ventaja b{display:block;font-family:var(--serif);font-style:italic;font-size:1.35rem;font-weight:500;margin-bottom:6px}
+  .ventaja span{color:var(--muted);font-size:.95rem}
+  .ventaja .ico{font-size:1.6rem;margin-bottom:10px}
+  @media (max-width:900px){.ventajas .grid{grid-template-columns:1fr 1fr}}
+  @media (max-width:520px){.ventajas .grid{grid-template-columns:1fr}}
+
+  /* Menús */
+  .menus{background:var(--blanco)}
+  .tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:44px 0 28px}
+  .tab{font:inherit;text-align:left;background:var(--crema);border:2px solid var(--linea);border-radius:18px;padding:18px 20px;cursor:pointer;color:var(--morado);transition:all .15s}
+  .tab:hover{border-color:var(--oro)}
+  .tab[aria-selected="true"]{background:var(--morado);border-color:var(--morado);color:var(--crema)}
+  .tab .n{font-size:.72rem;letter-spacing:.16em;font-weight:800;opacity:.7}
+  .tab .t{display:block;font-family:var(--serif);font-style:italic;font-size:1.3rem;line-height:1.15;margin:4px 0}
+  .tab .p{font-weight:800;font-size:1.1rem}
+  .tab[aria-selected="true"] .p{color:var(--amarillo)}
+  @media (max-width:860px){.tabs{grid-template-columns:1fr 1fr}}
+
+  .menu-card{border-radius:var(--radius);overflow:hidden;border:1px solid var(--linea)}
+  .menu-card[hidden]{display:none}
+  .mc-head{background:var(--morado);color:var(--crema);padding:40px 44px 34px;display:flex;justify-content:space-between;gap:24px;align-items:flex-start;flex-wrap:wrap}
+  .mc-head h3{font-size:clamp(2.2rem,5vw,3.4rem)}
+  .mc-head p{opacity:.85;max-width:52ch;margin-top:12px}
+  .pill{border:2px solid var(--amarillo);color:var(--amarillo);border-radius:999px;padding:6px 26px;font-weight:800;font-size:2.4rem;line-height:1.2;white-space:nowrap}
+  .pill small{font-size:1.2rem}
+  .grupo{display:inline-block;margin-top:14px;background:var(--amarillo);color:var(--morado);font-weight:800;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;padding:6px 14px;border-radius:10px;transform:rotate(-2deg)}
+  .mc-body{background:var(--crema);padding:40px 44px}
+  .curso{display:grid;grid-template-columns:200px 1fr;gap:24px;padding:18px 0}
+  .curso + .curso{border-top:1px solid var(--linea)}
+  .curso h4{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;font-weight:800;padding-top:6px}
+  .curso h4 em{display:block;font-family:var(--serif);font-weight:500;letter-spacing:0;text-transform:none;font-size:.85rem;color:var(--muted);margin-top:2px}
+  .curso h4::after{content:"";display:block;width:44px;height:3px;border-radius:3px;background:var(--oro);opacity:.6;margin-top:10px}
+  .curso ul{list-style:none}
+  .curso li{font-family:var(--serif);font-size:1.15rem;padding:7px 0;border-bottom:1px dashed #cfc5a8}
+  .curso li:last-child{border-bottom:0}
+  .mc-foot{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--linea);border-radius:18px;background:var(--blanco);margin-top:26px}
+  .mc-foot > div{padding:22px 24px}
+  .mc-foot > div + div{border-left:1px solid var(--linea)}
+  .mc-foot h5{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:800;margin-bottom:8px}
+  .mc-foot p{font-size:.93rem;color:var(--muted)}
+  .mc-foot .serif{font-family:var(--serif);font-size:1.05rem;color:var(--morado)}
+  .chip{display:inline-block;background:var(--amarillo);font-weight:800;font-size:.82rem;padding:5px 14px;border-radius:999px;margin-top:10px;color:var(--morado)}
+  .mc-cta{display:flex;justify-content:flex-end;margin-top:26px}
+  @media (max-width:700px){
+    .mc-head,.mc-body{padding:28px 22px}
+    .curso{grid-template-columns:1fr;gap:6px}
+    .mc-foot{grid-template-columns:1fr}
+    .mc-foot > div + div{border-left:0;border-top:1px solid var(--linea)}
+    .mc-cta .btn{width:100%}
+  }
+
+  /* Pasos */
+  .pasos .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:44px}
+  .paso{border-top:3px solid var(--morado);padding-top:18px}
+  .paso .num{font-family:var(--serif);font-style:italic;font-size:2.6rem;color:var(--oro);line-height:1}
+  .paso b{display:block;font-size:1.12rem;margin:8px 0 4px}
+  .paso span{color:var(--muted)}
+  @media (max-width:760px){.pasos .grid{grid-template-columns:1fr}}
+
+  /* Formulario */
+  .reserva{background:var(--morado);color:var(--crema)}
+  .reserva .grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
+  .reserva .eyebrow{color:var(--amarillo)}
+  .reserva .lead{color:#cfcbe0}
+  .reserva .wa{margin-top:28px}
+  .reserva .nota{margin-top:24px;font-size:.92rem;color:#cfcbe0;border-left:3px solid var(--amarillo);padding-left:14px}
+  .reserva .ph{aspect-ratio:16/10;margin-top:32px}
+  .wa-link{display:inline-block;margin-top:18px;font-weight:700;color:var(--amarillo);border-bottom:2px solid var(--amarillo)}
+  .btn-wa{background:#25d366;color:#0b3d1f}
+  .btn-wa:hover{background:#1fc05b}
+  .btn-wa svg{width:20px;height:20px}
+  form{background:var(--crema);color:var(--morado);border-radius:var(--radius);padding:34px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  form .intro{grid-column:1/-1;font-size:.95rem;color:var(--muted);margin-bottom:4px}
+
+  /* Ubicación */
+  .ubicacion{background:var(--blanco)}
+  .ubicacion .grid{display:grid;grid-template-columns:1fr 1.2fr;gap:56px;align-items:stretch}
+  .dir{font-family:var(--serif);font-size:1.4rem;margin:6px 0 4px}
+  .horario{width:100%;border-collapse:collapse;margin:26px 0 28px}
+  .horario td{padding:10px 0;border-bottom:1px dashed #cfc5a8;font-size:1rem}
+  .horario td:last-child{text-align:right;font-weight:700}
+  .horario tr.cerrado td:last-child{color:var(--muted);font-weight:600}
+  .horario tr.hoy td{color:var(--morado);font-weight:800}
+  .horario tr.hoy td:first-child::after{content:"Hoy";margin-left:10px;background:var(--amarillo);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:999px}
+  .ubicacion .ctas{display:flex;gap:12px;flex-wrap:wrap}
+  .ph-mapa{min-height:420px;height:100%}
+  @media (max-width:860px){.ubicacion .grid{grid-template-columns:1fr;gap:36px}.ph-mapa{min-height:300px}}
+  form .full{grid-column:1/-1}
+  label{display:block;font-size:.8rem;font-weight:800;margin-bottom:6px;letter-spacing:.02em}
+  input,select,textarea{width:100%;font:inherit;padding:12px 14px;border:1.5px solid var(--linea);border-radius:12px;background:var(--blanco);color:var(--negro)}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--morado);outline-offset:1px;border-color:transparent}
+  form .btn{width:100%;margin-top:4px}
+  .ok{display:none;grid-column:1/-1;background:var(--amarillo);padding:14px;border-radius:12px;font-weight:800;text-align:center}
+  .legal{grid-column:1/-1;font-size:.78rem;color:var(--muted)}
+  @media (max-width:860px){.reserva .grid{grid-template-columns:1fr;gap:40px}}
+  @media (max-width:520px){form{grid-template-columns:1fr;padding:22px}}
+
+  /* FAQ */
+  .faq .list{margin-top:36px;max-width:820px}
+  details{border-bottom:1px solid var(--linea);padding:20px 0}
+  summary{cursor:pointer;font-family:var(--serif);font-size:1.25rem;list-style:none;display:flex;justify-content:space-between;gap:16px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-family:var(--sans);font-weight:800;color:var(--oro);font-size:1.4rem;line-height:1}
+  details[open] summary::after{content:"–"}
+  details p{color:var(--muted);margin-top:10px;max-width:68ch}
+
+  footer{background:var(--negro);color:#c9cbc4;padding:48px 0;font-size:.9rem}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+  footer .logo{color:var(--crema)}
+  footer nav{display:flex;gap:20px}
+  footer a:hover{color:var(--amarillo)}
+
+  .sticky{display:none}
+  @media (max-width:760px){
+    .sticky{display:flex;position:fixed;left:16px;right:16px;bottom:16px;z-index:60;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+    footer{padding-bottom:100px}
+  }
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="logo" aria-label="La Traviesa 2.0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 72" fill="currentColor" aria-hidden="true"> <g> <path d="M50.3,58.7l3.6-10.4c-0.3-0.5-0.8-0.8-1.4-0.8H37.1c-0.9,0-1.7-0.7-1.7-1.7V13.6c0-0.9-0.7-1.7-1.7-1.7H18 c-0.9,0-1.7,0.7-1.7,1.7v46.1c0,0.9,0.7,1.7,1.7,1.7h32.6C50.1,60.6,50,59.6,50.3,58.7z"/> <path d="M91.3,13.1c-0.2-0.7-0.9-1.1-1.6-1.1H69.4c-0.7,0-1.3,0.4-1.6,1.1L54.2,52.2l-2.4,7c-0.3,1,0.2,1.9,1.2,2.2 c0.1,0,0.3,0,0.4,0h15.5c0.8,0,1.4-0.5,1.6-1.2l1.5-5.8c0.2-0.7,0.9-1.2,1.6-1.2h12.1c0.8,0,1.4,0.5,1.6,1.2l1.6,5.8 c0.2,0.7,0.9,1.2,1.6,1.2h15.5c1.2,0,2-1.1,1.6-2.2L91.3,13.1z M81.6,41.6h-4c-1.1,0-1.9-1-1.6-2.1l2-7.2c0.2-0.8,0.9-1.2,1.6-1.2 c0.7,0,1.4,0.4,1.6,1.2l2,7.2C83.5,40.5,82.7,41.6,81.6,41.6z"/> <path d="M113.3,12c-0.9,0-1.7,0.7-1.7,1.7v10.8c0,0.9,0.7,1.7,1.7,1.7H124c0.9,0,1.7,0.7,1.7,1.7v32 c0,0.9,0.7,1.7,1.7,1.7h15.7c0.9,0,1.7-0.7,1.7-1.7v-32c0-0.9,0.7-1.7,1.7-1.7h10.4V13.9c0-0.7,0.2-1.4,0.6-1.9c-0.1,0-0.2,0-0.3,0 H113.3z"/> <path d="M201.2,58.7l3-8.5c-1.4-4.2-3.2-6.6-5-8c-1-0.7-0.9-2.1,0.1-2.7c3.2-2.1,6.2-5.4,6.2-11.3 c0-13.7-14-17.2-28.1-17.2c-5.9,0-13.1,0.6-17.6,1.2c-0.4,0.1-0.8,0.3-1.1,0.6c-0.2,0.3-0.3,0.6-0.3,1v45.8c0,0.9,0.7,1.7,1.7,1.7 h15c0.9,0,1.7-0.7,1.7-1.7V47.6c0-0.9,0.7-1.7,1.6-1.7h0.1c4.4,0.1,6.5,1.5,9.1,14.1c0.2,0.8,0.8,1.3,1.6,1.3h12.5 C201,60.6,200.9,59.6,201.2,58.7z M178.2,34.4L178.2,34.4c-0.9,0-1.7-0.7-1.7-1.7V26c0-0.9,0.7-1.6,1.6-1.7c0.2,0,0.4,0,0.6,0 c3.2,0,8.2,0.9,8.2,5C186.9,33.7,181.4,34.4,178.2,34.4z"/> <path d="M242.2,14.5c-0.2-0.5-0.2-1.1-0.1-1.6c-0.3-0.6-0.9-1-1.5-1h-20.4c-0.7,0-1.3,0.4-1.6,1.1l-13,37.1l-0.4,1.2 l-0.4,1.2l-2.3,6.5c-0.4,1.1,0.4,2.2,1.6,2.2h15.5c0.8,0,1.4-0.5,1.6-1.2l1.5-5.8c0.2-0.7,0.9-1.2,1.6-1.2h12.1 c0.8,0,1.4,0.5,1.6,1.2l1.6,5.8c0.2,0.7,0.9,1.2,1.6,1.2h15c-0.1-0.2-0.3-0.5-0.3-0.8L242.2,14.5z M232.5,41.6h-4 c-1.1,0-1.9-1-1.6-2.1l2-7.2c0.2-0.8,0.9-1.2,1.6-1.2c0.7,0,1.4,0.4,1.6,1.2l2,7.2C234.4,40.5,233.6,41.6,232.5,41.6z"/> <path d="M280.5,12c-0.8,0-1.4,0.5-1.6,1.3l-6.5,25.2c-0.2,0.8-0.9,1.2-1.6,1.2c-0.7,0-1.4-0.4-1.6-1.3l-6.4-25.2 c-0.2-0.7-0.9-1.3-1.6-1.3h-15.9c-0.7,0-1.2,0.4-1.5,1c-0.2,0.4-0.2,0.8-0.1,1.2l1.6,5.5l4.6,15.3l7.6,25.3 c0.1,0.3,0.3,0.6,0.5,0.8c0.2,0.2,0.4,0.3,0.7,0.4c0.1,0,0.3,0.1,0.4,0.1h23.5c0.7,0,1.4-0.5,1.6-1.2l12.3-40.8v-5.8 c0-0.6,0.2-1.1,0.4-1.6c-0.1,0-0.3-0.1-0.4-0.1H280.5z"/> <path d="M315.5,12c0,0-0.1,0-0.2,0h-15.8c-0.1,0-0.3,0-0.4,0.1c-0.2,0.1-0.5,0.2-0.7,0.3c-0.2,0.2-0.4,0.4-0.5,0.7 c-0.1,0.2-0.1,0.4-0.1,0.5v46.1c0,0.9,0.7,1.7,1.7,1.7h15.8c0,0,0.1,0,0.2,0c-0.3-0.5-0.5-1.1-0.5-1.7V13.6 C315,13,315.2,12.4,315.5,12z"/> <path d="M355.3,56.8l1.9-8.4c-0.3-0.5-0.8-0.9-1.5-0.9h-18.9c-0.9,0-1.7-0.7-1.7-1.7v-1.2c0-0.9,0.7-1.7,1.7-1.7h16.1 c0.9,0,1.7-0.7,1.7-1.7v-9.5c0-0.9-0.7-1.7-1.7-1.7h-16.1c-0.9,0-1.7-0.7-1.7-1.7v-1c0-0.9,0.7-1.7,1.7-1.7h18.4 c0.3-2.5,1-4.8,2.1-6.9v-5.4c0-0.9-0.7-1.7-1.7-1.7h-37.5c-0.1,0-0.1,0-0.2,0c-0.3,0-0.5,0.1-0.7,0.2c-0.2,0.1-0.4,0.3-0.5,0.5 c-0.2,0.2-0.2,0.5-0.2,0.9v46.1c0,0.3,0.1,0.6,0.2,0.9c0.1,0.2,0.3,0.4,0.5,0.5c0.2,0.1,0.5,0.2,0.7,0.2c0,0,0.1,0,0.2,0h37.5 c0.6,0,1.2-0.4,1.5-0.9C355.7,59.9,354.9,58.4,355.3,56.8z"/> <path d="M374.8,26.1c0-1.5,1.6-1.8,4.1-1.8c4.8,0,9.6,1,12.9,2.2c0.2,0.1,0.4,0.1,0.6,0.1c0.7,0,1.4-0.5,1.6-1.3 l2.2-9.9c0.2-0.9-0.3-1.7-1.2-2c-5.1-1.4-11.1-2.4-17.4-2.4c-8.7,0-15.5,2.9-18.8,8.4c-0.3,0.4-0.5,0.9-0.7,1.4 c-0.3,0.6-0.5,1.3-0.7,1.9c-0.3,0.9-0.5,1.8-0.6,2.7c0,0.3-0.1,0.6-0.1,0.9v0c0,0.3,0,0.5,0,0.8c0,0.3,0,0.6,0,0.8 c-0.1,18.7,23.2,15.7,23.2,19.4c0,1-1,1.8-4.1,1.8c-6.1,0-10.4-1.3-14.5-3.2c-0.2-0.1-0.4-0.1-0.7-0.1c-0.7,0-1.4,0.5-1.6,1.3 l-0.3,1.1l-0.6,2.8l-0.7,3.3l-0.6,2.7c-0.1,0.6,0.1,1.3,0.6,1.7c0.1,0.1,0.3,0.2,0.4,0.2c0.1,0,0.2,0.1,0.3,0.1l0.7,0.3 c4.9,1.7,10.5,2.8,18.1,2.8c6.1,0,11.2-1.2,14.9-3.7L398,41C394.8,27.6,374.8,29.4,374.8,26.1z"/> <path d="M432.8,13.1c-0.2-0.7-0.9-1.1-1.6-1.1h-20.4c-0.7,0-1.3,0.4-1.6,1.1l-9.8,28l-0.5,1.5l-0.6,1.8l-4.4,12.5 l-0.5,1.5l-0.3,0.9c0,0.1-0.1,0.3-0.1,0.4c-0.1,0.9,0.7,1.8,1.7,1.8h15.5c0.8,0,1.4-0.5,1.6-1.2l1.5-5.8c0.2-0.7,0.9-1.2,1.6-1.2 h12.1c0.8,0,1.4,0.5,1.6,1.2l1.6,5.8c0.2,0.7,0.9,1.2,1.6,1.2h15.5c1.1,0,1.9-1.1,1.6-2.2L432.8,13.1z M423.1,41.6h-4 c-1.1,0-1.9-1-1.6-2.1l2-7.2c0.2-0.8,0.9-1.2,1.6-1.2c0.7,0,1.4,0.4,1.6,1.2l2,7.2C425,40.5,424.2,41.6,423.1,41.6z"/> <path d="M459.3,24.1l-8.8,0c0-0.2,0.2-0.4,0.7-0.7c0.5-0.2,1.4-0.6,2.9-1.1c0.2-0.1,0.5-0.2,0.8-0.3 c0.4-0.1,0.7-0.2,0.9-0.3c0.2-0.1,0.5-0.2,0.9-0.3c0.3-0.1,0.6-0.2,0.8-0.4c0.2-0.1,0.5-0.3,0.7-0.4c0.2-0.2,0.4-0.3,0.6-0.5 c0.1-0.2,0.3-0.4,0.4-0.6c0.1-0.2,0.1-0.5,0.1-0.7l0-0.3c0-0.8-0.4-1.5-1.3-2c-0.9-0.5-2.1-0.8-3.7-0.8c-0.8,0-1.6,0.1-2.2,0.2 c-0.7,0.1-1.2,0.3-1.6,0.5c-0.4,0.2-0.7,0.5-1,0.8c-0.3,0.3-0.4,0.7-0.5,1c-0.1,0.3-0.1,0.7-0.1,1.1l1.3,0c0-0.3,0-0.5,0.1-0.8 c0.1-0.2,0.2-0.4,0.4-0.7c0.2-0.2,0.4-0.4,0.7-0.5c0.3-0.1,0.7-0.3,1.2-0.3c0.5-0.1,1.1-0.1,1.7-0.1c1.1,0,2,0.2,2.7,0.4 c0.7,0.3,1,0.7,1,1.1v0.3c0,0.1,0,0.2,0,0.3c0,0.1-0.1,0.2-0.2,0.3c-0.1,0.1-0.2,0.2-0.3,0.3c-0.1,0.1-0.2,0.2-0.4,0.3 c-0.2,0.1-0.4,0.2-0.6,0.3c-0.2,0.1-0.4,0.2-0.7,0.3c-0.3,0.1-0.6,0.2-0.9,0.3c-0.3,0.1-0.7,0.2-1.1,0.4c-0.1,0-0.1,0-0.2,0.1 c-0.5,0.2-0.9,0.3-1.1,0.4c-0.2,0.1-0.6,0.2-1,0.4c-0.5,0.2-0.8,0.3-1,0.5c-0.2,0.1-0.5,0.3-0.8,0.5c-0.3,0.2-0.5,0.4-0.6,0.6 c-0.1,0.2-0.2,0.4-0.2,0.7v0.9l10.4,0L459.3,24.1z"/> <path d="M461.6,25.1c0.2,0,0.4,0,0.6-0.2c0.1-0.1,0.2-0.2,0.2-0.4v-0.1c0-0.4-0.2-0.6-0.8-0.6c-0.5,0-0.7,0.2-0.7,0.6 v0.1c0,0.2,0.1,0.3,0.2,0.4C461.2,25,461.4,25.1,461.6,25.1z"/> <path d="M464.9,24.1c0.9,0.8,2.3,1.2,4.1,1.2c1.8,0,3.1-0.4,4.1-1.2c0.9-0.8,1.4-1.9,1.4-3.3l0-0.7 c0-1.4-0.5-2.5-1.4-3.3c-0.9-0.7-2.3-1.1-4.1-1.1c-1.8,0-3.1,0.4-4.1,1.1c-0.9,0.8-1.4,1.9-1.4,3.3v0.7 C463.5,22.2,464,23.3,464.9,24.1z M464.8,20.1c0-0.6,0.1-1.1,0.3-1.5c0.2-0.4,0.5-0.7,0.9-1c0.4-0.2,0.8-0.4,1.3-0.5 c0.5-0.1,1.1-0.2,1.7-0.2c0.7,0,1.2,0.1,1.7,0.2c0.5,0.1,0.9,0.3,1.3,0.5c0.4,0.3,0.7,0.6,0.8,1c0.2,0.4,0.3,0.9,0.3,1.5l0,0.7 c0,1.1-0.4,1.9-1.1,2.4c-0.7,0.5-1.8,0.7-3.1,0.7c-2.8,0-4.2-1.1-4.2-3.2L464.8,20.1z"/> <path d="M449.3,29.4l24.5,0.2h0.1c2.4,0,4.6-0.9,6.3-2.6c1.7-1.7,2.7-3.9,2.7-6.4c0-2.4-0.9-4.7-2.6-6.4 c-1.7-1.7-3.9-2.7-6.4-2.7l-24.5-0.2c-2.4,0-4.7,0.9-6.4,2.6c-1.7,1.7-2.7,3.9-2.7,6.4c0,2.4,0.9,4.7,2.6,6.4 C444.6,28.4,446.9,29.4,449.3,29.4z M444.2,15.1c1.4-1.4,3.2-2.1,5.2-2.1h0.1l24.5,0.2c2,0,3.8,0.8,5.2,2.2 c1.4,1.4,2.1,3.3,2.1,5.3c0,2-0.8,3.8-2.2,5.2c-1.4,1.4-3.3,2.2-5.3,2.1l-24.5-0.2c-2,0-3.8-0.8-5.2-2.2c-1.4-1.4-2.1-3.3-2.1-5.3 C442,18.3,442.8,16.5,444.2,15.1z"/> <path d="M480.7,32.8h-12.2c-0.5,0-0.9,0.4-0.9,0.9v11.7c0,0.5,0.4,0.9,0.9,0.9h12.2c0.5,0,0.9-0.4,0.9-0.9V33.6 C481.6,33.2,481.2,32.8,480.7,32.8z"/> <path d="M466.8,46.2h-12.2c-0.5,0-0.9,0.4-0.9,0.9v9.2c0,0.3,0.1,0.7,0.2,1l0.6,1.6c0.2,0.5,0.6,0.8,1.1,0.8h11.2 c0.5,0,0.9-0.4,0.9-0.9V47.1C467.7,46.6,467.3,46.2,466.8,46.2z"/> <path d="M453.7,33.6c0-0.5-0.4-0.9-0.9-0.9h-6.3c-0.6,0-1,0.6-0.8,1.2l4.1,11.7c0.1,0.4,0.5,0.6,0.8,0.6h2.2 c0.5,0,0.9-0.4,0.9-0.9V33.6z"/> </g> </svg> </a>
+    <ul>
+      <li><a href="#menus">Menús</a></li>
+      <li><a href="#como">Cómo reservar</a></li>
+      <li><a href="#faq">Preguntas</a></li>
+      <li><a href="#ubicacion">Ubicación</a></li>
+    </ul>
+    <a href="#reservar" class="btn btn-amarillo">Reservar</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap grid">
+    <div>
+      <p class="eyebrow">Navidad 2026 · Grupos y empresas</p>
+      <h1>Esta Navidad, <span>pórtate mal</span> en La Traviesa</h1>
+      <p>Comidas y cenas de empresa, amigos y familia con cocina de la casa para compartir, bebida incluida y sobremesa sin prisas.</p>
+      <div class="ctas">
+        <a href="#reservar" class="btn btn-amarillo">Reservar mi fecha</a>
+        <a href="#menus" class="btn btn-ghost">Ver los 4 menús</a>
+      </div>
+    </div>
+    <div class="badge-wrap">
+      <div class="ph ph-hero"><img src="../fotos/la%20traviesa/2.webp" alt="Comedor de La Traviesa 2.0 con el mural de la casa" fetchpriority="high"></div>
+      <div class="badge">
+        <small>Menús desde</small>
+        <div class="precio">45<sup>€</sup></div>
+        <small>por persona</small>
+        <ul>
+          <li>Bebida incluida</li>
+          <li>Platos para compartir</li>
+          <li>Opción cóctel para grupos grandes</li>
+        </ul>
+      </div>
+      <span class="sticker">Plazas limitadas</span>
+    </div>
+  </div>
+</header>
+<div class="checker" aria-hidden="true"></div>
+
+<section class="ventajas">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">Por qué aquí</p>
+      <h2>La cena de Navidad que sí apetece</h2>
+      <p class="lead">Nada de menús de compromiso. Producto, raciones generosas y ese ambiente travieso que hace que nadie quiera irse a casa.</p>
+    </div>
+    <div class="grid">
+      <div class="ventaja reveal"><div class="ico">🍷</div><b>Bebida incluida</b><span>Vino, cerveza, refrescos y agua durante toda la comida.</span></div>
+      <div class="ventaja reveal"><div class="ico">🥘</div><b>Al centro</b><span>Entrantes para compartir y un principal a elegir para cada uno.</span></div>
+      <div class="ventaja reveal"><div class="ico">🥂</div><b>Formato cóctel</b><span>Diez bocados de pie, ideal para grupos grandes y afterworks.</span></div>
+      <div class="ventaja reveal"><div class="ico">💸</div><b>Precio cerrado</b><span>De 45 € a 65 € por persona. Sin sorpresas en la cuenta.</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="galeria">
+  <div class="wrap grid">
+    <div class="ph reveal"><img src="../fotos/la%20traviesa/3.webp" alt="Sala de La Traviesa 2.0 lista para grupos" loading="lazy"></div>
+    <div class="ph reveal"><img src="../fotos/la%20traviesa/1.webp" alt="Mesas altas de La Traviesa 2.0" loading="lazy"></div>
+    <div class="ph reveal"><img src="../fotos/la%20traviesa/4.webp" alt="Barra de La Traviesa 2.0" loading="lazy"></div>
+  </div>
+</div>
+
+<section class="menus" id="menus">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">Menús de Navidad</p>
+      <h2>Elige cómo de travieso quieres ser</h2>
+      <p class="lead">Cuatro propuestas para todo tipo de grupos. Toca cada una para ver el menú completo.</p>
+    </div>
+
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" aria-selected="true" aria-controls="m1" id="t1"><span class="n">(01)</span><span class="t">Menú Travieso</span><span class="p">45 €</span></button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="m2" id="t2"><span class="n">(02)</span><span class="t">Menú Muy Travieso</span><span class="p">55 €</span></button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="m3" id="t3"><span class="n">(03)</span><span class="t">Menú La Glotona</span><span class="p">65 €</span></button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="m4" id="t4"><span class="n">(04)</span><span class="t">Menú Cóctel Travieso</span><span class="p">45 €</span></button>
+    </div>
+
+    <!-- 01 -->
+    <article class="menu-card" id="m1" role="tabpanel" aria-labelledby="t1">
+      <div class="mc-head">
+        <div><h3>Menú Travieso</h3><p>El clásico de la casa: platos para compartir en el centro de la mesa y un principal para cada uno.</p></div>
+        <div class="pill">45<small> €</small></div>
+      </div>
+      <div class="checker" aria-hidden="true"></div>
+      <div class="mc-body">
+        <div class="curso"><h4>Para compartir</h4><ul><li>Ensaladilla rusa con bonito y piparras</li><li>Croquetas cremosas de jamón</li><li>Torreznitos con escamas de sal</li><li>Piparras fritas</li></ul></div>
+        <div class="curso"><h4>Principal a elegir</h4><ul><li>Tacos de bacalao en tempura con pimientos caramelizados</li><li>Arroz meloso de rabo de toro</li></ul></div>
+        <div class="curso"><h4>Postres</h4><ul><li>Postres caseros</li></ul></div>
+        <div class="mc-foot">
+          <div><h5>Bebida incluida</h5><p class="serif">Vino tinto / blanco · Cerveza · Refrescos · Agua</p><p><em>Durante la comida</em></p><span class="chip">Copa +8 € / persona</span></div>
+          <div><h5>Condiciones</h5><p>Entrantes para compartir: una ración de cada plato por cada 4 comensales. Los principales se eligen individualmente y deben comunicarse con antelación.</p></div>
+        </div>
+        <div class="mc-cta"><a href="#reservar" class="btn btn-morado" data-menu="Menú Travieso (45 €)">Reservar el Menú Travieso</a></div>
+      </div>
+    </article>
+
+    <!-- 02 -->
+    <article class="menu-card" id="m2" role="tabpanel" aria-labelledby="t2" hidden>
+      <div class="mc-head">
+        <div><h3>Menú Muy Travieso</h3><p>Un paso más: un bocado para abrir boca, cinco platos para compartir y cuatro principales entre los que elegir.</p></div>
+        <div class="pill">55<small> €</small></div>
+      </div>
+      <div class="checker" aria-hidden="true"></div>
+      <div class="mc-body">
+        <div class="curso"><h4>Para empezar<em>1 a elegir</em></h4><ul><li>Gilda clásica</li><li>Huevo relleno de bonito</li></ul></div>
+        <div class="curso"><h4>Para compartir</h4><ul><li>Ensaladilla rusa con bonito y piparras</li><li>Cecina de León con almendras tostadas y AOVE</li><li>Croquetas cremosas de jamón</li><li>Torreznitos con escamas de sal</li><li>Tomate azul preparado con emulsión de tomate con AOVE y sal</li></ul></div>
+        <div class="curso"><h4>Principal a elegir</h4><ul><li>Tacos de bacalao en tempura con pimientos caramelizados</li><li>Arroz meloso de rabo de toro</li><li>Fino escalope con huevo poché y queso manchego</li><li>Tataki de pluma ibérica con mermelada de piquillos</li></ul></div>
+        <div class="curso"><h4>Postres</h4><ul><li>Postres caseros</li></ul></div>
+        <div class="mc-foot">
+          <div><h5>Bebida incluida</h5><p class="serif">Vino tinto / blanco · Cerveza · Refrescos · Agua</p><p><em>Durante la comida</em></p><span class="chip">Copa +8 € / persona</span></div>
+          <div><h5>Condiciones</h5><p>Entrantes para compartir: una ración de cada plato por cada 4 comensales. Los principales se eligen individualmente y deben comunicarse con antelación.</p></div>
+        </div>
+        <div class="mc-cta"><a href="#reservar" class="btn btn-morado" data-menu="Menú Muy Travieso (55 €)">Reservar el Menú Muy Travieso</a></div>
+      </div>
+    </article>
+
+    <!-- 03 -->
+    <article class="menu-card" id="m3" role="tabpanel" aria-labelledby="t3" hidden>
+      <div class="mc-head">
+        <div><h3>Menú La Glotona</h3><p>Nuestra propuesta más completa, para quienes vienen con hambre de verdad. Hace honor a su nombre.</p></div>
+        <div class="pill">65<small> €</small></div>
+      </div>
+      <div class="checker" aria-hidden="true"></div>
+      <div class="mc-body">
+        <div class="curso"><h4>Para empezar<em>1 a elegir</em></h4><ul><li>Gilda clásica</li><li>Huevo relleno de bonito</li><li>Zamburiña a la plancha con sofrito de alga wakame y ron</li></ul></div>
+        <div class="curso"><h4>Para compartir</h4><ul><li>Ensaladilla rusa con bonito y piparras</li><li>Cecina de León con almendras tostadas y AOVE</li><li>Croquetas cremosas de jamón</li><li>Torreznitos con escamas de sal</li><li>Burrata sobre pimientos caramelizados y polvo de pistacho</li></ul></div>
+        <div class="curso"><h4>Principal a elegir</h4><ul><li>Kokotxas al pil pil con huevos fritos y patatas chips</li><li>Tataki de pluma ibérica con mermelada de piquillos</li><li>Fino escalope con huevo poché y queso manchego</li><li>Tacos de bacalao en tempura con pimientos caramelizados</li></ul></div>
+        <div class="curso"><h4>Postres</h4><ul><li>Postres caseros</li></ul></div>
+        <div class="mc-foot">
+          <div><h5>Bebida incluida</h5><p class="serif">Vino tinto / blanco · Cerveza · Refrescos · Agua</p><p><em>Durante la comida</em></p><span class="chip">Copa +8 € / persona</span></div>
+          <div><h5>Condiciones</h5><p>Entrantes para compartir: una ración de cada plato por cada 4 comensales. Los principales se eligen individualmente y deben comunicarse con antelación.</p></div>
+        </div>
+        <div class="mc-cta"><a href="#reservar" class="btn btn-morado" data-menu="Menú La Glotona (65 €)">Reservar el Menú La Glotona</a></div>
+      </div>
+    </article>
+
+    <!-- 04 -->
+    <article class="menu-card" id="m4" role="tabpanel" aria-labelledby="t4" hidden>
+      <div class="mc-head">
+        <div><h3>Menú Cóctel Travieso</h3><p>Formato cóctel: diez bocados de la casa para picar, brindar y charlar sin parar, con final dulce.</p><span class="grupo">Ideal para grupos grandes · Servicio de pie</span></div>
+        <div class="pill">45<small> €</small></div>
+      </div>
+      <div class="checker" aria-hidden="true"></div>
+      <div class="mc-body">
+        <div class="curso"><h4>Picoteo</h4><ul><li>Gilda clásica</li><li>Huevo relleno de bonito</li><li>Cecina de León con almendras tostadas y AOVE</li><li>Vasito de ensaladilla rusa con bonito y piparras</li><li>Croquetas cremosas de jamón</li><li>Torreznitos con escamas de sal</li><li>Piparras fritas</li><li>Mini bocata de chipirones con mayonesa cítrica</li><li>Taco de bacalao en tempura con pimientos caramelizados</li><li>Vasito de arroz meloso con rabo de toro</li></ul></div>
+        <div class="curso"><h4>Para terminar</h4><ul><li>Surtido de postres caseros</li></ul></div>
+        <div class="mc-foot">
+          <div><h5>Bebida incluida</h5><p class="serif">Vino tinto / blanco · Cerveza · Refrescos · Agua</p><p><em>Durante la comida</em></p></div>
+          <div><h5>Suplemento</h5><span class="chip">Copa +8 € / persona</span></div>
+        </div>
+        <div class="mc-cta"><a href="#reservar" class="btn btn-morado" data-menu="Menú Cóctel Travieso (45 €)">Reservar el Menú Cóctel</a></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="pasos" id="como">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">Cómo reservar</p>
+      <h2>Tres pasos y la cena está montada</h2>
+    </div>
+    <div class="grid">
+      <div class="paso reveal"><div class="num">01</div><b>Escríbenos por WhatsApp</b><span>Fecha, número de personas y el menú que más os guste.</span></div>
+      <div class="paso reveal"><div class="num">02</div><b>Te confirmamos</b><span>Te escribimos con disponibilidad y los detalles de la reserva.</span></div>
+      <div class="paso reveal"><div class="num">03</div><b>Elegid principales</b><span>Antes del evento nos pasáis la elección de principales de cada comensal.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="reserva" id="reservar">
+  <div class="wrap grid">
+    <div class="reveal">
+      <p class="eyebrow">Reserva por WhatsApp</p>
+      <h2>Guarda tu fecha antes de que vuele</h2>
+      <p class="lead">Diciembre se llena rápido. Rellena estos datos y te abrimos WhatsApp con el mensaje ya escrito: solo tienes que darle a enviar.</p>
+      <p class="nota">¿Más de 30 personas o quieres el local en exclusiva? Indícalo en comentarios y te preparamos una propuesta a medida.</p>
+      <div class="ph"><img src="../fotos/la%20traviesa/1.webp" alt="Interior de La Traviesa 2.0" loading="lazy"></div>
+    </div>
+    <form class="reveal" id="form" novalidate>
+      <p class="intro">Te responderemos por WhatsApp confirmando disponibilidad.</p>
+      <div><label for="nombre">Nombre</label><input id="nombre" name="nombre" required autocomplete="name"></div>
+      <div><label for="empresa">Empresa (opcional)</label><input id="empresa" name="empresa" autocomplete="organization"></div>
+      <div><label for="fecha">Fecha</label><input id="fecha" name="fecha" type="date" required min="2026-11-03" max="2027-01-06"></div>
+      <div><label for="turno">Turno</label>
+        <select id="turno" name="turno" required><option value="">Elige turno</option><option>Comida</option><option>Cena</option></select>
+      </div>
+      <div><label for="pax">Nº de personas</label><input id="pax" name="pax" type="number" min="4" step="1" required placeholder="Ej. 12"></div>
+      <div><label for="menu">Menú</label>
+        <select id="menu" name="menu" required>
+          <option value="">Elige menú</option>
+          <option>Menú Travieso (45 €)</option>
+          <option>Menú Muy Travieso (55 €)</option>
+          <option>Menú La Glotona (65 €)</option>
+          <option>Menú Cóctel Travieso (45 €)</option>
+          <option>Aún no lo sé</option>
+        </select>
+      </div>
+      <div class="full"><label for="notas">Comentarios (alergias, celebración, exclusividad…)</label><textarea id="notas" name="notas" rows="3"></textarea></div>
+      <button class="btn btn-wa full" type="submit"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>Enviar petición por WhatsApp</button>
+      <p class="ok" id="ok">Se ha abierto WhatsApp con tu mensaje. Si no se abre, <a id="wa-fallback" href="#" target="_blank" rel="noopener" style="text-decoration:underline">pulsa aquí</a>.</p>
+    </form>
+  </div>
+</section>
+<div class="checker" aria-hidden="true"></div>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">Preguntas frecuentes</p>
+      <h2>Lo que siempre nos preguntan</h2>
+    </div>
+    <div class="list">
+      <details><summary>¿Qué bebida está incluida?</summary><p>Vino tinto o blanco, cerveza, refrescos y agua durante la comida. Las copas tienen un suplemento de 8 € por persona.</p></details>
+      <details><summary>¿Cómo funcionan los entrantes para compartir?</summary><p>Servimos una ración de cada plato por cada 4 comensales, al centro de la mesa.</p></details>
+      <details><summary>¿Cuándo hay que elegir los principales?</summary><p>Cada comensal elige su principal y nos lo comunicáis con antelación al evento.</p></details>
+      <details><summary>¿Qué menú es mejor para un grupo grande?</summary><p>El Menú Cóctel Travieso: diez bocados servidos de pie, perfecto para que todo el mundo se mueva y charle.</p></details>
+      <details><summary>¿Tenéis opciones para alergias o intolerancias?</summary><p>Indícalo en tu mensaje de WhatsApp y lo revisamos con cocina para adaptar lo que sea posible.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="ubicacion" id="ubicacion">
+  <div class="wrap grid">
+    <div class="reveal">
+      <p class="eyebrow">Dónde estamos</p>
+      <h2>Ven a vernos</h2>
+      <p class="dir">C/ López de Hoyos, 7 · 28006 Madrid</p>
+      <table class="horario" id="horario">
+        <tr data-d="1"><td>Lunes</td><td>8:00 – 17:00</td></tr>
+        <tr data-d="2"><td>Martes</td><td>8:00 – 17:00</td></tr>
+        <tr data-d="3"><td>Miércoles</td><td>8:00 – 17:00</td></tr>
+        <tr data-d="4"><td>Jueves</td><td>8:00 – 1:00</td></tr>
+        <tr data-d="5"><td>Viernes</td><td>8:00 – 1:00</td></tr>
+        <tr data-d="6"><td>Sábado</td><td>18:00 – 1:00</td></tr>
+        <tr data-d="0" class="cerrado"><td>Domingo</td><td>Cerrado</td></tr>
+      </table>
+      <div class="ctas">
+        <a class="btn btn-morado" href="https://www.google.com/maps/search/?api=1&query=La+Traviesa+2.0+Calle+L%C3%B3pez+de+Hoyos+7+Madrid" data-track="maps" target="_blank" rel="noopener">Cómo llegar</a>
+        <a class="btn btn-ghost" href="#reservar">Reservar por WhatsApp</a>
+      </div>
+    </div>
+    <div class="ph ph-mapa reveal"><iframe src="https://www.google.com/maps?q=Calle+L%C3%B3pez+de+Hoyos+7,+28006+Madrid&z=16&output=embed" title="Mapa: La Traviesa 2.0, C/ López de Hoyos 7, Madrid" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a href="#top" class="logo" aria-label="La Traviesa 2.0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 72" fill="currentColor" aria-hidden="true"> <g> <path d="M50.3,58.7l3.6-10.4c-0.3-0.5-0.8-0.8-1.4-0.8H37.1c-0.9,0-1.7-0.7-1.7-1.7V13.6c0-0.9-0.7-1.7-1.7-1.7H18 c-0.9,0-1.7,0.7-1.7,1.7v46.1c0,0.9,0.7,1.7,1.7,1.7h32.6C50.1,60.6,50,59.6,50.3,58.7z"/> <path d="M91.3,13.1c-0.2-0.7-0.9-1.1-1.6-1.1H69.4c-0.7,0-1.3,0.4-1.6,1.1L54.2,52.2l-2.4,7c-0.3,1,0.2,1.9,1.2,2.2 c0.1,0,0.3,0,0.4,0h15.5c0.8,0,1.4-0.5,1.6-1.2l1.5-5.8c0.2-0.7,0.9-1.2,1.6-1.2h12.1c0.8,0,1.4,0.5,1.6,1.2l1.6,5.8 c0.2,0.7,0.9,1.2,1.6,1.2h15.5c1.2,0,2-1.1,1.6-2.2L91.3,13.1z M81.6,41.6h-4c-1.1,0-1.9-1-1.6-2.1l2-7.2c0.2-0.8,0.9-1.2,1.6-1.2 c0.7,0,1.4,0.4,1.6,1.2l2,7.2C83.5,40.5,82.7,41.6,81.6,41.6z"/> <path d="M113.3,12c-0.9,0-1.7,0.7-1.7,1.7v10.8c0,0.9,0.7,1.7,1.7,1.7H124c0.9,0,1.7,0.7,1.7,1.7v32 c0,0.9,0.7,1.7,1.7,1.7h15.7c0.9,0,1.7-0.7,1.7-1.7v-32c0-0.9,0.7-1.7,1.7-1.7h10.4V13.9c0-0.7,0.2-1.4,0.6-1.9c-0.1,0-0.2,0-0.3,0 H113.3z"/> <path d="M201.2,58.7l3-8.5c-1.4-4.2-3.2-6.6-5-8c-1-0.7-0.9-2.1,0.1-2.7c3.2-2.1,6.2-5.4,6.2-11.3 c0-13.7-14-17.2-28.1-17.2c-5.9,0-13.1,0.6-17.6,1.2c-0.4,0.1-0.8,0.3-1.1,0.6c-0.2,0.3-0.3,0.6-0.3,1v45.8c0,0.9,0.7,1.7,1.7,1.7 h15c0.9,0,1.7-0.7,1.7-1.7V47.6c0-0.9,0.7-1.7,1.6-1.7h0.1c4.4,0.1,6.5,1.5,9.1,14.1c0.2,0.8,0.8,1.3,1.6,1.3h12.5 C201,60.6,200.9,59.6,201.2,58.7z M178.2,34.4L178.2,34.4c-0.9,0-1.7-0.7-1.7-1.7V26c0-0.9,0.7-1.6,1.6-1.7c0.2,0,0.4,0,0.6,0 c3.2,0,8.2,0.9,8.2,5C186.9,33.7,181.4,34.4,178.2,34.4z"/> <path d="M242.2,14.5c-0.2-0.5-0.2-1.1-0.1-1.6c-0.3-0.6-0.9-1-1.5-1h-20.4c-0.7,0-1.3,0.4-1.6,1.1l-13,37.1l-0.4,1.2 l-0.4,1.2l-2.3,6.5c-0.4,1.1,0.4,2.2,1.6,2.2h15.5c0.8,0,1.4-0.5,1.6-1.2l1.5-5.8c0.2-0.7,0.9-1.2,1.6-1.2h12.1 c0.8,0,1.4,0.5,1.6,1.2l1.6,5.8c0.2,0.7,0.9,1.2,1.6,1.2h15c-0.1-0.2-0.3-0.5-0.3-0.8L242.2,14.5z M232.5,41.6h-4 c-1.1,0-1.9-1-1.6-2.1l2-7.2c0.2-0.8,0.9-1.2,1.6-1.2c0.7,0,1.4,0.4,1.6,1.2l2,7.2C234.4,40.5,233.6,41.6,232.5,41.6z"/> <path d="M280.5,12c-0.8,0-1.4,0.5-1.6,1.3l-6.5,25.2c-0.2,0.8-0.9,1.2-1.6,1.2c-0.7,0-1.4-0.4-1.6-1.3l-6.4-25.2 c-0.2-0.7-0.9-1.3-1.6-1.3h-15.9c-0.7,0-1.2,0.4-1.5,1c-0.2,0.4-0.2,0.8-0.1,1.2l1.6,5.5l4.6,15.3l7.6,25.3 c0.1,0.3,0.3,0.6,0.5,0.8c0.2,0.2,0.4,0.3,0.7,0.4c0.1,0,0.3,0.1,0.4,0.1h23.5c0.7,0,1.4-0.5,1.6-1.2l12.3-40.8v-5.8 c0-0.6,0.2-1.1,0.4-1.6c-0.1,0-0.3-0.1-0.4-0.1H280.5z"/> <path d="M315.5,12c0,0-0.1,0-0.2,0h-15.8c-0.1,0-0.3,0-0.4,0.1c-0.2,0.1-0.5,0.2-0.7,0.3c-0.2,0.2-0.4,0.4-0.5,0.7 c-0.1,0.2-0.1,0.4-0.1,0.5v46.1c0,0.9,0.7,1.7,1.7,1.7h15.8c0,0,0.1,0,0.2,0c-0.3-0.5-0.5-1.1-0.5-1.7V13.6 C315,13,315.2,12.4,315.5,12z"/> <path d="M355.3,56.8l1.9-8.4c-0.3-0.5-0.8-0.9-1.5-0.9h-18.9c-0.9,0-1.7-0.7-1.7-1.7v-1.2c0-0.9,0.7-1.7,1.7-1.7h16.1 c0.9,0,1.7-0.7,1.7-1.7v-9.5c0-0.9-0.7-1.7-1.7-1.7h-16.1c-0.9,0-1.7-0.7-1.7-1.7v-1c0-0.9,0.7-1.7,1.7-1.7h18.4 c0.3-2.5,1-4.8,2.1-6.9v-5.4c0-0.9-0.7-1.7-1.7-1.7h-37.5c-0.1,0-0.1,0-0.2,0c-0.3,0-0.5,0.1-0.7,0.2c-0.2,0.1-0.4,0.3-0.5,0.5 c-0.2,0.2-0.2,0.5-0.2,0.9v46.1c0,0.3,0.1,0.6,0.2,0.9c0.1,0.2,0.3,0.4,0.5,0.5c0.2,0.1,0.5,0.2,0.7,0.2c0,0,0.1,0,0.2,0h37.5 c0.6,0,1.2-0.4,1.5-0.9C355.7,59.9,354.9,58.4,355.3,56.8z"/> <path d="M374.8,26.1c0-1.5,1.6-1.8,4.1-1.8c4.8,0,9.6,1,12.9,2.2c0.2,0.1,0.4,0.1,0.6,0.1c0.7,0,1.4-0.5,1.6-1.3 l2.2-9.9c0.2-0.9-0.3-1.7-1.2-2c-5.1-1.4-11.1-2.4-17.4-2.4c-8.7,0-15.5,2.9-18.8,8.4c-0.3,0.4-0.5,0.9-0.7,1.4 c-0.3,0.6-0.5,1.3-0.7,1.9c-0.3,0.9-0.5,1.8-0.6,2.7c0,0.3-0.1,0.6-0.1,0.9v0c0,0.3,0,0.5,0,0.8c0,0.3,0,0.6,0,0.8 c-0.1,18.7,23.2,15.7,23.2,19.4c0,1-1,1.8-4.1,1.8c-6.1,0-10.4-1.3-14.5-3.2c-0.2-0.1-0.4-0.1-0.7-0.1c-0.7,0-1.4,0.5-1.6,1.3 l-0.3,1.1l-0.6,2.8l-0.7,3.3l-0.6,2.7c-0.1,0.6,0.1,1.3,0.6,1.7c0.1,0.1,0.3,0.2,0.4,0.2c0.1,0,0.2,0.1,0.3,0.1l0.7,0.3 c4.9,1.7,10.5,2.8,18.1,2.8c6.1,0,11.2-1.2,14.9-3.7L398,41C394.8,27.6,374.8,29.4,374.8,26.1z"/> <path d="M432.8,13.1c-0.2-0.7-0.9-1.1-1.6-1.1h-20.4c-0.7,0-1.3,0.4-1.6,1.1l-9.8,28l-0.5,1.5l-0.6,1.8l-4.4,12.5 l-0.5,1.5l-0.3,0.9c0,0.1-0.1,0.3-0.1,0.4c-0.1,0.9,0.7,1.8,1.7,1.8h15.5c0.8,0,1.4-0.5,1.6-1.2l1.5-5.8c0.2-0.7,0.9-1.2,1.6-1.2 h12.1c0.8,0,1.4,0.5,1.6,1.2l1.6,5.8c0.2,0.7,0.9,1.2,1.6,1.2h15.5c1.1,0,1.9-1.1,1.6-2.2L432.8,13.1z M423.1,41.6h-4 c-1.1,0-1.9-1-1.6-2.1l2-7.2c0.2-0.8,0.9-1.2,1.6-1.2c0.7,0,1.4,0.4,1.6,1.2l2,7.2C425,40.5,424.2,41.6,423.1,41.6z"/> <path d="M459.3,24.1l-8.8,0c0-0.2,0.2-0.4,0.7-0.7c0.5-0.2,1.4-0.6,2.9-1.1c0.2-0.1,0.5-0.2,0.8-0.3 c0.4-0.1,0.7-0.2,0.9-0.3c0.2-0.1,0.5-0.2,0.9-0.3c0.3-0.1,0.6-0.2,0.8-0.4c0.2-0.1,0.5-0.3,0.7-0.4c0.2-0.2,0.4-0.3,0.6-0.5 c0.1-0.2,0.3-0.4,0.4-0.6c0.1-0.2,0.1-0.5,0.1-0.7l0-0.3c0-0.8-0.4-1.5-1.3-2c-0.9-0.5-2.1-0.8-3.7-0.8c-0.8,0-1.6,0.1-2.2,0.2 c-0.7,0.1-1.2,0.3-1.6,0.5c-0.4,0.2-0.7,0.5-1,0.8c-0.3,0.3-0.4,0.7-0.5,1c-0.1,0.3-0.1,0.7-0.1,1.1l1.3,0c0-0.3,0-0.5,0.1-0.8 c0.1-0.2,0.2-0.4,0.4-0.7c0.2-0.2,0.4-0.4,0.7-0.5c0.3-0.1,0.7-0.3,1.2-0.3c0.5-0.1,1.1-0.1,1.7-0.1c1.1,0,2,0.2,2.7,0.4 c0.7,0.3,1,0.7,1,1.1v0.3c0,0.1,0,0.2,0,0.3c0,0.1-0.1,0.2-0.2,0.3c-0.1,0.1-0.2,0.2-0.3,0.3c-0.1,0.1-0.2,0.2-0.4,0.3 c-0.2,0.1-0.4,0.2-0.6,0.3c-0.2,0.1-0.4,0.2-0.7,0.3c-0.3,0.1-0.6,0.2-0.9,0.3c-0.3,0.1-0.7,0.2-1.1,0.4c-0.1,0-0.1,0-0.2,0.1 c-0.5,0.2-0.9,0.3-1.1,0.4c-0.2,0.1-0.6,0.2-1,0.4c-0.5,0.2-0.8,0.3-1,0.5c-0.2,0.1-0.5,0.3-0.8,0.5c-0.3,0.2-0.5,0.4-0.6,0.6 c-0.1,0.2-0.2,0.4-0.2,0.7v0.9l10.4,0L459.3,24.1z"/> <path d="M461.6,25.1c0.2,0,0.4,0,0.6-0.2c0.1-0.1,0.2-0.2,0.2-0.4v-0.1c0-0.4-0.2-0.6-0.8-0.6c-0.5,0-0.7,0.2-0.7,0.6 v0.1c0,0.2,0.1,0.3,0.2,0.4C461.2,25,461.4,25.1,461.6,25.1z"/> <path d="M464.9,24.1c0.9,0.8,2.3,1.2,4.1,1.2c1.8,0,3.1-0.4,4.1-1.2c0.9-0.8,1.4-1.9,1.4-3.3l0-0.7 c0-1.4-0.5-2.5-1.4-3.3c-0.9-0.7-2.3-1.1-4.1-1.1c-1.8,0-3.1,0.4-4.1,1.1c-0.9,0.8-1.4,1.9-1.4,3.3v0.7 C463.5,22.2,464,23.3,464.9,24.1z M464.8,20.1c0-0.6,0.1-1.1,0.3-1.5c0.2-0.4,0.5-0.7,0.9-1c0.4-0.2,0.8-0.4,1.3-0.5 c0.5-0.1,1.1-0.2,1.7-0.2c0.7,0,1.2,0.1,1.7,0.2c0.5,0.1,0.9,0.3,1.3,0.5c0.4,0.3,0.7,0.6,0.8,1c0.2,0.4,0.3,0.9,0.3,1.5l0,0.7 c0,1.1-0.4,1.9-1.1,2.4c-0.7,0.5-1.8,0.7-3.1,0.7c-2.8,0-4.2-1.1-4.2-3.2L464.8,20.1z"/> <path d="M449.3,29.4l24.5,0.2h0.1c2.4,0,4.6-0.9,6.3-2.6c1.7-1.7,2.7-3.9,2.7-6.4c0-2.4-0.9-4.7-2.6-6.4 c-1.7-1.7-3.9-2.7-6.4-2.7l-24.5-0.2c-2.4,0-4.7,0.9-6.4,2.6c-1.7,1.7-2.7,3.9-2.7,6.4c0,2.4,0.9,4.7,2.6,6.4 C444.6,28.4,446.9,29.4,449.3,29.4z M444.2,15.1c1.4-1.4,3.2-2.1,5.2-2.1h0.1l24.5,0.2c2,0,3.8,0.8,5.2,2.2 c1.4,1.4,2.1,3.3,2.1,5.3c0,2-0.8,3.8-2.2,5.2c-1.4,1.4-3.3,2.2-5.3,2.1l-24.5-0.2c-2,0-3.8-0.8-5.2-2.2c-1.4-1.4-2.1-3.3-2.1-5.3 C442,18.3,442.8,16.5,444.2,15.1z"/> <path d="M480.7,32.8h-12.2c-0.5,0-0.9,0.4-0.9,0.9v11.7c0,0.5,0.4,0.9,0.9,0.9h12.2c0.5,0,0.9-0.4,0.9-0.9V33.6 C481.6,33.2,481.2,32.8,480.7,32.8z"/> <path d="M466.8,46.2h-12.2c-0.5,0-0.9,0.4-0.9,0.9v9.2c0,0.3,0.1,0.7,0.2,1l0.6,1.6c0.2,0.5,0.6,0.8,1.1,0.8h11.2 c0.5,0,0.9-0.4,0.9-0.9V47.1C467.7,46.6,467.3,46.2,466.8,46.2z"/> <path d="M453.7,33.6c0-0.5-0.4-0.9-0.9-0.9h-6.3c-0.6,0-1,0.6-0.8,1.2l4.1,11.7c0.1,0.4,0.5,0.6,0.8,0.6h2.2 c0.5,0,0.9-0.4,0.9-0.9V33.6z"/> </g> </svg> </a>
+    <p>© 2026 La Traviesa 2.0 · Menús de Navidad</p>
+    <nav><a href="https://www.instagram.com/latraviesa_2.0" target="_blank" rel="noopener">Instagram</a><a href="../">Grupo 2.0</a><a href="../#privacidad">Política de privacidad</a></nav>
+  </div>
+</footer>
+
+<a href="#reservar" class="btn btn-amarillo sticky">Reservar mi fecha</a>
+
+<script>
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Pestañas de menús
+  const tabs = document.querySelectorAll('.tab');
+  tabs.forEach(tab => tab.addEventListener('click', () => {
+    tabs.forEach(t => { t.setAttribute('aria-selected', t === tab); document.getElementById(t.getAttribute('aria-controls')).hidden = t !== tab; });
+  }));
+
+  // "Reservar este menú" preselecciona el menú en el formulario
+  document.querySelectorAll('[data-menu]').forEach(b => b.addEventListener('click', () => {
+    document.getElementById('menu').value = b.dataset.menu;
+  }));
+
+  // Reserva por WhatsApp
+  const WHATSAPP = '34656485099';
+  // Origen de campaña (?utm_source=...) para saber qué agencia/anuncio trae cada reserva
+  const UTM = new URLSearchParams(location.search);
+  const ORIGEN = [UTM.get('utm_source'), UTM.get('utm_campaign')].filter(Boolean).join(' / ');
+  document.getElementById('form').addEventListener('submit', e => {
+    e.preventDefault();
+    const f = e.target;
+    if (!f.checkValidity()) { f.reportValidity(); return; }
+    const v = id => f.elements[id].value.trim();
+    const fecha = new Date(v('fecha') + 'T12:00').toLocaleDateString('es-ES', {weekday:'long', day:'numeric', month:'long'});
+    const lineas = [
+      '¡Hola! Quiero reservar para Navidad 🎄',
+      '',
+      `• Nombre: ${v('nombre')}`,
+      v('empresa') && `• Empresa: ${v('empresa')}`,
+      `• Fecha: ${fecha} (${v('turno').toLowerCase()})`,
+      `• Personas: ${v('pax')}`,
+      `• Menú: ${v('menu')}`,
+      v('notas') && `• Comentarios: ${v('notas')}`,
+      ORIGEN && `\n(ref: ${ORIGEN})`
+    ].filter(l => l !== '' && l !== false).join('\n').replace('🎄\n', '🎄\n\n');
+    const url = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(lineas)}`;
+    document.getElementById('wa-fallback').href = url;
+    document.getElementById('ok').style.display = 'block';
+    track('Lead', 'generate_lead', {content_name: v('menu'), num_items: Number(v('pax'))});
+    window.open(url, '_blank', 'noopener');
+  });
+
+  // Fecha mínima: hoy
+  document.getElementById('fecha').min = new Date().toISOString().slice(0, 10);
+
+  // Clics en CTAs (para medir interés aunque no envíen el formulario)
+  document.querySelectorAll('a[href="#reservar"]').forEach(a => a.addEventListener('click', () => track('ViewContent', 'cta_reservar')));
+  document.querySelectorAll('[data-track="maps"]').forEach(a => a.addEventListener('click', () => track('FindLocation', 'como_llegar')));
+
+  // Marca el día de hoy en el horario
+  const hoy = document.querySelector(`#horario tr[data-d="${new Date().getDay()}"]`);
+  if (hoy) hoy.classList.add('hoy');
+</script>
+</body>
+</html>
