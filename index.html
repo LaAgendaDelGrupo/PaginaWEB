@@ -1326,10 +1326,9 @@ function refreshOpen(){
 }
 function renderAhora(){
   const cont=document.getElementById('ahora');if(!cont)return;
-  const todos=Object.keys(HORARIOS);
+  const todos=Object.keys(HORARIOS).filter(k=>!D[k].closed); /* los cerrados temporalmente no salen en la franja */
   const abiertos=todos.filter(isOpen);
-  /* siempre salen TODOS los locales: abiertos primero, luego por próxima apertura;
-     los cerrados temporalmente al final */
+  /* salen todos los locales en activo: abiertos primero, luego por próxima apertura */
   const cerrados=todos.filter(k=>!abiertos.includes(k)).sort((a,b)=>{
     const na=nextOpenInfo(a),nb=nextOpenInfo(b);
     return (na?na.mins:1e9)-(nb?nb.mins:1e9);
