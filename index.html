@@ -556,6 +556,7 @@ body.mn-open #waf{opacity:0;pointer-events:none;transform:scale(.6)}
   #waf{width:52px;height:52px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom))}
   footer{padding-bottom:96px}
 }
+.ah-chip.ah-off{opacity:.55}
 </style>
 </head>
 <body>
@@ -1297,8 +1298,9 @@ const NOMBRES={tablas:'Las Tablas 2.0',pequeña:'La Pequeña 2.0',chula:'La Chul
 const DIAS=['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
 function rgbOf(key){const c=(D[key].color||'#4ade80').replace('#','');return [0,2,4].map(i=>parseInt(c.substr(i,2),16)).join(',')}
 /* próxima apertura de un local (texto humano) */
-function nextOpen(key){
-  const ivs=HORARIOS[key];if(!ivs)return null;
+/* próxima apertura: {mins, txt} para poder ordenar; null si no tiene horario */
+function nextOpenInfo(key){
+  const ivs=HORARIOS[key];if(!ivs||!ivs.length)return null;
   const now=new Date(),nowDay=now.getDay(),h=now.getHours()+now.getMinutes()/60;
   for(let off=0;off<7;off++){
     const day=(nowDay+off)%7;
@@ -1307,11 +1309,12 @@ function nextOpen(key){
     if(best!==null){
       const hh=Math.floor(best%24),mm=Math.round((best%1)*60);
       const t=`${String(hh).padStart(2,'0')}:${String(mm).padStart(2,'0')}`;
-      return off===0?`hoy a las ${t}`:off===1?`mañana a las ${t}`:`el ${DIAS[day].toLowerCase()} a las ${t}`;
+      return {mins:(off*24+best-h)*60,txt:off===0?`hoy a las ${t}`:off===1?`mañana a las ${t}`:`el ${DIAS[day].toLowerCase()} a las ${t}`};
     }
   }
   return null;
 }
+function nextOpen(key){const n=nextOpenInfo(key);return n&&n.txt}
 function refreshOpen(){
   document.querySelectorAll('.lc-open').forEach(b=>{
     const open=isOpen(b.dataset.open);
@@ -1323,16 +1326,24 @@ function refreshOpen(){
 }
 function renderAhora(){
   const cont=document.getElementById('ahora');if(!cont)return;
-  const abiertos=Object.keys(HORARIOS).filter(isOpen);
+  const todos=Object.keys(HORARIOS);
+  const abiertos=todos.filter(isOpen);
+  /* siempre salen TODOS los locales: abiertos primero, luego por próxima apertura;
+     los cerrados temporalmente al final */
+  const cerrados=todos.filter(k=>!abiertos.includes(k)).sort((a,b)=>{
+    const na=nextOpenInfo(a),nb=nextOpenInfo(b);
+    return (na?na.mins:1e9)-(nb?nb.mins:1e9);
+  });
+  const pin='<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>';
+  const chipAbierto=k=>`<a class="ah-chip" style="--cc:${rgbOf(k)}" href="${D[k].maps}" target="_blank" rel="noopener"><span class="ah-name">${NOMBRES[k]}</span><span class="ah-loc">${pin}Cómo llegar</span></a>`;
+  const chipCerrado=k=>{
+    const t=D[k].closed?'Cerrado temporalmente':'Abre '+(nextOpen(k)||'pronto');
+    return `<a class="ah-chip${D[k].closed?' ah-off':''}" style="--cc:${rgbOf(k)}" href="#sec-${k}" onclick="event.preventDefault();goTo('sec-${k}')"><span class="ah-name">${NOMBRES[k]}</span><span class="ah-cl">${t}</span></a>`;
+  };
+  const chips=abiertos.map(chipAbierto).join('')+cerrados.map(chipCerrado).join('');
   if(abiertos.length){
-    const chips=abiertos.map(k=>`<a class="ah-chip" style="--cc:${rgbOf(k)}" href="${D[k].maps}" target="_blank" rel="noopener"><span class="ah-name">${NOMBRES[k]}</span><span class="ah-loc"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Cómo llegar</span></a>`).join('');
     cont.innerHTML=`<div class="ah-card"><div class="ah-top"><span class="ah-live"><span class="od"></span>En directo</span><span class="ah-h">${abiertos.length===1?'1 local abierto':abiertos.length+' locales abiertos'} <em>ahora mismo</em></span></div><div class="ah-list">${chips}</div></div>`;
   }else{
-    /* ninguno abierto: muestra los 4 primeros con su próxima apertura */
-    const chips=Object.keys(HORARIOS).slice(0,4).map(k=>{
-      const t=nextOpen(k);
-      return `<a class="ah-chip" style="--cc:${rgbOf(k)}" href="#sec-${k}" onclick="event.preventDefault();goTo('sec-${k}')"><span class="ah-name">${NOMBRES[k]}</span><span class="ah-cl">Abre ${t||'pronto'}</span></a>`;
-    }).join('');
     cont.innerHTML=`<div class="ah-card"><div class="ah-top"><span class="ah-h">Ahora mismo descansamos 😴</span></div><p class="ah-cl" style="margin-bottom:18px">Pero la noche siempre vuelve. Deja la reserva hecha y te esperamos:</p><div class="ah-list">${chips}</div></div>`;
   }
 }
