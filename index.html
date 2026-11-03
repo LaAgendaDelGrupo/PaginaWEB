@@ -688,7 +688,7 @@ body.mn-open #waf{opacity:0;pointer-events:none;transform:scale(.6)}
   <div class="lc-inner">
     <h2 class="sr-only">La Pequeña 2.0</h2>
     <div>
-      <span class="lc-num">02 / 07 — BAR DE BARRIO<span class="lc-open" data-open="pequeña" hidden><span class="od"></span><span class="ot"></span></span></span>
+      <span class="lc-num">02 / 07 — BAR DE COPAS<span class="lc-open" data-open="pequeña" hidden><span class="od"></span><span class="ot"></span></span></span>
       <div class="lc-logo"><img src="logos/La pequeña_Mesa de trabajo 1-trans.webp" alt="La Pequeña 2.0" draggable="false"></div>
       <p class="lc-tagline">"Tan de barrio que hasta el camarero sabe lo que vas a pedir."</p>
       <div class="lc-tag-row"><span class="lc-tag">Jue–Sáb · 20:00–02:00</span><span class="lc-tag">C/ General Oraá, 27</span></div>
@@ -1372,7 +1372,11 @@ D.green.carta='cartas/green.webp';
 D.traviesa.carta='cartas/traviesa.pdf';
 /* Reserva de mesa (Ágora Bookings) — solo locales que lo usan */
 D.traviesa.bk='https://bookings.agorapos.com/reservas/widget/2169/calendar/82fc0510ac7baef2f81df0cb3bd03bcc59e3d54e';
-D.pequeña.carta='cartas/pequena.webp';
+/* La Pequeña es solo bar de copas desde nov 2026: carta de comida OCULTA (el archivo se conserva).
+   Para retomar el restaurante: descomentar esta línea, volver a poner la etiqueta "BAR DE BARRIO"
+   y el horario anterior → tarjeta 'L–M 08–16 · J–V 08–02 · S 18–02',
+   HORARIOS pequeña:[{d:[1,2,3],s:8,e:16},{d:[4,5],s:8,e:26},{d:[6],s:18,e:26}] */
+// D.pequeña.carta='cartas/pequena.webp';
 
 /* ════════════ KOMVO — reservas de eventos por local ════════════ */
 const KV_BASE='https://grupodospuntocero.komvoapp.com';
