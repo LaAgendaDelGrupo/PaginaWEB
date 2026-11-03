@@ -497,6 +497,65 @@ footer{background:var(--ft-bg);border-top:1px solid var(--bdr);padding:44px clam
   .lph::after{display:none}                               /* sin mix-blend-mode (caro al hacer scroll) */
   .lc-logo img{filter:none!important}                     /* sin drop-shadow continuo en logos */
 }
+
+/* ════════════ REVISIÓN UX MÓVIL / ZOOM (nov 2026) ════════════ */
+/* Saltos: el hero usaba 100dvh, que cambia de alto al esconderse la barra del navegador
+   en móvil y desplazaba toda la página mientras se hacía scroll → svh es estable */
+#hero{height:auto;min-height:100vh;min-height:100svh}
+/* reserva el hueco de la barra de scroll: abrir/cerrar modales ya no mueve la página de lado */
+html{scrollbar-gutter:stable}
+/* los anclajes no quedan tapados por el menú fijo */
+section[id],article[id],div[id="locales"]{scroll-margin-top:76px}
+/* el scroll dentro de modales/menú no arrastra la página de fondo (iOS) */
+.mbox,#mobnav,#lgover>div{overscroll-behavior:contain}
+.mbox{max-height:92vh;max-height:92dvh}
+/* menú de escritorio: entre 761 y 1100px (o con zoom 125–175%) los enlaces se montaban
+   encima del logo y del botón → hamburguesa hasta 1100px */
+@media(max-width:1100px){.nav-links{display:none}#burger{display:flex}.nav-res{display:none}#nav,#nav.scrolled{padding-left:clamp(16px,4vw,48px);padding-right:clamp(16px,4vw,48px)}}
+/* menú móvil: quedaba por encima de la barra y tapaba la X → no se podía cerrar */
+#mobnav{z-index:499}
+body.mn-open #nav{background:var(--bg);border-bottom-color:transparent}
+body.mn-open #waf{opacity:0;pointer-events:none;transform:scale(.6)}
+#waf{transition:transform .3s var(--easeSnap),opacity .25s}
+.mn-link{min-height:48px;align-items:center}
+.mn-soc a{padding:12px 0;font-size:12px}
+/* pantallas bajas (portátil con zoom, móvil en horizontal): el hero no empuja los botones fuera */
+@media(max-height:620px){
+  #hero{min-height:0;padding:84px 0 56px}
+  .hero-inner{gap:12px}
+  .hero-scroll{display:none}
+  #theme-btn{bottom:84px}
+}
+@media(max-height:620px) and (min-width:761px){.hero-slogan{font-size:clamp(32px,min(8vw,10vh),110px)}}
+/* textos ilegibles (9–10px) → mínimo 11–12px; contraste del pie subido */
+.lc-tag{font-size:11px;padding:6px 11px}
+.hero-label,.ci-eyebrow,.ct-eyebrow,.nstat-l,.ah-live,.ah-loc,.ot{font-size:11px}
+.lc-cta,.ev-link,.sc-lbl{font-size:12px}
+.mil{font-size:10.5px}
+.miv{font-size:14px}
+.ft-locs a{font-size:12px;opacity:.6;padding:10px 0}
+.ft-copy{font-size:12px;opacity:.6}
+.lg-links a{font-size:12px;opacity:.6;padding:10px 0}
+.ft-soc a{width:44px;height:44px;opacity:.6}
+.mcls{width:44px;height:44px}
+/* modal en móvil: los botones de reservar quedan siempre a mano, fijos abajo */
+@media(max-width:760px){
+  .mbox{padding:26px 18px 0}
+  .mdrag{margin-bottom:18px}
+  .mhead{position:sticky;top:-26px;z-index:3;background:var(--modal-bg);margin:-26px -18px 14px;padding:26px 18px 10px}
+  .mbtns{position:sticky;bottom:0;z-index:3;background:var(--modal-bg);margin:0 -18px;padding:12px 18px calc(14px + env(safe-area-inset-bottom));box-shadow:0 -10px 22px var(--modal-bg)}
+  .mbtns>*{min-height:46px}
+  /* logos anchos (La Traviesa, Las Tablas…) se salían y escondían la X */
+  .mhead>:first-child{min-width:0;flex:1}
+  .mhead img{max-width:100%;height:auto!important;max-height:52px;object-fit:contain;object-position:left}
+  .mbs{flex:1;justify-content:center}
+  .minfo{margin-bottom:16px}
+  /* el botón de tema sube a la barra de arriba: abajo solo queda WhatsApp y no tapa contenido */
+  #theme-btn{top:12px;bottom:auto;right:64px;width:42px;height:42px;background:transparent;border-color:transparent;z-index:520}
+  #nav,#nav.scrolled{padding-top:12px;padding-bottom:12px}
+  #waf{width:52px;height:52px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom))}
+  footer{padding-bottom:96px}
+}
 </style>
 </head>
 <body>
@@ -528,11 +587,11 @@ footer{background:var(--ft-bg);border-top:1px solid var(--bdr);padding:44px clam
 <nav id="nav">
   <div class="nav-brand" onclick="goTo('hero')"><span class="nav-pill">GRUPO_2.0</span></div>
   <ul class="nav-links">
-    <li><a onclick="goTo('locales')">Locales</a></li>
-    <li><a onclick="goTo('eventos')">Eventos</a></li>
-    <li><a onclick="goTo('socios')">Socios</a></li>
-    <li><a onclick="goTo('nosotros')">Nosotros</a></li>
-    <li><a onclick="goTo('contacto')">Contacto</a></li>
+    <li><a href="#locales" onclick="event.preventDefault();goTo('locales')">Locales</a></li>
+    <li><a href="#eventos" onclick="event.preventDefault();goTo('eventos')">Eventos</a></li>
+    <li><a href="#socios" onclick="event.preventDefault();goTo('socios')">Socios</a></li>
+    <li><a href="#nosotros" onclick="event.preventDefault();goTo('nosotros')">Nosotros</a></li>
+    <li><a href="#contacto" onclick="event.preventDefault();goTo('contacto')">Contacto</a></li>
   </ul>
   <button class="nav-res mag" onclick="goTo('locales')">Reservar ↗</button>
   <button id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobnav"><span></span><span></span><span></span></button>
@@ -541,11 +600,11 @@ footer{background:var(--ft-bg);border-top:1px solid var(--bdr);padding:44px clam
 <!-- MENÚ MÓVIL -->
 <div id="mobnav" aria-hidden="true">
   <div class="mn-inner">
-    <a class="mn-link" onclick="mnGo('locales')"><span class="mn-i">01</span>Locales</a>
-    <a class="mn-link" onclick="mnGo('eventos')"><span class="mn-i">02</span>Eventos</a>
-    <a class="mn-link" onclick="mnGo('socios')"><span class="mn-i">03</span>Socios</a>
-    <a class="mn-link" onclick="mnGo('nosotros')"><span class="mn-i">04</span>Nosotros</a>
-    <a class="mn-link" onclick="mnGo('contacto')"><span class="mn-i">05</span>Contacto</a>
+    <a class="mn-link" href="#locales" onclick="event.preventDefault();mnGo('locales')"><span class="mn-i">01</span>Locales</a>
+    <a class="mn-link" href="#eventos" onclick="event.preventDefault();mnGo('eventos')"><span class="mn-i">02</span>Eventos</a>
+    <a class="mn-link" href="#socios" onclick="event.preventDefault();mnGo('socios')"><span class="mn-i">03</span>Socios</a>
+    <a class="mn-link" href="#nosotros" onclick="event.preventDefault();mnGo('nosotros')"><span class="mn-i">04</span>Nosotros</a>
+    <a class="mn-link" href="#contacto" onclick="event.preventDefault();mnGo('contacto')"><span class="mn-i">05</span>Contacto</a>
     <a class="mn-res" href="https://wa.me/34656485099?text=Hola!%20Quiero%20reservar%20en%20Grupo%202.0">Reservar por WhatsApp</a>
     <div class="mn-soc">
       <a href="https://www.instagram.com/grupo_2.0" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
@@ -1097,6 +1156,7 @@ function goTo(id){const el=document.getElementById(id);if(el)el.scrollIntoView({
     b.setAttribute('aria-expanded',open);mn.setAttribute('aria-hidden',!open);
     b.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú');
     document.body.style.overflow=open?'hidden':'';
+    document.body.classList.toggle('mn-open',open);
   }
   b.addEventListener('click',()=>toggle(!mn.classList.contains('on')));
   window.mnGo=function(id){toggle(false);setTimeout(()=>goTo(id),260)};
