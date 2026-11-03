@@ -1384,6 +1384,8 @@ document.querySelectorAll('.lc').forEach(el=>{
 D.green.carta='cartas/green.webp';
 D.traviesa.carta='cartas/traviesa.pdf';
 /* Reserva de mesa (Ágora Bookings) — solo locales que lo usan */
+/* Entradas y eventos en Fourvenues (organización «green»: solo eventos de Green) */
+D.green.fvi='https://www.fourvenues.com/iframe/green/events';
 D.traviesa.bk='https://bookings.agorapos.com/reservas/widget/2169/calendar/82fc0510ac7baef2f81df0cb3bd03bcc59e3d54e';
 /* La Pequeña es solo bar de copas desde nov 2026: carta de comida OCULTA (el archivo se conserva).
    Para retomar el restaurante: descomentar esta línea, volver a poner la etiqueta "BAR DE BARRIO"
@@ -1431,6 +1433,12 @@ function openM(id){
   document.getElementById('mig').href=d.ig;
   const fvBtn=document.getElementById('mfv');
   if(d.fv&&!d.closed){fvBtn.href=d.fv;fvBtn.style.display=''}else{fvBtn.style.display='none'}
+  /* Fourvenues embebido (vista iframe oficial): se abre en el visor a pantalla completa, sin salir de la web */
+  fvBtn.onclick=null;fvBtn.lastChild.textContent=' Entradas / Lista';
+  if(d.fvi&&!d.closed){
+    fvBtn.href=d.fvi;fvBtn.style.display='';fvBtn.lastChild.textContent=' Entradas y eventos';
+    fvBtn.onclick=e=>{e.preventDefault();openKv(d.fvi,'Entradas y eventos · '+(NOMBRES[id]||''))};
+  }
   const cBtn=document.getElementById('mcarta');
   if(d.carta){cBtn.href=d.carta;cBtn.style.display=''}else{cBtn.style.display='none'}
   const kvBtn=document.getElementById('mkv');
