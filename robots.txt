@@ -1,0 +1,7 @@
+# Grupo 2.0 — https://grupodospuntocero.com
+User-agent: *
+Allow: /
+# Menú del día por QR y su panel de administración: no son páginas para buscadores
+Disallow: /menu/
+
+Sitemap: https://grupodospuntocero.com/sitemap.xml

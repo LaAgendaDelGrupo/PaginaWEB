@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Grupo 2.0 — Somos las vacaciones dentro de tu rutina</title>
-<meta name="description" content="7 locales en Madrid: Las Tablas 2.0, La Pequeña 2.0, La Chula 2.0, La Peluquería 2.0, La Traviesa 2.0, Juanita 2.0 y Green 2.0. Restaurantes, bares y discotecas.">
+<title>Grupo 2.0 · Bares de copas, restaurante y discoteca en Madrid</title>
+<meta name="description" content="Bares de copas, restaurante y discoteca en Madrid (Salamanca y Chamartín): Las Tablas, La Pequeña, La Chula, La Peluquería, La Traviesa y Green. Reservas y eventos.">
+<meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="theme-color" content="#0a0908" id="theme-color-meta">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -18,11 +19,171 @@
 <meta property="og:image" content="https://grupodospuntocero.com/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Grupo 2.0 — bares de copas, restaurante y discoteca en Madrid">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Grupo 2.0 — Somos las vacaciones dentro de tu rutina">
 <meta name="twitter:description" content="7 locales en Madrid: restaurantes, bares y discotecas. Reserva tu evento o ven a tomar algo con nosotros.">
 <meta name="twitter:image" content="https://grupodospuntocero.com/og.jpg">
 <link rel="canonical" href="https://grupodospuntocero.com/">
+<!-- Datos estructurados (Google / buscadores con IA). OJO: si cambia un horario o dirección, actualizarlo
+     también aquí (además de D{} y HORARIOS{}). Juanita no aparece mientras esté cerrada (D.juanita.closed):
+     al reabrir, añadir su bloque NightClub con su horario. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://grupodospuntocero.com/#org",
+      "name": "Grupo 2.0",
+      "alternateName": "Grupo Dos Punto Cero",
+      "url": "https://grupodospuntocero.com/",
+      "logo": "https://grupodospuntocero.com/apple-touch-icon.png",
+      "image": "https://grupodospuntocero.com/og.jpg",
+      "slogan": "Somos las vacaciones dentro de tu rutina",
+      "description": "Grupo de hostelería de Madrid con bares de copas, restaurante y discoteca en los barrios de Salamanca y Chamartín.",
+      "email": "hola@grupodospuntocero.com",
+      "telephone": "+34656485099",
+      "areaServed": {"@type": "City", "name": "Madrid"},
+      "sameAs": ["https://www.instagram.com/grupo_2.0", "https://www.tiktok.com/@grupo2.0_"],
+      "contactPoint": {"@type": "ContactPoint", "contactType": "reservations", "telephone": "+34656485099", "email": "hola@grupodospuntocero.com", "availableLanguage": ["es", "en"]},
+      "subOrganization": [
+        {"@id": "https://grupodospuntocero.com/#tablas"},
+        {"@id": "https://grupodospuntocero.com/#pequena"},
+        {"@id": "https://grupodospuntocero.com/#chula"},
+        {"@id": "https://grupodospuntocero.com/#peluqueria"},
+        {"@id": "https://grupodospuntocero.com/#traviesa"},
+        {"@id": "https://grupodospuntocero.com/#green"}
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://grupodospuntocero.com/#web",
+      "url": "https://grupodospuntocero.com/",
+      "name": "Grupo 2.0",
+      "inLanguage": "es-ES",
+      "publisher": {"@id": "https://grupodospuntocero.com/#org"}
+    },
+    {
+      "@type": "BarOrPub",
+      "@id": "https://grupodospuntocero.com/#tablas",
+      "name": "Las Tablas 2.0",
+      "description": "Bar de copas en la calle General Oraá (barrio de Salamanca, Madrid). Detrás de la cortina no nos ve la vecina.",
+      "url": "https://grupodospuntocero.com/#sec-tablas",
+      "image": ["https://grupodospuntocero.com/fotos/tablas/1.webp", "https://grupodospuntocero.com/fotos/tablas/2.webp"],
+      "logo": "https://grupodospuntocero.com/logos/Las%20Tablas-06-trans.webp",
+      "telephone": "+34656485099",
+      "priceRange": "€€",
+      "address": {"@type": "PostalAddress", "streetAddress": "Calle del General Oraá, 26", "addressLocality": "Madrid", "postalCode": "28006", "addressRegion": "Comunidad de Madrid", "addressCountry": "ES"},
+      "hasMap": "https://maps.google.com/?q=C+General+Ora%C3%A1+26+Madrid",
+      "openingHoursSpecification": [
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Thursday", "Friday", "Saturday"], "opens": "20:00", "closes": "02:00"}
+      ],
+      "sameAs": ["https://www.instagram.com/lastablas2.0"],
+      "parentOrganization": {"@id": "https://grupodospuntocero.com/#org"}
+    },
+    {
+      "@type": "BarOrPub",
+      "@id": "https://grupodospuntocero.com/#pequena",
+      "name": "La Pequeña 2.0",
+      "description": "Bar de copas de barrio en la calle General Oraá (barrio de Salamanca, Madrid).",
+      "url": "https://grupodospuntocero.com/#sec-peque%C3%B1a",
+      "image": ["https://grupodospuntocero.com/fotos/peque%C3%B1a/1.webp", "https://grupodospuntocero.com/fotos/peque%C3%B1a/2.webp"],
+      "logo": "https://grupodospuntocero.com/logos/La%20peque%C3%B1a_Mesa%20de%20trabajo%201-trans.webp",
+      "telephone": "+34656485099",
+      "priceRange": "€€",
+      "address": {"@type": "PostalAddress", "streetAddress": "Calle del General Oraá, 27", "addressLocality": "Madrid", "postalCode": "28006", "addressRegion": "Comunidad de Madrid", "addressCountry": "ES"},
+      "hasMap": "https://maps.google.com/?q=C+General+Ora%C3%A1+27+Madrid",
+      "openingHoursSpecification": [
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Thursday", "Friday", "Saturday"], "opens": "20:00", "closes": "02:00"}
+      ],
+      "sameAs": ["https://www.instagram.com/lapequena2.0"],
+      "parentOrganization": {"@id": "https://grupodospuntocero.com/#org"}
+    },
+    {
+      "@type": "BarOrPub",
+      "@id": "https://grupodospuntocero.com/#chula",
+      "name": "La Chula 2.0",
+      "description": "Bar de copas con neón en la calle Claudio Coello (barrio de Salamanca, Madrid). Abierto hasta las 3:30 los sábados.",
+      "url": "https://grupodospuntocero.com/#sec-chula",
+      "image": ["https://grupodospuntocero.com/fotos/la%20chula/1.webp", "https://grupodospuntocero.com/fotos/la%20chula/2.webp"],
+      "logo": "https://grupodospuntocero.com/logos/La%20Chula_Mesa%20de%20trabajo%201-trans.webp",
+      "telephone": "+34656485099",
+      "priceRange": "€€",
+      "address": {"@type": "PostalAddress", "streetAddress": "Calle de Claudio Coello, 116", "addressLocality": "Madrid", "addressRegion": "Comunidad de Madrid", "addressCountry": "ES"},
+      "hasMap": "https://maps.google.com/?q=C+Claudio+Coello+116+Madrid",
+      "openingHoursSpecification": [
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Thursday", "Friday"], "opens": "20:00", "closes": "03:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "20:00", "closes": "03:30"}
+      ],
+      "sameAs": ["https://www.instagram.com/lachula2.0"],
+      "parentOrganization": {"@id": "https://grupodospuntocero.com/#org"}
+    },
+    {
+      "@type": "BarOrPub",
+      "@id": "https://grupodospuntocero.com/#peluqueria",
+      "name": "La Peluquería 2.0",
+      "description": "Bar de copas en la calle Alberto Alcocer (Chamartín, Madrid).",
+      "url": "https://grupodospuntocero.com/#sec-peluca",
+      "image": ["https://grupodospuntocero.com/fotos/la%20peluqueria/1.webp", "https://grupodospuntocero.com/fotos/la%20peluqueria/2.webp"],
+      "logo": "https://grupodospuntocero.com/logos/La%20Peluquer%C3%ADa-04-trans.webp",
+      "telephone": "+34656485099",
+      "priceRange": "€€",
+      "address": {"@type": "PostalAddress", "streetAddress": "Calle de Alberto Alcocer, 32", "addressLocality": "Madrid", "addressRegion": "Comunidad de Madrid", "addressCountry": "ES"},
+      "hasMap": "https://maps.google.com/?q=C+Alberto+Alcocer+32+Madrid",
+      "openingHoursSpecification": [
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Thursday", "Friday", "Saturday"], "opens": "20:00", "closes": "02:00"}
+      ],
+      "sameAs": ["https://www.instagram.com/lapeluqueria_2.0"],
+      "parentOrganization": {"@id": "https://grupodospuntocero.com/#org"}
+    },
+    {
+      "@type": ["Restaurant", "BarOrPub"],
+      "@id": "https://grupodospuntocero.com/#traviesa",
+      "name": "La Traviesa 2.0",
+      "description": "Restaurante y bar en la calle López de Hoyos (barrio de Salamanca, Madrid): desayunos, comidas, cenas y copas. Menús para grupos y empresas.",
+      "url": "https://grupodospuntocero.com/#sec-traviesa",
+      "image": ["https://grupodospuntocero.com/fotos/la%20traviesa/1.webp", "https://grupodospuntocero.com/fotos/la%20traviesa/2.webp"],
+      "logo": "https://grupodospuntocero.com/logos/La%20traviesa_Mesa%20de%20trabajo%201-trans.webp",
+      "telephone": "+34656485099",
+      "priceRange": "€€",
+      "hasMenu": "https://grupodospuntocero.com/cartas/traviesa.pdf",
+      "acceptsReservations": "https://bookings.agorapos.com/reservas/widget/2169/calendar/82fc0510ac7baef2f81df0cb3bd03bcc59e3d54e",
+      "address": {"@type": "PostalAddress", "streetAddress": "Calle de López de Hoyos, 7", "addressLocality": "Madrid", "postalCode": "28006", "addressRegion": "Comunidad de Madrid", "addressCountry": "ES"},
+      "hasMap": "https://maps.google.com/?q=C+Lopez+de+Hoyos+7+Madrid",
+      "openingHoursSpecification": [
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday"], "opens": "08:00", "closes": "17:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Thursday", "Friday"], "opens": "08:00", "closes": "01:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "18:00", "closes": "01:00"}
+      ],
+      "sameAs": ["https://www.instagram.com/latraviesa_2.0"],
+      "parentOrganization": {"@id": "https://grupodospuntocero.com/#org"}
+    },
+    {
+      "@type": ["Restaurant", "BarOrPub", "NightClub"],
+      "@id": "https://grupodospuntocero.com/#green",
+      "name": "Green 2.0",
+      "description": "Restaurante, bar de copas y discoteca en el Paseo de la Castellana (Madrid). Abierto hasta las 6:00 de jueves a sábado.",
+      "url": "https://grupodospuntocero.com/#sec-green",
+      "image": ["https://grupodospuntocero.com/fotos/green/1.webp", "https://grupodospuntocero.com/fotos/green/2.webp"],
+      "logo": "https://grupodospuntocero.com/logos/Green%202.0-trans.webp",
+      "telephone": "+34656485099",
+      "priceRange": "€€",
+      "hasMenu": "https://grupodospuntocero.com/cartas/green.webp",
+      "acceptsReservations": true,
+      "address": {"@type": "PostalAddress", "streetAddress": "Paseo de la Castellana, 40 bis", "addressLocality": "Madrid", "postalCode": "28046", "addressRegion": "Comunidad de Madrid", "addressCountry": "ES"},
+      "hasMap": "https://maps.google.com/?q=Paseo+de+la+Castellana+40+bis+Madrid",
+      "openingHoursSpecification": [
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday"], "opens": "08:00", "closes": "17:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Thursday", "Friday"], "opens": "08:00", "closes": "06:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "18:00", "closes": "06:00"}
+      ],
+      "sameAs": ["https://www.instagram.com/green.madrid_2.0"],
+      "parentOrganization": {"@id": "https://grupodospuntocero.com/#org"}
+    }
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
