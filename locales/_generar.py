@@ -130,7 +130,7 @@ LOCALES = [
 POR_SLUG = {l['slug']: l for l in LOCALES}
 
 # Cartas en texto (SEO: Google y los buscadores con IA leen los platos y precios).
-# Transcritas de cartas/traviesa.pdf y cartas/green.webp (04/11/2026). Al cambiar la carta impresa,
+# Transcritas de cartas/traviesa.pdf y cartas/green.webp (04/11/2026; Green: versión definitiva «Green Social Club 2.0»). Al cambiar la carta impresa,
 # actualizar también esto y volver a generar. Platos: (nombre, descripción, precio, [nº alérgenos]).
 ALERGENOS_TRAVIESA = ['Gluten', 'Crustáceos', 'Huevo', 'Pescado', 'Cacahuetes', 'Soja', 'Lácteos', 'Frutos de cáscara',
                       'Apio', 'Mostaza', 'Sésamo', 'Sulfitos', 'Altramuces', 'Moluscos']
@@ -211,7 +211,7 @@ CARTAS = {
     ]),
   'green': dict(
     alergenos=ALERGENOS_GREEN,
-    intro='Carta de noche para picar entre copa y copa, disponible jueves, viernes y sábado de 20:00 a 00:00: brioches, bravas, croquetas, tequeños, torreznos y más.',
+    intro='La carta de Green Social Club 2.0 para picar entre copa y copa, disponible jueves, viernes y sábado de 20:00 a 06:00: brioches, bravas, croquetas, tequeños, torreznos y más.',
     secciones=[
       ('Para picar', [
         ('Cono de patatas paja', '', '2,50', []),
