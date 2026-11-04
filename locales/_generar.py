@@ -324,7 +324,7 @@ def faq(l):
          'Sí: reserva mesa online con el botón «Reservar mesa» o escríbenos por WhatsApp al 656 48 50 99.' if l.get('reservar')
          else 'Sí, escríbenos por WhatsApp al 656 48 50 99 y te guardamos sitio. Para grupos grandes, avísanos con unos días de antelación.'),
         (f'¿Puedo celebrar un cumpleaños o un evento privado en {l["nombre"]}?',
-         'Claro. Organizamos cumpleaños, cenas de empresa, despedidas y celebraciones. Cuéntanos la fecha y cuántos sois por WhatsApp o en <a href="mailto:hola@grupodospuntocero.com">hola@grupodospuntocero.com</a>.'),
+         'Claro. Organizamos cumpleaños, cenas de empresa, despedidas y celebraciones. Cuéntanos la fecha y cuántos sois por WhatsApp o en <a href="mailto:hola@grupodospuntocero.com">hola@grupodospuntocero.com</a>, o mira cómo funcionan los <a href="/eventos/">eventos en Grupo 2.0</a>.'),
     ] + l['extra_faq']
     return '\n'.join(f'<details class="fq rev"><summary>{esc(q)}<span class="fq-i" aria-hidden="true"></span></summary><p>{a}</p></details>' for q, a in preguntas)
 
@@ -717,7 +717,7 @@ def pagina(l):
   <a class="nav-pill" href="/">GRUPO_2.0</a>
   <ul class="nav-links">
     <li><a href="/#locales">Locales</a></li>
-    <li><a href="/#eventos">Eventos</a></li>
+    <li><a href="/eventos/">Eventos</a></li>
     <li><a href="/#socios">Socios</a></li>
     <li><a href="/#contacto">Contacto</a></li>
   </ul>
@@ -800,7 +800,7 @@ def pagina(l):
 <footer>
   <div class="ft-top">
     <div class="ft-logo">GRUPO_2.0</div>
-    <nav class="ft-locs" aria-label="Locales">{pie}</nav>
+    <nav class="ft-locs" aria-label="Locales">{pie}<a href="/eventos/">Eventos</a></nav>
   </div>
   <div class="ft-bot">
     <div><p class="ft-copy">© 2026 Grupo 2.0 · Madrid · 656 485 099 · <a href="mailto:hola@grupodospuntocero.com">hola@grupodospuntocero.com</a></p>
@@ -870,6 +870,275 @@ def pagina(l):
 '''
 
 
+# JS común de las páginas sin horario (tema, nav, menú móvil, apariciones, cursor copa)
+JS_COMUN = """
+(function(){
+  var root=document.documentElement,reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,hover=matchMedia('(hover: hover)').matches;
+  var btn=document.getElementById('theme-btn'),meta=document.getElementById('theme-color-meta');
+  function setT(t){root.setAttribute('data-theme',t);btn.setAttribute('aria-label',t==='day'?'Cambiar a modo noche':'Cambiar a modo día');if(meta)meta.content=t==='day'?'#f5f0e8':'#0a0908'}
+  setT(root.getAttribute('data-theme'));
+  btn.addEventListener('click',function(){var n=root.getAttribute('data-theme')==='day'?'night':'day';setT(n);try{localStorage.setItem('g20theme',n)}catch(e){}});
+  var nav=document.getElementById('nav'),tk=false;
+  function onS(){nav.classList.toggle('scrolled',scrollY>40);tk=false}
+  addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(onS)}},{passive:true});onS();
+  var b=document.getElementById('burger'),mn=document.getElementById('mobnav');
+  function tog(o){b.classList.toggle('on',o);mn.classList.toggle('on',o);b.setAttribute('aria-expanded',o);mn.setAttribute('aria-hidden',!o);b.setAttribute('aria-label',o?'Cerrar menú':'Abrir menú');document.body.style.overflow=o?'hidden':'';document.body.classList.toggle('mn-open',o)}
+  b.addEventListener('click',function(){tog(!mn.classList.contains('on'))});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&mn.classList.contains('on'))tog(false)});
+  var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('vis');io.unobserve(x.target)}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.rev').forEach(function(el){io.observe(el)});
+  setTimeout(function(){document.querySelectorAll('.hero .rev').forEach(function(el){el.classList.add('vis');io.unobserve(el)})},30);
+  var hero=document.getElementById('hero');
+  new IntersectionObserver(function(en){hero.classList.toggle('off',!en[0].isIntersecting)}).observe(hero);
+  if(reduce||!hover)return;
+  var c=document.getElementById('cur'),mx=-99,my=-99,lx=0,tilt=0,run=false;
+  var img=new Image();img.onload=function(){root.classList.add('copa-cursor');img.alt='';c.appendChild(img)};img.src='/logos/copa.webp';
+  function loop(){tilt+=((mx-lx)*.9-tilt)*.14;lx=mx;var r=Math.max(-22,Math.min(22,tilt));
+    c.style.transform='translate3d('+mx+'px,'+my+'px,0) translate(-50%,-50%) rotate('+r+'deg)';
+    if(Math.abs(tilt)>.05)requestAnimationFrame(loop);else run=false}
+  document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;c.classList.add('on');if(!run){run=true;requestAnimationFrame(loop)}},{passive:true});
+})();
+"""
+
+# ─────────────────────────── Página de eventos: /eventos/ ───────────────────────────
+KOMVO = 'https://grupodospuntocero.komvoapp.com/restaurantes'
+
+EVENTOS_TIPOS = [
+    ('Cenas y comidas de empresa', 'La cena de Navidad que sí apetece, la comida del equipo o el brindis de fin de trimestre. Mesa, menú cerrado y sobremesa sin mirar el reloj.', '231,47,138'),
+    ('Cumpleaños', 'Cumples años, no neuronas. Tú pones las velas y la lista de invitados; nosotros, el sitio, las copas y la música.', '229,29,30'),
+    ('Despedidas', 'De soltera, de soltero o del compañero que se va. Cena, copas y baile en la misma noche, sin tener que cruzar Madrid.', '29,183,217'),
+    ('Afterwork y fiestas de equipo', 'El afterwork que mañana será leyenda en el grupo del curro. Te traes al jefe y te lo devolvemos bailando.', '74,222,128'),
+]
+# qué plan encaja en cada local (enlaza a su página)
+EVENTOS_LOCALES = [
+    ('la-traviesa', 'Comidas y cenas sentados', 'Restaurante en López de Hoyos con menús de grupo y de Navidad con bebida incluida.'),
+    ('green', 'Cena + fiesta hasta las 6:00', 'Restaurante, bar y discoteca en la Castellana: empezar cenando y acabar bailando.'),
+    ('la-chula', 'Cumpleaños con neón', 'Bar de copas en Claudio Coello abierto hasta las 3:30 los viernes y sábados.'),
+    ('las-tablas', 'Copas en grupo', 'Bar de copas en General Oraá, justo enfrente de La Pequeña 2.0.'),
+    ('la-pequena', 'Celebraciones de barrio', 'Bar de copas en General Oraá con trato de casa.'),
+    ('la-peluqueria', 'Afterwork en la zona norte', 'Bar de copas en Alberto Alcocer (Chamartín).'),
+]
+EVENTOS_FAQ = [
+    ('¿Cómo reservo un evento en Grupo 2.0?', f'Puedes reservarlo online con el botón «Reservar evento online», escribirnos por WhatsApp al 656 48 50 99 o mandar un email a <a href="mailto:hola@grupodospuntocero.com">hola@grupodospuntocero.com</a> con la fecha, el número de personas y el tipo de plan.'),
+    ('¿Tenéis menús cerrados para cenas de empresa?', 'Sí. En La Traviesa 2.0 hay menús de Navidad para grupos de 45 € a 65 € por persona con bebida incluida, y un formato cóctel para grupos grandes. Los tienes en <a href="/traviesa/">grupodospuntocero.com/traviesa</a>. Para otras fechas preparamos la propuesta a medida.'),
+    ('¿Con cuánta antelación tengo que reservar?', 'Cuanto antes, mejor, sobre todo en diciembre y para viernes y sábados, que es cuando más se llenan los locales. Escríbenos aunque aún no tengas el número exacto de personas.'),
+    ('¿Se puede cenar y seguir la fiesta en el mismo sitio?', 'Sí: en Green 2.0 (Paseo de la Castellana, 40 bis) puedes cenar y quedarte en la discoteca hasta las 6:00 de jueves a sábado.'),
+    ('¿Se puede reservar un local entero?', 'Depende del local, la fecha y el tamaño del grupo. Cuéntanos tu plan y te decimos qué opciones hay.'),
+]
+
+
+def pagina_eventos():
+    url = f'{BASE}/eventos/'
+    title = 'Cenas de empresa y eventos privados en Madrid · Grupo 2.0'
+    desc = 'Organiza tu cena de empresa, cumpleaños o despedida en Madrid en los locales de Grupo 2.0. Menús de Navidad desde 45 € con bebida. Reserva online o por WhatsApp.'
+    wa = f'https://wa.me/{WA}?text=' + quote('Hola! Quiero organizar un evento con Grupo 2.0')
+    wa_emp = f'https://wa.me/{WA}?text=' + quote('Hola! Quiero organizar una cena de empresa con Grupo 2.0')
+    foto1 = quote('/fotos/la traviesa/1.webp')
+    ld = json.dumps({'@context': 'https://schema.org', '@graph': [
+        {'@type': 'Service', '@id': f'{url}#servicio', 'name': 'Cenas de empresa y eventos privados en Madrid',
+         'serviceType': 'Organización de cenas de empresa, cumpleaños, despedidas y eventos privados',
+         'description': desc, 'url': url, 'areaServed': {'@type': 'City', 'name': 'Madrid'},
+         'provider': {'@id': f'{BASE}/#org'},
+         'offers': {'@type': 'AggregateOffer', 'priceCurrency': 'EUR', 'lowPrice': '45', 'highPrice': '65',
+                    'description': 'Menús de Navidad para grupos en La Traviesa 2.0, bebida incluida'},
+         'potentialAction': {'@type': 'ReserveAction', 'target': KOMVO}},
+        {'@type': 'BreadcrumbList', 'itemListElement': [
+            {'@type': 'ListItem', 'position': 1, 'name': 'Grupo 2.0', 'item': BASE + '/'},
+            {'@type': 'ListItem', 'position': 2, 'name': 'Eventos', 'item': url}]},
+    ]}, ensure_ascii=False, indent=1)
+    tipos = '\n'.join(
+        f'<div class="oc ev rev" style="--oc:rgb({rgb})"><span class="oc-n">0{i + 1}</span><h3>{esc(t)}</h3><span>{esc(p)}</span></div>'
+        for i, (t, p, rgb) in enumerate(EVENTOS_TIPOS))
+    locs = '\n'.join(
+        f'<a class="oc rev" href="/locales/{s}/" style="--oc:rgb({ESTILO[POR_SLUG[s]["key"]]["rgb"]})"><span class="oc-n">{esc(POR_SLUG[s]["nombre"])}</span><b>{esc(plan)}</b><span>{esc(txt)}</span><i>{ICO["arrow"]}</i></a>'
+        for s, plan, txt in EVENTOS_LOCALES)
+    faqs = '\n'.join(f'<details class="fq rev"><summary>{esc(q)}<span class="fq-i" aria-hidden="true"></span></summary><p>{a}</p></details>' for q, a in EVENTOS_FAQ)
+    pie = ''.join(f'<a href="/locales/{o["slug"]}/">{esc(o["nombre"])}</a>' for o in LOCALES)
+    mob = '\n'.join(
+        f'<a class="mn-link" href="/locales/{o["slug"]}/" style="--oc:rgb({ESTILO[o["key"]]["rgb"]})"><span class="mn-i">{ESTILO[o["key"]]["num"]}</span>{esc(o["nombre"])}</a>'
+        for o in LOCALES)
+    ticks = ['Cenas de empresa', 'Cumpleaños', 'Despedidas', 'Afterwork', 'Navidad 2026', 'Menús desde 45 €']
+    tick_html = ''.join(f'<span class="tick">{esc(t)}<span class="tick-dot"></span></span>' for t in ticks * 2)
+    return f'''<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<!-- Página generada por locales/_generar.py — no editar a mano -->
+<title>{esc(title)}</title>
+<meta name="description" content="{esc(desc)}">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="{url}">
+<meta name="theme-color" content="#0a0908" id="theme-color-meta">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Grupo 2.0">
+<meta property="og:locale" content="es_ES">
+<meta property="og:title" content="{esc(title)}">
+<meta property="og:description" content="{esc(desc)}">
+<meta property="og:url" content="{url}">
+<meta property="og:image" content="{BASE}{foto1}">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="1066">
+<meta property="og:image:alt" content="Cena de grupo en La Traviesa 2.0">
+<meta name="twitter:card" content="summary_large_image">
+<script>
+(function(){{var t;try{{t=localStorage.getItem('g20theme')}}catch(e){{}}if(!t){{var h=new Date().getHours();t=(h>=7&&h<20)?'day':'night'}}document.documentElement.setAttribute('data-theme',t)}})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{ld}
+</script>
+<style>{CSS}
+.ev-hero{{text-align:left}}
+.ev-hero h1{{font-size:clamp(34px,6.4vw,92px);max-width:14ch;margin-top:10px;line-height:.92}}
+.ev-hero .tagline{{max-width:560px}}
+.ev h3{{font-family:'Archivo Black',sans-serif;font-weight:400;font-size:20px;text-transform:uppercase;line-height:1.1}}
+.ev{{padding-bottom:26px}}
+.nav-band{{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,5vw,64px);align-items:center}}
+.nav-band .lph{{aspect-ratio:4/3}}
+.precios{{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:22px}}
+.precio{{border:1px solid var(--bdr2);border-radius:16px;padding:16px 18px;background:var(--card)}}
+.precio b{{display:block;font-family:'Archivo Black',sans-serif;font-weight:400;font-size:26px;color:var(--lct)}}
+.precio span{{font-size:13px;color:var(--txt2)}}
+.pasos{{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;counter-reset:s}}
+.paso{{border-top:2px solid rgb(var(--lcr));padding-top:18px}}
+.paso::before{{counter-increment:s;content:'0' counter(s);font-family:'Anton',sans-serif;font-size:40px;line-height:1;color:transparent;-webkit-text-stroke:1.5px var(--lct);display:block;margin-bottom:10px}}
+.paso b{{display:block;font-size:17px;margin-bottom:6px}}
+.paso span{{color:var(--txt2);font-size:15px}}
+.mail{{margin-top:18px;font-size:14px;color:var(--txt2)}}.mail a{{color:var(--lct);border-bottom:1px solid currentColor}}
+@media(max-width:1000px){{.nav-band,.pasos{{grid-template-columns:1fr}}}}
+</style>
+</head>
+<body style="--lc:rgb(231,47,138);--lcr:231,47,138;--lct-n:#ff6fb0;--lct-d:#c0186c;--on-lc:#fff">
+<a class="skip-link" href="#main">Saltar al contenido</a>
+<div id="cur" aria-hidden="true"></div>
+<button id="theme-btn" aria-label="Cambiar tema día/noche" title="Cambiar tema"></button>
+
+<nav id="nav" aria-label="Principal">
+  <a class="nav-pill" href="/">GRUPO_2.0</a>
+  <ul class="nav-links">
+    <li><a href="/#locales">Locales</a></li>
+    <li><a href="/eventos/" aria-current="page">Eventos</a></li>
+    <li><a href="/#socios">Socios</a></li>
+    <li><a href="/#contacto">Contacto</a></li>
+  </ul>
+  <a class="nav-res" href="{KOMVO}" target="_blank" rel="noopener">Reservar evento ↗</a>
+  <button id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobnav"><span></span><span></span><span></span></button>
+</nav>
+<div id="mobnav" aria-hidden="true">
+  <div class="mn-inner">
+    <p class="mn-t">Los locales de la familia</p>
+{mob}
+    <a class="mn-res" href="{wa}" target="_blank" rel="noopener">{ICO['wa']} Cuéntanos tu evento</a>
+  </div>
+</div>
+
+<main id="main">
+<header class="hero" id="hero">
+  <div class="marq" aria-hidden="true"><div class="marq-in"><span>Eventos 2.0</span><span>Eventos 2.0</span><span>Eventos 2.0</span></div></div>
+  <div class="hero-in">
+    <div class="ev-hero">
+      <nav class="crumbs rev" aria-label="Ruta"><a href="/">Grupo 2.0</a> / Eventos</nav>
+      <div class="rev">
+        <span class="lc-num">EVENTOS PRIVADOS · MADRID</span>
+        <h1>Cenas de empresa y eventos en <em>Madrid</em></h1>
+        <p class="tagline">Cenas de empresa, cumpleaños, despedidas y afterworks en seis locales de Grupo 2.0 en Salamanca, Chamartín y la Castellana. Tú traes a la gente; nosotros, el sitio, la comida, las copas y la música.</p>
+        <div class="tags"><span class="tag">Menús de Navidad desde 45 €</span><span class="tag">Bebida incluida</span><span class="tag">Reserva online</span></div>
+        <div class="ctas">
+          <a class="btn btn-pri" href="{KOMVO}" target="_blank" rel="noopener">{ICO['cal']} Reservar evento online</a>
+          <a class="btn btn-wa ghost" href="{wa_emp}" target="_blank" rel="noopener">{ICO['wa']} Cuéntanos tu plan</a>
+        </div>
+        <p class="mail">¿Prefieres email? <a href="mailto:hola@grupodospuntocero.com?subject=Evento%20con%20Grupo%202.0">hola@grupodospuntocero.com</a></p>
+      </div>
+    </div>
+    <div class="hero-photos rev" aria-hidden="true">
+      <div class="lph"><img src="{foto1}" alt="" width="1600" height="1066" fetchpriority="high" decoding="async"></div>
+      <div class="lph"><img src="{quote('/fotos/green/2.webp')}" alt="" width="1600" height="1066" decoding="async"></div>
+      <div class="lph"><img src="{quote('/fotos/la chula/3.webp')}" alt="" width="1600" height="1066" decoding="async"></div>
+    </div>
+  </div>
+</header>
+
+<div class="ticker" aria-hidden="true"><div class="ticker-track">{tick_html}</div></div>
+
+<section class="sec" aria-labelledby="h-tipos">
+  <div class="ci rev"><div><div class="ci-eyebrow">Qué celebramos</div><h2 id="h-tipos">Cualquier excusa vale</h2></div><div class="ci-count" aria-hidden="true">2.0</div></div>
+  <div class="otros">
+{tipos}
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="h-navidad">
+  <div class="nav-band">
+    <div class="rev">
+      <div class="ci-eyebrow">Navidad 2026</div>
+      <h2 id="h-navidad">Cenas de Navidad de empresa en La Traviesa</h2>
+      <p class="mn-intro" style="margin:18px 0 0">Comidas y cenas de Navidad para empresas, amigos y familia en La Traviesa 2.0 (López de Hoyos, 7): platos para compartir, principal a elegir, postres caseros y bebida incluida durante toda la comida.</p>
+      <div class="precios">
+        <div class="precio"><b>45 €</b><span>Menú Travieso</span></div>
+        <div class="precio"><b>55 €</b><span>Menú Muy Travieso</span></div>
+        <div class="precio"><b>65 €</b><span>Menú La Glotona</span></div>
+        <div class="precio"><b>45 €</b><span>Menú Cóctel, para grupos grandes</span></div>
+      </div>
+      <div class="ctas"><a class="btn btn-pri" href="/traviesa/">{ICO['carta']} Ver los menús de Navidad</a></div>
+    </div>
+    <div class="lph rev"><img src="{quote('/fotos/la traviesa/2.webp')}" alt="Comedor de La Traviesa 2.0" width="1600" height="1066" loading="lazy" decoding="async"></div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="h-donde">
+  <div class="ci rev"><div><div class="ci-eyebrow">Dónde</div><h2 id="h-donde">Elige el sitio según el plan</h2></div></div>
+  <div class="otros">
+{locs}
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="h-pasos">
+  <div class="ci rev"><div><div class="ci-eyebrow">Cómo funciona</div><h2 id="h-pasos">Tres pasos y a celebrar</h2></div></div>
+  <div class="pasos">
+    <div class="paso rev"><b>Cuéntanos el plan</b><span>Fecha, cuántos sois y qué queréis celebrar. Online, por WhatsApp o por email.</span></div>
+    <div class="paso rev"><b>Te proponemos sitio y menú</b><span>Te decimos qué local encaja mejor y cerramos menú, bebida y horario.</span></div>
+    <div class="paso rev"><b>Tú solo vienes</b><span>Nosotros nos encargamos del resto. Lo de mañana en la oficina ya es cosa tuya.</span></div>
+  </div>
+  <div class="ctas rev" style="margin-top:34px">
+    <a class="btn btn-pri" href="{KOMVO}" target="_blank" rel="noopener">{ICO['cal']} Reservar evento online</a>
+    <a class="btn btn-wa ghost" href="{wa}" target="_blank" rel="noopener">{ICO['wa']} WhatsApp</a>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="h-faq">
+  <div class="ci rev"><div><div class="ci-eyebrow">Dudas</div><h2 id="h-faq">Preguntas rápidas</h2></div></div>
+  {faqs}
+</section>
+</main>
+
+<footer>
+  <div class="ft-top">
+    <div class="ft-logo">GRUPO_2.0</div>
+    <nav class="ft-locs" aria-label="Locales">{pie}<a href="/eventos/" aria-current="page">Eventos</a></nav>
+  </div>
+  <div class="ft-bot">
+    <div><p class="ft-copy">© 2026 Grupo 2.0 · Madrid · 656 485 099 · <a href="mailto:hola@grupodospuntocero.com">hola@grupodospuntocero.com</a></p>
+    <div class="lg-links"><a href="/#aviso">Aviso legal</a><a href="/#privacidad">Privacidad</a><a href="/#cookies">Cookies</a></div></div>
+    <div class="ft-soc">
+      <a href="https://www.instagram.com/grupo_2.0" target="_blank" rel="noopener" aria-label="Instagram Grupo 2.0">{ICO['ig']}</a>
+      <a href="https://www.tiktok.com/@grupo2.0_" target="_blank" rel="noopener" aria-label="TikTok Grupo 2.0">{ICO['tt']}</a>
+      <a href="https://wa.me/{WA}" target="_blank" rel="noopener" aria-label="WhatsApp Grupo 2.0">{ICO['wa']}</a>
+    </div>
+  </div>
+</footer>
+
+<a href="{wa}" id="waf" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"><svg width="25" height="25" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="{WA_PATH}"/></svg></a>
+<script>{JS_COMUN}</script>
+</body>
+</html>
+'''
+
+
 if __name__ == '__main__':
     raiz = os.path.dirname(os.path.abspath(__file__))
     for l in LOCALES:
@@ -877,3 +1146,7 @@ if __name__ == '__main__':
         with open(os.path.join(raiz, l['slug'], 'index.html'), 'w', encoding='utf-8') as f:
             f.write(pagina(l))
         print('ok', l['slug'])
+    os.makedirs(os.path.join(raiz, '..', 'eventos'), exist_ok=True)
+    with open(os.path.join(raiz, '..', 'eventos', 'index.html'), 'w', encoding='utf-8') as f:
+        f.write(pagina_eventos())
+    print('ok eventos')
