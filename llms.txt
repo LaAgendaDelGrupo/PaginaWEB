@@ -4,6 +4,8 @@
 
 ## Locales
 
+Todos los locales con direcciones y horarios: https://grupodospuntocero.com/locales/
+
 - [Las Tablas 2.0](https://grupodospuntocero.com/locales/las-tablas/): bar de copas. Calle del General Oraá, 26 (Salamanca). Jueves a sábado, 20:00–02:00.
 - [La Pequeña 2.0](https://grupodospuntocero.com/locales/la-pequena/): bar de copas de barrio. Calle del General Oraá, 27 (Salamanca). Jueves a sábado, 20:00–02:00.
 - [La Chula 2.0](https://grupodospuntocero.com/locales/la-chula/): bar de copas con neón. Calle de Claudio Coello, 116 (Salamanca). Jueves 20:00–03:00, viernes y sábado 20:00–03:30.

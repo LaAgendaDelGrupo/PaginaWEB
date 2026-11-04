@@ -10,6 +10,7 @@ import json, os, html
 from urllib.parse import quote
 
 BASE = 'https://grupodospuntocero.com'
+HOY = '2026-11-04'  # lastmod del sitemap: cambiar al regenerar
 WA = '34656485099'
 TEL = '+34656485099'
 DIAS = {'Mo': ('Monday', 'Lunes'), 'Tu': ('Tuesday', 'Martes'), 'We': ('Wednesday', 'Miércoles'),
@@ -312,7 +313,8 @@ def schema(l):
         nodo['acceptsReservations'] = True
     migas = {'@type': 'BreadcrumbList', 'itemListElement': [
         {'@type': 'ListItem', 'position': 1, 'name': 'Grupo 2.0', 'item': BASE + '/'},
-        {'@type': 'ListItem', 'position': 2, 'name': l['nombre'], 'item': url}]}
+        {'@type': 'ListItem', 'position': 2, 'name': 'Locales', 'item': BASE + '/locales/'},
+        {'@type': 'ListItem', 'position': 3, 'name': l['nombre'], 'item': url}]}
     return json.dumps({'@context': 'https://schema.org', '@graph': [nodo, migas]}, ensure_ascii=False, indent=1)
 
 
@@ -716,7 +718,7 @@ def pagina(l):
 <nav id="nav" aria-label="Principal">
   <a class="nav-pill" href="/">GRUPO_2.0</a>
   <ul class="nav-links">
-    <li><a href="/#locales">Locales</a></li>
+    <li><a href="/locales/">Locales</a></li>
     <li><a href="/eventos/">Eventos</a></li>
     <li><a href="/#socios">Socios</a></li>
     <li><a href="/#contacto">Contacto</a></li>
@@ -737,7 +739,7 @@ def pagina(l):
   <div class="marq" aria-hidden="true"><div class="marq-in">{marq}</div></div>
   <div class="hero-in">
     <div>
-      <nav class="crumbs rev" aria-label="Ruta"><a href="/">Grupo 2.0</a> / <a href="/#locales">Locales</a> / {esc(l['nombre'])}</nav>
+      <nav class="crumbs rev" aria-label="Ruta"><a href="/">Grupo 2.0</a> / <a href="/locales/">Locales</a> / {esc(l['nombre'])}</nav>
       <div class="rev">
         <span class="lc-num">{e['num']} / 07 — {esc(e['label'])}<span class="lc-open" id="estado" hidden><span class="od"></span><span class="ot"></span></span></span>
         <div class="lc-logo{" oscuro" if l["key"] in ("traviesa", "pequeña", "green") else ""}"><img src="{quote('/logos/' + l['logo'])}" alt="Logo de {esc(l['nombre'])}" width="1400" height="400"></div>
@@ -800,7 +802,7 @@ def pagina(l):
 <footer>
   <div class="ft-top">
     <div class="ft-logo">GRUPO_2.0</div>
-    <nav class="ft-locs" aria-label="Locales">{pie}<a href="/eventos/">Eventos</a></nav>
+    <nav class="ft-locs" aria-label="Locales"><a href="/locales/">Todos los locales</a>{pie}<a href="/eventos/">Eventos</a></nav>
   </div>
   <div class="ft-bot">
     <div><p class="ft-copy">© 2026 Grupo 2.0 · Madrid · 656 485 099 · <a href="mailto:hola@grupodospuntocero.com">hola@grupodospuntocero.com</a></p>
@@ -1021,7 +1023,7 @@ def pagina_eventos():
 <nav id="nav" aria-label="Principal">
   <a class="nav-pill" href="/">GRUPO_2.0</a>
   <ul class="nav-links">
-    <li><a href="/#locales">Locales</a></li>
+    <li><a href="/locales/">Locales</a></li>
     <li><a href="/eventos/" aria-current="page">Eventos</a></li>
     <li><a href="/#socios">Socios</a></li>
     <li><a href="/#contacto">Contacto</a></li>
@@ -1119,7 +1121,101 @@ def pagina_eventos():
 <footer>
   <div class="ft-top">
     <div class="ft-logo">GRUPO_2.0</div>
-    <nav class="ft-locs" aria-label="Locales">{pie}<a href="/eventos/" aria-current="page">Eventos</a></nav>
+    <nav class="ft-locs" aria-label="Locales"><a href="/locales/">Todos los locales</a>{pie}<a href="/eventos/" aria-current="page">Eventos</a></nav>
+  </div>
+  <div class="ft-bot">
+    <div><p class="ft-copy">© 2026 Grupo 2.0 · Madrid · 656 485 099 · <a href="mailto:hola@grupodospuntocero.com">hola@grupodospuntocero.com</a></p>
+    <div class="lg-links"><a href="/#aviso">Aviso legal</a><a href="/#privacidad">Privacidad</a><a href="/#cookies">Cookies</a></div></div>
+    <div class="ft-soc">
+      <a href="https://www.instagram.com/grupo_2.0" target="_blank" rel="noopener" aria-label="Instagram Grupo 2.0">{ICO['ig']}</a>
+      <a href="https://www.tiktok.com/@grupo2.0_" target="_blank" rel="noopener" aria-label="TikTok Grupo 2.0">{ICO['tt']}</a>
+      <a href="https://wa.me/{WA}" target="_blank" rel="noopener" aria-label="WhatsApp Grupo 2.0">{ICO['wa']}</a>
+    </div>
+  </div>
+</footer>
+
+<a href="{wa}" id="waf" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"><svg width="25" height="25" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="{WA_PATH}"/></svg></a>
+<script>{JS_COMUN}</script>
+</body>
+</html>
+'''
+
+def envoltorio(title, desc, url, ld, css_extra, main, actual='', robots='index,follow,max-image-preview:large',
+               og_img='/fotos/green/1.webp', og_alt='Locales de Grupo 2.0 en Madrid'):
+    """Cabecera, nav, menú móvil, pie y scripts comunes (misma estética que las páginas de locales)."""
+    wa = f'https://wa.me/{WA}?text=' + quote('Hola! Quería información sobre Grupo 2.0')
+    pie = ''.join(f'<a href="/locales/{o["slug"]}/">{esc(o["nombre"])}</a>' for o in LOCALES)
+    mob = '\n'.join(
+        f'<a class="mn-link" href="/locales/{o["slug"]}/" style="--oc:rgb({ESTILO[o["key"]]["rgb"]})"><span class="mn-i">{ESTILO[o["key"]]["num"]}</span>{esc(o["nombre"])}</a>'
+        for o in LOCALES)
+    cur = lambda k: ' aria-current="page"' if actual == k else ''
+    canon = f'<link rel="canonical" href="{url}">\n' if url else ''
+    ld_html = f'<script type="application/ld+json">\n{ld}\n</script>\n' if ld else ''
+    return f'''<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<!-- Página generada por locales/_generar.py — no editar a mano -->
+<title>{esc(title)}</title>
+<meta name="description" content="{esc(desc)}">
+<meta name="robots" content="{robots}">
+{canon}<meta name="theme-color" content="#0a0908" id="theme-color-meta">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Grupo 2.0">
+<meta property="og:locale" content="es_ES">
+<meta property="og:title" content="{esc(title)}">
+<meta property="og:description" content="{esc(desc)}">
+<meta property="og:url" content="{url or BASE + '/'}">
+<meta property="og:image" content="{BASE}{quote(og_img)}">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="1066">
+<meta property="og:image:alt" content="{esc(og_alt)}">
+<meta name="twitter:card" content="summary_large_image">
+<script>
+(function(){{var t;try{{t=localStorage.getItem('g20theme')}}catch(e){{}}if(!t){{var h=new Date().getHours();t=(h>=7&&h<20)?'day':'night'}}document.documentElement.setAttribute('data-theme',t)}})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+{ld_html}<style>{CSS}
+{css_extra}
+</style>
+</head>
+<body style="--lc:rgb(231,47,138);--lcr:231,47,138;--lct-n:#ff6fb0;--lct-d:#c0186c;--on-lc:#fff">
+<a class="skip-link" href="#main">Saltar al contenido</a>
+<div id="cur" aria-hidden="true"></div>
+<button id="theme-btn" aria-label="Cambiar tema día/noche" title="Cambiar tema"></button>
+
+<nav id="nav" aria-label="Principal">
+  <a class="nav-pill" href="/">GRUPO_2.0</a>
+  <ul class="nav-links">
+    <li><a href="/locales/"{cur('locales')}>Locales</a></li>
+    <li><a href="/eventos/">Eventos</a></li>
+    <li><a href="/#socios">Socios</a></li>
+    <li><a href="/#contacto">Contacto</a></li>
+  </ul>
+  <a class="nav-res" href="{KOMVO}" target="_blank" rel="noopener">Reservar ↗</a>
+  <button id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobnav"><span></span><span></span><span></span></button>
+</nav>
+<div id="mobnav" aria-hidden="true">
+  <div class="mn-inner">
+    <p class="mn-t">Los locales de la familia</p>
+{mob}
+    <a class="mn-res" href="{wa}" target="_blank" rel="noopener">{ICO['wa']} Escríbenos</a>
+  </div>
+</div>
+
+<main id="main">
+{main}
+</main>
+
+<footer>
+  <div class="ft-top">
+    <div class="ft-logo">GRUPO_2.0</div>
+    <nav class="ft-locs" aria-label="Locales"><a href="/locales/"{cur('locales')}>Todos los locales</a>{pie}<a href="/eventos/">Eventos</a></nav>
   </div>
   <div class="ft-bot">
     <div><p class="ft-copy">© 2026 Grupo 2.0 · Madrid · 656 485 099 · <a href="mailto:hola@grupodospuntocero.com">hola@grupodospuntocero.com</a></p>
@@ -1139,6 +1235,173 @@ def pagina_eventos():
 '''
 
 
+# Zonas para la página /locales/ (búsquedas tipo "bares de copas barrio de Salamanca")
+ZONAS = [
+    ('Barrio de Salamanca', 'Cuatro locales a pocos minutos andando: dos bares de copas puerta con puerta en General Oraá, el neón de La Chula en Claudio Coello y el restaurante de la familia en López de Hoyos.',
+     ['las-tablas', 'la-pequena', 'la-chula', 'la-traviesa']),
+    ('Chamartín', 'Copas en Alberto Alcocer, a un paso de la Castellana.', ['la-peluqueria']),
+    ('Paseo de la Castellana', 'Restaurante, bar y discoteca en un mismo local: cenas, copas y baile hasta las 6:00.', ['green']),
+]
+
+CSS_HUB = """
+.hub-hero h1{font-size:clamp(34px,6.4vw,92px);max-width:15ch;margin-top:10px;line-height:.92}
+.hub-hero .tagline{max-width:620px}
+.zona-intro{max-width:640px;color:var(--txt2);font-size:16px;line-height:1.65;margin:-6px 0 26px}
+.hub{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.hc{position:relative;display:flex;flex-direction:column;border:1px solid var(--bdr2);border-radius:20px;background:var(--card);overflow:hidden;transition:transform .35s var(--ease),border-color .3s,box-shadow .3s}
+.hc:hover{transform:translateY(-4px);border-color:var(--oc);box-shadow:0 18px 40px var(--photo-shadow)}
+.hc .hc-img{aspect-ratio:16/10;overflow:hidden}
+.hc .hc-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.hc:hover .hc-img img{transform:scale(1.05)}
+.hc-b{padding:20px 22px 24px;display:flex;flex-direction:column;gap:6px}
+.hc-n{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--oc);font-weight:700}
+.hc h3{font-family:'Archivo Black',sans-serif;font-weight:400;font-size:24px;text-transform:uppercase;line-height:1.05}
+.hc p{font-size:14px;color:var(--txt2);line-height:1.5}
+.hc .hc-t{font-style:italic;color:var(--txt)}
+.hc i{position:absolute;right:18px;top:18px;width:40px;height:40px;border-radius:50%;background:rgba(10,9,8,.55);color:#fff;display:flex;align-items:center;justify-content:center;font-style:normal}
+.tabla-wrap{overflow-x:auto;border:1px solid var(--bdr2);border-radius:18px;background:var(--card)}
+.tabla{width:100%;border-collapse:collapse;font-size:14px;min-width:640px}
+.tabla th,.tabla td{text-align:left;padding:14px 18px;border-bottom:1px solid var(--bdr2);vertical-align:top}
+.tabla th{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--txt3);font-weight:700}
+.tabla tr:last-child td{border-bottom:0}
+.tabla td a{font-weight:700;border-bottom:1px solid var(--bdr2)}
+.tabla td{color:var(--txt2)}
+"""
+
+
+def pagina_locales():
+    url = f'{BASE}/locales/'
+    title = 'Bares de copas en Madrid: barrio de Salamanca y la Castellana · Grupo 2.0'
+    desc = ('Los 6 locales de Grupo 2.0 en Madrid: bares de copas en el barrio de Salamanca y Chamartín, '
+            'restaurante en López de Hoyos y restaurante con discoteca en la Castellana. Horarios, direcciones y reservas.')
+    ld = json.dumps({'@context': 'https://schema.org', '@graph': [
+        {'@type': 'CollectionPage', '@id': f'{url}#pagina', 'url': url, 'name': title, 'description': desc,
+         'inLanguage': 'es', 'isPartOf': {'@id': f'{BASE}/#org'},
+         'mainEntity': {'@type': 'ItemList', 'numberOfItems': len(LOCALES), 'itemListElement': [
+             {'@type': 'ListItem', 'position': i + 1, 'url': f'{BASE}/locales/{l["slug"]}/', 'name': l['nombre']}
+             for i, l in enumerate(LOCALES)]}},
+        {'@type': 'BreadcrumbList', 'itemListElement': [
+            {'@type': 'ListItem', 'position': 1, 'name': 'Grupo 2.0', 'item': BASE + '/'},
+            {'@type': 'ListItem', 'position': 2, 'name': 'Locales', 'item': url}]},
+    ]}, ensure_ascii=False, indent=1)
+
+    def tarjeta(l, primera):
+        e = ESTILO[l['key']]
+        carga = 'decoding="async"' if primera else 'loading="lazy" decoding="async"'
+        return (f'<a class="hc rev" href="/locales/{l["slug"]}/" style="--oc:rgb({e["rgb"]})">'
+                f'<div class="hc-img"><img src="{quote("/fotos/" + l["fotos"] + "/1.webp")}" alt="{esc(l["nombre"])}, {esc(l["tipo_txt"].lower())} en {esc(l["calle"])}" width="1600" height="1066" {carga}></div>'
+                f'<div class="hc-b"><span class="hc-n">{e["num"]} · {esc(l["tipo_txt"])}</span><h3>{esc(l["nombre"])}</h3>'
+                f'<p>{esc(l["calle"])}, Madrid</p><p>Horario: {esc(horario_corto(l))}.</p>'
+                f'<p class="hc-t">«{esc(l["tagline"])}»</p></div><i>{ICO["arrow"]}</i></a>')
+
+    zonas_html, primera = [], True
+    for i, (zona, intro, slugs) in enumerate(ZONAS):
+        cards = []
+        for s in slugs:
+            cards.append(tarjeta(POR_SLUG[s], primera))
+            primera = False
+        n = len(slugs)
+        h2 = f'{"Bares de copas" if zona != "Paseo de la Castellana" else "Restaurante y discoteca"} en {"el " if zona.startswith(("Barrio", "Paseo")) else ""}{zona}'
+        zonas_html.append(f'''<section class="sec" aria-labelledby="h-z{i}">
+  <div class="ci rev"><div><div class="ci-eyebrow">{esc(zona)} · {n} {"local" if n == 1 else "locales"}</div><h2 id="h-z{i}">{esc(h2)}</h2></div></div>
+  <p class="zona-intro rev">{esc(intro)}</p>
+  <div class="hub">
+{chr(10).join(cards)}
+  </div>
+</section>''')
+
+    filas = '\n'.join(
+        f'<tr><td><a href="/locales/{l["slug"]}/">{esc(l["nombre"])}</a></td><td>{esc(l["tipo_txt"])}</td>'
+        f'<td>{esc(l["calle"])}</td><td>{esc(l["zona"])}</td><td>{esc(horario_corto(l))}</td></tr>'
+        for l in LOCALES)
+
+    main = f'''<header class="hero" id="hero">
+  <div class="marq" aria-hidden="true"><div class="marq-in"><span>Locales 2.0</span><span>Locales 2.0</span><span>Locales 2.0</span></div></div>
+  <div class="hero-in">
+    <div class="hub-hero">
+      <nav class="crumbs rev" aria-label="Ruta"><a href="/">Grupo 2.0</a> / Locales</nav>
+      <div class="rev">
+        <span class="lc-num">6 LOCALES · MADRID</span>
+        <h1>Bares de copas en <em>Madrid</em></h1>
+        <p class="tagline">Seis locales de la misma familia entre el barrio de Salamanca, Chamartín y la Castellana: bares de copas de barrio, neón y música, un restaurante para comer y cenar y un local que es restaurante, bar y discoteca hasta las 6:00.</p>
+        <div class="ctas">
+          <a class="btn btn-pri" href="{KOMVO}" target="_blank" rel="noopener">{ICO['cal']} Reservar mesa</a>
+          <a class="btn btn-wa ghost" href="/eventos/">Cenas de empresa y eventos</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-photos rev" aria-hidden="true">
+      <div class="lph"><img src="{quote('/fotos/la chula/1.webp')}" alt="" width="1600" height="1066" fetchpriority="high" decoding="async"></div>
+      <div class="lph"><img src="{quote('/fotos/tablas/2.webp')}" alt="" width="1600" height="1066" decoding="async"></div>
+      <div class="lph"><img src="{quote('/fotos/green/3.webp')}" alt="" width="1600" height="1066" decoding="async"></div>
+    </div>
+  </div>
+</header>
+
+{chr(10).join(zonas_html)}
+
+<section class="sec" aria-labelledby="h-tabla">
+  <div class="ci rev"><div><div class="ci-eyebrow">De un vistazo</div><h2 id="h-tabla">Direcciones y horarios</h2></div></div>
+  <div class="tabla-wrap rev">
+    <table class="tabla">
+      <thead><tr><th scope="col">Local</th><th scope="col">Tipo</th><th scope="col">Dirección</th><th scope="col">Zona</th><th scope="col">Horario</th></tr></thead>
+      <tbody>
+{filas}
+      </tbody>
+    </table>
+  </div>
+</section>'''
+    return envoltorio(title, desc, url, ld, CSS_HUB, main, actual='locales',
+                      og_img='/fotos/la chula/1.webp', og_alt='Bar de copas La Chula 2.0 en Madrid')
+
+
+def pagina_404():
+    cards = '\n'.join(
+        f'<a class="oc rev" href="/locales/{o["slug"]}/" style="--oc:rgb({ESTILO[o["key"]]["rgb"]})"><span class="oc-n">{ESTILO[o["key"]]["num"]}</span><b>{esc(o["nombre"])}</b><span>{esc(o["tipo_txt"])} · {esc(ESTILO[o["key"]]["tag_dir"])}</span><i>{ICO["arrow"]}</i></a>'
+        for o in LOCALES)
+    main = f'''<header class="hero" id="hero">
+  <div class="hero-in">
+    <div class="hub-hero">
+      <div class="rev">
+        <span class="lc-num">ERROR 404</span>
+        <h1>Esta página se ha ido de <em>copas</em></h1>
+        <p class="tagline">No encontramos lo que buscabas, pero los locales siguen en su sitio.</p>
+        <div class="ctas">
+          <a class="btn btn-pri" href="/">Volver al inicio</a>
+          <a class="btn btn-wa ghost" href="/locales/">Ver todos los locales</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<section class="sec" aria-labelledby="h-404">
+  <div class="ci rev"><div><div class="ci-eyebrow">A lo mejor buscabas</div><h2 id="h-404">Nuestros locales</h2></div></div>
+  <div class="otros">
+{cards}
+    <a class="oc rev" href="/eventos/"><span class="oc-n">Eventos</span><b>Cenas de empresa</b><span>Navidad, cumpleaños y despedidas</span><i>{ICO["arrow"]}</i></a>
+  </div>
+</section>'''
+    return envoltorio('Página no encontrada · Grupo 2.0', 'Esta página no existe. Mira los locales de Grupo 2.0 en Madrid.',
+                      None, None, CSS_HUB, main, robots='noindex,follow')
+
+
+def sitemap():
+    """sitemap.xml con fotos de cada página (Google Imágenes)."""
+    def img(path, titulo):
+        return f'    <image:image><image:loc>{u(path)}</image:loc><image:title>{esc(titulo)}</image:title></image:image>\n'
+    def url(loc, imgs=''):
+        return f'  <url>\n    <loc>{loc}</loc>\n    <lastmod>{HOY}</lastmod>\n{imgs}  </url>\n'
+    out = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n'
+    out += url(BASE + '/', img('/og.jpg', 'Grupo 2.0, bares de copas, restaurante y discoteca en Madrid'))
+    out += url(BASE + '/locales/', ''.join(img(f'/fotos/{l["fotos"]}/1.webp', l['nombre']) for l in LOCALES))
+    for l in LOCALES:
+        out += url(f'{BASE}/locales/{l["slug"]}/', ''.join(
+            img(f'/fotos/{l["fotos"]}/{i}.webp', f'{l["nombre"]}, {l["tipo_txt"].lower()} en {l["calle"]}, Madrid') for i in (1, 2, 3, 4)))
+    out += url(BASE + '/eventos/', img('/fotos/la traviesa/1.webp', 'Cenas de empresa en La Traviesa 2.0, Madrid'))
+    out += url(BASE + '/traviesa/')
+    return out + '</urlset>\n'
+
+
 if __name__ == '__main__':
     raiz = os.path.dirname(os.path.abspath(__file__))
     for l in LOCALES:
@@ -1150,3 +1413,12 @@ if __name__ == '__main__':
     with open(os.path.join(raiz, '..', 'eventos', 'index.html'), 'w', encoding='utf-8') as f:
         f.write(pagina_eventos())
     print('ok eventos')
+    with open(os.path.join(raiz, 'index.html'), 'w', encoding='utf-8') as f:
+        f.write(pagina_locales())
+    print('ok locales')
+    with open(os.path.join(raiz, '..', '404.html'), 'w', encoding='utf-8') as f:
+        f.write(pagina_404())
+    print('ok 404')
+    with open(os.path.join(raiz, '..', 'sitemap.xml'), 'w', encoding='utf-8') as f:
+        f.write(sitemap())
+    print('ok sitemap')
