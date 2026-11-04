@@ -129,6 +129,104 @@ LOCALES = [
 ]
 POR_SLUG = {l['slug']: l for l in LOCALES}
 
+# Cartas en texto (SEO: Google y los buscadores con IA leen los platos y precios).
+# Transcritas de cartas/traviesa.pdf y cartas/green.webp (04/11/2026). Al cambiar la carta impresa,
+# actualizar también esto y volver a generar. Platos: (nombre, descripción, precio, [nº alérgenos]).
+ALERGENOS_TRAVIESA = ['Gluten', 'Crustáceos', 'Huevo', 'Pescado', 'Cacahuetes', 'Soja', 'Lácteos', 'Frutos de cáscara',
+                      'Apio', 'Mostaza', 'Sésamo', 'Sulfitos', 'Altramuces', 'Moluscos']
+ALERGENOS_GREEN = ['Gluten', 'Huevo', 'Crustáceos', 'Pescado', 'Cacahuetes', 'Soja', 'Lácteos', 'Apio',
+                   'Frutos de cáscara', 'Sésamo', 'Moluscos', 'Mostaza', 'Altramuces', 'Sulfitos']
+CARTAS = {
+  'traviesa': dict(
+    alergenos=ALERGENOS_TRAVIESA,
+    intro='Cocina de producto para picar, compartir o sentarse en serio: gildas y montaditos por unidad, tapeo, huerta, principales y postres caseros, con una carta de vinos de Rioja, Ribera, Rueda, Valdeorras y Rías Baixas.',
+    secciones=[
+      ('Por unidad', [
+        ('Gilda clásica', '', '3,50', [1, 4]),
+        ('Anchoa 00', 'Sobre pan tostado con mantequilla ahumada', '6,50', [1, 4, 7]),
+        ('Sardina ahumada', 'Sobre pan tostado con gelatina de tomate y AOVE', '6,50', [1, 4]),
+        ('Huevo relleno de bonito', '', '3,50', [3, 4]),
+        ('Pimiento de piquillo relleno de bacalao desmigado', '', '4,50', [1, 4]),
+        ('Zamburiña a la plancha', 'Con sofrito de alga wakame y ron', '4,50', [2, 14]),
+      ]),
+      ('Tapeo', [
+        ('Torreznitos con escamas de sal', '', '11,50', []),
+        ('Ensaladilla rusa con bonito y piparras', '', '8,00', [3, 4]),
+        ('Croquetas cremosas de jamón', '5 unidades', '9,00', [1, 3, 7]),
+        ('Cecina de León', 'Con almendras tostadas y AOVE', '13,50', [8]),
+        ('Pepito de solomillo de vaca', 'Con pimientos caramelizados', '13,50', [1]),
+        ('Bocata de chipirones fritos', 'Con mayonesa cítrica', '9,50', [1, 3, 14]),
+        ('Tacos de bacalao en tempura', 'Con mayonesa cítrica', '15,50', [1, 3, 4]),
+        ('Potito travieso', '', '10,00', [3, 7]),
+        ('Mejillones a la crema', '', '13,50', [7, 14]),
+        ('Coquinas a la plancha', '', '22,50', [14]),
+      ]),
+      ('Huerta', [
+        ('Puerro asado con salsa romescu', '', '12,50', [8]),
+        ('Tomate azul', 'Preparado con emulsión de tomate, AOVE y sal', '11,50', []),
+        ('Piparras fritas', '', '10,50', []),
+        ('Burrata', 'Sobre pimientos caramelizados y polvo de pistacho', '16,50', [7, 8]),
+        ('Alcachofas confitadas con huevo de codorniz', '', '12,50', [3]),
+      ]),
+      ('Principales', [
+        ('Fideuá negra con chipirones', '', '23,00', [1, 2, 3, 4, 14]),
+        ('Kokotxas al pil pil', 'Con huevos fritos y patatas chips', '23,50', [3, 4]),
+        ('Arroz meloso con rabo de toro', '', '17,50', [7]),
+        ('Fino escalope', 'Con huevo poché y queso manchego rallado', '22,50', [1, 3, 7]),
+        ('Tataki de pluma ibérica', 'Con mermelada de piquillos', '23,50', [6]),
+      ]),
+      ('Guarniciones', [
+        ('Patatas fritas', '', '3,50', []),
+        ('Pimientos caramelizados', '', '3,50', []),
+      ]),
+      ('Postres', [
+        ('Lemon curd', '', '6,50', [1, 3, 7]),
+        ('Brownie con helado de canela', '', '6,50', [1, 3, 7]),
+        ('Natillas con polvo Biscoff', '', '6,50', [1, 3, 7]),
+        ('Arroz con leche', '', '6,50', [7]),
+        ('Crema de mascarpone con pistacho', '', '6,50', [7, 8]),
+      ]),
+      ('Vinos tintos', [
+        ('Viña Vigenza Crianza', 'D.O. Rioja · Marqués de Reinosa · Tempranillo', '22', []),
+        ('Ramón Bilbao Crianza', 'D.O. Rioja · Bodegas Ramón Bilbao · Tempranillo', '25', []),
+        ('Azpilicueta Reserva', 'D.O. Rioja · Azpilicueta · Tempranillo, Graciano y Mazuelo', '29', []),
+        ('Vilano Roble', 'Ribera del Duero · Bodegas Vilano · Tinta del País', '22', []),
+        ('Cantovera 9 Meses', 'Ribera del Duero · Cantovera · Tempranillo', '25', []),
+        ('Cepa 21', 'Ribera del Duero · Bodegas Cepa 21 · Tempranillo', '39', []),
+        ('La Rinconada', 'Barcolobo · Tempranillo', '24', []),
+        ('Victoria', 'Barcolobo · Cabernet Sauvignon, Syrah y Tempranillo', '29', []),
+        ('Habla del Silencio', 'Bodegas Habla · Syrah, Cabernet Sauvignon y Tempranillo', '29', []),
+      ]),
+      ('Vinos blancos', [
+        ('José Pariente Verdejo', 'Rueda · José Pariente · Verdejo', '26', []),
+        ('O Luar do Sil', 'Valdeorras · Pago de los Capellanes · Godello', '31', []),
+        ('Godeval', 'Valdeorras · Bodegas Godeval · Godello', '29', []),
+        ('Lagar de Deuses', 'Monterrei · Méndez-Rojo · Godello', '27', []),
+        ('Carta Marina', 'Rías Baixas · Vía Atlántica · Albariño', '24', []),
+        ('Mar de Frades', 'Rías Baixas · Mar de Frades · Albariño', '35', []),
+        ('Paco & Lola', 'Rías Baixas · Paco & Lola · Albariño', '29', []),
+        ('Flor Innata', 'Castilla y León · Valdecuevas · Verdejo y Sauvignon Blanc', '21', []),
+        ('Valdecuevas Sauvignon Blanc', 'Castilla y León · Valdecuevas · Sauvignon Blanc', '26', []),
+      ]),
+    ]),
+  'green': dict(
+    alergenos=ALERGENOS_GREEN,
+    intro='Carta de noche para picar entre copa y copa, disponible jueves, viernes y sábado de 20:00 a 00:00: brioches, bravas, croquetas, tequeños, torreznos y más.',
+    secciones=[
+      ('Para picar', [
+        ('Cono de patatas paja', '', '2,50', []),
+        ('Slice de pizza', 'BBQ, york y queso o pepperoni', '3,00', [1, 2, 6, 7]),
+        ('Brioche Green', 'Rabas con mahonesa cítrica, pulled pork BBQ, pollo con queso de cabra o carrillera de ternera', '6,50', [1, 2, 3, 6, 7, 8, 14]),
+        ('Bravas Green', '', '9,00', []),
+        ('Croquetas de jamón', '', '10,00', [1, 2, 7]),
+        ('Tequeños', '', '12,00', [1, 2, 7]),
+        ('Torreznos', '', '12,00', []),
+        ('Fingers de pollo', '', '14,00', [1, 2, 6, 7]),
+        ('Trufada de patata', '', '14,00', [2, 7, 14]),
+      ]),
+    ]),
+}
+
 
 def esc(s):
     return html.escape(s, quote=True)
@@ -205,8 +303,9 @@ def schema(l):
         'sameAs': [f'https://www.instagram.com/{l["ig"]}'],
         'parentOrganization': {'@id': f'{BASE}/#org'},
     }
-    if l.get('carta'):
-        nodo['hasMenu'] = BASE + l['carta']
+    menu = menu_schema(l)
+    if menu:
+        nodo['hasMenu'] = menu
     if l.get('reservar'):
         nodo['acceptsReservations'] = l['reservar']
     elif 'Restaurant' in l['tipo']:
@@ -228,6 +327,53 @@ def faq(l):
          'Claro. Organizamos cumpleaños, cenas de empresa, despedidas y celebraciones. Cuéntanos la fecha y cuántos sois por WhatsApp o en <a href="mailto:hola@grupodospuntocero.com">hola@grupodospuntocero.com</a>.'),
     ] + l['extra_faq']
     return '\n'.join(f'<details class="fq rev"><summary>{esc(q)}<span class="fq-i" aria-hidden="true"></span></summary><p>{a}</p></details>' for q, a in preguntas)
+
+
+def precio_num(p):
+    return p.replace(',', '.')
+
+
+def carta_html(l):
+    c = CARTAS.get(l['key'])
+    if not c:
+        return ''
+    al = c['alergenos']
+    secs = []
+    for titulo, platos in c['secciones']:
+        items = []
+        for nombre, desc, precio, ns in platos:
+            alg = f'<span class="mn-al">{esc(", ".join(al[n - 1] for n in ns))}</span>' if ns else ''
+            d = f'<span class="mn-d">{esc(desc)}</span>' if desc else ''
+            items.append(f'<li><div class="mn-row"><span class="mn-n">{esc(nombre)}</span><span class="mn-dots" aria-hidden="true"></span><span class="mn-p">{esc(precio)} €</span></div>{d}{alg}</li>')
+        secs.append(f'<div class="mn-sec rev"><h3>{esc(titulo)}</h3><ul>{"".join(items)}</ul></div>')
+    pdf = l.get('carta', '')
+    descarga = f'<a class="btn btn-ghost" href="{quote(pdf)}" target="_blank" rel="noopener">{ICO["carta"]} Carta original{" (PDF)" if pdf.endswith(".pdf") else ""}</a>' if pdf else ''
+    return f'''
+<section class="sec" id="carta" aria-labelledby="h-carta">
+  <div class="ci rev"><div><div class="ci-eyebrow">La carta</div><h2 id="h-carta">Qué se come en {esc(l['nombre'])}</h2></div></div>
+  <p class="mn-intro rev">{esc(c['intro'])}</p>
+  <div class="mn-grid">
+{chr(10).join(secs)}
+  </div>
+  <div class="mn-foot rev"><p>Precios con IVA incluido según la carta vigente; pueden cambiar. Debajo de cada plato, sus alérgenos: si tienes alguna alergia o intolerancia, avísanos al pedir.</p>{descarga}</div>
+</section>
+'''
+
+
+def menu_schema(l):
+    c = CARTAS.get(l['key'])
+    if not c:
+        return BASE + l['carta'] if l.get('carta') else None
+    return {
+        '@type': 'Menu', 'name': f'Carta de {l["nombre"]}', 'inLanguage': 'es',
+        'url': f'{BASE}/locales/{l["slug"]}/#carta',
+        'hasMenuSection': [{
+            '@type': 'MenuSection', 'name': t,
+            'hasMenuItem': [dict({'@type': 'MenuItem', 'name': n,
+                                  'offers': {'@type': 'Offer', 'price': precio_num(p), 'priceCurrency': 'EUR'}},
+                                 **({'description': d} if d else {}))
+                            for n, d, p, _ in platos]} for t, platos in c['secciones']],
+    }
 
 
 WA_PATH = 'M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.124 1.527 5.854L0 24l6.335-1.508A11.956 11.956 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.848 0-3.584-.479-5.096-1.32l-.364-.217-3.763.896.944-3.669-.235-.378A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z'
@@ -425,6 +571,22 @@ tr.hoy td:first-child::after{content:' · hoy';font-weight:600;font-size:12px}
 .oc i{position:absolute;right:18px;bottom:18px;width:38px;height:38px;border-radius:50%;border:1.5px solid var(--arrow-bdr);display:flex;align-items:center;justify-content:center;font-style:normal;transition:all .35s var(--ease)}
 .oc:hover i{background:var(--oc);border-color:var(--oc);color:#fff;transform:rotate(-45deg)}
 
+/* carta en texto */
+.mn-intro{color:var(--txt2);max-width:70ch;margin:-12px 0 34px;font-size:clamp(15px,1.3vw,17px)}
+.mn-grid{columns:2 420px;column-gap:clamp(28px,5vw,72px)}
+.mn-sec{break-inside:avoid;margin-bottom:38px}
+.mn-sec h3{font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(18px,2vw,22px);text-transform:uppercase;letter-spacing:.02em;color:var(--lct);padding-bottom:10px;margin-bottom:6px;border-bottom:1.5px solid rgba(var(--lcr),.45)}
+.mn-sec ul{list-style:none}
+.mn-sec li{padding:11px 0;border-bottom:1px solid var(--bdr)}
+.mn-row{display:flex;align-items:baseline;gap:10px}
+.mn-n{font-weight:700;font-size:15px}
+.mn-dots{flex:1;border-bottom:1.5px dotted var(--bdr2);transform:translateY(-4px);min-width:16px}
+.mn-p{font-weight:800;font-size:15px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.mn-d{display:block;font-size:13.5px;color:var(--txt2);margin-top:2px;max-width:52ch}
+.mn-al{display:block;font-size:12px;color:var(--txt3);margin-top:3px}
+.mn-al::before{content:'Alérgenos: '}
+.mn-foot{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;border-top:1px solid var(--bdr);padding-top:22px;margin-top:6px}
+.mn-foot p{font-size:13px;color:var(--txt3);max-width:70ch}
 /* pie (igual que la portada) */
 footer{background:var(--ft-bg);border-top:1px solid var(--bdr);padding:44px clamp(20px,5vw,72px) 28px}
 .ft-top{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-bottom:28px;border-bottom:1px solid var(--bdr);margin-bottom:20px}
@@ -482,7 +644,10 @@ def pagina(l):
     else:
         ctas.append(f'<a class="btn btn-wa" href="{wa}" target="_blank" rel="noopener">{ICO["wa"]} Reservar por WhatsApp</a>')
     if l.get('carta'):
-        ctas.append(f'<a class="btn btn-ghost" href="{quote(l["carta"])}" target="_blank" rel="noopener">{ICO["carta"]} Ver carta</a>')
+        if l['key'] in CARTAS:
+            ctas.append(f'<a class="btn btn-ghost" href="#carta">{ICO["carta"]} Ver carta</a>')
+        else:
+            ctas.append(f'<a class="btn btn-ghost" href="{quote(l["carta"])}" target="_blank" rel="noopener">{ICO["carta"]} Ver carta</a>')
     ctas.append(f'<a class="btn btn-ghost" href="https://maps.google.com/?q={l["maps"]}" target="_blank" rel="noopener">{ICO["pin"]} Cómo llegar</a>')
     filas = '\n'.join(f'<tr data-d="{i}"><td>{d}</td><td>{h}</td></tr>' for i, (d, h) in enumerate(horario_filas(l)))
     fotos_hero = '\n'.join(
@@ -611,6 +776,7 @@ def pagina(l):
   </div>
 </section>
 
+{carta_html(l)}
 <section class="sec" aria-labelledby="h-fotos">
   <div class="ci rev"><div><div class="ci-eyebrow">Fotos</div><h2 id="h-fotos">Para que vayas abriendo boca</h2></div></div>
   <div class="gal">

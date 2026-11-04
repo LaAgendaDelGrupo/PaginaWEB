@@ -286,6 +286,22 @@ tr.hoy td:first-child::after{content:' · hoy';font-weight:600;font-size:12px}
 .oc i{position:absolute;right:18px;bottom:18px;width:38px;height:38px;border-radius:50%;border:1.5px solid var(--arrow-bdr);display:flex;align-items:center;justify-content:center;font-style:normal;transition:all .35s var(--ease)}
 .oc:hover i{background:var(--oc);border-color:var(--oc);color:#fff;transform:rotate(-45deg)}
 
+/* carta en texto */
+.mn-intro{color:var(--txt2);max-width:70ch;margin:-12px 0 34px;font-size:clamp(15px,1.3vw,17px)}
+.mn-grid{columns:2 420px;column-gap:clamp(28px,5vw,72px)}
+.mn-sec{break-inside:avoid;margin-bottom:38px}
+.mn-sec h3{font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(18px,2vw,22px);text-transform:uppercase;letter-spacing:.02em;color:var(--lct);padding-bottom:10px;margin-bottom:6px;border-bottom:1.5px solid rgba(var(--lcr),.45)}
+.mn-sec ul{list-style:none}
+.mn-sec li{padding:11px 0;border-bottom:1px solid var(--bdr)}
+.mn-row{display:flex;align-items:baseline;gap:10px}
+.mn-n{font-weight:700;font-size:15px}
+.mn-dots{flex:1;border-bottom:1.5px dotted var(--bdr2);transform:translateY(-4px);min-width:16px}
+.mn-p{font-weight:800;font-size:15px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.mn-d{display:block;font-size:13.5px;color:var(--txt2);margin-top:2px;max-width:52ch}
+.mn-al{display:block;font-size:12px;color:var(--txt3);margin-top:3px}
+.mn-al::before{content:'Alérgenos: '}
+.mn-foot{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;border-top:1px solid var(--bdr);padding-top:22px;margin-top:6px}
+.mn-foot p{font-size:13px;color:var(--txt3);max-width:70ch}
 /* pie (igual que la portada) */
 footer{background:var(--ft-bg);border-top:1px solid var(--bdr);padding:44px clamp(20px,5vw,72px) 28px}
 .ft-top{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-bottom:28px;border-bottom:1px solid var(--bdr);margin-bottom:20px}
@@ -404,6 +420,7 @@ footer{background:var(--ft-bg);border-top:1px solid var(--bdr);padding:44px clam
     </aside>
   </div>
 </section>
+
 
 <section class="sec" aria-labelledby="h-fotos">
   <div class="ci rev"><div><div class="ci-eyebrow">Fotos</div><h2 id="h-fotos">Para que vayas abriendo boca</h2></div></div>
