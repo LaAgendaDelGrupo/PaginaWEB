@@ -104,7 +104,7 @@
       "@type": "BarOrPub",
       "@id": "https://grupodospuntocero.com/#chula",
       "name": "La Chula 2.0",
-      "description": "Bar de copas con neón en la calle Claudio Coello (barrio de Salamanca, Madrid). Abierto hasta las 3:30 los sábados.",
+      "description": "Bar de copas con neón en la calle Claudio Coello (barrio de Salamanca, Madrid). Abierto hasta las 3:30 los viernes y sábados.",
       "url": "https://grupodospuntocero.com/locales/la-chula/",
       "image": ["https://grupodospuntocero.com/fotos/la%20chula/1.webp", "https://grupodospuntocero.com/fotos/la%20chula/2.webp"],
       "logo": "https://grupodospuntocero.com/logos/La%20Chula_Mesa%20de%20trabajo%201-trans.webp",
@@ -113,8 +113,8 @@
       "address": {"@type": "PostalAddress", "streetAddress": "Calle de Claudio Coello, 116", "addressLocality": "Madrid", "addressRegion": "Comunidad de Madrid", "addressCountry": "ES"},
       "hasMap": "https://maps.google.com/?q=C+Claudio+Coello+116+Madrid",
       "openingHoursSpecification": [
-        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Thursday", "Friday"], "opens": "20:00", "closes": "03:00"},
-        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "20:00", "closes": "03:30"}
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Thursday", "opens": "20:00", "closes": "03:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday", "Saturday"], "opens": "20:00", "closes": "03:30"}
       ],
       "sameAs": ["https://www.instagram.com/lachula2.0"],
       "parentOrganization": {"@id": "https://grupodospuntocero.com/#org"}
@@ -875,7 +875,7 @@ body.mn-open #waf{opacity:0;pointer-events:none;transform:scale(.6)}
       <span class="lc-num">03 / 07 — COPAS Y NEÓN<span class="lc-open" data-open="chula" hidden><span class="od"></span><span class="ot"></span></span></span>
       <div class="lc-logo"><img src="logos/La Chula_Mesa de trabajo 1-trans.webp" alt="La Chula 2.0" draggable="false"></div>
       <p class="lc-tagline">"Noches de neón, chupito de tregua y besos con lengua."</p>
-      <div class="lc-tag-row"><span class="lc-tag">J–V 20–03 · S 20–03:30</span><span class="lc-tag">C/ Claudio Coello, 116</span></div>
+      <div class="lc-tag-row"><span class="lc-tag">J 20–03 · V–S 20–03:30</span><span class="lc-tag">C/ Claudio Coello, 116</span></div>
       <span class="lc-cta">Ver local<span class="lc-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></span>
     </div>
     <div class="lc-photos" aria-hidden="true">
@@ -1185,7 +1185,7 @@ body.mn-open #waf{opacity:0;pointer-events:none;transform:scale(.6)}
 const D={
   tablas:{logo:'<img src="logos/Las Tablas-06-trans.webp" alt="Las Tablas 2.0" style="height:60px;width:auto">',photos:['fotos/tablas/1.webp','fotos/tablas/2.webp','fotos/tablas/3.webp','fotos/tablas/4.webp'],tagline:'"Detrás de la cortina no nos ve la vecina. Y nos importa tres copas."',dir:'C/ General Oraá, 26, Madrid',hor:'Jue–Sáb · 20:00–02:00h',wa:'https://wa.me/34656485099?text=Quiero%20reservar%20en%20Las%20Tablas%202.0',maps:'https://maps.google.com/?q=C+General+Oraá+26+Madrid',ig:'https://www.instagram.com/lastablas2.0',color:'#e51d1e'},
   pequeña:{logo:'<img src="logos/La pequeña_Mesa de trabajo 1-trans.webp" alt="La Pequeña 2.0" style="height:60px;width:auto">',photos:['fotos/pequeña/1.webp','fotos/pequeña/2.webp','fotos/pequeña/3.webp','fotos/pequeña/4.webp'],tagline:'"Tan de barrio que hasta el camarero sabe lo que vas a pedir."',dir:'C/ General Oraá, 27, Madrid',hor:'Jue–Sáb · 20:00–02:00h',wa:'https://wa.me/34656485099?text=Quiero%20reservar%20en%20La%20Peque%C3%B1a%202.0',maps:'https://maps.google.com/?q=C+General+Oraá+27+Madrid',ig:'https://www.instagram.com/lapequena2.0',color:'#3a4ba8'},
-  chula:{logo:'<img src="logos/La Chula_Mesa de trabajo 1-trans.webp" alt="La Chula 2.0" style="height:60px;width:auto">',photos:['fotos/la chula/1.webp','fotos/la chula/2.webp','fotos/la chula/3.webp','fotos/la chula/4.webp'],tagline:'"Noches de neón, chupito de tregua y besos con lengua."',dir:'C/ Claudio Coello, 116, Madrid',hor:'J–V 20:00–03:00h<br>S 20:00–03:30h',wa:'https://wa.me/34656485099?text=Quiero%20reservar%20en%20La%20Chula%202.0',maps:'https://maps.google.com/?q=C+Claudio+Coello+116+Madrid',ig:'https://www.instagram.com/lachula2.0',color:'#e72f8a'},
+  chula:{logo:'<img src="logos/La Chula_Mesa de trabajo 1-trans.webp" alt="La Chula 2.0" style="height:60px;width:auto">',photos:['fotos/la chula/1.webp','fotos/la chula/2.webp','fotos/la chula/3.webp','fotos/la chula/4.webp'],tagline:'"Noches de neón, chupito de tregua y besos con lengua."',dir:'C/ Claudio Coello, 116, Madrid',hor:'J 20:00–03:00h<br>V–S 20:00–03:30h',wa:'https://wa.me/34656485099?text=Quiero%20reservar%20en%20La%20Chula%202.0',maps:'https://maps.google.com/?q=C+Claudio+Coello+116+Madrid',ig:'https://www.instagram.com/lachula2.0',color:'#e72f8a'},
   peluca:{logo:'<img src="logos/La Peluquería-04-trans.webp" alt="La Peluquería 2.0" style="height:60px;width:auto">',photos:['fotos/la peluqueria/1.webp','fotos/la peluqueria/2.webp','fotos/la peluqueria/3.webp','fotos/la peluqueria/4.webp'],tagline:'"¿Nos volamos la peluca? Mientras nos quede pelo, aquí seguimos."',dir:'C/ Alberto Alcocer, 32, Madrid',hor:'Jue–Sáb · 20:00–02:00h',wa:'https://wa.me/34656485099?text=Quiero%20reservar%20en%20La%20Peluquer%C3%ADa%202.0',maps:'https://maps.google.com/?q=C+Alberto+Alcocer+32+Madrid',ig:'https://www.instagram.com/lapeluqueria_2.0',color:'#1db7d9'},
   traviesa:{logo:'<img src="logos/La traviesa_Mesa de trabajo 1-trans.webp" alt="La Traviesa 2.0" style="height:60px;width:auto">',photos:['fotos/la traviesa/1.webp','fotos/la traviesa/2.webp','fotos/la traviesa/3.webp','fotos/la traviesa/4.webp'],tagline:'"La glotona de la familia. Come, bebe, y repite."',dir:'C/ López de Hoyos, 7, Madrid',hor:'L–M 08–17h · J–V 08–01h<br>S 18:00–01:00h',wa:'https://wa.me/34656485099?text=Quiero%20reservar%20en%20La%20Traviesa%202.0',maps:'https://maps.google.com/?q=C+Lopez+de+Hoyos+7+Madrid',ig:'https://www.instagram.com/latraviesa_2.0',color:'#8a7fc0'},
   juanita:{logo:'<img src="logos/Juanita-04-trans.webp" alt="Juanita 2.0" style="height:60px;width:auto">',fv:'https://www.fourvenues.com/luis-ruiz-ramos/events/miercoles-juanita-summer-10-06-2026-WNWT',photos:['fotos/Juanita/1.webp','fotos/Juanita/2.webp','fotos/Juanita/3.webp','fotos/Juanita/4.webp'],tagline:'"¿Te vas de rositas? Nadie sale de Juanita de rositas."',dir:'C/ Alberto Alcocer, 33, Madrid',hor:'Mié / Vie / Sáb · 00:00–06:00h',wa:'https://wa.me/34656485099?text=Quiero%20reservar%20en%20Juanita%202.0',maps:'https://maps.google.com/?q=C+Alberto+Alcocer+33+Madrid',ig:'https://www.instagram.com/juanita2.0',color:'#da1f87'},
@@ -1449,7 +1449,7 @@ D.juanita.closed=true;
 const HORARIOS={
   tablas:[{d:[4,5,6],s:20,e:26}],
   pequeña:[{d:[4,5,6],s:20,e:26}],
-  chula:[{d:[4,5],s:20,e:27},{d:[6],s:20,e:27.5}],
+  chula:[{d:[4],s:20,e:27},{d:[5,6],s:20,e:27.5}],
   peluca:[{d:[4,5,6],s:20,e:26}],
   traviesa:[{d:[1,2,3],s:8,e:17},{d:[4,5],s:8,e:25},{d:[6],s:18,e:25}],
   juanita:[], /* cerrado temporalmente (nov 2026). Antes: [{d:[3,5,6],s:24,e:30}] — ver D.juanita.closed */
