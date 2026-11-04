@@ -229,6 +229,150 @@ CARTAS = {
 }
 
 
+# ─────────────────────────── Versión en inglés: /en/ y /en/venues/<slug>/ ───────────────────────────
+# Mismos datos (horarios, direcciones, fotos) que en español; aquí solo los textos traducidos.
+# Al cambiar un texto en LOCALES, cambiar también su traducción aquí.
+EN = {
+  'las-tablas': dict(
+    title='Las Tablas 2.0 · Cocktail bar on General Oraá, Salamanca (Madrid)',
+    desc='Cocktail bar at Calle del General Oraá, 26 in Madrid’s Salamanca district. Open Thursday to Saturday, 8pm to 2am. Bookings and birthdays via WhatsApp.',
+    tagline='Behind the curtain the neighbours can’t see us. And we couldn’t care less.',
+    intro=[
+      'Las Tablas 2.0 is our cocktail bar on Calle del General Oraá, right in the heart of the Salamanca district. A place to start the night with a well-poured drink, stay longer than planned and leave feeling that Thursday counts as the weekend too.',
+      'A proper neighbourhood bar with the cheeky touch of the 2.0 family: good music, people up for it and a curtain that keeps what happens inside, inside. Open Thursday to Saturday from 8pm until 2am.',
+    ],
+    planes=['Drinks Thursday to Saturday without crossing Madrid', 'Birthdays and group get-togethers: message us and we’ll save you a spot', 'First stop before carrying on at La Pequeña 2.0, right across the street'],
+    extra_faq=[('Is it close to La Pequeña 2.0?', 'Yes. La Pequeña 2.0 is at General Oraá, 27, right across the street, so switching bars just means crossing the road.')],
+  ),
+  'la-pequena': dict(
+    title='La Pequeña 2.0 · Neighbourhood cocktail bar on General Oraá, Madrid',
+    desc='La Pequeña 2.0: neighbourhood cocktail bar at General Oraá, 27 (Salamanca, Madrid). Thursday to Saturday, 8pm to 2am. Book a table or your birthday via WhatsApp.',
+    tagline='So local even the bartender knows what you’re having.',
+    intro=[
+      'La Pequeña 2.0 is the most neighbourhood bar in the family, at Calle del General Oraá, 27, in the Salamanca district. The kind of place where they greet you by name on your second visit and, by the third, you don’t even need to order.',
+      'Small in size, big on plans: drinks, music and good vibes Thursday to Saturday, from 8pm to 2am. Perfect for catching up with your usual crew or for bringing friends who don’t know the area yet.',
+    ],
+    planes=['The after-work drink, no posing required', 'Small celebrations with a home-from-home feel', 'Double plan with Las Tablas 2.0, right across the street'],
+    extra_faq=[('Does La Pequeña 2.0 serve food?', 'For now it works as a cocktail bar. For lunch or dinner, the family has La Traviesa 2.0 (López de Hoyos, 7) and Green 2.0 (Castellana, 40 bis).')],
+  ),
+  'la-chula': dict(
+    title='La Chula 2.0 · Neon cocktail bar on Claudio Coello, Madrid',
+    desc='La Chula 2.0: neon-lit cocktail bar at Claudio Coello, 116 (Salamanca, Madrid). Open until 3am on Thursdays and until 3:30am on Fridays and Saturdays. Bookings via WhatsApp.',
+    tagline='Neon nights, a peace-offering shot and kisses with tongue.',
+    intro=[
+      'La Chula 2.0 is the most neon-soaked bar in the family, at Calle de Claudio Coello, 116, in the Salamanca district. Pink light, loud music and that peace-offering shot that always shows up right when you need it.',
+      'It’s one of our latest closers: until 3am on Thursdays and until 3:30am on Fridays and Saturdays. Perfect for stretching the night out without changing neighbourhoods.',
+    ],
+    planes=['Long nights: open until 3:30am on Fridays and Saturdays', 'Birthdays with a guaranteed neon photo', 'Girls’ night, date night or big group night'],
+    extra_faq=[],
+  ),
+  'la-peluqueria': dict(
+    title='La Peluquería 2.0 · Cocktail bar on Alberto Alcocer, Madrid',
+    desc='La Peluquería 2.0: cocktail bar at Alberto Alcocer, 32 (Chamartín, Madrid). Open Thursday to Saturday, 8pm to 2am. Bookings and birthdays via WhatsApp.',
+    tagline='Shall we let our hair down? As long as we’ve got some left, we’ll be here.',
+    intro=[
+      'La Peluquería 2.0 is our cocktail bar at Calle de Alberto Alcocer, 32, in Chamartín. A place to let your hair down without heading into the centre: drinks, music and people who want the weekend to start on Thursday.',
+      'Open Thursday to Saturday from 8pm to 2am. If you live or work around the northern end of the Castellana, this is your spot for a drink after work.',
+    ],
+    planes=['Drinks in the north of the city, no need to go downtown', 'Thursday and Friday after-work', 'Birthdays and group celebrations'],
+    extra_faq=[],
+  ),
+  'la-traviesa': dict(
+    title='La Traviesa 2.0 · Restaurant & bar on López de Hoyos, Madrid',
+    desc='La Traviesa 2.0: restaurant and bar at López de Hoyos, 7 (Madrid). Breakfast, lunch, dinner and drinks. Full menu, online bookings and Christmas group menus.',
+    tagline='The greedy one of the family. Eat, drink, repeat.',
+    intro=[
+      'La Traviesa 2.0 is the foodie of the family: a restaurant and bar at Calle de López de Hoyos, 7, a stone’s throw from the Castellana. We open early for breakfast, carry on with lunch and, from Thursday to Saturday, stretch into dinner and drinks.',
+      'Monday to Wednesday we’re open 8am to 5pm; Thursday and Friday 8am to 1am; and Saturdays 6pm to 1am. Sundays we rest. Check the food and wine menu below and book a table online in a minute.',
+    ],
+    planes=['Breakfast and lunch on weekdays', 'Dinner and drinks Thursday to Saturday', 'Company lunches and dinners: see our <a href="/traviesa/" hreflang="es">Christmas menus</a> (in Spanish)'],
+    extra_faq=[('Do you have group and company menus?', 'Yes. For Christmas we have group menus with drinks included, from €45 to €65 per person: see them at <a href="/traviesa/" hreflang="es">grupodospuntocero.com/traviesa</a> (in Spanish). For other dates, message us on WhatsApp.'),
+               ('Are you open on Sundays?', 'No, La Traviesa 2.0 is closed on Sundays.')],
+  ),
+  'green': dict(
+    title='Green 2.0 · Restaurant, bar & nightclub on Paseo de la Castellana, Madrid',
+    desc='Green 2.0: restaurant, cocktail bar and nightclub at Paseo de la Castellana, 40 bis (Madrid). Open until 6am Thursday to Saturday. Menu, tickets and bookings.',
+    tagline='Three in one: restaurant, bar and nightclub. Like a Swiss Army knife, but with more alcohol.',
+    intro=[
+      'Green 2.0 is the three-in-one of the family: restaurant, cocktail bar and nightclub at Paseo de la Castellana, 40 bis. Come in for breakfast, stay for lunch, come back for dinner and end up dancing without changing address.',
+      'Monday to Wednesday we’re open 8am to 5pm. Thursday and Friday, 8am to 6am; and Saturdays, 6pm to 6am. Check the menu, get tickets for our events and book via WhatsApp.',
+    ],
+    planes=['Dinner and a party in the same place', 'Nightclub until 6am, Thursday to Saturday', 'Events, parties and company dinners on the Castellana'],
+    extra_faq=[('How do I buy tickets for Green 2.0 parties?', 'Tickets and guest lists for our events are on Fourvenues: use the “Tickets & events” button on this page.')],
+  ),
+}
+# tipo, etiqueta del capítulo, horario corto y zona en inglés (por key)
+EN_ESTILO = {
+    'tablas':   dict(tipo_txt='Cocktail bar', label='COCKTAIL BAR', tag_hor='Thu–Sat · 20:00–02:00', zona='Salamanca district'),
+    'pequeña':  dict(tipo_txt='Cocktail bar', label='COCKTAIL BAR', tag_hor='Thu–Sat · 20:00–02:00', zona='Salamanca district'),
+    'chula':    dict(tipo_txt='Cocktail bar', label='DRINKS & NEON', tag_hor='Thu 20–03 · Fri–Sat 20–03:30', zona='Salamanca district'),
+    'peluca':   dict(tipo_txt='Cocktail bar', label='COCKTAIL BAR', tag_hor='Thu–Sat · 20:00–02:00', zona='Chamartín'),
+    'traviesa': dict(tipo_txt='Restaurant & bar', label='RESTAURANT', tag_hor='Mon–Wed 08–17 · Thu–Fri 08–01 · Sat 18–01', zona='Salamanca district'),
+    'green':    dict(tipo_txt='Restaurant, bar & nightclub', label='RESTAURANT · BAR · NIGHTCLUB', tag_hor='Mon–Wed 08–17 · Thu–Fri 08–06 · Sat 18–06', zona='Paseo de la Castellana'),
+}
+EN_SECCIONES = {'Por unidad': 'By the piece', 'Tapeo': 'Tapas', 'Huerta': 'From the garden', 'Principales': 'Mains',
+                'Guarniciones': 'Sides', 'Postres': 'Desserts', 'Vinos tintos': 'Red wines', 'Vinos blancos': 'White wines',
+                'Para picar': 'Bites'}
+EN_ALERGENOS = {'Gluten': 'Gluten', 'Crustáceos': 'Crustaceans', 'Huevo': 'Egg', 'Pescado': 'Fish', 'Cacahuetes': 'Peanuts',
+                'Soja': 'Soy', 'Lácteos': 'Milk', 'Frutos de cáscara': 'Tree nuts', 'Apio': 'Celery', 'Mostaza': 'Mustard',
+                'Sésamo': 'Sesame', 'Sulfitos': 'Sulphites', 'Altramuces': 'Lupin', 'Moluscos': 'Molluscs'}
+EN_CARTA_INTRO = {
+    'traviesa': 'Produce-driven cooking to nibble, share or sit down properly: gildas and montaditos by the piece, tapas, vegetables, mains and homemade desserts, plus a wine list from Rioja, Ribera, Rueda, Valdeorras and Rías Baixas.',
+    'green': 'Late-night menu to snack on between drinks, served Thursday, Friday and Saturday from 20:00 to 00:00: brioches, patatas bravas, croquetas, tequeños, torreznos and more.',
+}
+EN_DIAS = {'Mo': 'Monday', 'Tu': 'Tuesday', 'We': 'Wednesday', 'Th': 'Thursday', 'Fr': 'Friday', 'Sa': 'Saturday', 'Su': 'Sunday'}
+EN_ZONAS = {
+    'Barrio de Salamanca': ('Salamanca district', 'Cocktail bars and a restaurant in the Salamanca district',
+                            'Four venues a few minutes’ walk apart: two cocktail bars facing each other on General Oraá, the neon of La Chula on Claudio Coello and the family restaurant on López de Hoyos.'),
+    'Chamartín': ('Chamartín', 'Cocktail bar in Chamartín', 'Drinks on Alberto Alcocer, a step away from the Castellana.'),
+    'Paseo de la Castellana': ('Paseo de la Castellana', 'Restaurant and nightclub on the Castellana',
+                               'Restaurant, bar and nightclub under one roof: dinner, drinks and dancing until 6am.'),
+}
+
+# Textos de la interfaz en los dos idiomas
+T = {
+  'es': dict(
+    html='es', og='es_ES', skip='Saltar al contenido', theme='Cambiar tema día/noche', nav='Principal', menu_open='Abrir menú',
+    to_night='Cambiar a modo noche', to_day='Cambiar a modo día', menu_close='Cerrar menú', open_now='Abierto ahora', closed_now='Cerrado ahora',
+    book='Reservar ↗', book_table='Reservar mesa', tickets='Entradas y eventos', book_wa='Reservar por WhatsApp', see_menu='Ver carta',
+    directions='Cómo llegar', family='Los locales de la familia', book_at='Reservar en', wa_book='Hola! Quiero reservar en',
+    crumbs='Ruta', venues='Locales', all_venues='Todos los locales', events='Eventos', logo='Logo de {n}', ambiente='Ambiente de {n}',
+    de='de', h1='{tipo} en <em>{calle}</em>', the_place='El local', meet='Así es {n}', hours='Horario', closed='Cerrado',
+    wa_book_lbl='WhatsApp y reservas', msg_us='Escríbenos', photos='Fotos', photos_h='Para que vayas abriendo boca',
+    faq_e='Dudas', faq_h='Preguntas rápidas', fam_e='La familia 2.0', fam_h='Más planes',
+    legal='Aviso legal', privacy='Privacidad', ig_of='Instagram de {n}', waf='Reservar por WhatsApp', other='EN',
+    other_lang='en', other_name='English', other_aria='Read in English'),
+  'en': dict(
+    html='en', og='en_GB', skip='Skip to content', theme='Switch day/night theme', nav='Main', menu_open='Open menu',
+    to_night='Switch to night mode', to_day='Switch to day mode', menu_close='Close menu', open_now='Open now', closed_now='Closed now',
+    book='Book ↗', book_table='Book a table', tickets='Tickets & events', book_wa='Book via WhatsApp', see_menu='See the menu',
+    directions='Get directions', family='The 2.0 family', book_at='Book at', wa_book='Hi! I’d like to book at',
+    crumbs='Breadcrumb', venues='Venues', all_venues='All venues', events='Groups & events', logo='{n} logo', ambiente='Inside {n}',
+    de='of', h1='{tipo} on <em>{calle}</em>', the_place='The place', meet='Meet {n}', hours='Opening hours', closed='Closed',
+    wa_book_lbl='WhatsApp & bookings', msg_us='Message us', photos='Photos', photos_h='A taste of what awaits',
+    faq_e='FAQ', faq_h='Quick questions', fam_e='The 2.0 family', fam_h='More plans',
+    legal='Legal notice', privacy='Privacy', ig_of='{n} on Instagram', waf='Book via WhatsApp', other='ES',
+    other_lang='es', other_name='Español', other_aria='Leer en español'),
+}
+
+
+def ruta(slug, lang):
+    return f'/en/venues/{slug}/' if lang == 'en' else f'/locales/{slug}/'
+
+
+def loc(l, lang):
+    """Datos del local con los textos en el idioma pedido."""
+    if lang != 'en':
+        return l
+    return dict(l, **EN[l['slug']], **EN_ESTILO[l['key']])
+
+
+def hreflang(es_path, en_path):
+    return (f'<link rel="alternate" hreflang="es" href="{BASE}{es_path}">\n'
+            f'<link rel="alternate" hreflang="en" href="{BASE}{en_path}">\n'
+            f'<link rel="alternate" hreflang="x-default" href="{BASE}{es_path}">\n')
+
+
 def esc(s):
     return html.escape(s, quote=True)
 
@@ -266,17 +410,23 @@ ANIM_LOGO = {
 }
 
 
-def horario_filas(l):
+def horario_filas(l, lang='es'):
     filas = []
     for d in ORDEN:
         tramo = next(((a, c) for ds, a, c in l['horario'] if d in ds), None)
-        filas.append((DIAS[d][1], f'{tramo[0]} – {tramo[1]}' if tramo else 'Cerrado'))
+        nombre = EN_DIAS[d] if lang == 'en' else DIAS[d][1]
+        filas.append((nombre, f'{tramo[0]} – {tramo[1]}' if tramo else T[lang]['closed']))
     return filas
 
 
-def horario_corto(l):
+def horario_corto(l, lang='es'):
     partes = []
     for ds, a, c in l['horario']:
+        if lang == 'en':
+            n = [EN_DIAS[d] for d in ds]
+            dias = n[0] if len(n) == 1 else (f'{n[0]} to {n[-1]}' if len(n) > 2 else ' and '.join(n))
+            partes.append(f'{dias} {a}–{c}')
+            continue
         nombres = [DIAS[d][1] for d in ds]
         dias = nombres[0] if len(nombres) == 1 else (f'{nombres[0]} a {nombres[-1]}' if len(nombres) > 2 else ' y '.join(nombres))
         partes.append(f'{dias.lower()} de {a} a {c}')
@@ -318,7 +468,19 @@ def schema(l):
     return json.dumps({'@context': 'https://schema.org', '@graph': [nodo, migas]}, ensure_ascii=False, indent=1)
 
 
-def faq(l):
+def faq(l, lang='es'):
+    if lang == 'en':
+        x = loc(l, 'en')
+        preguntas = [
+            (f'What are the opening hours of {l["nombre"]}?', f'{l["nombre"]} is open {horario_corto(l, "en")}. Closed the rest of the week.'),
+            (f'Where is {l["nombre"]}?', f'At {l["calle"]}, Madrid ({x["zona"]}).'),
+            (f'Can I book a table at {l["nombre"]}?',
+             'Yes: book online with the “Book a table” button or message us on WhatsApp at +34 656 48 50 99.' if l.get('reservar')
+             else 'Yes, message us on WhatsApp at +34 656 48 50 99 and we’ll save you a spot. For large groups, give us a few days’ notice.'),
+            (f'Can I celebrate a birthday or a private event at {l["nombre"]}?',
+             'Of course. We host birthdays, company dinners, hen and stag parties and celebrations. Tell us the date and how many of you there are on WhatsApp or at <a href="mailto:hola@grupodospuntocero.com">hola@grupodospuntocero.com</a>.'),
+        ] + x['extra_faq']
+        return '\n'.join(f'<details class="fq rev"><summary>{esc(q)}<span class="fq-i" aria-hidden="true"></span></summary><p>{a}</p></details>' for q, a in preguntas)
     preguntas = [
         (f'¿Qué horario tiene {l["nombre"]}?', f'{l["nombre"]} abre {horario_corto(l)}. El resto de días está cerrado.'),
         (f'¿Dónde está {l["nombre"]}?', f'En {l["calle"]}, Madrid ({l["zona"]}).'),
@@ -335,21 +497,35 @@ def precio_num(p):
     return p.replace(',', '.')
 
 
-def carta_html(l):
+def carta_html(l, lang='es'):
     c = CARTAS.get(l['key'])
     if not c:
         return ''
-    al = c['alergenos']
+    en = lang == 'en'
+    al = [EN_ALERGENOS[a] for a in c['alergenos']] if en else c['alergenos']
     secs = []
     for titulo, platos in c['secciones']:
+        if en:
+            titulo = EN_SECCIONES.get(titulo, titulo)
         items = []
         for nombre, desc, precio, ns in platos:
-            alg = f'<span class="mn-al">{esc(", ".join(al[n - 1] for n in ns))}</span>' if ns else ''
+            alg = f'<span class="mn-al"{" lang=" + chr(34) + "en" + chr(34) if en else ""}>{esc(", ".join(al[n - 1] for n in ns))}</span>' if ns else ''
             d = f'<span class="mn-d">{esc(desc)}</span>' if desc else ''
             items.append(f'<li><div class="mn-row"><span class="mn-n">{esc(nombre)}</span><span class="mn-dots" aria-hidden="true"></span><span class="mn-p">{esc(precio)} €</span></div>{d}{alg}</li>')
         secs.append(f'<div class="mn-sec rev"><h3>{esc(titulo)}</h3><ul>{"".join(items)}</ul></div>')
     pdf = l.get('carta', '')
-    descarga = f'<a class="btn btn-ghost" href="{quote(pdf)}" target="_blank" rel="noopener">{ICO["carta"]} Carta original{" (PDF)" if pdf.endswith(".pdf") else ""}</a>' if pdf else ''
+    descarga = f'<a class="btn btn-ghost" href="{quote(pdf)}" target="_blank" rel="noopener">{ICO["carta"]} {"Original menu" if en else "Carta original"}{" (PDF)" if pdf.endswith(".pdf") else ""}</a>' if pdf else ''
+    if en:
+        return f'''
+<section class="sec" id="carta" aria-labelledby="h-carta">
+  <div class="ci rev"><div><div class="ci-eyebrow">The menu</div><h2 id="h-carta">What to eat at {esc(l['nombre'])}</h2></div></div>
+  <p class="mn-intro rev">{esc(EN_CARTA_INTRO[l['key']])} Dish names are shown as on our menu, in Spanish.</p>
+  <div class="mn-grid" lang="es">
+{chr(10).join(secs)}
+  </div>
+  <div class="mn-foot rev"><p>Prices include VAT and follow the current menu; they may change. Allergens are listed under each dish: if you have an allergy or intolerance, please tell us when you order.</p>{descarga}</div>
+</section>
+'''
     return f'''
 <section class="sec" id="carta" aria-labelledby="h-carta">
   <div class="ci rev"><div><div class="ci-eyebrow">La carta</div><h2 id="h-carta">Qué se come en {esc(l['nombre'])}</h2></div></div>
@@ -587,6 +763,10 @@ tr.hoy td:first-child::after{content:' · hoy';font-weight:600;font-size:12px}
 .mn-d{display:block;font-size:13.5px;color:var(--txt2);margin-top:2px;max-width:52ch}
 .mn-al{display:block;font-size:12px;color:var(--txt3);margin-top:3px}
 .mn-al::before{content:'Alérgenos: '}
+.mn-al:lang(en)::before{content:'Allergens: '}
+.lang{font-size:11px;font-weight:800;letter-spacing:.16em;padding:9px 12px;border:1.5px solid var(--bdr2);border-radius:999px;opacity:.75;transition:opacity .2s,border-color .2s;margin-left:auto;margin-right:10px}
+.lang:hover{opacity:1;border-color:var(--lc)}
+@media(max-width:760px){.lang{margin-right:20px}}
 .mn-foot{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;border-top:1px solid var(--bdr);padding-top:22px;margin-top:6px}
 .mn-foot p{font-size:13px;color:var(--txt3);max-width:70ch}
 /* pie (igual que la portada) */
@@ -627,70 +807,102 @@ footer{background:var(--ft-bg);border-top:1px solid var(--bdr);padding:44px clam
 """
 
 
-def pagina(l):
+NAV_ES = """<ul class="nav-links">
+    <li><a href="/locales/">Locales</a></li>
+    <li><a href="/eventos/">Eventos</a></li>
+    <li><a href="/#socios">Socios</a></li>
+    <li><a href="/#contacto">Contacto</a></li>
+  </ul>"""
+NAV_EN = """<ul class="nav-links">
+    <li><a href="/en/#venues">Venues</a></li>
+    <li><a href="/en/#groups">Groups &amp; events</a></li>
+    <li><a href="/en/#contact">Contact</a></li>
+  </ul>"""
+
+
+def schema_en(l):
+    """Página en inglés: WebPage sobre el local (el nodo completo del local vive en la página en español)."""
+    url = BASE + ruta(l['slug'], 'en')
+    x = loc(l, 'en')
+    return json.dumps({'@context': 'https://schema.org', '@graph': [
+        {'@type': 'WebPage', '@id': url + '#page', 'url': url, 'name': x['title'], 'description': x['desc'], 'inLanguage': 'en',
+         'about': {'@id': f'{BASE}/#{l["slug"].replace("las-", "").replace("la-", "")}'},
+         'primaryImageOfPage': u(f'/fotos/{l["fotos"]}/1.webp'), 'isPartOf': {'@id': f'{BASE}/#org'}},
+        {'@type': 'BreadcrumbList', 'itemListElement': [
+            {'@type': 'ListItem', 'position': 1, 'name': 'Grupo 2.0', 'item': BASE + '/en/'},
+            {'@type': 'ListItem', 'position': 2, 'name': l['nombre'], 'item': url}]},
+    ]}, ensure_ascii=False, indent=1)
+
+
+def pagina(l, lang='es'):
     s = l['slug']
     e = ESTILO[l['key']]
-    url = f'{BASE}/locales/{s}/'
+    en = lang == 'en'
+    t = T[lang]
+    x = loc(l, lang)
+    lab = x.get('label', e['label'])
+    tag_hor = x.get('tag_hor', e['tag_hor'])
+    url = BASE + ruta(s, lang)
     foto1 = quote(f'/fotos/{l["fotos"]}/1.webp')
-    wa_txt = quote(f'Hola! Quiero reservar en {l["nombre"]}')
+    wa_txt = quote(f'{t["wa_book"]} {l["nombre"]}')
     wa = f'https://wa.me/{WA}?text={wa_txt}'
     # texto sobre el color del local: negro en los colores claros (Green, Peluquería), blanco en el resto
     on_lc = '#0a0908' if l['key'] in ('green', 'peluca') else '#fff'
     ctas = []
     if l.get('reservar'):
-        ctas.append(f'<a class="btn btn-pri" href="{esc(l["reservar"])}" target="_blank" rel="noopener">{ICO["cal"]} Reservar mesa</a>')
+        ctas.append(f'<a class="btn btn-pri" href="{esc(l["reservar"])}" target="_blank" rel="noopener">{ICO["cal"]} {t["book_table"]}</a>')
         ctas.append(f'<a class="btn btn-wa ghost" href="{wa}" target="_blank" rel="noopener">{ICO["wa"]} WhatsApp</a>')
     elif l.get('entradas'):
-        ctas.append(f'<a class="btn btn-pri" href="{esc(l["entradas"])}" target="_blank" rel="noopener">{ICO["cal"]} Entradas y eventos</a>')
-        ctas.append(f'<a class="btn btn-wa ghost" href="{wa}" target="_blank" rel="noopener">{ICO["wa"]} Reservar mesa</a>')
+        ctas.append(f'<a class="btn btn-pri" href="{esc(l["entradas"])}" target="_blank" rel="noopener">{ICO["cal"]} {t["tickets"]}</a>')
+        ctas.append(f'<a class="btn btn-wa ghost" href="{wa}" target="_blank" rel="noopener">{ICO["wa"]} {t["book_table"]}</a>')
     else:
-        ctas.append(f'<a class="btn btn-wa" href="{wa}" target="_blank" rel="noopener">{ICO["wa"]} Reservar por WhatsApp</a>')
+        ctas.append(f'<a class="btn btn-wa" href="{wa}" target="_blank" rel="noopener">{ICO["wa"]} {t["book_wa"]}</a>')
     if l.get('carta'):
         if l['key'] in CARTAS:
-            ctas.append(f'<a class="btn btn-ghost" href="#carta">{ICO["carta"]} Ver carta</a>')
+            ctas.append(f'<a class="btn btn-ghost" href="#carta">{ICO["carta"]} {t["see_menu"]}</a>')
         else:
-            ctas.append(f'<a class="btn btn-ghost" href="{quote(l["carta"])}" target="_blank" rel="noopener">{ICO["carta"]} Ver carta</a>')
-    ctas.append(f'<a class="btn btn-ghost" href="https://maps.google.com/?q={l["maps"]}" target="_blank" rel="noopener">{ICO["pin"]} Cómo llegar</a>')
-    filas = '\n'.join(f'<tr data-d="{i}"><td>{d}</td><td>{h}</td></tr>' for i, (d, h) in enumerate(horario_filas(l)))
+            ctas.append(f'<a class="btn btn-ghost" href="{quote(l["carta"])}" target="_blank" rel="noopener">{ICO["carta"]} {t["see_menu"]}</a>')
+    ctas.append(f'<a class="btn btn-ghost" href="https://maps.google.com/?q={l["maps"]}" target="_blank" rel="noopener">{ICO["pin"]} {t["directions"]}</a>')
+    filas = '\n'.join(f'<tr data-d="{i}"><td>{d}</td><td>{h}</td></tr>' for i, (d, h) in enumerate(horario_filas(l, lang)))
     fotos_hero = '\n'.join(
-        f'<div class="lph"><img src="{quote("/fotos/" + l["fotos"] + f"/{i}.webp")}" alt="Ambiente de {esc(l["nombre"])}" width="1600" height="1066"{" fetchpriority=" + chr(34) + "high" + chr(34) if i == 1 else ""} decoding="async"></div>'
+        f'<div class="lph"><img src="{quote("/fotos/" + l["fotos"] + f"/{i}.webp")}" alt="{esc(t["ambiente"].format(n=l["nombre"]))}" width="1600" height="1066"{" fetchpriority=" + chr(34) + "high" + chr(34) if i == 1 else ""} decoding="async"></div>'
         for i in (1, 2, 3))
     gal = '\n'.join(
-        f'<figure class="rev"><img src="{quote("/fotos/" + l["fotos"] + f"/{i}.webp")}" alt="Ambiente de {esc(l["nombre"])} ({i} de 4)" width="1600" height="1066" loading="lazy" decoding="async"></figure>'
+        f'<figure class="rev"><img src="{quote("/fotos/" + l["fotos"] + f"/{i}.webp")}" alt="{esc(t["ambiente"].format(n=l["nombre"]))} ({i} {t["de"]} 4)" width="1600" height="1066" loading="lazy" decoding="async"></figure>'
         for i in (4, 1, 2, 3))
     cerca = [POR_SLUG[x] for x in l['otros_cerca']]
     resto = cerca + [o for o in LOCALES if o['slug'] != s and o not in cerca]
     otros = '\n'.join(
-        f'<a class="oc rev" href="/locales/{o["slug"]}/" style="--oc:rgb({ESTILO[o["key"]]["rgb"]})"><span class="oc-n">{ESTILO[o["key"]]["num"]} / 07</span><b>{esc(o["nombre"])}</b><span>{esc(o["tipo_txt"])} · {esc(ESTILO[o["key"]]["tag_dir"])}</span><i>{ICO["arrow"]}</i></a>'
+        f'<a class="oc rev" href="{ruta(o["slug"], lang)}" style="--oc:rgb({ESTILO[o["key"]]["rgb"]})"><span class="oc-n">{ESTILO[o["key"]]["num"]} / 07</span><b>{esc(o["nombre"])}</b><span>{esc(loc(o, lang)["tipo_txt"])} · {esc(ESTILO[o["key"]]["tag_dir"])}</span><i>{ICO["arrow"]}</i></a>'
         for o in resto)
     mob = '\n'.join(
-        f'<a class="mn-link{" on" if o["slug"] == s else ""}" href="/locales/{o["slug"]}/" style="--oc:rgb({ESTILO[o["key"]]["rgb"]})"{" aria-current=" + chr(34) + "page" + chr(34) if o["slug"] == s else ""}><span class="mn-i">{ESTILO[o["key"]]["num"]}</span>{esc(o["nombre"])}</a>'
+        f'<a class="mn-link{" on" if o["slug"] == s else ""}" href="{ruta(o["slug"], lang)}" style="--oc:rgb({ESTILO[o["key"]]["rgb"]})"{" aria-current=" + chr(34) + "page" + chr(34) if o["slug"] == s else ""}><span class="mn-i">{ESTILO[o["key"]]["num"]}</span>{esc(o["nombre"])}</a>'
         for o in LOCALES)
-    pie = ''.join(f'<a href="/locales/{o["slug"]}/"{" aria-current=" + chr(34) + "page" + chr(34) if o["slug"] == s else ""}>{esc(o["nombre"])}</a>' for o in LOCALES)
+    pie = ''.join(f'<a href="{ruta(o["slug"], lang)}"{" aria-current=" + chr(34) + "page" + chr(34) if o["slug"] == s else ""}>{esc(o["nombre"])}</a>' for o in LOCALES)
     calle_corta = l['calle'].replace('Calle de ', '').replace('Calle del ', '')
-    ticks = [l['nombre'], e['tag_dir'], e['tag_hor'], l['tipo_txt'], l['zona'], '@' + l['ig']]
+    ticks = [l['nombre'], e['tag_dir'], tag_hor, x['tipo_txt'], x['zona'], '@' + l['ig']]
     tick_html = ''.join(f'<span class="tick">{esc(t)}<span class="tick-dot"></span></span>' for t in ticks * 2)
     marq = ''.join(f'<span>{esc(l["nombre"])}</span>' for _ in range(3))
     # horario para el badge "abierto ahora" (getDay: 0=domingo)
     js_h = json.dumps([[[(ORDEN.index(d) + 1) % 7 for d in ds], a, c] for ds, a, c in l['horario']])
     return f'''<!DOCTYPE html>
-<html lang="es">
+<html lang="{t['html']}">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <!-- Página generada por locales/_generar.py — no editar a mano -->
-<title>{esc(l['title'])}</title>
-<meta name="description" content="{esc(l['desc'])}">
+<title>{esc(x['title'])}</title>
+<meta name="description" content="{esc(x['desc'])}">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="canonical" href="{url}">
-<meta name="theme-color" content="#0a0908" id="theme-color-meta">
+{hreflang(ruta(s, "es"), ruta(s, "en"))}<meta name="theme-color" content="#0a0908" id="theme-color-meta">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Grupo 2.0">
-<meta property="og:locale" content="es_ES">
-<meta property="og:title" content="{esc(l['title'])}">
-<meta property="og:description" content="{esc(l['desc'])}">
+<meta property="og:locale" content="{t['og']}">
+<meta property="og:title" content="{esc(x['title'])}">
+<meta property="og:description" content="{esc(x['desc'])}">
 <meta property="og:url" content="{url}">
 <meta property="og:image" content="{BASE}{foto1}">
 <meta property="og:image:width" content="1600">
@@ -706,31 +918,27 @@ def pagina(l):
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 <script type="application/ld+json">
-{schema(l)}
+{schema_en(l) if en else schema(l)}
 </script>
 <style>{CSS}.lc-logo img{{{ANIM_LOGO[l['key']]}}}</style>
 </head>
 <body style="--lc:rgb({e['rgb']});--lcr:{e['rgb']};--lct-n:{e['txt_n']};--lct-d:{e['txt_d']};--on-lc:{on_lc}">
-<a class="skip-link" href="#main">Saltar al contenido</a>
+<a class="skip-link" href="#main">{t['skip']}</a>
 <div id="cur" aria-hidden="true"></div>
-<button id="theme-btn" aria-label="Cambiar tema día/noche" title="Cambiar tema"></button>
+<button id="theme-btn" aria-label="{t['theme']}" title="{t['theme']}"></button>
 
-<nav id="nav" aria-label="Principal">
-  <a class="nav-pill" href="/">GRUPO_2.0</a>
-  <ul class="nav-links">
-    <li><a href="/locales/">Locales</a></li>
-    <li><a href="/eventos/">Eventos</a></li>
-    <li><a href="/#socios">Socios</a></li>
-    <li><a href="/#contacto">Contacto</a></li>
-  </ul>
-  <a class="nav-res" href="{esc(l.get('reservar') or wa)}" target="_blank" rel="noopener">Reservar ↗</a>
-  <button id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobnav"><span></span><span></span><span></span></button>
+<nav id="nav" aria-label="{t['nav']}">
+  <a class="nav-pill" href="{'/en/' if en else '/'}">GRUPO_2.0</a>
+  {NAV_EN if en else NAV_ES}
+  <a class="lang" href="{ruta(s, t['other_lang'])}" hreflang="{t['other_lang']}" lang="{t['other_lang']}" aria-label="{t['other_aria']}">{t['other']}</a>
+  <a class="nav-res" href="{esc(l.get('reservar') or wa)}" target="_blank" rel="noopener">{t['book']}</a>
+  <button id="burger" aria-label="{t['menu_open']}" aria-expanded="false" aria-controls="mobnav"><span></span><span></span><span></span></button>
 </nav>
 <div id="mobnav" aria-hidden="true">
   <div class="mn-inner">
-    <p class="mn-t">Los locales de la familia</p>
+    <p class="mn-t">{t['family']}</p>
 {mob}
-    <a class="mn-res" href="{wa}" target="_blank" rel="noopener">{ICO['wa']} Reservar en {esc(l['nombre'])}</a>
+    <a class="mn-res" href="{wa}" target="_blank" rel="noopener">{ICO['wa']} {t['book_at']} {esc(l['nombre'])}</a>
   </div>
 </div>
 
@@ -739,13 +947,13 @@ def pagina(l):
   <div class="marq" aria-hidden="true"><div class="marq-in">{marq}</div></div>
   <div class="hero-in">
     <div>
-      <nav class="crumbs rev" aria-label="Ruta"><a href="/">Grupo 2.0</a> / <a href="/locales/">Locales</a> / {esc(l['nombre'])}</nav>
+      <nav class="crumbs rev" aria-label="{t['crumbs']}"><a href="{'/en/' if en else '/'}">Grupo 2.0</a> / <a href="{'/en/#venues' if en else '/locales/'}">{t['venues']}</a> / {esc(l['nombre'])}</nav>
       <div class="rev">
-        <span class="lc-num">{e['num']} / 07 — {esc(e['label'])}<span class="lc-open" id="estado" hidden><span class="od"></span><span class="ot"></span></span></span>
-        <div class="lc-logo{" oscuro" if l["key"] in ("traviesa", "pequeña", "green") else ""}"><img src="{quote('/logos/' + l['logo'])}" alt="Logo de {esc(l['nombre'])}" width="1400" height="400"></div>
-        <h1><span class="sr-only">{esc(l['nombre'])}: </span>{esc(l['tipo_txt'])} en <em>{esc(calle_corta.split(',')[0])}</em></h1>
-        <p class="tagline">“{esc(l['tagline'])}”</p>
-        <div class="tags"><span class="tag">{esc(e['tag_hor'])}</span><span class="tag">{esc(e['tag_dir'])}</span><span class="tag">{esc(l['zona'])}</span></div>
+        <span class="lc-num">{e['num']} / 07 — {esc(lab)}<span class="lc-open" id="estado" hidden><span class="od"></span><span class="ot"></span></span></span>
+        <div class="lc-logo{" oscuro" if l["key"] in ("traviesa", "pequeña", "green") else ""}"><img src="{quote('/logos/' + l['logo'])}" alt="{esc(t['logo'].format(n=l['nombre']))}" width="1400" height="400"></div>
+        <h1><span class="sr-only">{esc(l['nombre'])}: </span>{t['h1'].format(tipo=esc(x['tipo_txt']), calle=esc(calle_corta.split(',')[0]))}</h1>
+        <p class="tagline">“{esc(x['tagline'])}”</p>
+        <div class="tags"><span class="tag">{esc(tag_hor)}</span><span class="tag">{esc(e['tag_dir'])}</span><span class="tag">{esc(x['zona'])}</span></div>
         <div class="ctas">
           {chr(10).join('          ' + c for c in ctas).strip()}
         </div>
@@ -760,39 +968,39 @@ def pagina(l):
 <div class="ticker" aria-hidden="true"><div class="ticker-track">{tick_html}</div></div>
 
 <section class="sec" aria-labelledby="h-asi">
-  <div class="ci rev"><div><div class="ci-eyebrow">El local</div><h2 id="h-asi">Así es {esc(l['nombre'])}</h2></div><div class="ci-count" aria-hidden="true">{e['num']}</div></div>
+  <div class="ci rev"><div><div class="ci-eyebrow">{t['the_place']}</div><h2 id="h-asi">{esc(t['meet'].format(n=l['nombre']))}</h2></div><div class="ci-count" aria-hidden="true">{e['num']}</div></div>
   <div class="grid2">
     <div class="txt rev">
-      {''.join(f'<p>{p}</p>' for p in l['intro'])}
-      <ul class="planes">{''.join(f'<li>{p}</li>' for p in l['planes'])}</ul>
+      {''.join(f'<p>{p}</p>' for p in x['intro'])}
+      <ul class="planes">{''.join(f'<li>{p}</li>' for p in x['planes'])}</ul>
     </div>
     <aside class="card rev" aria-labelledby="h-hor">
-      <p class="card-l" id="h-hor">Horario</p>
+      <p class="card-l" id="h-hor">{t['hours']}</p>
       <table><tbody>
 {filas}
       </tbody></table>
-      <div class="mic"><b>{esc(l['calle'])}</b><span>Madrid · {esc(l['zona'])}</span></div>
-      <div class="mic"><b>656 48 50 99</b><span>WhatsApp y reservas</span></div>
-      <a class="btn btn-wa" href="{wa}" target="_blank" rel="noopener">{ICO['wa']} Escríbenos</a>
+      <div class="mic"><b>{esc(l['calle'])}</b><span>Madrid · {esc(x['zona'])}</span></div>
+      <div class="mic"><b>656 48 50 99</b><span>{t['wa_book_lbl']}</span></div>
+      <a class="btn btn-wa" href="{wa}" target="_blank" rel="noopener">{ICO['wa']} {t['msg_us']}</a>
     </aside>
   </div>
 </section>
 
-{carta_html(l)}
+{carta_html(l, lang)}
 <section class="sec" aria-labelledby="h-fotos">
-  <div class="ci rev"><div><div class="ci-eyebrow">Fotos</div><h2 id="h-fotos">Para que vayas abriendo boca</h2></div></div>
+  <div class="ci rev"><div><div class="ci-eyebrow">{t['photos']}</div><h2 id="h-fotos">{t['photos_h']}</h2></div></div>
   <div class="gal">
 {gal}
   </div>
 </section>
 
 <section class="sec" aria-labelledby="h-faq">
-  <div class="ci rev"><div><div class="ci-eyebrow">Dudas</div><h2 id="h-faq">Preguntas rápidas</h2></div></div>
-  {faq(l)}
+  <div class="ci rev"><div><div class="ci-eyebrow">{t['faq_e']}</div><h2 id="h-faq">{t['faq_h']}</h2></div></div>
+  {faq(l, lang)}
 </section>
 
 <section class="sec" aria-labelledby="h-otros">
-  <div class="ci rev"><div><div class="ci-eyebrow">La familia 2.0</div><h2 id="h-otros">Más planes</h2></div></div>
+  <div class="ci rev"><div><div class="ci-eyebrow">{t['fam_e']}</div><h2 id="h-otros">{t['fam_h']}</h2></div></div>
   <div class="otros">
 {otros}
   </div>
@@ -802,27 +1010,27 @@ def pagina(l):
 <footer>
   <div class="ft-top">
     <div class="ft-logo">GRUPO_2.0</div>
-    <nav class="ft-locs" aria-label="Locales"><a href="/locales/">Todos los locales</a>{pie}<a href="/eventos/">Eventos</a></nav>
+    <nav class="ft-locs" aria-label="{t['venues']}"><a href="{'/en/#venues' if en else '/locales/'}">{t['all_venues']}</a>{pie}<a href="{'/en/#groups' if en else '/eventos/'}">{t['events']}</a><a href="{ruta(s, t['other_lang'])}" hreflang="{t['other_lang']}" lang="{t['other_lang']}">{t['other_name']}</a></nav>
   </div>
   <div class="ft-bot">
     <div><p class="ft-copy">© 2026 Grupo 2.0 · Madrid · 656 485 099 · <a href="mailto:hola@grupodospuntocero.com">hola@grupodospuntocero.com</a></p>
-    <div class="lg-links"><a href="/#aviso">Aviso legal</a><a href="/#privacidad">Privacidad</a><a href="/#cookies">Cookies</a></div></div>
+    <div class="lg-links"><a href="/#aviso">{t['legal']}</a><a href="/#privacidad">{t['privacy']}</a><a href="/#cookies">Cookies</a></div></div>
     <div class="ft-soc">
-      <a href="https://www.instagram.com/{l['ig']}" target="_blank" rel="noopener" aria-label="Instagram de {esc(l['nombre'])}">{ICO['ig']}</a>
+      <a href="https://www.instagram.com/{l['ig']}" target="_blank" rel="noopener" aria-label="{esc(t['ig_of'].format(n=l['nombre']))}">{ICO['ig']}</a>
       <a href="https://www.tiktok.com/@grupo2.0_" target="_blank" rel="noopener" aria-label="TikTok Grupo 2.0">{ICO['tt']}</a>
       <a href="https://wa.me/{WA}" target="_blank" rel="noopener" aria-label="WhatsApp Grupo 2.0">{ICO['wa']}</a>
     </div>
   </div>
 </footer>
 
-<a href="{wa}" id="waf" target="_blank" rel="noopener" aria-label="Reservar por WhatsApp"><svg width="25" height="25" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="{WA_PATH}"/></svg></a>
+<a href="{wa}" id="waf" target="_blank" rel="noopener" aria-label="{t['waf']}"><svg width="25" height="25" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="{WA_PATH}"/></svg></a>
 
 <script>
 (function(){{
   var root=document.documentElement,reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,hover=matchMedia('(hover: hover)').matches;
   /* tema día/noche (misma clave que la portada) */
   var btn=document.getElementById('theme-btn'),meta=document.getElementById('theme-color-meta');
-  function setT(t){{root.setAttribute('data-theme',t);btn.setAttribute('aria-label',t==='day'?'Cambiar a modo noche':'Cambiar a modo día');if(meta)meta.content=t==='day'?'#f5f0e8':'#0a0908'}}
+  function setT(t){{root.setAttribute('data-theme',t);btn.setAttribute('aria-label',t==='day'?'{t['to_night']}':'{t['to_day']}');if(meta)meta.content=t==='day'?'#f5f0e8':'#0a0908'}}
   setT(root.getAttribute('data-theme'));
   btn.addEventListener('click',function(){{var n=root.getAttribute('data-theme')==='day'?'night':'day';setT(n);try{{localStorage.setItem('g20theme',n)}}catch(e){{}}}});
   /* nav al hacer scroll */
@@ -831,7 +1039,7 @@ def pagina(l):
   addEventListener('scroll',function(){{if(!tk){{tk=true;requestAnimationFrame(onS)}}}},{{passive:true}});onS();
   /* menú móvil */
   var b=document.getElementById('burger'),mn=document.getElementById('mobnav');
-  function tog(o){{b.classList.toggle('on',o);mn.classList.toggle('on',o);b.setAttribute('aria-expanded',o);mn.setAttribute('aria-hidden',!o);b.setAttribute('aria-label',o?'Cerrar menú':'Abrir menú');document.body.style.overflow=o?'hidden':'';document.body.classList.toggle('mn-open',o)}}
+  function tog(o){{b.classList.toggle('on',o);mn.classList.toggle('on',o);b.setAttribute('aria-expanded',o);mn.setAttribute('aria-hidden',!o);b.setAttribute('aria-label',o?'{t['menu_close']}':'{t['menu_open']}');document.body.style.overflow=o?'hidden':'';document.body.classList.toggle('mn-open',o)}}
   b.addEventListener('click',function(){{tog(!mn.classList.contains('on'))}});
   document.addEventListener('keydown',function(e){{if(e.key==='Escape'&&mn.classList.contains('on'))tog(false)}});
   /* abierto ahora + día de hoy */
@@ -841,7 +1049,7 @@ def pagina(l):
   H.forEach(function(r){{var a=t(r[1]),c=t(r[2]);if(c<=a)c+=24;
     if(r[0].indexOf(d)>-1&&h>=a&&h<Math.min(c,24))on=true;
     if(r[0].indexOf(prev)>-1&&c>24&&h<c-24)on=true;}});
-  var es=document.getElementById('estado');es.hidden=false;es.classList.add(on?'si':'no');es.querySelector('.ot').textContent=on?'Abierto ahora':'Cerrado ahora';
+  var es=document.getElementById('estado');es.hidden=false;es.classList.add(on?'si':'no');es.querySelector('.ot').textContent=on?'{t['open_now']}':'{t['closed_now']}';
   var fila=document.querySelector('tr[data-d="'+((d+6)%7)+'"]');if(fila)fila.className='hoy';
   /* apariciones */
   var io=new IntersectionObserver(function(en){{en.forEach(function(x){{if(x.isIntersecting){{x.target.classList.add('vis');io.unobserve(x.target)}}}})}},{{threshold:.12,rootMargin:'0px 0px -40px 0px'}});
@@ -1141,18 +1349,24 @@ def pagina_eventos():
 '''
 
 def envoltorio(title, desc, url, ld, css_extra, main, actual='', robots='index,follow,max-image-preview:large',
-               og_img='/fotos/green/1.webp', og_alt='Locales de Grupo 2.0 en Madrid'):
+               og_img='/fotos/green/1.webp', og_alt='Locales de Grupo 2.0 en Madrid', lang='es', alt=None):
     """Cabecera, nav, menú móvil, pie y scripts comunes (misma estética que las páginas de locales)."""
-    wa = f'https://wa.me/{WA}?text=' + quote('Hola! Quería información sobre Grupo 2.0')
-    pie = ''.join(f'<a href="/locales/{o["slug"]}/">{esc(o["nombre"])}</a>' for o in LOCALES)
+    t = T[lang]
+    en = lang == 'en'
+    wa = f'https://wa.me/{WA}?text=' + quote('Hi! I’d like some information about Grupo 2.0' if en else 'Hola! Quería información sobre Grupo 2.0')
+    pie = ''.join(f'<a href="{ruta(o["slug"], lang)}">{esc(o["nombre"])}</a>' for o in LOCALES)
     mob = '\n'.join(
-        f'<a class="mn-link" href="/locales/{o["slug"]}/" style="--oc:rgb({ESTILO[o["key"]]["rgb"]})"><span class="mn-i">{ESTILO[o["key"]]["num"]}</span>{esc(o["nombre"])}</a>'
+        f'<a class="mn-link" href="{ruta(o["slug"], lang)}" style="--oc:rgb({ESTILO[o["key"]]["rgb"]})"><span class="mn-i">{ESTILO[o["key"]]["num"]}</span>{esc(o["nombre"])}</a>'
         for o in LOCALES)
     cur = lambda k: ' aria-current="page"' if actual == k else ''
     canon = f'<link rel="canonical" href="{url}">\n' if url else ''
+    if alt:
+        canon += hreflang(*alt)
+    otro = (alt[1] if not en else alt[0]) if alt else ('/en/' if not en else '/')
+    lang_btn = f'<a class="lang" href="{otro}" hreflang="{t["other_lang"]}" lang="{t["other_lang"]}" aria-label="{t["other_aria"]}">{t["other"]}</a>'
     ld_html = f'<script type="application/ld+json">\n{ld}\n</script>\n' if ld else ''
     return f'''<!DOCTYPE html>
-<html lang="es">
+<html lang="{t['html']}">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -1165,7 +1379,7 @@ def envoltorio(title, desc, url, ld, css_extra, main, actual='', robots='index,f
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Grupo 2.0">
-<meta property="og:locale" content="es_ES">
+<meta property="og:locale" content="{t['og']}">
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(desc)}">
 <meta property="og:url" content="{url or BASE + '/'}">
@@ -1185,26 +1399,22 @@ def envoltorio(title, desc, url, ld, css_extra, main, actual='', robots='index,f
 </style>
 </head>
 <body style="--lc:rgb(231,47,138);--lcr:231,47,138;--lct-n:#ff6fb0;--lct-d:#c0186c;--on-lc:#fff">
-<a class="skip-link" href="#main">Saltar al contenido</a>
+<a class="skip-link" href="#main">{t['skip']}</a>
 <div id="cur" aria-hidden="true"></div>
-<button id="theme-btn" aria-label="Cambiar tema día/noche" title="Cambiar tema"></button>
+<button id="theme-btn" aria-label="{t['theme']}" title="{t['theme']}"></button>
 
-<nav id="nav" aria-label="Principal">
-  <a class="nav-pill" href="/">GRUPO_2.0</a>
-  <ul class="nav-links">
-    <li><a href="/locales/"{cur('locales')}>Locales</a></li>
-    <li><a href="/eventos/">Eventos</a></li>
-    <li><a href="/#socios">Socios</a></li>
-    <li><a href="/#contacto">Contacto</a></li>
-  </ul>
-  <a class="nav-res" href="{KOMVO}" target="_blank" rel="noopener">Reservar ↗</a>
-  <button id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobnav"><span></span><span></span><span></span></button>
+<nav id="nav" aria-label="{t['nav']}">
+  <a class="nav-pill" href="{'/en/' if en else '/'}">GRUPO_2.0</a>
+  {NAV_EN if en else NAV_ES.replace('<a href="/locales/">', '<a href="/locales/"' + cur('locales') + '>')}
+  {lang_btn}
+  <a class="nav-res" href="{KOMVO}" target="_blank" rel="noopener">{t['book']}</a>
+  <button id="burger" aria-label="{t['menu_open']}" aria-expanded="false" aria-controls="mobnav"><span></span><span></span><span></span></button>
 </nav>
 <div id="mobnav" aria-hidden="true">
   <div class="mn-inner">
-    <p class="mn-t">Los locales de la familia</p>
+    <p class="mn-t">{t['family']}</p>
 {mob}
-    <a class="mn-res" href="{wa}" target="_blank" rel="noopener">{ICO['wa']} Escríbenos</a>
+    <a class="mn-res" href="{wa}" target="_blank" rel="noopener">{ICO['wa']} {t['msg_us']}</a>
   </div>
 </div>
 
@@ -1215,11 +1425,11 @@ def envoltorio(title, desc, url, ld, css_extra, main, actual='', robots='index,f
 <footer>
   <div class="ft-top">
     <div class="ft-logo">GRUPO_2.0</div>
-    <nav class="ft-locs" aria-label="Locales"><a href="/locales/"{cur('locales')}>Todos los locales</a>{pie}<a href="/eventos/">Eventos</a></nav>
+    <nav class="ft-locs" aria-label="{t['venues']}"><a href="{'/en/#venues' if en else '/locales/'}"{cur('locales')}>{t['all_venues']}</a>{pie}<a href="{'/en/#groups' if en else '/eventos/'}">{t['events']}</a><a href="{otro}" hreflang="{t['other_lang']}" lang="{t['other_lang']}">{t['other_name']}</a></nav>
   </div>
   <div class="ft-bot">
     <div><p class="ft-copy">© 2026 Grupo 2.0 · Madrid · 656 485 099 · <a href="mailto:hola@grupodospuntocero.com">hola@grupodospuntocero.com</a></p>
-    <div class="lg-links"><a href="/#aviso">Aviso legal</a><a href="/#privacidad">Privacidad</a><a href="/#cookies">Cookies</a></div></div>
+    <div class="lg-links"><a href="/#aviso">{t['legal']}</a><a href="/#privacidad">{t['privacy']}</a><a href="/#cookies">Cookies</a></div></div>
     <div class="ft-soc">
       <a href="https://www.instagram.com/grupo_2.0" target="_blank" rel="noopener" aria-label="Instagram Grupo 2.0">{ICO['ig']}</a>
       <a href="https://www.tiktok.com/@grupo2.0_" target="_blank" rel="noopener" aria-label="TikTok Grupo 2.0">{ICO['tt']}</a>
@@ -1228,8 +1438,8 @@ def envoltorio(title, desc, url, ld, css_extra, main, actual='', robots='index,f
   </div>
 </footer>
 
-<a href="{wa}" id="waf" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"><svg width="25" height="25" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="{WA_PATH}"/></svg></a>
-<script>{JS_COMUN}</script>
+<a href="{wa}" id="waf" target="_blank" rel="noopener" aria-label="{t['msg_us']} (WhatsApp)"><svg width="25" height="25" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="{WA_PATH}"/></svg></a>
+<script>{JS_COMUN if not en else JS_COMUN.replace("Cambiar a modo noche", t["to_night"]).replace("Cambiar a modo día", t["to_day"]).replace("Cerrar menú", t["menu_close"]).replace("Abrir menú", t["menu_open"])}</script>
 </body>
 </html>
 '''
@@ -1355,6 +1565,105 @@ def pagina_locales():
                       og_img='/fotos/la chula/1.webp', og_alt='Bar de copas La Chula 2.0 en Madrid')
 
 
+def pagina_en_home():
+    """Portada en inglés: /en/ (versión inglesa de la portada /)."""
+    t = T['en']
+    url = f'{BASE}/en/'
+    title = 'Grupo 2.0 · Cocktail bars, restaurant & nightclub in Madrid'
+    desc = ('Six venues in Madrid’s Salamanca district, Chamartín and the Castellana: cocktail bars, a restaurant on '
+            'López de Hoyos and a restaurant-bar-nightclub open until 6am. Opening hours, addresses and bookings.')
+    ld = json.dumps({'@context': 'https://schema.org', '@graph': [
+        {'@type': 'WebPage', '@id': f'{url}#page', 'url': url, 'name': title, 'description': desc, 'inLanguage': 'en',
+         'about': {'@id': f'{BASE}/#org'}, 'isPartOf': {'@id': f'{BASE}/#org'},
+         'mainEntity': {'@type': 'ItemList', 'numberOfItems': len(LOCALES), 'itemListElement': [
+             {'@type': 'ListItem', 'position': i + 1, 'url': BASE + ruta(l['slug'], 'en'), 'name': l['nombre']}
+             for i, l in enumerate(LOCALES)]}},
+    ]}, ensure_ascii=False, indent=1)
+
+    def tarjeta(l, primera):
+        e = ESTILO[l['key']]
+        x = loc(l, 'en')
+        carga = 'decoding="async"' if primera else 'loading="lazy" decoding="async"'
+        return (f'<a class="hc rev" href="{ruta(l["slug"], "en")}" style="--oc:rgb({e["rgb"]})">'
+                f'<div class="hc-img"><img src="{quote("/fotos/" + l["fotos"] + "/1.webp")}" alt="{esc(l["nombre"])}, {esc(x["tipo_txt"].lower())} at {esc(l["calle"])}" width="1600" height="1066" {carga}></div>'
+                f'<div class="hc-b"><span class="hc-n">{e["num"]} · {esc(x["tipo_txt"])}</span><h3>{esc(l["nombre"])}</h3>'
+                f'<p>{esc(l["calle"])}, Madrid</p><p>Hours: {esc(horario_corto(l, "en"))}.</p>'
+                f'<p class="hc-t">“{esc(x["tagline"])}”</p></div><i>{ICO["arrow"]}</i></a>')
+
+    zonas_html, primera = [], True
+    for i, (zona, _, slugs) in enumerate(ZONAS):
+        z, h2, intro = EN_ZONAS[zona]
+        cards = []
+        for s_ in slugs:
+            cards.append(tarjeta(POR_SLUG[s_], primera))
+            primera = False
+        n = len(slugs)
+        zonas_html.append(f'''<section class="sec" aria-labelledby="h-z{i}"{' id="venues"' if i == 0 else ''}>
+  <div class="ci rev"><div><div class="ci-eyebrow">{esc(z)} · {n} {"venue" if n == 1 else "venues"}</div><h2 id="h-z{i}">{esc(h2)}</h2></div></div>
+  <p class="zona-intro rev">{esc(intro)}</p>
+  <div class="hub">
+{chr(10).join(cards)}
+  </div>
+</section>''')
+    filas = '\n'.join(
+        f'<tr><td><a href="{ruta(l["slug"], "en")}">{esc(l["nombre"])}</a></td><td>{esc(loc(l, "en")["tipo_txt"])}</td>'
+        f'<td>{esc(l["calle"])}</td><td>{esc(loc(l, "en")["zona"])}</td><td>{esc(horario_corto(l, "en"))}</td></tr>'
+        for l in LOCALES)
+    wa_g = f'https://wa.me/{WA}?text=' + quote('Hi! I’d like to organise a group event with Grupo 2.0')
+    main = f'''<header class="hero" id="hero">
+  <div class="marq" aria-hidden="true"><div class="marq-in"><span>Grupo 2.0</span><span>Grupo 2.0</span><span>Grupo 2.0</span></div></div>
+  <div class="hero-in">
+    <div class="hub-hero">
+      <div class="rev">
+        <span class="lc-num">6 VENUES · MADRID</span>
+        <h1>Bars &amp; nightlife in <em>Madrid</em></h1>
+        <p class="tagline">Grupo 2.0 is a family of six venues between the Salamanca district, Chamartín and the Paseo de la Castellana: neighbourhood cocktail bars, neon and music, a restaurant for lunch and dinner, and a restaurant, bar and nightclub open until 6am.</p>
+        <div class="ctas">
+          <a class="btn btn-pri" href="{KOMVO}" target="_blank" rel="noopener">{ICO['cal']} Book a table</a>
+          <a class="btn btn-wa ghost" href="#groups">Groups &amp; events</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-photos rev" aria-hidden="true">
+      <div class="lph"><img src="{quote('/fotos/la chula/1.webp')}" alt="" width="1600" height="1066" fetchpriority="high" decoding="async"></div>
+      <div class="lph"><img src="{quote('/fotos/tablas/2.webp')}" alt="" width="1600" height="1066" decoding="async"></div>
+      <div class="lph"><img src="{quote('/fotos/green/3.webp')}" alt="" width="1600" height="1066" decoding="async"></div>
+    </div>
+  </div>
+</header>
+
+{chr(10).join(zonas_html)}
+
+<section class="sec" aria-labelledby="h-tabla">
+  <div class="ci rev"><div><div class="ci-eyebrow">At a glance</div><h2 id="h-tabla">Addresses and opening hours</h2></div></div>
+  <div class="tabla-wrap rev">
+    <table class="tabla">
+      <thead><tr><th scope="col">Venue</th><th scope="col">Type</th><th scope="col">Address</th><th scope="col">Area</th><th scope="col">Hours</th></tr></thead>
+      <tbody>
+{filas}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="sec" id="groups" aria-labelledby="h-groups">
+  <div class="ci rev"><div><div class="ci-eyebrow">Groups &amp; events</div><h2 id="h-groups">Birthdays, company dinners and parties</h2></div></div>
+  <p class="zona-intro rev">We host birthdays, company lunches and dinners, hen and stag parties and after-work drinks across our venues. For Christmas, La Traviesa 2.0 has group menus from €45 to €65 per person with drinks included, plus a cocktail-style option for large groups. Tell us the date and how many of you there are, and we’ll suggest the right venue and menu.</p>
+  <div class="ctas rev">
+    <a class="btn btn-pri" href="{KOMVO}" target="_blank" rel="noopener">{ICO['cal']} Book an event online</a>
+    <a class="btn btn-wa ghost" href="{wa_g}" target="_blank" rel="noopener">{ICO['wa']} WhatsApp</a>
+    <a class="btn btn-ghost" href="/traviesa/" hreflang="es">{ICO['carta']} Christmas menus (Spanish)</a>
+  </div>
+</section>
+
+<section class="sec" id="contact" aria-labelledby="h-contact">
+  <div class="ci rev"><div><div class="ci-eyebrow">Contact</div><h2 id="h-contact">Get in touch</h2></div></div>
+  <p class="zona-intro rev">WhatsApp and phone: <a href="https://wa.me/{WA}" target="_blank" rel="noopener">+34 656 48 50 99</a> · Email: <a href="mailto:hola@grupodospuntocero.com">hola@grupodospuntocero.com</a> · Instagram: <a href="https://www.instagram.com/grupo_2.0" target="_blank" rel="noopener">@grupo_2.0</a></p>
+</section>'''
+    return envoltorio(title, desc, url, ld, CSS_HUB + '.zona-intro a{border-bottom:1px solid currentColor}', main,
+                      og_img='/fotos/la chula/1.webp', og_alt='La Chula 2.0 cocktail bar in Madrid', lang='en', alt=('/', '/en/'))
+
+
 def pagina_404():
     cards = '\n'.join(
         f'<a class="oc rev" href="/locales/{o["slug"]}/" style="--oc:rgb({ESTILO[o["key"]]["rgb"]})"><span class="oc-n">{ESTILO[o["key"]]["num"]}</span><b>{esc(o["nombre"])}</b><span>{esc(o["tipo_txt"])} · {esc(ESTILO[o["key"]]["tag_dir"])}</span><i>{ICO["arrow"]}</i></a>'
@@ -1397,6 +1706,10 @@ def sitemap():
     for l in LOCALES:
         out += url(f'{BASE}/locales/{l["slug"]}/', ''.join(
             img(f'/fotos/{l["fotos"]}/{i}.webp', f'{l["nombre"]}, {l["tipo_txt"].lower()} en {l["calle"]}, Madrid') for i in (1, 2, 3, 4)))
+    out += url(BASE + '/en/', img('/fotos/la chula/1.webp', 'Grupo 2.0 cocktail bars in Madrid'))
+    for l in LOCALES:
+        out += url(BASE + ruta(l['slug'], 'en'), ''.join(
+            img(f'/fotos/{l["fotos"]}/{i}.webp', f'{l["nombre"]}, {loc(l, "en")["tipo_txt"].lower()} at {l["calle"]}, Madrid') for i in (1, 2, 3, 4)))
     out += url(BASE + '/eventos/', img('/fotos/la traviesa/1.webp', 'Cenas de empresa en La Traviesa 2.0, Madrid'))
     out += url(BASE + '/traviesa/')
     return out + '</urlset>\n'
@@ -1413,6 +1726,15 @@ if __name__ == '__main__':
     with open(os.path.join(raiz, '..', 'eventos', 'index.html'), 'w', encoding='utf-8') as f:
         f.write(pagina_eventos())
     print('ok eventos')
+    for l in LOCALES:
+        d = os.path.join(raiz, '..', 'en', 'venues', l['slug'])
+        os.makedirs(d, exist_ok=True)
+        with open(os.path.join(d, 'index.html'), 'w', encoding='utf-8') as f:
+            f.write(pagina(l, 'en'))
+        print('ok en', l['slug'])
+    with open(os.path.join(raiz, '..', 'en', 'index.html'), 'w', encoding='utf-8') as f:
+        f.write(pagina_en_home())
+    print('ok en home')
     with open(os.path.join(raiz, 'index.html'), 'w', encoding='utf-8') as f:
         f.write(pagina_locales())
     print('ok locales')

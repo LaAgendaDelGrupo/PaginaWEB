@@ -13,6 +13,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Grupo 2.0">
 <meta property="og:locale" content="es_ES">
+<meta property="og:locale:alternate" content="en_GB">
 <meta property="og:title" content="Grupo 2.0 — Somos las vacaciones dentro de tu rutina">
 <meta property="og:description" content="7 locales en Madrid: restaurantes, bares y discotecas. Reserva tu evento o ven a tomar algo con nosotros.">
 <meta property="og:url" content="https://grupodospuntocero.com/">
@@ -25,6 +26,9 @@
 <meta name="twitter:description" content="7 locales en Madrid: restaurantes, bares y discotecas. Reserva tu evento o ven a tomar algo con nosotros.">
 <meta name="twitter:image" content="https://grupodospuntocero.com/og.jpg">
 <link rel="canonical" href="https://grupodospuntocero.com/">
+<link rel="alternate" hreflang="es" href="https://grupodospuntocero.com/">
+<link rel="alternate" hreflang="en" href="https://grupodospuntocero.com/en/">
+<link rel="alternate" hreflang="x-default" href="https://grupodospuntocero.com/">
 <!-- Datos estructurados (Google / buscadores con IA). OJO: si cambia un horario o dirección, actualizarlo
      también aquí (además de D{} y HORARIOS{}). Juanita no aparece mientras esté cerrada (D.juanita.closed):
      al reabrir, añadir su bloque NightClub con su horario. -->
@@ -290,6 +294,8 @@ html.copa-cursor #cur-r{display:none}
 .nav-links a{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;opacity:.55;cursor:pointer;transition:opacity .2s;position:relative}
 .nav-links a::after{content:'';position:absolute;left:0;bottom:-5px;width:0;height:1.5px;background:var(--fucsia);transition:width .3s var(--ease)}
 .nav-links a:hover{opacity:1}.nav-links a:hover::after{width:100%}
+.lang{font-size:11px;font-weight:800;letter-spacing:.16em;padding:9px 12px;border:1.5px solid var(--bdr2,rgba(128,128,128,.35));border-radius:999px;opacity:.75;transition:opacity .2s,border-color .2s;margin-left:auto;margin-right:12px}
+.lang:hover{opacity:1;border-color:var(--fucsia)}
 .nav-res{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;background:var(--txt);color:var(--bg);border:none;border-radius:100px;padding:11px 24px;cursor:pointer;transition:transform .3s var(--easeSnap),box-shadow .3s}
 .nav-res:hover{transform:scale(1.06);box-shadow:0 6px 24px rgba(231,47,138,.35)}
 /* hamburguesa */
@@ -715,6 +721,7 @@ body.mn-open #waf{opacity:0;pointer-events:none;transform:scale(.6)}
   .minfo{margin-bottom:16px}
   /* el botón de tema sube a la barra de arriba: abajo solo queda WhatsApp y no tapa contenido */
   #theme-btn{top:12px;bottom:auto;right:64px;width:42px;height:42px;background:transparent;border-color:transparent;z-index:520}
+  .lang{margin-right:58px}
   #nav,#nav.scrolled{padding-top:12px;padding-bottom:12px}
   #waf{width:52px;height:52px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom))}
   footer{padding-bottom:96px}
@@ -757,6 +764,7 @@ body.mn-open #waf{opacity:0;pointer-events:none;transform:scale(.6)}
     <li><a href="#nosotros" onclick="event.preventDefault();goTo('nosotros')">Nosotros</a></li>
     <li><a href="#contacto" onclick="event.preventDefault();goTo('contacto')">Contacto</a></li>
   </ul>
+  <a class="lang" href="/en/" hreflang="en" lang="en" aria-label="Read in English">EN</a>
   <button class="nav-res mag" onclick="goTo('locales')">Reservar ↗</button>
   <button id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobnav"><span></span><span></span><span></span></button>
 </nav>
@@ -1096,7 +1104,7 @@ body.mn-open #waf{opacity:0;pointer-events:none;transform:scale(.6)}
   <div class="ft-top">
     <div class="ft-logo">GRUPO_2.0</div>
     <div class="ft-locs">
-      <a href="/locales/">Todos los locales</a><a href="/locales/las-tablas/">Las Tablas 2.0</a><a href="/locales/la-pequena/">La Pequeña 2.0</a><a href="/locales/la-chula/">La Chula 2.0</a><a href="/locales/la-peluqueria/">La Peluquería 2.0</a><a href="/locales/la-traviesa/">La Traviesa 2.0</a><a onclick="openM('juanita')">Juanita 2.0</a><a href="/locales/green/">Green 2.0</a><a href="/eventos/">Eventos</a>
+      <a href="/locales/">Todos los locales</a><a href="/locales/las-tablas/">Las Tablas 2.0</a><a href="/locales/la-pequena/">La Pequeña 2.0</a><a href="/locales/la-chula/">La Chula 2.0</a><a href="/locales/la-peluqueria/">La Peluquería 2.0</a><a href="/locales/la-traviesa/">La Traviesa 2.0</a><a onclick="openM('juanita')">Juanita 2.0</a><a href="/locales/green/">Green 2.0</a><a href="/eventos/">Eventos</a><a href="/en/" hreflang="en" lang="en">English</a>
     </div>
   </div>
   <div class="ft-bot">

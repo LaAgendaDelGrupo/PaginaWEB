@@ -8,6 +8,9 @@
 <meta name="description" content="La Chula 2.0: bar de copas con neón en Claudio Coello, 116 (barrio de Salamanca). Jueves hasta las 3:00; viernes y sábados hasta las 3:30. Reservas por WhatsApp.">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="canonical" href="https://grupodospuntocero.com/locales/la-chula/">
+<link rel="alternate" hreflang="es" href="https://grupodospuntocero.com/locales/la-chula/">
+<link rel="alternate" hreflang="en" href="https://grupodospuntocero.com/en/venues/la-chula/">
+<link rel="alternate" hreflang="x-default" href="https://grupodospuntocero.com/locales/la-chula/">
 <meta name="theme-color" content="#0a0908" id="theme-color-meta">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -306,6 +309,10 @@ tr.hoy td:first-child::after{content:' · hoy';font-weight:600;font-size:12px}
 .mn-d{display:block;font-size:13.5px;color:var(--txt2);margin-top:2px;max-width:52ch}
 .mn-al{display:block;font-size:12px;color:var(--txt3);margin-top:3px}
 .mn-al::before{content:'Alérgenos: '}
+.mn-al:lang(en)::before{content:'Allergens: '}
+.lang{font-size:11px;font-weight:800;letter-spacing:.16em;padding:9px 12px;border:1.5px solid var(--bdr2);border-radius:999px;opacity:.75;transition:opacity .2s,border-color .2s;margin-left:auto;margin-right:10px}
+.lang:hover{opacity:1;border-color:var(--lc)}
+@media(max-width:760px){.lang{margin-right:20px}}
 .mn-foot{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;border-top:1px solid var(--bdr);padding-top:22px;margin-top:6px}
 .mn-foot p{font-size:13px;color:var(--txt3);max-width:70ch}
 /* pie (igual que la portada) */
@@ -348,7 +355,7 @@ footer{background:var(--ft-bg);border-top:1px solid var(--bdr);padding:44px clam
 <body style="--lc:rgb(231,47,138);--lcr:231,47,138;--lct-n:#ff6fb0;--lct-d:#c0186c;--on-lc:#fff">
 <a class="skip-link" href="#main">Saltar al contenido</a>
 <div id="cur" aria-hidden="true"></div>
-<button id="theme-btn" aria-label="Cambiar tema día/noche" title="Cambiar tema"></button>
+<button id="theme-btn" aria-label="Cambiar tema día/noche" title="Cambiar tema día/noche"></button>
 
 <nav id="nav" aria-label="Principal">
   <a class="nav-pill" href="/">GRUPO_2.0</a>
@@ -358,6 +365,7 @@ footer{background:var(--ft-bg);border-top:1px solid var(--bdr);padding:44px clam
     <li><a href="/#socios">Socios</a></li>
     <li><a href="/#contacto">Contacto</a></li>
   </ul>
+  <a class="lang" href="/en/venues/la-chula/" hreflang="en" lang="en" aria-label="Read in English">EN</a>
   <a class="nav-res" href="https://wa.me/34656485099?text=Hola%21%20Quiero%20reservar%20en%20La%20Chula%202.0" target="_blank" rel="noopener">Reservar ↗</a>
   <button id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobnav"><span></span><span></span><span></span></button>
 </nav>
@@ -461,7 +469,7 @@ footer{background:var(--ft-bg);border-top:1px solid var(--bdr);padding:44px clam
 <footer>
   <div class="ft-top">
     <div class="ft-logo">GRUPO_2.0</div>
-    <nav class="ft-locs" aria-label="Locales"><a href="/locales/">Todos los locales</a><a href="/locales/las-tablas/">Las Tablas 2.0</a><a href="/locales/la-pequena/">La Pequeña 2.0</a><a href="/locales/la-chula/" aria-current="page">La Chula 2.0</a><a href="/locales/la-peluqueria/">La Peluquería 2.0</a><a href="/locales/la-traviesa/">La Traviesa 2.0</a><a href="/locales/green/">Green 2.0</a><a href="/eventos/">Eventos</a></nav>
+    <nav class="ft-locs" aria-label="Locales"><a href="/locales/">Todos los locales</a><a href="/locales/las-tablas/">Las Tablas 2.0</a><a href="/locales/la-pequena/">La Pequeña 2.0</a><a href="/locales/la-chula/" aria-current="page">La Chula 2.0</a><a href="/locales/la-peluqueria/">La Peluquería 2.0</a><a href="/locales/la-traviesa/">La Traviesa 2.0</a><a href="/locales/green/">Green 2.0</a><a href="/eventos/">Eventos</a><a href="/en/venues/la-chula/" hreflang="en" lang="en">English</a></nav>
   </div>
   <div class="ft-bot">
     <div><p class="ft-copy">© 2026 Grupo 2.0 · Madrid · 656 485 099 · <a href="mailto:hola@grupodospuntocero.com">hola@grupodospuntocero.com</a></p>
