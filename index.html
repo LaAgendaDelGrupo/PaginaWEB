@@ -253,6 +253,7 @@ body,#nav,.lc,.mbox,.socios-card,footer,.ct-link,.ticker,.mover{transition:backg
 /* ════════════ CURSOR (copa 2.0) ════════════ */
 @media(hover:hover){html.copa-cursor,html.copa-cursor *{cursor:none!important}}
 #cur,#cur-r{position:fixed;left:0;top:0;pointer-events:none;z-index:9000;transform:translate(-50%,-50%)}
+#cur:not(.on),#cur-r:not(.on){opacity:0} /* ocultos hasta el primer movimiento del ratón */
 #cur{width:7px;height:7px;border-radius:50%;background:var(--fucsia);transition:width .25s,height .25s,background .25s}
 /* cuando la copa carga, #cur se convierte en ella */
 html.copa-cursor #cur{width:34px;height:34px;border-radius:0;background:none}
@@ -1238,7 +1239,7 @@ if(!noHover){
   const $c=document.getElementById('cur'),$r=document.getElementById('cur-r');
   let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my,lastMx=mx,tilt=0;
   let running=false;
-  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;if(!running){running=true;requestAnimationFrame(loop)}},{passive:true});
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;$c.classList.add('on');$r.classList.add('on');if(!running){running=true;requestAnimationFrame(loop)}},{passive:true});
   /* la copa de Grupo 2.0 como cursor; si falta el archivo, se queda el punto */
   const img=new Image();
   img.onload=()=>{document.documentElement.classList.add('copa-cursor');img.alt='';$c.appendChild(img)};
