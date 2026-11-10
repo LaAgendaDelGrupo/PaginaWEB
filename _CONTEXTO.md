@@ -95,7 +95,7 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
 - [ ] URL del canal de WhatsApp (marcador `CANAL_WA_URL` en la portada).
 - [ ] Datos fiscales para el aviso legal (razón social, CIF, domicilio).
 - [ ] Reseñas reales de Google para el carrusel de la portada (ahora son de ejemplo).
-- [ ] Prensa: enviar los emails a Time Out Madrid, Madrid Secreto y Guía del Ocio. Los borradores están en otra carpeta del Mac de oficina: Escritorio › «Emails prensa».
+- [x] Prensa: emails enviados a Time Out Madrid, Madrid Secreto y Guía del Ocio (10/11). Si publican algo, añadir «Nos han mencionado en…».
 
 **Agencias:**
 - [ ] La Traviesa: cuando su agencia publique `traviesa.grupodospuntocero.com` con SSL, redirigir `/traviesa/` a ese subdominio y quitarlo del sitemap.
@@ -126,3 +126,4 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
 - **10/11/2026:**
   - Carpeta renombrada de «Pagina Web» a «WEB 2.0».
   - Creados este contexto y `CLAUDE.md`.
+  - Emails de prensa enviados; carpeta de borradores eliminada.
