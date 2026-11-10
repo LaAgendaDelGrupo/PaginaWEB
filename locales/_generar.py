@@ -1715,6 +1715,41 @@ def sitemap():
     return out + '</urlset>\n'
 
 
+# ─────────────── Redirecciones de la web antigua (WordPress) ───────────────
+# Google aún conoce estas URLs (Search Console > Indexación > 404). GitHub Pages no permite
+# redirecciones 301, así que se crea una página mínima con meta refresh + canonical,
+# que Google trata como redirección. Añadir aquí cualquier URL antigua que salga como 404.
+REDIRECCIONES = {
+  'green-2-0': '/locales/green/',
+  'la-traviesa-2-0': '/locales/la-traviesa/',
+  'la-chula-2-0': '/locales/la-chula/',
+  'la-peluqueria-2-0': '/locales/la-peluqueria/',
+  'la-pequena-2-0': '/locales/la-pequena/',
+  'juanita-2-0': '/',
+  'ubicaciones': '/locales/',
+  'if/restaurantes': '/locales/',
+  'home': '/',
+  'quienes-somos': '/#nosotros',
+  'sobre-nosotros': '/#nosotros',
+  'contacto': '/#contacto',
+  'hazte-socio': '/#socios',
+  'aviso-legal': '/#aviso',
+  'politica-de-privacidad': '/#privacidad',
+  'politica-de-cookies': '/#cookies',
+}
+
+def pagina_redireccion(destino):
+    url = 'https://grupodospuntocero.com' + destino
+    canon = url.split('#')[0]
+    return f"""<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Grupo 2.0</title>
+<link rel="canonical" href="{canon}">
+<meta http-equiv="refresh" content="0; url={destino}">
+<script>location.replace({destino!r});</script>
+</head><body><p>Esta página se ha movido: <a href="{destino}">{url}</a></p></body></html>
+"""
+
 if __name__ == '__main__':
     raiz = os.path.dirname(os.path.abspath(__file__))
     for l in LOCALES:
@@ -1744,3 +1779,9 @@ if __name__ == '__main__':
     with open(os.path.join(raiz, '..', 'sitemap.xml'), 'w', encoding='utf-8') as f:
         f.write(sitemap())
     print('ok sitemap')
+    for viejo, destino in REDIRECCIONES.items():
+        d = os.path.join(raiz, '..', viejo)
+        os.makedirs(d, exist_ok=True)
+        with open(os.path.join(d, 'index.html'), 'w', encoding='utf-8') as f:
+            f.write(pagina_redireccion(destino))
+    print('ok redirecciones', len(REDIRECCIONES))

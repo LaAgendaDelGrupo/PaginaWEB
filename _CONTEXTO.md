@@ -26,6 +26,7 @@ Web pública de **Grupo 2.0** (bares de copas, restaurante y discoteca en Madrid
 | `en/`, `en/venues/<local>/` | Versión en inglés | **No** (generada) |
 | `eventos/` | Cenas de empresa y eventos privados | **No** (generada) |
 | `404.html`, `sitemap.xml` | Página de error y sitemap | **No** (generados) |
+| `green-2-0/`, `contacto/`, `home/`… | Redirecciones de URLs de la web antigua (WordPress), lista `REDIRECCIONES` | **No** (generadas) |
 | `traviesa/` | Landing de Navidad de La Traviesa (diseño de su agencia) | Sí |
 | `menu/` | Menú del día por QR (herramienta interna, excluida de Google) | Sí |
 | `cartas/` | Cartas originales (PDF/imagen) | Sustituir archivo |
@@ -71,6 +72,7 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
   - Enlazadas con `hreflang` y botón ES/EN.
   - Los platos de la carta se quedan en español.
 - **`sitemap.xml`** con fotos, `robots.txt` (bloquea `/menu/`), `llms.txt` y página 404 propia.
+- **Redirecciones** de 16 URLs de la web antigua (WordPress) que Google seguía mostrando como 404 (p. ej. `/green-2-0/` → `/locales/green/`). Si aparece otra en Search Console > Indexación > «No se ha encontrado (404)», añadirla a `REDIRECCIONES` y regenerar.
 - **Diseño**: modo día/noche en todas las páginas (preferencia compartida `g20theme`).
 - **Rendimiento**: logos reducidos, animaciones solo en pantalla, sin `blur` ni `mix-blend-mode` en elementos animados.
 
@@ -94,6 +96,7 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
   - La Traviesa: aún salía el antiguo (J–V 8–02, S 19–02). Debe quedar L–X 08–17 · J–V 08–01 · S 18–01 · D cerrado.
   - Green: el bueno es el de su ficha de Google (L–X 08–22 · J–V 08–06 · S 18–06); la web se cambió a ese horario el 10/11. Green tiene dos fichas: Restaurante y Discoteca (J–S 23:30–06).
 - [ ] Google Business: el enlace a la carta de La Traviesa y de Green no se ve aún en Maps (puede estar en revisión). Volver a mirar en unos días.
+- [ ] Search Console: en Indexación > «No se ha encontrado (404)», pulsar «Validar corrección» (redirecciones subidas el 10/11).
 - [ ] Search Console: reenviar `sitemap.xml` y pedir indexación de `/locales/`, `/en/`, las páginas de cada local y `/eventos/`.
 - [ ] Códigos postales de Claudio Coello 116 y Alberto Alcocer 32.
 - [ ] URL del canal de WhatsApp (marcador `CANAL_WA_URL` en la portada).
@@ -132,4 +135,6 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
   - Creados este contexto y `CLAUDE.md`.
   - Emails de prensa enviados; carpeta de borradores eliminada.
   - Revisadas las fichas de Google Business: webs, Juanita y La Chula bien; corregidos horarios de La Pequeña, La Traviesa y Green en Google.
+  - Search Console (semana 2–8/11): 200 clics, 3.810 impresiones, posición media 5,9; impresiones diarias de ~200 a ~800. 14 páginas indexadas.
+  - Redirecciones de 16 URLs antiguas de WordPress (la de Green tenía 744 impresiones en la semana).
   - Green: lunes a miércoles pasa a 08:00–22:00 en toda la web (portada, datos para Google, páginas ES/EN, /locales/ y llms.txt).
