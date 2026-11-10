@@ -96,7 +96,7 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
   - La Traviesa: aún salía el antiguo (J–V 8–02, S 19–02). Debe quedar L–X 08–17 · J–V 08–01 · S 18–01 · D cerrado.
   - Green: el bueno es el de su ficha de Google (L–X 08–22 · J–V 08–06 · S 18–06); la web se cambió a ese horario el 10/11. Green tiene dos fichas: Restaurante y Discoteca (J–S 23:30–06).
 - [ ] Google Business: el enlace a la carta de La Traviesa y de Green no se ve aún en Maps (puede estar en revisión). Volver a mirar en unos días.
-- [ ] Search Console: en Indexación > «No se ha encontrado (404)», pulsar «Validar corrección» (redirecciones subidas el 10/11).
+- [x] Search Console: «Validar corrección» de los 404 iniciada el 10/11. Google tarda hasta ~2 semanas; mirar el resultado en Indexación > «No se ha encontrado (404)».
 - [ ] Search Console: reenviar `sitemap.xml` y pedir indexación de `/locales/`, `/en/`, las páginas de cada local y `/eventos/`.
 - [ ] Códigos postales de Claudio Coello 116 y Alberto Alcocer 32.
 - [ ] URL del canal de WhatsApp (marcador `CANAL_WA_URL` en la portada).
