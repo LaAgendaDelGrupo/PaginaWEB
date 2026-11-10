@@ -88,8 +88,12 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
 ## 6. Pendiente
 
 **Del lado del cliente (hacer en Google o pedir a quien corresponda):**
-- [ ] Google Business: en la ficha de cada local, poner como web su página (`grupodospuntocero.com/locales/<local>/`), revisar horario y categoría y marcar Juanita como «cerrado temporalmente».
-- [ ] Google Business: enlazar la carta de La Traviesa y de Green (`/locales/<local>/#carta`) y poner el viernes de La Chula hasta las 03:30.
+- [x] Google Business (revisado 10/11): las 7 fichas enlazan a su página de local (Juanita a la portada), Juanita sale «cerrado temporalmente» y La Chula tiene el viernes hasta las 03:30. Green tiene dos fichas: «Green 2.0 Restaurante» y «Green 2.0 Discoteca».
+- [ ] Google Business: horarios que no cuadran con la web:
+  - La Pequeña: Google aún tiene el horario de restaurante (L–X 8–16, J–V 8–02, S 18–02). Debería ser J–S 20:00–02:00.
+  - La Traviesa: Google pone J–V 8–02 y S 19–02; la web pone J–V 08–01 y S 18–01. Confirmar cuál es el bueno.
+  - Green Restaurante: Google pone L–X 8–22, J–V 8–02 y S 20–02; la web pone L–X 08–17 y S 18–06. Confirmar.
+- [ ] Google Business: el enlace a la carta de La Traviesa y de Green no se ve aún en Maps (puede estar en revisión). Volver a mirar en unos días.
 - [ ] Search Console: reenviar `sitemap.xml` y pedir indexación de `/locales/`, `/en/`, las páginas de cada local y `/eventos/`.
 - [ ] Códigos postales de Claudio Coello 116 y Alberto Alcocer 32.
 - [ ] URL del canal de WhatsApp (marcador `CANAL_WA_URL` en la portada).
