@@ -45,7 +45,7 @@ Web pública de **Grupo 2.0** (bares de copas, restaurante y discoteca en Madrid
 | La Peluquería 2.0 | C/ Alberto Alcocer, 32 | Bar de copas | J–S 20:00–02:00 |
 | La Traviesa 2.0 | C/ López de Hoyos, 7 | Restaurante y bar | L–X 08–17 · J–V 08–01 · S 18–01 · D cerrado |
 | Juanita 2.0 | C/ Alberto Alcocer, 33 | Discoteca | **Cerrada temporalmente** (sin página propia) |
-| Green 2.0 | P.º de la Castellana, 40 bis | Restaurante, bar y discoteca | L–X 08–17 · J–V 08–06 · S 18–06 |
+| Green 2.0 | P.º de la Castellana, 40 bis | Restaurante, bar y discoteca | L–X 08–22 · J–V 08–06 · S 18–06 |
 
 **Si cambia un horario o una dirección, hay que actualizarlo en cuatro sitios:**
 1. `LOCALES` en `_generar.py`, y luego regenerar.
@@ -89,10 +89,10 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
 
 **Del lado del cliente (hacer en Google o pedir a quien corresponda):**
 - [x] Google Business (revisado 10/11): las 7 fichas enlazan a su página de local (Juanita a la portada), Juanita sale «cerrado temporalmente» y La Chula tiene el viernes hasta las 03:30. Green tiene dos fichas: «Green 2.0 Restaurante» y «Green 2.0 Discoteca».
-- [ ] Google Business: horarios corregidos en Google el 10/11 (el bueno es el de la web). Comprobar en unos días que se ven en Maps:
+- [ ] Google Business: horarios corregidos en Google el 10/11. Comprobar en unos días que se ven en Maps:
   - La Pequeña: ya se ve J–S 20:00–02:00 ✔
   - La Traviesa: aún salía el antiguo (J–V 8–02, S 19–02). Debe quedar L–X 08–17 · J–V 08–01 · S 18–01 · D cerrado.
-  - Green Restaurante: sin comprobar. Debe quedar L–X 08–17 · J–V 08–06 · S 18–06 · D cerrado.
+  - Green: el bueno es el de su ficha de Google (L–X 08–22 · J–V 08–06 · S 18–06); la web se cambió a ese horario el 10/11. Green tiene dos fichas: Restaurante y Discoteca (J–S 23:30–06).
 - [ ] Google Business: el enlace a la carta de La Traviesa y de Green no se ve aún en Maps (puede estar en revisión). Volver a mirar en unos días.
 - [ ] Search Console: reenviar `sitemap.xml` y pedir indexación de `/locales/`, `/en/`, las páginas de cada local y `/eventos/`.
 - [ ] Códigos postales de Claudio Coello 116 y Alberto Alcocer 32.
@@ -131,3 +131,5 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
   - Carpeta renombrada de «Pagina Web» a «WEB 2.0».
   - Creados este contexto y `CLAUDE.md`.
   - Emails de prensa enviados; carpeta de borradores eliminada.
+  - Revisadas las fichas de Google Business: webs, Juanita y La Chula bien; corregidos horarios de La Pequeña, La Traviesa y Green en Google.
+  - Green: lunes a miércoles pasa a 08:00–22:00 en toda la web (portada, datos para Google, páginas ES/EN, /locales/ y llms.txt).

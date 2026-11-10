@@ -113,7 +113,7 @@ LOCALES = [
     tipo=['Restaurant', 'BarOrPub', 'NightClub'], tipo_txt='Restaurante, bar y discoteca', zona='Paseo de la Castellana',
     calle='Paseo de la Castellana, 40 bis', cp='28046', maps='Paseo+de+la+Castellana+40+bis+Madrid',
     ig='green.madrid_2.0', fotos='green', logo='Green 2.0-trans.webp',
-    horario=[(['Mo', 'Tu', 'We'], '08:00', '17:00'), (['Th', 'Fr'], '08:00', '06:00'), (['Sa'], '18:00', '06:00')],
+    horario=[(['Mo', 'Tu', 'We'], '08:00', '22:00'), (['Th', 'Fr'], '08:00', '06:00'), (['Sa'], '18:00', '06:00')],
     carta='/cartas/green.webp',
     entradas='https://www.fourvenues.com/iframe/green/events',
     title='Green 2.0 · Restaurante, bar y discoteca en la Castellana',
@@ -121,7 +121,7 @@ LOCALES = [
     tagline='Tres en uno: restaurante, bar y discoteca. Como la navaja suiza, pero con más alcohol.',
     intro=[
       'Green 2.0 es el tres en uno de la familia: restaurante, bar de copas y discoteca en el Paseo de la Castellana, 40 bis. Puedes entrar a desayunar, quedarte a comer, volver a cenar y acabar bailando sin cambiar de dirección.',
-      'De lunes a miércoles abrimos de 8:00 a 17:00. Jueves y viernes, de 8:00 a 6:00 de la madrugada; y los sábados, de 18:00 a 6:00. Consulta la carta, saca tus entradas para los eventos y reserva por WhatsApp.',
+      'De lunes a miércoles abrimos de 8:00 a 22:00. Jueves y viernes, de 8:00 a 6:00 de la madrugada; y los sábados, de 18:00 a 6:00. Consulta la carta, saca tus entradas para los eventos y reserva por WhatsApp.',
     ],
     planes=['Comer o cenar y seguir la fiesta en el mismo sitio', 'Discoteca hasta las 6:00 de jueves a sábado', 'Eventos, fiestas y cenas de empresa en la Castellana'],
     extra_faq=[('¿Cómo compro entradas para las fiestas de Green 2.0?', 'Las entradas y listas de los eventos están en Fourvenues: usa el botón «Entradas y eventos» de esta página.')],
@@ -295,7 +295,7 @@ EN = {
     tagline='Three in one: restaurant, bar and nightclub. Like a Swiss Army knife, but with more alcohol.',
     intro=[
       'Green 2.0 is the three-in-one of the family: restaurant, cocktail bar and nightclub at Paseo de la Castellana, 40 bis. Come in for breakfast, stay for lunch, come back for dinner and end up dancing without changing address.',
-      'Monday to Wednesday we’re open 8am to 5pm. Thursday and Friday, 8am to 6am; and Saturdays, 6pm to 6am. Check the menu, get tickets for our events and book via WhatsApp.',
+      'Monday to Wednesday we’re open 8am to 10pm. Thursday and Friday, 8am to 6am; and Saturdays, 6pm to 6am. Check the menu, get tickets for our events and book via WhatsApp.',
     ],
     planes=['Dinner and a party in the same place', 'Nightclub until 6am, Thursday to Saturday', 'Events, parties and company dinners on the Castellana'],
     extra_faq=[('How do I buy tickets for Green 2.0 parties?', 'Tickets and guest lists for our events are on Fourvenues: use the “Tickets & events” button on this page.')],
@@ -308,7 +308,7 @@ EN_ESTILO = {
     'chula':    dict(tipo_txt='Cocktail bar', label='DRINKS & NEON', tag_hor='Thu 20–03 · Fri–Sat 20–03:30', zona='Salamanca district'),
     'peluca':   dict(tipo_txt='Cocktail bar', label='COCKTAIL BAR', tag_hor='Thu–Sat · 20:00–02:00', zona='Chamartín'),
     'traviesa': dict(tipo_txt='Restaurant & bar', label='RESTAURANT', tag_hor='Mon–Wed 08–17 · Thu–Fri 08–01 · Sat 18–01', zona='Salamanca district'),
-    'green':    dict(tipo_txt='Restaurant, bar & nightclub', label='RESTAURANT · BAR · NIGHTCLUB', tag_hor='Mon–Wed 08–17 · Thu–Fri 08–06 · Sat 18–06', zona='Paseo de la Castellana'),
+    'green':    dict(tipo_txt='Restaurant, bar & nightclub', label='RESTAURANT · BAR · NIGHTCLUB', tag_hor='Mon–Wed 08–22 · Thu–Fri 08–06 · Sat 18–06', zona='Paseo de la Castellana'),
 }
 EN_SECCIONES = {'Por unidad': 'By the piece', 'Tapeo': 'Tapas', 'Huerta': 'From the garden', 'Principales': 'Mains',
                 'Guarniciones': 'Sides', 'Postres': 'Desserts', 'Vinos tintos': 'Red wines', 'Vinos blancos': 'White wines',
@@ -395,7 +395,7 @@ ESTILO = {
                      rgb='29,183,217', txt_n='#4fd2ef', txt_d='#0b7590'),
     'traviesa': dict(num='05', label='RESTAURANTE', tag_hor='L–X 08–17 · J–V 08–01 · S 18–01', tag_dir='C/ López de Hoyos, 7',
                      rgb='138,127,192', txt_n='#b3a9ea', txt_d='#5b4f8a'),
-    'green':    dict(num='07', label='RESTAURANTE · BAR · DISCOTECA', tag_hor='L–X 08–17 · J–V 08–06 · S 18–06', tag_dir='P.º de la Castellana, 40 bis',
+    'green':    dict(num='07', label='RESTAURANTE · BAR · DISCOTECA', tag_hor='L–X 08–22 · J–V 08–06 · S 18–06', tag_dir='P.º de la Castellana, 40 bis',
                      rgb='74,222,128', txt_n='#4ade80', txt_d='#15803d'),
 }
 

@@ -178,7 +178,7 @@
       "address": {"@type": "PostalAddress", "streetAddress": "Paseo de la Castellana, 40 bis", "addressLocality": "Madrid", "postalCode": "28046", "addressRegion": "Comunidad de Madrid", "addressCountry": "ES"},
       "hasMap": "https://maps.google.com/?q=Paseo+de+la+Castellana+40+bis+Madrid",
       "openingHoursSpecification": [
-        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday"], "opens": "08:00", "closes": "17:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday"], "opens": "08:00", "closes": "22:00"},
         {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Thursday", "Friday"], "opens": "08:00", "closes": "06:00"},
         {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "18:00", "closes": "06:00"}
       ],
@@ -1197,7 +1197,7 @@ const D={
   peluca:{logo:'<img src="logos/La Peluquería-04-trans.webp" alt="La Peluquería 2.0" style="height:60px;width:auto">',photos:['fotos/la peluqueria/1.webp','fotos/la peluqueria/2.webp','fotos/la peluqueria/3.webp','fotos/la peluqueria/4.webp'],tagline:'"¿Nos volamos la peluca? Mientras nos quede pelo, aquí seguimos."',dir:'C/ Alberto Alcocer, 32, Madrid',hor:'Jue–Sáb · 20:00–02:00h',wa:'https://wa.me/34656485099?text=Quiero%20reservar%20en%20La%20Peluquer%C3%ADa%202.0',maps:'https://maps.google.com/?q=C+Alberto+Alcocer+32+Madrid',ig:'https://www.instagram.com/lapeluqueria_2.0',color:'#1db7d9'},
   traviesa:{logo:'<img src="logos/La traviesa_Mesa de trabajo 1-trans.webp" alt="La Traviesa 2.0" style="height:60px;width:auto">',photos:['fotos/la traviesa/1.webp','fotos/la traviesa/2.webp','fotos/la traviesa/3.webp','fotos/la traviesa/4.webp'],tagline:'"La glotona de la familia. Come, bebe, y repite."',dir:'C/ López de Hoyos, 7, Madrid',hor:'L–M 08–17h · J–V 08–01h<br>S 18:00–01:00h',wa:'https://wa.me/34656485099?text=Quiero%20reservar%20en%20La%20Traviesa%202.0',maps:'https://maps.google.com/?q=C+Lopez+de+Hoyos+7+Madrid',ig:'https://www.instagram.com/latraviesa_2.0',color:'#8a7fc0'},
   juanita:{logo:'<img src="logos/Juanita-04-trans.webp" alt="Juanita 2.0" style="height:60px;width:auto">',fv:'https://www.fourvenues.com/luis-ruiz-ramos/events/miercoles-juanita-summer-10-06-2026-WNWT',photos:['fotos/Juanita/1.webp','fotos/Juanita/2.webp','fotos/Juanita/3.webp','fotos/Juanita/4.webp'],tagline:'"¿Te vas de rositas? Nadie sale de Juanita de rositas."',dir:'C/ Alberto Alcocer, 33, Madrid',hor:'Mié / Vie / Sáb · 00:00–06:00h',wa:'https://wa.me/34656485099?text=Quiero%20reservar%20en%20Juanita%202.0',maps:'https://maps.google.com/?q=C+Alberto+Alcocer+33+Madrid',ig:'https://www.instagram.com/juanita2.0',color:'#da1f87'},
-  green:{logo:'<img src="logos/Green 2.0-trans.webp" alt="Green 2.0" style="height:60px;width:auto">',photos:['fotos/green/1.webp','fotos/green/2.webp','fotos/green/3.webp','fotos/green/4.webp'],tagline:'"Tres en uno: restaurante, bar y discoteca. Como la navaja suiza, pero con más alcohol."',dir:'P.º de la Castellana, 40 bis, Madrid',hor:'L–M 08–17h · J–V 08–06h<br>S 18:00–06:00h',wa:'https://wa.me/34656485099?text=Quiero%20reservar%20en%20Green%202.0',maps:'https://maps.google.com/?q=Paseo+de+la+Castellana+40+bis+Madrid',ig:'https://www.instagram.com/green.madrid_2.0',color:'#4ade80'}
+  green:{logo:'<img src="logos/Green 2.0-trans.webp" alt="Green 2.0" style="height:60px;width:auto">',photos:['fotos/green/1.webp','fotos/green/2.webp','fotos/green/3.webp','fotos/green/4.webp'],tagline:'"Tres en uno: restaurante, bar y discoteca. Como la navaja suiza, pero con más alcohol."',dir:'P.º de la Castellana, 40 bis, Madrid',hor:'L–X 08–22h · J–V 08–06h<br>S 18:00–06:00h',wa:'https://wa.me/34656485099?text=Quiero%20reservar%20en%20Green%202.0',maps:'https://maps.google.com/?q=Paseo+de+la+Castellana+40+bis+Madrid',ig:'https://www.instagram.com/green.madrid_2.0',color:'#4ade80'}
 };
 const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -1461,7 +1461,7 @@ const HORARIOS={
   peluca:[{d:[4,5,6],s:20,e:26}],
   traviesa:[{d:[1,2,3],s:8,e:17},{d:[4,5],s:8,e:25},{d:[6],s:18,e:25}],
   juanita:[], /* cerrado temporalmente (nov 2026). Antes: [{d:[3,5,6],s:24,e:30}] — ver D.juanita.closed */
-  green:[{d:[1,2,3],s:8,e:17},{d:[4,5],s:8,e:30},{d:[6],s:18,e:30}]
+  green:[{d:[1,2,3],s:8,e:22},{d:[4,5],s:8,e:30},{d:[6],s:18,e:30}]
 };
 function isOpen(key){
   const ivs=HORARIOS[key];if(!ivs)return false;
