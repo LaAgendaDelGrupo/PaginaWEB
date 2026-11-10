@@ -89,10 +89,10 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
 
 **Del lado del cliente (hacer en Google o pedir a quien corresponda):**
 - [x] Google Business (revisado 10/11): las 7 fichas enlazan a su página de local (Juanita a la portada), Juanita sale «cerrado temporalmente» y La Chula tiene el viernes hasta las 03:30. Green tiene dos fichas: «Green 2.0 Restaurante» y «Green 2.0 Discoteca».
-- [ ] Google Business: corregir en Google estos horarios. **El bueno es el de la web** (confirmado 10/11):
-  - La Pequeña: Google aún tiene el horario de restaurante (L–X 8–16, J–V 8–02, S 18–02). Debería ser J–S 20:00–02:00.
-  - La Traviesa: Google pone J–V 8–02 y S 19–02; la web pone J–V 08–01 y S 18–01. Poner el de la web.
-  - Green Restaurante: Google pone L–X 8–22, J–V 8–02 y S 20–02; la web pone L–X 08–17, J–V 08–06 y S 18–06. Poner el de la web.
+- [ ] Google Business: horarios corregidos en Google el 10/11 (el bueno es el de la web). Comprobar en unos días que se ven en Maps:
+  - La Pequeña: ya se ve J–S 20:00–02:00 ✔
+  - La Traviesa: aún salía el antiguo (J–V 8–02, S 19–02). Debe quedar L–X 08–17 · J–V 08–01 · S 18–01 · D cerrado.
+  - Green Restaurante: sin comprobar. Debe quedar L–X 08–17 · J–V 08–06 · S 18–06 · D cerrado.
 - [ ] Google Business: el enlace a la carta de La Traviesa y de Green no se ve aún en Maps (puede estar en revisión). Volver a mirar en unos días.
 - [ ] Search Console: reenviar `sitemap.xml` y pedir indexación de `/locales/`, `/en/`, las páginas de cada local y `/eventos/`.
 - [ ] Códigos postales de Claudio Coello 116 y Alberto Alcocer 32.
