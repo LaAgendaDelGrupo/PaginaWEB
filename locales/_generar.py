@@ -97,15 +97,20 @@ LOCALES = [
     horario=[(['Mo', 'Tu', 'We'], '08:00', '17:00'), (['Th', 'Fr'], '08:00', '01:00'), (['Sa'], '18:00', '01:00')],
     carta='/cartas/traviesa.pdf',
     reservar='https://bookings.agorapos.com/reservas/widget/2169/calendar/82fc0510ac7baef2f81df0cb3bd03bcc59e3d54e',
-    title='La Traviesa 2.0 · Restaurante y bar en López de Hoyos',
-    desc='La Traviesa 2.0: restaurante y bar en López de Hoyos, 7 (Madrid). Desayunos, comidas, cenas y copas. Carta, reservas online y menús de Navidad para grupos.',
+    title='La Traviesa 2.0 · Restaurante y bar en López de Hoyos, Madrid',
+    desc='La Traviesa 2.0, restaurante y bar en López de Hoyos, 7 (Madrid): desayunos, comidas de trabajo, tapas, cenas y copas. Carta, reserva online y cenas de empresa.',
+    alt_nombres=['La Traviesa', 'Traviesa 2.0', 'La Traviesa Madrid'],
+    cocina=['Española', 'Tapas', 'Cocina de mercado'],
     tagline='La glotona de la familia. Come, bebe, y repite.',
     intro=[
       'La Traviesa 2.0 es la glotona de la familia: restaurante y bar en la calle López de Hoyos, 7, a un paso de la Castellana. Abrimos temprano para desayunos, seguimos con comidas y, de jueves a sábado, alargamos con cenas y copas.',
+      'En La Traviesa se viene a comer bien sin complicarse: cocina de producto para picar o compartir, con gildas, montaditos, tapas y raciones, principales y postres caseros, y una carta de vinos de Rioja, Ribera, Rueda, Valdeorras y Rías Baixas. Entre semana es el sitio de las comidas de trabajo de la zona; los jueves y viernes, el de la cena que se alarga en copas.',
       'De lunes a miércoles estamos de 8:00 a 17:00; jueves y viernes de 8:00 a 1:00; y los sábados de 18:00 a 1:00. Los domingos descansamos. Consulta la carta de comida y vinos y reserva mesa online en un minuto.',
     ],
-    planes=['Desayunos y comidas entre semana', 'Cenas y copas de jueves a sábado', 'Comidas y cenas de empresa: mira nuestros <a href="/traviesa/">menús de Navidad</a>'],
-    extra_faq=[('¿Tenéis menús para grupos y empresas?', 'Sí. Para Navidad tenemos menús de grupo con bebida incluida; los tienes en <a href="/traviesa/">grupodospuntocero.com/traviesa</a>. Para otras fechas, escríbenos por WhatsApp.'),
+    planes=['Desayunos y comidas de trabajo entre semana', 'Tapas, cenas y copas de jueves a sábado', 'Comidas y cenas de empresa: mira nuestros <a href="/traviesa/">menús de Navidad</a>'],
+    extra_faq=[('¿Qué se come en La Traviesa 2.0?', 'Cocina de producto para picar, compartir o sentarse en serio: gildas y montaditos por unidad, tapas, huerta, principales y postres caseros. La carta completa, con precios y alérgenos, está en esta misma página.'),
+               ('¿Es un buen sitio para una comida de trabajo o una cena de empresa?', 'Sí. Estamos en López de Hoyos, 7, a un paso de la Castellana, y abrimos desde las 8:00 de lunes a viernes. Para grupos y empresas tenemos <a href="/traviesa/">menús de Navidad</a> con bebida incluida, y <a href="/eventos/">más planes de grupo</a> el resto del año.'),
+               ('¿Tenéis menús para grupos y empresas?', 'Sí. Para Navidad tenemos menús de grupo con bebida incluida; los tienes en <a href="/traviesa/">grupodospuntocero.com/traviesa</a>. Para otras fechas, escríbenos por WhatsApp.'),
                ('¿Abrís los domingos?', 'No, los domingos La Traviesa 2.0 está cerrada.')],
     otros_cerca=['green'],
   ),
@@ -280,14 +285,17 @@ EN = {
   ),
   'la-traviesa': dict(
     title='La Traviesa 2.0 · Restaurant & bar on López de Hoyos, Madrid',
-    desc='La Traviesa 2.0: restaurant and bar at López de Hoyos, 7 (Madrid). Breakfast, lunch, dinner and drinks. Full menu, online bookings and Christmas group menus.',
+    desc='La Traviesa 2.0, restaurant and bar at López de Hoyos, 7 (Madrid): breakfast, business lunches, tapas, dinner and drinks. Full menu, online bookings and company dinners.',
     tagline='The greedy one of the family. Eat, drink, repeat.',
     intro=[
       'La Traviesa 2.0 is the foodie of the family: a restaurant and bar at Calle de López de Hoyos, 7, a stone’s throw from the Castellana. We open early for breakfast, carry on with lunch and, from Thursday to Saturday, stretch into dinner and drinks.',
+      'At La Traviesa you come to eat well without fuss: produce-driven tapas and dishes to share, from gildas and montaditos to mains and homemade desserts, with a wine list from Rioja, Ribera, Rueda, Valdeorras and Rías Baixas. On weekdays it’s the local spot for business lunches; on Thursdays and Fridays, for the dinner that turns into drinks.',
       'Monday to Wednesday we’re open 8am to 5pm; Thursday and Friday 8am to 1am; and Saturdays 6pm to 1am. Sundays we rest. Check the food and wine menu below and book a table online in a minute.',
     ],
-    planes=['Breakfast and lunch on weekdays', 'Dinner and drinks Thursday to Saturday', 'Company lunches and dinners: see our <a href="/traviesa/" hreflang="es">Christmas menus</a> (in Spanish)'],
-    extra_faq=[('Do you have group and company menus?', 'Yes. For Christmas we have group menus with drinks included, from €45 to €65 per person: see them at <a href="/traviesa/" hreflang="es">grupodospuntocero.com/traviesa</a> (in Spanish). For other dates, message us on WhatsApp.'),
+    planes=['Breakfast and business lunches on weekdays', 'Tapas, dinner and drinks Thursday to Saturday', 'Company lunches and dinners: see our <a href="/traviesa/" hreflang="es">Christmas menus</a> (in Spanish)'],
+    extra_faq=[('What kind of food does La Traviesa 2.0 serve?', 'Produce-driven Spanish cooking to nibble, share or sit down properly: gildas and montaditos by the piece, tapas, vegetables, mains and homemade desserts. The full menu, with prices and allergens, is on this page.'),
+               ('Is it a good place for a business lunch or a company dinner?', 'Yes. We’re at López de Hoyos, 7, a stone’s throw from the Castellana, and open from 8am Monday to Friday. For groups and companies we have <a href="/traviesa/" hreflang="es">Christmas menus</a> (in Spanish) with drinks included.'),
+               ('Do you have group and company menus?', 'Yes. For Christmas we have group menus with drinks included, from €45 to €65 per person: see them at <a href="/traviesa/" hreflang="es">grupodospuntocero.com/traviesa</a> (in Spanish). For other dates, message us on WhatsApp.'),
                ('Are you open on Sundays?', 'No, La Traviesa 2.0 is closed on Sundays.')],
   ),
   'green': dict(
@@ -455,6 +463,10 @@ def schema(l):
         'sameAs': [f'https://www.instagram.com/{l["ig"]}'],
         'parentOrganization': {'@id': f'{BASE}/#org'},
     }
+    if l.get('alt_nombres'):
+        nodo['alternateName'] = l['alt_nombres']
+    if l.get('cocina'):
+        nodo['servesCuisine'] = l['cocina']
     menu = menu_schema(l)
     if menu:
         nodo['hasMenu'] = menu

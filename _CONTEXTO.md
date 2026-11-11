@@ -98,6 +98,7 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
 - [ ] Google Business: el enlace a la carta de La Traviesa y de Green no se ve aún en Maps (puede estar en revisión). Volver a mirar en unos días.
 - [x] Search Console: «Validar corrección» de los 404 iniciada el 10/11. Google tarda hasta ~2 semanas; mirar el resultado en Indexación > «No se ha encontrado (404)».
 - [x] Search Console (revisado 11/11): sitemap leído el 11/11 con las 17 páginas, sin errores. Indexadas la portada, `/locales/`, `/eventos/`, `/traviesa/`, las 6 páginas de local en español, `/en/` y 5 de las 6 páginas de local en inglés. Pedida la indexación de `/en/venues/green/` (la única que Google no conocía).
+- [ ] Search Console: mirar en 2–3 semanas si La Traviesa sube en «la traviesa madrid», «restaurante la traviesa» y «bar la traviesa madrid» (el 11/11 estaba en 8,3 / 10,4 / 15,1).
 - [ ] Search Console: comprobar en unos días que `/en/venues/green/` sale indexada. Los «404» que quedan son archivos del WordPress antiguo (`wp-content/…`); es normal, desaparecerán solos.
 - [ ] Códigos postales de Claudio Coello 116 y Alberto Alcocer 32.
 - [x] URL del canal de WhatsApp: ya está puesta en la portada (sección Contacto).
@@ -152,3 +153,10 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
   - Search Console revisado con la usuaria (213 clics en la semana; 14 páginas indexadas y casi todas las nuevas ya dentro). Solicitada la indexación de `/en/venues/green/`.
   - Menú del día (`/menu/`) oculto: ya no se publica, aunque los archivos siguen en la carpeta.
   - Desde hoy se publica directamente: cada cambio comprobado se sube a `main` sin rama ni PR (regla 5 de `CLAUDE.md`).
+  - SEO de La Traviesa (datos de Search Console 2–9/11: 49 clics, 946 impresiones; sale 2.º–4.º buscando «la traviesa 2.0», pero 8.º–15.º en «la traviesa madrid», «restaurante la traviesa» o «bar la traviesa madrid»). Reforzada su página ES/EN:
+    - título con «Madrid»;
+    - descripción con comidas de trabajo, tapas y cenas de empresa;
+    - párrafo nuevo sobre la cocina;
+    - dos preguntas frecuentes nuevas (qué se come; comida de trabajo / cena de empresa);
+    - en los datos para Google, `alternateName` («La Traviesa», «Traviesa 2.0», «La Traviesa Madrid») y `servesCuisine`.
+    Campos nuevos opcionales del generador: `alt_nombres` y `cocina`.
