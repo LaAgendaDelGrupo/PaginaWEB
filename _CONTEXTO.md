@@ -146,4 +146,6 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
   - Quitado de Juanita el enlace a un evento de Fourvenues ya pasado.
   - `menu/supabase_setup.sql` → `menu/_supabase_setup.sql` (ya no se publica en la web).
   - Sitemap con la fecha del día automática.
-  - Cambios en la rama `revision-codigo-11-11`, con PR para revisar antes de publicar.
+  - Revisión fusionada y publicada en `main`.
+  - Franja «En directo» de la portada: solo salen los locales abiertos ahora mismo (antes salían también los cerrados con «Abre mañana…»). Si no hay ninguno abierto, sale «Ahora mismo descansamos».
+  - Desde hoy se publica directamente: cada cambio comprobado se sube a `main` sin rama ni PR (regla 5 de `CLAUDE.md`).

@@ -12,3 +12,4 @@ Web pública de Grupo 2.0 (grupodospuntocero.com). Habla siempre en español con
    Después súbelo con `git add -A && git commit && git push`, para que esté al día en el otro ordenador.
 3. **El repositorio es público:** nunca escribas en `_CONTEXTO.md`, en este archivo ni en la web contraseñas, tokens, PINs, claves de API, datos personales ni fallos de seguridad.
 4. **Páginas generadas:** casi todas salen de `locales/_generar.py`. No edites a mano los HTML de `locales/`, `en/`, `eventos/`, `404.html` ni `sitemap.xml`. Cambia el generador y ejecuta `python3 locales/_generar.py`.
+5. **Publicación automática (pedido por el usuario el 11/11/2026):** se trabaja directamente en la rama `main`, sin ramas ni PR. Después de cada cambio, y una vez comprobado que funciona, haz `git add -A && git commit && git push` sin preguntar: así se publica en la web en 1–2 minutos.
