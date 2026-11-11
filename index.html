@@ -188,6 +188,10 @@
   ]
 }
 </script>
+<script>
+/* tema antes de pintar (sin parpadeo): localStorage g20theme o día/noche por hora, igual que en las demás páginas */
+(function(){var t;try{t=localStorage.getItem('g20theme')}catch(e){}if(!t){var h=new Date().getHours();t=(h>=7&&h<20)?'day':'night'}document.documentElement.setAttribute('data-theme',t)})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
@@ -923,7 +927,7 @@ body.mn-open #waf{opacity:0;pointer-events:none;transform:scale(.6)}
       <span class="lc-num">05 / 07 — RESTAURANTE<span class="lc-open" data-open="traviesa" hidden><span class="od"></span><span class="ot"></span></span></span>
       <div class="lc-logo"><img src="logos/La traviesa_Mesa de trabajo 1-trans.webp" alt="La Traviesa 2.0" draggable="false"></div>
       <p class="lc-tagline">"La glotona de la familia. Come, bebe, y repite."</p>
-      <div class="lc-tag-row"><span class="lc-tag">L–M 08–17 · J–V 08–01 · S 18–01</span><span class="lc-tag">C/ López de Hoyos, 7</span></div>
+      <div class="lc-tag-row"><span class="lc-tag">L–X 08–17 · J–V 08–01 · S 18–01</span><span class="lc-tag">C/ López de Hoyos, 7</span></div>
       <span class="lc-cta">Ver local<span class="lc-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></span>
     </div>
     <div class="lc-photos" aria-hidden="true">
@@ -963,7 +967,7 @@ body.mn-open #waf{opacity:0;pointer-events:none;transform:scale(.6)}
       <span class="lc-num">07 / 07 — RESTAURANTE · BAR · DISCOTECA<span class="lc-open" data-open="green" hidden><span class="od"></span><span class="ot"></span></span></span>
       <div class="lc-logo"><img src="logos/Green 2.0-trans.webp" alt="Green 2.0" draggable="false"></div>
       <p class="lc-tagline">"Tres en uno: restaurante, bar y discoteca. Como la navaja suiza, pero con más alcohol."</p>
-      <div class="lc-tag-row"><span class="lc-tag">L–M 08–17 · J–V 08–06 · S 18–06</span><span class="lc-tag">P.º de la Castellana, 40 bis</span></div>
+      <div class="lc-tag-row"><span class="lc-tag">L–X 08–22 · J–V 08–06 · S 18–06</span><span class="lc-tag">P.º de la Castellana, 40 bis</span></div>
       <span class="lc-cta">Ver local<span class="lc-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></span>
     </div>
     <div class="lc-photos" aria-hidden="true">
@@ -1195,8 +1199,8 @@ const D={
   pequeña:{logo:'<img src="logos/La pequeña_Mesa de trabajo 1-trans.webp" alt="La Pequeña 2.0" style="height:60px;width:auto">',photos:['fotos/pequeña/1.webp','fotos/pequeña/2.webp','fotos/pequeña/3.webp','fotos/pequeña/4.webp'],tagline:'"Tan de barrio que hasta el camarero sabe lo que vas a pedir."',dir:'C/ General Oraá, 27, Madrid',hor:'Jue–Sáb · 20:00–02:00h',wa:'https://wa.me/34656485099?text=Quiero%20reservar%20en%20La%20Peque%C3%B1a%202.0',maps:'https://maps.google.com/?q=C+General+Oraá+27+Madrid',ig:'https://www.instagram.com/lapequena2.0',color:'#3a4ba8'},
   chula:{logo:'<img src="logos/La Chula_Mesa de trabajo 1-trans.webp" alt="La Chula 2.0" style="height:60px;width:auto">',photos:['fotos/la chula/1.webp','fotos/la chula/2.webp','fotos/la chula/3.webp','fotos/la chula/4.webp'],tagline:'"Noches de neón, chupito de tregua y besos con lengua."',dir:'C/ Claudio Coello, 116, Madrid',hor:'J 20:00–03:00h<br>V–S 20:00–03:30h',wa:'https://wa.me/34656485099?text=Quiero%20reservar%20en%20La%20Chula%202.0',maps:'https://maps.google.com/?q=C+Claudio+Coello+116+Madrid',ig:'https://www.instagram.com/lachula2.0',color:'#e72f8a'},
   peluca:{logo:'<img src="logos/La Peluquería-04-trans.webp" alt="La Peluquería 2.0" style="height:60px;width:auto">',photos:['fotos/la peluqueria/1.webp','fotos/la peluqueria/2.webp','fotos/la peluqueria/3.webp','fotos/la peluqueria/4.webp'],tagline:'"¿Nos volamos la peluca? Mientras nos quede pelo, aquí seguimos."',dir:'C/ Alberto Alcocer, 32, Madrid',hor:'Jue–Sáb · 20:00–02:00h',wa:'https://wa.me/34656485099?text=Quiero%20reservar%20en%20La%20Peluquer%C3%ADa%202.0',maps:'https://maps.google.com/?q=C+Alberto+Alcocer+32+Madrid',ig:'https://www.instagram.com/lapeluqueria_2.0',color:'#1db7d9'},
-  traviesa:{logo:'<img src="logos/La traviesa_Mesa de trabajo 1-trans.webp" alt="La Traviesa 2.0" style="height:60px;width:auto">',photos:['fotos/la traviesa/1.webp','fotos/la traviesa/2.webp','fotos/la traviesa/3.webp','fotos/la traviesa/4.webp'],tagline:'"La glotona de la familia. Come, bebe, y repite."',dir:'C/ López de Hoyos, 7, Madrid',hor:'L–M 08–17h · J–V 08–01h<br>S 18:00–01:00h',wa:'https://wa.me/34656485099?text=Quiero%20reservar%20en%20La%20Traviesa%202.0',maps:'https://maps.google.com/?q=C+Lopez+de+Hoyos+7+Madrid',ig:'https://www.instagram.com/latraviesa_2.0',color:'#8a7fc0'},
-  juanita:{logo:'<img src="logos/Juanita-04-trans.webp" alt="Juanita 2.0" style="height:60px;width:auto">',fv:'https://www.fourvenues.com/luis-ruiz-ramos/events/miercoles-juanita-summer-10-06-2026-WNWT',photos:['fotos/Juanita/1.webp','fotos/Juanita/2.webp','fotos/Juanita/3.webp','fotos/Juanita/4.webp'],tagline:'"¿Te vas de rositas? Nadie sale de Juanita de rositas."',dir:'C/ Alberto Alcocer, 33, Madrid',hor:'Mié / Vie / Sáb · 00:00–06:00h',wa:'https://wa.me/34656485099?text=Quiero%20reservar%20en%20Juanita%202.0',maps:'https://maps.google.com/?q=C+Alberto+Alcocer+33+Madrid',ig:'https://www.instagram.com/juanita2.0',color:'#da1f87'},
+  traviesa:{logo:'<img src="logos/La traviesa_Mesa de trabajo 1-trans.webp" alt="La Traviesa 2.0" style="height:60px;width:auto">',photos:['fotos/la traviesa/1.webp','fotos/la traviesa/2.webp','fotos/la traviesa/3.webp','fotos/la traviesa/4.webp'],tagline:'"La glotona de la familia. Come, bebe, y repite."',dir:'C/ López de Hoyos, 7, Madrid',hor:'L–X 08–17h · J–V 08–01h<br>S 18:00–01:00h',wa:'https://wa.me/34656485099?text=Quiero%20reservar%20en%20La%20Traviesa%202.0',maps:'https://maps.google.com/?q=C+Lopez+de+Hoyos+7+Madrid',ig:'https://www.instagram.com/latraviesa_2.0',color:'#8a7fc0'},
+  juanita:{logo:'<img src="logos/Juanita-04-trans.webp" alt="Juanita 2.0" style="height:60px;width:auto">',photos:['fotos/Juanita/1.webp','fotos/Juanita/2.webp','fotos/Juanita/3.webp','fotos/Juanita/4.webp'],tagline:'"¿Te vas de rositas? Nadie sale de Juanita de rositas."',dir:'C/ Alberto Alcocer, 33, Madrid',hor:'Mié / Vie / Sáb · 00:00–06:00h',wa:'https://wa.me/34656485099?text=Quiero%20reservar%20en%20Juanita%202.0',maps:'https://maps.google.com/?q=C+Alberto+Alcocer+33+Madrid',ig:'https://www.instagram.com/juanita2.0',color:'#da1f87'},
   green:{logo:'<img src="logos/Green 2.0-trans.webp" alt="Green 2.0" style="height:60px;width:auto">',photos:['fotos/green/1.webp','fotos/green/2.webp','fotos/green/3.webp','fotos/green/4.webp'],tagline:'"Tres en uno: restaurante, bar y discoteca. Como la navaja suiza, pero con más alcohol."',dir:'P.º de la Castellana, 40 bis, Madrid',hor:'L–X 08–22h · J–V 08–06h<br>S 18:00–06:00h',wa:'https://wa.me/34656485099?text=Quiero%20reservar%20en%20Green%202.0',maps:'https://maps.google.com/?q=Paseo+de+la+Castellana+40+bis+Madrid',ig:'https://www.instagram.com/green.madrid_2.0',color:'#4ade80'}
 };
 const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1205,8 +1209,8 @@ const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
 (function(){
   const loader=document.getElementById('loader'),cl=document.getElementById('curtainL'),cr=document.getElementById('curtainR');
   /* si ya se vio en esta sesión, lo quitamos al instante (cargas posteriores sin espera) */
-  if(sessionStorage.getItem('g20seen')){loader.remove();cl.remove();cr.remove();return}
-  sessionStorage.setItem('g20seen','1');
+  let seen=false;try{seen=!!sessionStorage.getItem('g20seen');sessionStorage.setItem('g20seen','1')}catch(e){}
+  if(seen){loader.remove();cl.remove();cr.remove();return}
   const fill=document.getElementById('ldfill'),pct=document.getElementById('ldpct');
   let p=0;
   const iv=setInterval(()=>{
@@ -1226,7 +1230,7 @@ const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
 /* ════════════ THEME ════════════ */
 (function(){
   function detectTheme(){const h=new Date().getHours();return(h>=7&&h<20)?'day':'night'}
-  const saved=localStorage.getItem('g20theme');
+  let saved=null;try{saved=localStorage.getItem('g20theme')}catch(e){}
   const initial=saved||detectTheme();
   document.documentElement.setAttribute('data-theme',initial);
   const btn=document.getElementById('theme-btn');
@@ -1237,7 +1241,7 @@ const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
     const cur=document.documentElement.getAttribute('data-theme');
     const next=cur==='day'?'night':'day';
     document.documentElement.setAttribute('data-theme',next);
-    localStorage.setItem('g20theme',next);updateBtn(next);
+    try{localStorage.setItem('g20theme',next)}catch(e){}updateBtn(next);
   });
 })();
 
@@ -1452,7 +1456,8 @@ if(!reduceMotion&&matchMedia('(hover:hover)').matches){
 /* ════════════ ABIERTO AHORA (en vivo) ════════════ */
 /* intervalos: d = días (0=Dom..6=Sáb), s/e en horas; e>24 = madrugada del día siguiente */
 /* Juanita cerrada temporalmente (nov 2026): se muestra con aviso y sin reservas/entradas.
-   Para reabrir: borrar esta línea, restaurar su horario en HORARIOS y la etiqueta de la tarjeta (Mié / Vie / Sáb · 00:00–06:00) */
+   Para reabrir: borrar esta línea, restaurar su horario en HORARIOS y la etiqueta de la tarjeta (Mié / Vie / Sáb · 00:00–06:00)
+   y, si hay entradas, poner en D.juanita.fv el enlace del evento en Fourvenues */
 D.juanita.closed=true;
 const HORARIOS={
   tablas:[{d:[4,5,6],s:20,e:26}],
@@ -1674,7 +1679,7 @@ privacidad:`<h3>Política de privacidad</h3>
 cookies:`<h3>Política de cookies</h3>
 <p>Este sitio <strong>no utiliza cookies de seguimiento ni publicitarias</strong>.</p>
 <h4>Almacenamiento técnico</h4>
-<p>Únicamente se usa el almacenamiento local del navegador (localStorage) para recordar tu preferencia de tema día/noche. Es estrictamente técnico, no identifica personas y no se comparte con terceros.</p>
+<p>Únicamente se usa el almacenamiento del navegador (localStorage) para recordar tu preferencia de tema día/noche y, durante la visita (sessionStorage), para no repetir la animación de entrada. Es estrictamente técnico, no identifica personas y no se comparte con terceros.</p>
 <h4>Servicios externos</h4>
 <p>Las fuentes tipográficas se cargan desde Google Fonts. Los enlaces a WhatsApp, Instagram, TikTok, Google Maps, Fourvenues y Loyicard te llevan a plataformas externas con sus propias políticas.</p>`};
 function openLg(k){document.getElementById('lgcontent').innerHTML=LEGAL[k];document.getElementById('lgover').classList.add('on');document.body.style.overflow='hidden'}

@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 """Genera las páginas SEO de cada local: locales/<slug>/index.html
 
-Uso (desde la carpeta "Pagina Web"):  python3 locales/_generar.py
+Uso (desde la carpeta "WEB 2.0"):  python3 locales/_generar.py
 Al cambiar un horario, dirección o enlace: editarlo en LOCALES (abajo), volver a
 generar y actualizar también index.html (D{}, HORARIOS{} y el JSON-LD) y llms.txt.
 GitHub Pages no publica este archivo (empieza por "_").
 """
 import json, os, html
+from datetime import date
 from urllib.parse import quote
 
 BASE = 'https://grupodospuntocero.com'
-HOY = '2026-11-04'  # lastmod del sitemap: cambiar al regenerar
+HOY = date.today().isoformat()  # lastmod del sitemap: fecha del día en que se regenera
 WA = '34656485099'
 TEL = '+34656485099'
 DIAS = {'Mo': ('Monday', 'Lunes'), 'Tu': ('Tuesday', 'Martes'), 'We': ('Wednesday', 'Miércoles'),
@@ -318,7 +319,7 @@ EN_ALERGENOS = {'Gluten': 'Gluten', 'Crustáceos': 'Crustaceans', 'Huevo': 'Egg'
                 'Sésamo': 'Sesame', 'Sulfitos': 'Sulphites', 'Altramuces': 'Lupin', 'Moluscos': 'Molluscs'}
 EN_CARTA_INTRO = {
     'traviesa': 'Produce-driven cooking to nibble, share or sit down properly: gildas and montaditos by the piece, tapas, vegetables, mains and homemade desserts, plus a wine list from Rioja, Ribera, Rueda, Valdeorras and Rías Baixas.',
-    'green': 'Late-night menu to snack on between drinks, served Thursday, Friday and Saturday from 20:00 to 00:00: brioches, patatas bravas, croquetas, tequeños, torreznos and more.',
+    'green': 'Late-night menu to snack on between drinks, served Thursday, Friday and Saturday from 20:00 to 06:00: brioches, patatas bravas, croquetas, tequeños, torreznos and more.',
 }
 EN_DIAS = {'Mo': 'Monday', 'Tu': 'Tuesday', 'We': 'Wednesday', 'Th': 'Thursday', 'Fr': 'Friday', 'Sa': 'Saturday', 'Su': 'Sunday'}
 EN_ZONAS = {
@@ -1739,7 +1740,7 @@ REDIRECCIONES = {
 }
 
 def pagina_redireccion(destino):
-    url = 'https://grupodospuntocero.com' + destino
+    url = BASE + destino
     canon = url.split('#')[0]
     return f"""<!doctype html>
 <html lang="es"><head><meta charset="utf-8">

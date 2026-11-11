@@ -1,6 +1,6 @@
 # WEB 2.0 · Contexto del proyecto
 
-> Última actualización: **10/11/2026**
+> Última actualización: **11/11/2026**
 > Este archivo sirve para seguir el proyecto desde cualquier ordenador. Se actualiza al final de cada sesión de trabajo.
 > No se publica en la web (empieza por «_»), pero **el repositorio de GitHub es público**: aquí nunca van contraseñas, tokens, PINs, claves de API ni datos privados.
 
@@ -34,7 +34,7 @@ Web pública de **Grupo 2.0** (bares de copas, restaurante y discoteca en Madrid
 | `robots.txt`, `llms.txt` | Instrucciones para buscadores e IA | Sí |
 | `CLAUDE.md`, `_CONTEXTO.md` | Instrucciones y contexto para Claude | Sí |
 
-**Cómo regenerar:** desde esta carpeta, `python3 locales/_generar.py`. Después, `git add -A && git commit -m "..." && git push`.
+**Cómo regenerar:** desde esta carpeta, `python3 locales/_generar.py` (la fecha `lastmod` del sitemap se pone sola con la del día). Después, `git add -A && git commit -m "..." && git push`.
 
 ## 3. Locales (datos públicos)
 
@@ -50,7 +50,7 @@ Web pública de **Grupo 2.0** (bares de copas, restaurante y discoteca en Madrid
 
 **Si cambia un horario o una dirección, hay que actualizarlo en cuatro sitios:**
 1. `LOCALES` en `_generar.py`, y luego regenerar.
-2. En `index.html`: `HORARIOS{}`, `D.<local>.hor` y el JSON-LD de la cabecera.
+2. En `index.html`: `HORARIOS{}`, `D.<local>.hor`, la etiqueta `lc-tag` de la tarjeta del local y el JSON-LD de la cabecera.
 3. `llms.txt`.
 4. Si afecta a los textos, también la traducción en `EN` (en `_generar.py`).
 
@@ -99,9 +99,8 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
 - [x] Search Console: «Validar corrección» de los 404 iniciada el 10/11. Google tarda hasta ~2 semanas; mirar el resultado en Indexación > «No se ha encontrado (404)».
 - [ ] Search Console: reenviar `sitemap.xml` y pedir indexación de `/locales/`, `/en/`, las páginas de cada local y `/eventos/`.
 - [ ] Códigos postales de Claudio Coello 116 y Alberto Alcocer 32.
-- [ ] URL del canal de WhatsApp (marcador `CANAL_WA_URL` en la portada).
-- [ ] Datos fiscales para el aviso legal (razón social, CIF, domicilio).
-- [ ] Reseñas reales de Google para el carrusel de la portada (ahora son de ejemplo).
+- [x] URL del canal de WhatsApp: ya está puesta en la portada (sección Contacto).
+- [x] Datos fiscales del aviso legal: ya están en la portada (Aviso legal y Privacidad).
 - [x] Prensa: emails enviados a Time Out Madrid, Madrid Secreto y Guía del Ocio (10/11). Si publican algo, añadir «Nos han mencionado en…».
 
 **Agencias:**
@@ -138,3 +137,13 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
   - Search Console (semana 2–8/11): 200 clics, 3.810 impresiones, posición media 5,9; impresiones diarias de ~200 a ~800. 14 páginas indexadas.
   - Redirecciones de 16 URLs antiguas de WordPress (la de Green tenía 744 impresiones en la semana).
   - Green: lunes a miércoles pasa a 08:00–22:00 en toda la web (portada, datos para Google, páginas ES/EN, /locales/ y llms.txt).
+- **11/11/2026:**
+  - Revisión de código: 37 páginas sin enlaces rotos; generador y portada revisados.
+  - Corregidas las etiquetas de horario de la portada: La Traviesa «L–M» → «L–X» (tarjeta y ficha) y Green «L–M 08–17» → «L–X 08–22».
+  - Inglés: la carta de Green decía «20:00 to 00:00»; ahora «20:00 to 06:00», como en español.
+  - Portada: tema día/noche aplicado antes de pintar (sin parpadeo) y almacenamiento del navegador protegido, para que la página no se rompa si está bloqueado.
+  - Política de cookies: menciona también el sessionStorage de la animación de entrada.
+  - Quitado de Juanita el enlace a un evento de Fourvenues ya pasado.
+  - `menu/supabase_setup.sql` → `menu/_supabase_setup.sql` (ya no se publica en la web).
+  - Sitemap con la fecha del día automática.
+  - Cambios en la rama `revision-codigo-11-11`, con PR para revisar antes de publicar.
