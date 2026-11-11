@@ -1,3 +1,5 @@
 # GitHub Pages: no publicar las instrucciones internas (los archivos que empiezan por _ ya se excluyen solos)
 exclude:
   - CLAUDE.md
+  # Menú del día por QR: oculto desde el 11/11/2026 (no se usa por ahora). Para volver a publicarlo, borrar esta línea.
+  - menu

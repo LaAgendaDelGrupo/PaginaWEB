@@ -28,7 +28,7 @@ Web pública de **Grupo 2.0** (bares de copas, restaurante y discoteca en Madrid
 | `404.html`, `sitemap.xml` | Página de error y sitemap | **No** (generados) |
 | `green-2-0/`, `contacto/`, `home/`… | Redirecciones de URLs de la web antigua (WordPress), lista `REDIRECCIONES` | **No** (generadas) |
 | `traviesa/` | Landing de Navidad de La Traviesa (diseño de su agencia) | Sí |
-| `menu/` | Menú del día por QR (herramienta interna, excluida de Google) | Sí |
+| `menu/` | Menú del día por QR (herramienta interna). **Oculto desde el 11/11/2026:** no se publica (`exclude` en `_config.yml`); para reactivarlo, quitar `menu` de ahí | Sí |
 | `cartas/` | Cartas originales (PDF/imagen) | Sustituir archivo |
 | `fotos/<local>/1-4.webp`, `logos/` | Imágenes | Sustituir archivo |
 | `robots.txt`, `llms.txt` | Instrucciones para buscadores e IA | Sí |
@@ -148,4 +148,5 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
   - Sitemap con la fecha del día automática.
   - Revisión fusionada y publicada en `main`.
   - Franja «En directo» de la portada: solo salen los locales abiertos ahora mismo (antes salían también los cerrados con «Abre mañana…»). Si no hay ninguno abierto, sale «Ahora mismo descansamos».
+  - Menú del día (`/menu/`) oculto: ya no se publica, aunque los archivos siguen en la carpeta.
   - Desde hoy se publica directamente: cada cambio comprobado se sube a `main` sin rama ni PR (regla 5 de `CLAUDE.md`).
