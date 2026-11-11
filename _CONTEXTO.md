@@ -97,7 +97,8 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
   - Green: el bueno es el de su ficha de Google (L–X 08–22 · J–V 08–06 · S 18–06); la web se cambió a ese horario el 10/11. Green tiene dos fichas: Restaurante y Discoteca (J–S 23:30–06).
 - [ ] Google Business: el enlace a la carta de La Traviesa y de Green no se ve aún en Maps (puede estar en revisión). Volver a mirar en unos días.
 - [x] Search Console: «Validar corrección» de los 404 iniciada el 10/11. Google tarda hasta ~2 semanas; mirar el resultado en Indexación > «No se ha encontrado (404)».
-- [ ] Search Console: reenviar `sitemap.xml` y pedir indexación de `/locales/`, `/en/`, las páginas de cada local y `/eventos/`.
+- [x] Search Console (revisado 11/11): sitemap leído el 11/11 con las 17 páginas, sin errores. Indexadas la portada, `/locales/`, `/eventos/`, `/traviesa/`, las 6 páginas de local en español, `/en/` y 5 de las 6 páginas de local en inglés. Pedida la indexación de `/en/venues/green/` (la única que Google no conocía).
+- [ ] Search Console: comprobar en unos días que `/en/venues/green/` sale indexada. Los «404» que quedan son archivos del WordPress antiguo (`wp-content/…`); es normal, desaparecerán solos.
 - [ ] Códigos postales de Claudio Coello 116 y Alberto Alcocer 32.
 - [x] URL del canal de WhatsApp: ya está puesta en la portada (sección Contacto).
 - [x] Datos fiscales del aviso legal: ya están en la portada (Aviso legal y Privacidad).
@@ -148,5 +149,6 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
   - Sitemap con la fecha del día automática.
   - Revisión fusionada y publicada en `main`.
   - Franja «En directo» de la portada: solo salen los locales abiertos ahora mismo (antes salían también los cerrados con «Abre mañana…»). Si no hay ninguno abierto, sale «Ahora mismo descansamos».
+  - Search Console revisado con la usuaria (213 clics en la semana; 14 páginas indexadas y casi todas las nuevas ya dentro). Solicitada la indexación de `/en/venues/green/`.
   - Menú del día (`/menu/`) oculto: ya no se publica, aunque los archivos siguen en la carpeta.
   - Desde hoy se publica directamente: cada cambio comprobado se sube a `main` sin rama ni PR (regla 5 de `CLAUDE.md`).
