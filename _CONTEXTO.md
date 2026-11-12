@@ -1,6 +1,6 @@
 # WEB 2.0 · Contexto del proyecto
 
-> Última actualización: **11/11/2026**
+> Última actualización: **12/11/2026**
 > Este archivo sirve para seguir el proyecto desde cualquier ordenador. Se actualiza al final de cada sesión de trabajo.
 > No se publica en la web (empieza por «_»), pero **el repositorio de GitHub es público**: aquí nunca van contraseñas, tokens, PINs, claves de API ni datos privados.
 
@@ -99,7 +99,7 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
 - [x] Search Console: «Validar corrección» de los 404 iniciada el 10/11. Google tarda hasta ~2 semanas; mirar el resultado en Indexación > «No se ha encontrado (404)».
 - [x] Search Console (revisado 11/11): sitemap leído el 11/11 con las 17 páginas, sin errores. Indexadas la portada, `/locales/`, `/eventos/`, `/traviesa/`, las 6 páginas de local en español, `/en/` y 5 de las 6 páginas de local en inglés. Pedida la indexación de `/en/venues/green/` (la única que Google no conocía).
 - [ ] Search Console: mirar en 2–3 semanas si La Traviesa sube en «la traviesa madrid», «restaurante la traviesa» y «bar la traviesa madrid» (el 11/11 estaba en 8,3 / 10,4 / 15,1).
-- [ ] Search Console: comprobar en unos días que `/en/venues/green/` sale indexada. Los «404» que quedan son archivos del WordPress antiguo (`wp-content/…`); es normal, desaparecerán solos.
+- [x] Search Console: `/en/venues/green/` ya indexada (comprobado 12/11). Ya están en Google las 17 páginas del sitemap. Los «404» que quedan son archivos del WordPress antiguo (`wp-content/…`); es normal, desaparecerán solos.
 - [ ] Códigos postales de Claudio Coello 116 y Alberto Alcocer 32.
 - [x] URL del canal de WhatsApp: ya está puesta en la portada (sección Contacto).
 - [x] Datos fiscales del aviso legal: ya están en la portada (Aviso legal y Privacidad).
@@ -160,3 +160,4 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
     - dos preguntas frecuentes nuevas (qué se come; comida de trabajo / cena de empresa);
     - en los datos para Google, `alternateName` («La Traviesa», «Traviesa 2.0», «La Traviesa Madrid») y `servesCuisine`.
     Campos nuevos opcionales del generador: `alt_nombres` y `cocina`.
+  - 12/11: pedida en Search Console la reindexación de `/locales/la-traviesa/` y `/en/venues/la-traviesa/` (las dos ya estaban indexadas; es para que lea el texto nuevo).
