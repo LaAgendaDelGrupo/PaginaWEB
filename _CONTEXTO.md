@@ -174,3 +174,4 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
     - párrafo nuevo sobre la discoteca y la zona (Juan Bravo, metro Rubén Darío, Serrano);
     - tres preguntas nuevas (cómo llegar, qué días abre la discoteca, cenar y quedarse);
     - `alternateName` en los datos para Google: Green Madrid, Green Discoteca, Green Castellana, Green Social Club 2.0.
+  - Pedida en Search Console la reindexación de `/locales/green/` y `/en/venues/green/`.
