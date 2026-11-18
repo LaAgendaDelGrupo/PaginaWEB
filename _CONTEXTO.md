@@ -99,6 +99,7 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
 - [x] Search Console: «Validar corrección» de los 404 iniciada el 10/11. Google tarda hasta ~2 semanas; mirar el resultado en Indexación > «No se ha encontrado (404)».
 - [x] Search Console (revisado 11/11): sitemap leído el 11/11 con las 17 páginas, sin errores. Indexadas la portada, `/locales/`, `/eventos/`, `/traviesa/`, las 6 páginas de local en español, `/en/` y 5 de las 6 páginas de local en inglés. Pedida la indexación de `/en/venues/green/` (la única que Google no conocía).
 - [x] Search Console (18/11): La Traviesa ya sube. Posición media 10–16/11: «la traviesa madrid» 4,6 · «restaurante la traviesa» 5,6 · «bar la traviesa madrid» 3,1 (el 11/11: 8,3 / 10,4 / 15,1).
+- [ ] Search Console: a principios de diciembre, mirar si `/locales/green/` sube en «discotecas barrio salamanca», «discoteca en serrano», «discoteca castellana» y «discoteca juan bravo» (18/11: salía la URL antigua en posición 1–3 con 0 clics).
 - [ ] Search Console: la validación de los 404 sigue en curso (23 URLs el 18/11). La URL antigua `/green-2-0/` aún sale en búsquedas de «discoteca barrio Salamanca / Serrano / Castellana» en posición 2–4 con 0 clics; cuando Google aplique la redirección debería pasar a `/locales/green/`. Revisar a final de mes.
 - [x] Search Console: `/en/venues/green/` ya indexada (comprobado 12/11). Ya están en Google las 17 páginas del sitemap. Los «404» que quedan son archivos del WordPress antiguo (`wp-content/…`); es normal, desaparecerán solos.
 - [ ] Códigos postales de Claudio Coello 116 y Alberto Alcocer 32.
@@ -167,3 +168,9 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
   - Revisión de SEO en Search Console. Semana 10–16/11 frente a la anterior: 281 clics (+35 %), 4.810 impresiones (+18 %), CTR 5,8 %, posición media 5,6. Desde el 2/11: 494 clics y 9.070 impresiones.
   - 18 páginas indexadas (antes 14); Google ya ha visto 7 redirecciones.
   - El 99 % de los clics vienen de búsquedas con el nombre de un local o del grupo. Solo 5 clics de búsquedas genéricas en 28 días.
+  - SEO de Green para búsquedas de discoteca por zona («discotecas barrio Salamanca», «discoteca en Serrano», «discoteca Castellana / Juan Bravo»), donde aún salía la URL antigua `/green-2-0/` con 0 clics. Página ES/EN:
+    - título: «Discoteca y restaurante en la Castellana, barrio de Salamanca»;
+    - descripción con Juan Bravo y barrio de Salamanca;
+    - párrafo nuevo sobre la discoteca y la zona (Juan Bravo, metro Rubén Darío, Serrano);
+    - tres preguntas nuevas (cómo llegar, qué días abre la discoteca, cenar y quedarse);
+    - `alternateName` en los datos para Google: Green Madrid, Green Discoteca, Green Castellana, Green Social Club 2.0.
