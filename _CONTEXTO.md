@@ -1,6 +1,6 @@
 # WEB 2.0 · Contexto del proyecto
 
-> Última actualización: **12/11/2026**
+> Última actualización: **18/11/2026**
 > Este archivo sirve para seguir el proyecto desde cualquier ordenador. Se actualiza al final de cada sesión de trabajo.
 > No se publica en la web (empieza por «_»), pero **el repositorio de GitHub es público**: aquí nunca van contraseñas, tokens, PINs, claves de API ni datos privados.
 
@@ -98,7 +98,8 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
 - [ ] Google Business: el enlace a la carta de La Traviesa y de Green no se ve aún en Maps (puede estar en revisión). Volver a mirar en unos días.
 - [x] Search Console: «Validar corrección» de los 404 iniciada el 10/11. Google tarda hasta ~2 semanas; mirar el resultado en Indexación > «No se ha encontrado (404)».
 - [x] Search Console (revisado 11/11): sitemap leído el 11/11 con las 17 páginas, sin errores. Indexadas la portada, `/locales/`, `/eventos/`, `/traviesa/`, las 6 páginas de local en español, `/en/` y 5 de las 6 páginas de local en inglés. Pedida la indexación de `/en/venues/green/` (la única que Google no conocía).
-- [ ] Search Console: mirar en 2–3 semanas si La Traviesa sube en «la traviesa madrid», «restaurante la traviesa» y «bar la traviesa madrid» (el 11/11 estaba en 8,3 / 10,4 / 15,1).
+- [x] Search Console (18/11): La Traviesa ya sube. Posición media 10–16/11: «la traviesa madrid» 4,6 · «restaurante la traviesa» 5,6 · «bar la traviesa madrid» 3,1 (el 11/11: 8,3 / 10,4 / 15,1).
+- [ ] Search Console: la validación de los 404 sigue en curso (23 URLs el 18/11). La URL antigua `/green-2-0/` aún sale en búsquedas de «discoteca barrio Salamanca / Serrano / Castellana» en posición 2–4 con 0 clics; cuando Google aplique la redirección debería pasar a `/locales/green/`. Revisar a final de mes.
 - [x] Search Console: `/en/venues/green/` ya indexada (comprobado 12/11). Ya están en Google las 17 páginas del sitemap. Los «404» que quedan son archivos del WordPress antiguo (`wp-content/…`); es normal, desaparecerán solos.
 - [ ] Códigos postales de Claudio Coello 116 y Alberto Alcocer 32.
 - [x] URL del canal de WhatsApp: ya está puesta en la portada (sección Contacto).
@@ -161,3 +162,8 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
     - en los datos para Google, `alternateName` («La Traviesa», «Traviesa 2.0», «La Traviesa Madrid») y `servesCuisine`.
     Campos nuevos opcionales del generador: `alt_nombres` y `cocina`.
   - 12/11: pedida en Search Console la reindexación de `/locales/la-traviesa/` y `/en/venues/la-traviesa/` (las dos ya estaban indexadas; es para que lea el texto nuevo).
+
+- **18/11/2026:**
+  - Revisión de SEO en Search Console. Semana 10–16/11 frente a la anterior: 281 clics (+35 %), 4.810 impresiones (+18 %), CTR 5,8 %, posición media 5,6. Desde el 2/11: 494 clics y 9.070 impresiones.
+  - 18 páginas indexadas (antes 14); Google ya ha visto 7 redirecciones.
+  - El 99 % de los clics vienen de búsquedas con el nombre de un local o del grupo. Solo 5 clics de búsquedas genéricas en 28 días.
