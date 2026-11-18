@@ -12,6 +12,27 @@ from urllib.parse import quote
 
 BASE = 'https://grupodospuntocero.com'
 HOY = date.today().isoformat()  # lastmod del sitemap: fecha del día en que se regenera
+
+# «Horario e información revisados el …» de cada página de local (y dateModified en sus datos para Google).
+# La fecha solo cambia cuando cambia el contenido de la página: se guarda en locales/_fechas.json
+# (huella del contenido + fecha). Los marcadores se sustituyen al escribir la página (escribir_con_fecha).
+REVISADO_ISO = '__REVISADO_ISO__'
+REVISADO_TXT = '__REVISADO_TXT__'
+MESES = {'es': ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'],
+         'en': ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']}
+
+def fecha_txt(iso, lang):
+    a, m, d = (int(x) for x in iso.split('-'))
+    return f'{d} de {MESES["es"][m-1]} de {a}' if lang == 'es' else f'{d} {MESES["en"][m-1]} {a}'
+
+def escribir_con_fecha(ruta_archivo, clave, contenido, lang, fechas):
+    import hashlib
+    huella = hashlib.sha256(contenido.encode('utf-8')).hexdigest()
+    previa = fechas.get(clave)
+    iso = previa[1] if previa and previa[0] == huella else HOY
+    fechas[clave] = [huella, iso]
+    with open(ruta_archivo, 'w', encoding='utf-8') as f:
+        f.write(contenido.replace(REVISADO_ISO, iso).replace(REVISADO_TXT, fecha_txt(iso, lang)))
 WA = '34656485099'
 TEL = '+34656485099'
 DIAS = {'Mo': ('Monday', 'Lunes'), 'Tu': ('Tuesday', 'Martes'), 'We': ('Wednesday', 'Miércoles'),
@@ -24,7 +45,7 @@ LOCALES = [
   dict(
     slug='las-tablas', key='tablas', ancla='sec-tablas', nombre='Las Tablas 2.0', color='#e51d1e',
     tipo=['BarOrPub'], tipo_txt='Bar de copas', zona='Barrio de Salamanca',
-    calle='Calle del General Oraá, 26', cp='28006', maps='C+General+Ora%C3%A1+26+Madrid',
+    calle='Calle del General Oraá, 26', cp='28006', geo=(40.4360937, -3.6839109), maps='C+General+Ora%C3%A1+26+Madrid',
     ig='lastablas2.0', fotos='tablas', logo='Las Tablas-06-trans.webp',
     horario=[(['Th', 'Fr', 'Sa'], '20:00', '02:00')],
     title='Las Tablas 2.0 · Bar de copas en General Oraá, Madrid',
@@ -41,7 +62,7 @@ LOCALES = [
   dict(
     slug='la-pequena', key='pequeña', ancla='sec-peque%C3%B1a', nombre='La Pequeña 2.0', color='#3a4ba8',
     tipo=['BarOrPub'], tipo_txt='Bar de copas', zona='Barrio de Salamanca',
-    calle='Calle del General Oraá, 27', cp='28006', maps='C+General+Ora%C3%A1+27+Madrid',
+    calle='Calle del General Oraá, 27', cp='28006', geo=(40.4362837, -3.6840298), maps='C+General+Ora%C3%A1+27+Madrid',
     ig='lapequena2.0', fotos='pequeña', logo='La pequeña_Mesa de trabajo 1-trans.webp',
     horario=[(['Th', 'Fr', 'Sa'], '20:00', '02:00')],
     title='La Pequeña 2.0 · Bar de copas de barrio en General Oraá',
@@ -58,7 +79,7 @@ LOCALES = [
   dict(
     slug='la-chula', key='chula', ancla='sec-chula', nombre='La Chula 2.0', color='#e72f8a',
     tipo=['BarOrPub'], tipo_txt='Bar de copas', zona='Barrio de Salamanca',
-    calle='Calle de Claudio Coello, 116', cp=None, maps='C+Claudio+Coello+116+Madrid',
+    calle='Calle de Claudio Coello, 116', cp=None, geo=(40.4364269, -3.6851834), maps='C+Claudio+Coello+116+Madrid',
     ig='lachula2.0', fotos='la chula', logo='La Chula_Mesa de trabajo 1-trans.webp',
     horario=[(['Th'], '20:00', '03:00'), (['Fr', 'Sa'], '20:00', '03:30')],
     title='La Chula 2.0 · Bar de copas en Claudio Coello, Madrid',
@@ -75,7 +96,7 @@ LOCALES = [
   dict(
     slug='la-peluqueria', key='peluca', ancla='sec-peluca', nombre='La Peluquería 2.0', color='#1db7d9',
     tipo=['BarOrPub'], tipo_txt='Bar de copas', zona='Chamartín',
-    calle='Calle de Alberto Alcocer, 32', cp=None, maps='C+Alberto+Alcocer+32+Madrid',
+    calle='Calle de Alberto Alcocer, 32', cp=None, geo=(40.4582432, -3.6827268), maps='C+Alberto+Alcocer+32+Madrid',
     ig='lapeluqueria_2.0', fotos='la peluqueria', logo='La Peluquería-04-trans.webp',
     horario=[(['Th', 'Fr', 'Sa'], '20:00', '02:00')],
     title='La Peluquería 2.0 · Bar de copas en Alberto Alcocer',
@@ -92,7 +113,7 @@ LOCALES = [
   dict(
     slug='la-traviesa', key='traviesa', ancla='sec-traviesa', nombre='La Traviesa 2.0', color='#8a7fc0',
     tipo=['Restaurant', 'BarOrPub'], tipo_txt='Restaurante y bar', zona='Barrio de Salamanca',
-    calle='Calle de López de Hoyos, 7', cp='28006', maps='C+Lopez+de+Hoyos+7+Madrid',
+    calle='Calle de López de Hoyos, 7', cp='28006', geo=(40.4371212, -3.6875615), maps='C+Lopez+de+Hoyos+7+Madrid',
     ig='latraviesa_2.0', fotos='la traviesa', logo='La traviesa_Mesa de trabajo 1-trans.webp',
     horario=[(['Mo', 'Tu', 'We'], '08:00', '17:00'), (['Th', 'Fr'], '08:00', '01:00'), (['Sa'], '18:00', '01:00')],
     carta='/cartas/traviesa.pdf',
@@ -117,7 +138,7 @@ LOCALES = [
   dict(
     slug='green', key='green', ancla='sec-green', nombre='Green 2.0', color='#4ade80',
     tipo=['Restaurant', 'BarOrPub', 'NightClub'], tipo_txt='Restaurante, bar y discoteca', zona='Paseo de la Castellana',
-    calle='Paseo de la Castellana, 40 bis', cp='28046', maps='Paseo+de+la+Castellana+40+bis+Madrid',
+    calle='Paseo de la Castellana, 40 bis', cp='28046', geo=(40.4332777, -3.6875713), maps='Paseo+de+la+Castellana+40+bis+Madrid',
     ig='green.madrid_2.0', fotos='green', logo='Green 2.0-trans.webp',
     horario=[(['Mo', 'Tu', 'We'], '08:00', '22:00'), (['Th', 'Fr'], '08:00', '06:00'), (['Sa'], '18:00', '06:00')],
     carta='/cartas/green.webp',
@@ -359,7 +380,7 @@ T = {
     wa_book_lbl='WhatsApp y reservas', msg_us='Escríbenos', photos='Fotos', photos_h='Para que vayas abriendo boca',
     faq_e='Dudas', faq_h='Preguntas rápidas', fam_e='La familia 2.0', fam_h='Más planes',
     legal='Aviso legal', privacy='Privacidad', ig_of='Instagram de {n}', waf='Reservar por WhatsApp', other='EN',
-    other_lang='en', other_name='English', other_aria='Read in English'),
+    other_lang='en', other_name='English', other_aria='Read in English', revisado='Horario e información revisados el'),
   'en': dict(
     html='en', og='en_GB', skip='Skip to content', theme='Switch day/night theme', nav='Main', menu_open='Open menu',
     to_night='Switch to night mode', to_day='Switch to day mode', menu_close='Close menu', open_now='Open now', closed_now='Closed now',
@@ -370,7 +391,7 @@ T = {
     wa_book_lbl='WhatsApp & bookings', msg_us='Message us', photos='Photos', photos_h='A taste of what awaits',
     faq_e='FAQ', faq_h='Quick questions', fam_e='The 2.0 family', fam_h='More plans',
     legal='Legal notice', privacy='Privacy', ig_of='{n} on Instagram', waf='Book via WhatsApp', other='ES',
-    other_lang='es', other_name='Español', other_aria='Leer en español'),
+    other_lang='es', other_name='Español', other_aria='Leer en español', revisado='Hours and details checked on'),
 }
 
 
@@ -466,6 +487,8 @@ def schema(l):
         'logo': u(f'/logos/{l["logo"]}'),
         'telephone': TEL, 'priceRange': '€€', 'address': addr,
         'hasMap': f'https://maps.google.com/?q={l["maps"]}',
+        # coordenadas sacadas de la ficha de Google Maps de cada local (10/11/2026)
+        'geo': {'@type': 'GeoCoordinates', 'latitude': l['geo'][0], 'longitude': l['geo'][1]},
         'openingHoursSpecification': [
             {'@type': 'OpeningHoursSpecification', 'dayOfWeek': [DIAS[d][0] for d in ds], 'opens': a, 'closes': c}
             for ds, a, c in l['horario']],
@@ -487,7 +510,9 @@ def schema(l):
         {'@type': 'ListItem', 'position': 1, 'name': 'Grupo 2.0', 'item': BASE + '/'},
         {'@type': 'ListItem', 'position': 2, 'name': 'Locales', 'item': BASE + '/locales/'},
         {'@type': 'ListItem', 'position': 3, 'name': l['nombre'], 'item': url}]}
-    return json.dumps({'@context': 'https://schema.org', '@graph': [nodo, migas]}, ensure_ascii=False, indent=1)
+    pagina_nodo = {'@type': 'WebPage', '@id': url + '#page', 'url': url, 'name': l['title'], 'inLanguage': 'es',
+                   'about': {'@id': nodo['@id']}, 'isPartOf': {'@id': f'{BASE}/#org'}, 'dateModified': REVISADO_ISO}
+    return json.dumps({'@context': 'https://schema.org', '@graph': [nodo, pagina_nodo, migas]}, ensure_ascii=False, indent=1)
 
 
 def faq(l, lang='es'):
@@ -746,6 +771,7 @@ tr.hoy td{color:var(--lct)}
 tr.hoy td:first-child::after{content:' · hoy';font-weight:600;font-size:12px}
 .mic{margin-top:18px;padding-top:16px;border-top:1px solid var(--bdr)}
 .mic b{display:block;font-size:15px}.mic span{font-size:13px;color:var(--txt2)}
+.revisado{margin-top:14px;font-size:12px;color:var(--txt2)}
 .card .btn{width:100%;margin-top:18px}
 .gal{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .gal figure{border-radius:16px;overflow:hidden;box-shadow:0 14px 34px var(--photo-shadow);transform:rotate(var(--t,0deg));transition:transform .5s var(--ease)}
@@ -849,7 +875,7 @@ def schema_en(l):
     return json.dumps({'@context': 'https://schema.org', '@graph': [
         {'@type': 'WebPage', '@id': url + '#page', 'url': url, 'name': x['title'], 'description': x['desc'], 'inLanguage': 'en',
          'about': {'@id': f'{BASE}/#{l["slug"].replace("las-", "").replace("la-", "")}'},
-         'primaryImageOfPage': u(f'/fotos/{l["fotos"]}/1.webp'), 'isPartOf': {'@id': f'{BASE}/#org'}},
+         'primaryImageOfPage': u(f'/fotos/{l["fotos"]}/1.webp'), 'isPartOf': {'@id': f'{BASE}/#org'}, 'dateModified': REVISADO_ISO},
         {'@type': 'BreadcrumbList', 'itemListElement': [
             {'@type': 'ListItem', 'position': 1, 'name': 'Grupo 2.0', 'item': BASE + '/en/'},
             {'@type': 'ListItem', 'position': 2, 'name': l['nombre'], 'item': url}]},
@@ -1004,6 +1030,7 @@ def pagina(l, lang='es'):
       <div class="mic"><b>{esc(l['calle'])}</b><span>Madrid · {esc(x['zona'])}</span></div>
       <div class="mic"><b>656 48 50 99</b><span>{t['wa_book_lbl']}</span></div>
       <a class="btn btn-wa" href="{wa}" target="_blank" rel="noopener">{ICO['wa']} {t['msg_us']}</a>
+      <p class="revisado">{t['revisado']} <time datetime="{REVISADO_ISO}">{REVISADO_TXT}</time></p>
     </aside>
   </div>
 </section>
@@ -1774,10 +1801,11 @@ def pagina_redireccion(destino):
 
 if __name__ == '__main__':
     raiz = os.path.dirname(os.path.abspath(__file__))
+    ruta_fechas = os.path.join(raiz, '_fechas.json')
+    fechas = json.load(open(ruta_fechas, encoding='utf-8')) if os.path.exists(ruta_fechas) else {}
     for l in LOCALES:
         os.makedirs(os.path.join(raiz, l['slug']), exist_ok=True)
-        with open(os.path.join(raiz, l['slug'], 'index.html'), 'w', encoding='utf-8') as f:
-            f.write(pagina(l))
+        escribir_con_fecha(os.path.join(raiz, l['slug'], 'index.html'), 'es/' + l['slug'], pagina(l), 'es', fechas)
         print('ok', l['slug'])
     os.makedirs(os.path.join(raiz, '..', 'eventos'), exist_ok=True)
     with open(os.path.join(raiz, '..', 'eventos', 'index.html'), 'w', encoding='utf-8') as f:
@@ -1786,9 +1814,10 @@ if __name__ == '__main__':
     for l in LOCALES:
         d = os.path.join(raiz, '..', 'en', 'venues', l['slug'])
         os.makedirs(d, exist_ok=True)
-        with open(os.path.join(d, 'index.html'), 'w', encoding='utf-8') as f:
-            f.write(pagina(l, 'en'))
+        escribir_con_fecha(os.path.join(d, 'index.html'), 'en/' + l['slug'], pagina(l, 'en'), 'en', fechas)
         print('ok en', l['slug'])
+    with open(ruta_fechas, 'w', encoding='utf-8') as f:
+        json.dump(fechas, f, ensure_ascii=False, indent=1, sort_keys=True)
     with open(os.path.join(raiz, '..', 'en', 'index.html'), 'w', encoding='utf-8') as f:
         f.write(pagina_en_home())
     print('ok en home')

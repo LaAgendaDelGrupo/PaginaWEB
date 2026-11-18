@@ -21,6 +21,7 @@ Web pública de **Grupo 2.0** (bares de copas, restaurante y discoteca en Madrid
 |---|---|---|
 | `index.html` | Portada (español) | Sí |
 | `locales/_generar.py` | **Generador** de casi todas las demás páginas | Sí: aquí se cambian textos, horarios, cartas |
+| `locales/_fechas.json` | Fecha de «Horario e información revisados el…» de cada página de local (no se publica) | **No** (lo escribe el generador) |
 | `locales/<local>/` | Página de cada local (español) | **No** (generada) |
 | `locales/index.html` | Todos los locales por zona | **No** (generada) |
 | `en/`, `en/venues/<local>/` | Versión en inglés | **No** (generada) |
@@ -73,6 +74,7 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
   - Los platos de la carta se quedan en español.
 - **`sitemap.xml`** con fotos, `robots.txt` (bloquea `/menu/`), `llms.txt` y página 404 propia.
 - **Redirecciones** de 16 URLs de la web antigua (WordPress) que Google seguía mostrando como 404 (p. ej. `/green-2-0/` → `/locales/green/`). Si aparece otra en Search Console > Indexación > «No se ha encontrado (404)», añadirla a `REDIRECCIONES` y regenerar.
+- **GEO (respuestas de IA)**: en cada página de local, coordenadas exactas (`geo`, sacadas de las fichas de Google Maps) y fecha de revisión visible bajo el horario y en los datos para Google (`dateModified`). La fecha solo cambia cuando cambia el contenido de esa página.
 - **Diseño**: modo día/noche en todas las páginas (preferencia compartida `g20theme`).
 - **Rendimiento**: logos reducidos, animaciones solo en pantalla, sin `blur` ni `mix-blend-mode` en elementos animados.
 
@@ -110,6 +112,12 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
 **Agencias:**
 - [ ] La Traviesa: cuando su agencia publique `traviesa.grupodospuntocero.com` con SSL, redirigir `/traviesa/` a ese subdominio y quitarlo del sitemap.
 - [ ] Green: esperar el ZIP de su agencia y subirlo a `/green/` sin indexar.
+
+**GEO (para salir en las respuestas de IA), revisado el 18/11:**
+- [ ] Google Business de cada local: rango de precio por persona, descripción, atributos («bueno para grupos», «música», «reservas») y contestar reseñas. Es de donde la IA de Google saca horarios y precios.
+- [ ] Pasarme precio medio (copa en los bares, por persona en La Traviesa y Green), tipo de música de cada local y año de fundación del grupo → bloque «En resumen» arriba en cada página de local y `foundingDate` en los datos del grupo.
+- [ ] Presencia fuera de la web: Privateaser, Tripadvisor, listas tipo Time Out / DiscoMadrid, prensa. La IA de Google cita esas fuentes en «bares de copas barrio de Salamanca» y «discoteca barrio de Salamanca».
+- [ ] La IA de Google, al buscar «qué es Grupo 2.0», aún nombra Juanita como local abierto y dice «nacido en 2020» (confirmar el año).
 
 **Ideas propuestas, sin hacer:**
 - Página de Nochevieja de Green (falta confirmar fiesta y precios en Fourvenues).
@@ -175,3 +183,5 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
     - tres preguntas nuevas (cómo llegar, qué días abre la discoteca, cenar y quedarse);
     - `alternateName` en los datos para Google: Green Madrid, Green Discoteca, Green Castellana, Green Social Club 2.0.
   - Pedida en Search Console la reindexación de `/locales/green/` y `/en/venues/green/`.
+  - Revisión GEO: los buscadores de IA (OAI-SearchBot, PerplexityBot, Claude-SearchBot) pueden entrar y el contenido se lee sin JavaScript. En los resúmenes con IA de Google de búsquedas genéricas no salimos todavía.
+  - Añadidos a las páginas de local (ES/EN): coordenadas (`geo`) y fecha de revisión visible + `dateModified`, guardada en `locales/_fechas.json`.
