@@ -171,6 +171,11 @@ h2{font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(30px,5
 .grid2{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(28px,5vw,64px);align-items:start}
 .txt p{color:var(--txt2);margin-bottom:16px;max-width:62ch;font-size:clamp(15px,1.3vw,17px)}
 .txt p a,.fq p a{color:var(--lct);border-bottom:1px solid currentColor}
+.resumen{border:1px solid var(--bdr2);border-left:3px solid rgb(var(--lcr));border-radius:16px;background:var(--card);padding:18px 20px;margin-bottom:24px}
+.txt .resumen p{color:var(--txt);margin-bottom:14px;font-size:15px;line-height:1.6}
+.resumen dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px 18px}
+.resumen dt{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--lct)}
+.resumen dd{font-size:14px;font-weight:600;line-height:1.4;margin:2px 0 0}
 .planes{list-style:none;margin-top:14px;border-top:1px solid var(--bdr)}
 .planes li{display:flex;gap:16px;align-items:baseline;padding:15px 0;border-bottom:1px solid var(--bdr);font-weight:600}
 .planes li::before{content:counter(p,decimal-leading-zero);counter-increment:p;font-family:'Anton',sans-serif;font-size:13px;letter-spacing:.2em;color:var(--lct);flex-shrink:0}

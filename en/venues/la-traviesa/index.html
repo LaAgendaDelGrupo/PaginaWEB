@@ -217,6 +217,11 @@ h2{font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(30px,5
 .grid2{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(28px,5vw,64px);align-items:start}
 .txt p{color:var(--txt2);margin-bottom:16px;max-width:62ch;font-size:clamp(15px,1.3vw,17px)}
 .txt p a,.fq p a{color:var(--lct);border-bottom:1px solid currentColor}
+.resumen{border:1px solid var(--bdr2);border-left:3px solid rgb(var(--lcr));border-radius:16px;background:var(--card);padding:18px 20px;margin-bottom:24px}
+.txt .resumen p{color:var(--txt);margin-bottom:14px;font-size:15px;line-height:1.6}
+.resumen dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px 18px}
+.resumen dt{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--lct)}
+.resumen dd{font-size:14px;font-weight:600;line-height:1.4;margin:2px 0 0}
 .planes{list-style:none;margin-top:14px;border-top:1px solid var(--bdr)}
 .planes li{display:flex;gap:16px;align-items:baseline;padding:15px 0;border-bottom:1px solid var(--bdr);font-weight:600}
 .planes li::before{content:counter(p,decimal-leading-zero);counter-increment:p;font-family:'Anton',sans-serif;font-size:13px;letter-spacing:.2em;color:var(--lct);flex-shrink:0}
@@ -377,6 +382,7 @@ footer{background:var(--ft-bg);border-top:1px solid var(--bdr);padding:44px clam
   <div class="ci rev"><div><div class="ci-eyebrow">The place</div><h2 id="h-asi">Meet La Traviesa 2.0</h2></div><div class="ci-count" aria-hidden="true">05</div></div>
   <div class="grid2">
     <div class="txt rev">
+      <div class="resumen rev"><p><strong>At a glance.</strong> La Traviesa 2.0 is a restaurant &amp; bar by Grupo 2.0 at Calle de López de Hoyos, 7, Madrid (Salamanca district). Open Monday to Wednesday 08:00–17:00; Thursday and Friday 08:00–01:00; Saturday 18:00–01:00. Eating out costs around €20 per person on average, and the music is commercial, chart hits.</p><dl><div><dt>Type</dt><dd>Restaurant &amp; bar</dd></div><div><dt>Average price</dt><dd>€20 per person</dd></div><div><dt>Music</dt><dd>Commercial / chart hits</dd></div><div><dt>Opening hours</dt><dd>Monday to Wednesday 08:00–17:00; Thursday and Friday 08:00–01:00; Saturday 18:00–01:00</dd></div><div><dt>Address</dt><dd>Calle de López de Hoyos, 7, 28006 Madrid</dd></div><div><dt>Bookings</dt><dd>Online or via WhatsApp</dd></div></dl></div>
       <p>La Traviesa 2.0 is the foodie of the family: a restaurant and bar at Calle de López de Hoyos, 7, a stone’s throw from the Castellana. We open early for breakfast, carry on with lunch and, from Thursday to Saturday, stretch into dinner and drinks.</p><p>At La Traviesa you come to eat well without fuss: produce-driven tapas and dishes to share, from gildas and montaditos to mains and homemade desserts, with a wine list from Rioja, Ribera, Rueda, Valdeorras and Rías Baixas. On weekdays it’s the local spot for business lunches; on Thursdays and Fridays, for the dinner that turns into drinks.</p><p>Monday to Wednesday we’re open 8am to 5pm; Thursday and Friday 8am to 1am; and Saturdays 6pm to 1am. Sundays we rest. Check the food and wine menu below and book a table online in a minute.</p>
       <ul class="planes"><li>Breakfast and business lunches on weekdays</li><li>Tapas, dinner and drinks Thursday to Saturday</li><li>Company lunches and dinners: see our <a href="/traviesa/" hreflang="es">Christmas menus</a> (in Spanish)</li></ul>
     </div>

@@ -116,9 +116,9 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
 
 **GEO (para salir en las respuestas de IA), revisado el 18/11:**
 - [ ] Google Business de cada local: rango de precio por persona, descripción, atributos («bueno para grupos», «música», «reservas») y contestar reseñas. Es de donde la IA de Google saca horarios y precios.
-- [ ] Pasarme precio medio (copa en los bares, por persona en La Traviesa y Green), tipo de música de cada local y año de fundación del grupo → bloque «En resumen» arriba en cada página de local y `foundingDate` en los datos del grupo.
+- [x] Datos dados el 19/11: copa 8 € de media en los bares, 20 € por persona en La Traviesa y Green, música comercial en todos, grupo nacido en 2020. Puesto en el bloque «En resumen» de cada página de local (ES/EN), `priceRange` de cada local, `foundingDate` en la portada, una pregunta de precios en `/locales/` y «Datos rápidos» en `llms.txt`. Si cambian, se tocan `FUNDADO`, `PRECIO_COPA`, `PRECIO_PERSONA` y `MUSICA` en `_generar.py` y los `priceRange` de `index.html`.
 - [ ] Presencia fuera de la web: Privateaser, Tripadvisor, listas tipo Time Out / DiscoMadrid, prensa. La IA de Google cita esas fuentes en «bares de copas barrio de Salamanca» y «discoteca barrio de Salamanca».
-- [ ] La IA de Google, al buscar «qué es Grupo 2.0», aún nombra Juanita como local abierto y dice «nacido en 2020» (confirmar el año).
+- [ ] La IA de Google, al buscar «qué es Grupo 2.0», aún nombra Juanita como local abierto (el año 2020 es correcto). `llms.txt` ya dice que está cerrada temporalmente.
 
 **Ideas propuestas, sin hacer:**
 - Página de Nochevieja de Green (falta confirmar fiesta y precios en Fourvenues).
@@ -189,4 +189,5 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
 - **19/11/2026:**
   - Menú: más espacio entre el logo y LOCALES.
   - SEO/GEO: códigos postales que faltaban, «Avenida de Alberto Alcocer», coordenadas en la portada y preguntas frecuentes en `/locales/`.
+  - «En resumen» en cada página de local con precio medio, música, horario, dirección y reservas; año de fundación 2020.
   - Revisión diaria automática: `_revision_diaria.py` + tarea programada en la app de Claude (cada día ~9:00, correo con «todo funciona» o lo que falla). Solo corre si la app está abierta en este Mac; si estaba cerrada, se ejecuta al abrirla.

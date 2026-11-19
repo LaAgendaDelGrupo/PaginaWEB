@@ -472,6 +472,54 @@ def horario_corto(l, lang='es'):
     return '; '.join(partes)
 
 
+# «En resumen» (datos dados por el usuario el 19/11/2026). Si cambian precios o música, se cambian aquí.
+FUNDADO = '2020'
+PRECIO_COPA, PRECIO_PERSONA = 8, 20
+MUSICA = {'es': 'Comercial', 'en': 'Commercial / chart hits'}
+
+
+def es_restaurante(l):
+    return 'Restaurant' in l['tipo']
+
+
+def precio_rango(l):
+    return f'{PRECIO_PERSONA} € por persona (media)' if es_restaurante(l) else f'{PRECIO_COPA} € por copa (media)'
+
+
+def resumen(l, lang='es'):
+    """Bloque de datos clave arriba de cada página de local: frase citable + ficha rápida."""
+    cp = f'{l["cp"]} ' if l['cp'] else ''
+    if lang == 'en':
+        x = loc(l, 'en')
+        precio = (f'Eating out costs around €{PRECIO_PERSONA} per person on average' if es_restaurante(l)
+                  else f'A drink costs around €{PRECIO_COPA} on average')
+        zona = '' if x['zona'].lower() in l['calle'].lower() else f' ({x["zona"]})'
+        frase = (f'{l["nombre"]} is a {x["tipo_txt"].lower()} by Grupo 2.0 at {l["calle"]}, Madrid{zona}. '
+                 f'Open {horario_corto(l, "en")}. {precio}, and the music is commercial, chart hits.')
+        reservas = ('Online or via WhatsApp' if l.get('reservar') else
+                    'WhatsApp; nightclub tickets online' if l.get('entradas') else 'Via WhatsApp, +34 656 48 50 99')
+        filas = [('Type', x['tipo_txt']),
+                 ('Average price', f'€{PRECIO_PERSONA} per person' if es_restaurante(l) else f'€{PRECIO_COPA} per drink'),
+                 ('Music', MUSICA['en']), ('Opening hours', horario_corto(l, 'en')),
+                 ('Address', f'{l["calle"]}, {cp}Madrid'), ('Bookings', reservas)]
+        tit = 'At a glance.'
+    else:
+        precio = (f'Comer o cenar sale por unos {PRECIO_PERSONA} € por persona de media' if es_restaurante(l)
+                  else f'La copa sale por unos {PRECIO_COPA} € de media')
+        zona = '' if l['zona'].lower() in l['calle'].lower() else f' ({l["zona"]})'
+        frase = (f'{l["nombre"]} es un {l["tipo_txt"].lower()} de Grupo 2.0 en {l["calle"]}, Madrid{zona}. '
+                 f'Abre {horario_corto(l)}. {precio} y la música es comercial.')
+        reservas = ('Online o por WhatsApp' if l.get('reservar') else
+                    'Por WhatsApp; entradas de la discoteca online' if l.get('entradas') else 'Por WhatsApp, 656 48 50 99')
+        filas = [('Tipo', l['tipo_txt']),
+                 ('Precio medio', f'{PRECIO_PERSONA} € por persona' if es_restaurante(l) else f'{PRECIO_COPA} € por copa'),
+                 ('Música', MUSICA['es']), ('Horario', horario_corto(l)),
+                 ('Dirección', f'{l["calle"]}, {cp}Madrid'), ('Reservas', reservas)]
+        tit = 'En resumen.'
+    dl = ''.join(f'<div><dt>{esc(k)}</dt><dd>{esc(v)}</dd></div>' for k, v in filas)
+    return f'<div class="resumen rev"><p><strong>{tit}</strong> {esc(frase)}</p><dl>{dl}</dl></div>'
+
+
 def schema(l):
     url = f'{BASE}/locales/{l["slug"]}/'
     addr = {'@type': 'PostalAddress', 'streetAddress': l['calle'], 'addressLocality': 'Madrid',
@@ -485,7 +533,7 @@ def schema(l):
         'name': l['nombre'], 'description': l['desc'], 'url': url,
         'image': [u(f'/fotos/{l["fotos"]}/{i}.webp') for i in (1, 2, 3, 4)],
         'logo': u(f'/logos/{l["logo"]}'),
-        'telephone': TEL, 'priceRange': '€€', 'address': addr,
+        'telephone': TEL, 'priceRange': precio_rango(l), 'address': addr,
         'hasMap': f'https://maps.google.com/?q={l["maps"]}',
         # coordenadas sacadas de la ficha de Google Maps de cada local (10/11/2026)
         'geo': {'@type': 'GeoCoordinates', 'latitude': l['geo'][0], 'longitude': l['geo'][1]},
@@ -757,6 +805,11 @@ h2{font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(30px,5
 .grid2{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(28px,5vw,64px);align-items:start}
 .txt p{color:var(--txt2);margin-bottom:16px;max-width:62ch;font-size:clamp(15px,1.3vw,17px)}
 .txt p a,.fq p a{color:var(--lct);border-bottom:1px solid currentColor}
+.resumen{border:1px solid var(--bdr2);border-left:3px solid rgb(var(--lcr));border-radius:16px;background:var(--card);padding:18px 20px;margin-bottom:24px}
+.txt .resumen p{color:var(--txt);margin-bottom:14px;font-size:15px;line-height:1.6}
+.resumen dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px 18px}
+.resumen dt{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--lct)}
+.resumen dd{font-size:14px;font-weight:600;line-height:1.4;margin:2px 0 0}
 .planes{list-style:none;margin-top:14px;border-top:1px solid var(--bdr)}
 .planes li{display:flex;gap:16px;align-items:baseline;padding:15px 0;border-bottom:1px solid var(--bdr);font-weight:600}
 .planes li::before{content:counter(p,decimal-leading-zero);counter-increment:p;font-family:'Anton',sans-serif;font-size:13px;letter-spacing:.2em;color:var(--lct);flex-shrink:0}
@@ -1019,6 +1072,7 @@ def pagina(l, lang='es'):
   <div class="ci rev"><div><div class="ci-eyebrow">{t['the_place']}</div><h2 id="h-asi">{esc(t['meet'].format(n=l['nombre']))}</h2></div><div class="ci-count" aria-hidden="true">{e['num']}</div></div>
   <div class="grid2">
     <div class="txt rev">
+      {resumen(l, lang)}
       {''.join(f'<p>{p}</p>' for p in x['intro'])}
       <ul class="planes">{''.join(f'<li>{p}</li>' for p in x['planes'])}</ul>
     </div>
@@ -1554,6 +1608,9 @@ def hub_faq():
         ('¿Dónde celebrar un cumpleaños, una despedida o una cena de empresa?',
          'En cualquiera de los seis locales. Las cenas de empresa y menús de Navidad se hacen en La Traviesa 2.0 y Green 2.0; los cumpleaños y '
          'despedidas, también en los bares de copas. Mira cómo funcionan los <a href="/eventos/">eventos en Grupo 2.0</a> o escríbenos por WhatsApp al 656 48 50 99.'),
+        ('¿Cuánto cuesta salir en los locales de Grupo 2.0?',
+         f'En los bares de copas, la copa sale por unos {PRECIO_COPA} € de media. Comer o cenar en La Traviesa 2.0 o en Green 2.0 '
+         f'sale por unos {PRECIO_PERSONA} € por persona de media. En todos los locales suena música comercial.'),
         ('¿Cómo se reserva?',
          f'En La Traviesa 2.0 y Green 2.0 puedes reservar mesa online con el botón «Reservar mesa». En los bares de copas, escríbenos por WhatsApp '
          'al 656 48 50 99 y te guardamos sitio; para grupos grandes, avísanos con unos días de antelación.'),

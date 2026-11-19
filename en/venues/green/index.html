@@ -217,6 +217,11 @@ h2{font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(30px,5
 .grid2{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(28px,5vw,64px);align-items:start}
 .txt p{color:var(--txt2);margin-bottom:16px;max-width:62ch;font-size:clamp(15px,1.3vw,17px)}
 .txt p a,.fq p a{color:var(--lct);border-bottom:1px solid currentColor}
+.resumen{border:1px solid var(--bdr2);border-left:3px solid rgb(var(--lcr));border-radius:16px;background:var(--card);padding:18px 20px;margin-bottom:24px}
+.txt .resumen p{color:var(--txt);margin-bottom:14px;font-size:15px;line-height:1.6}
+.resumen dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px 18px}
+.resumen dt{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--lct)}
+.resumen dd{font-size:14px;font-weight:600;line-height:1.4;margin:2px 0 0}
 .planes{list-style:none;margin-top:14px;border-top:1px solid var(--bdr)}
 .planes li{display:flex;gap:16px;align-items:baseline;padding:15px 0;border-bottom:1px solid var(--bdr);font-weight:600}
 .planes li::before{content:counter(p,decimal-leading-zero);counter-increment:p;font-family:'Anton',sans-serif;font-size:13px;letter-spacing:.2em;color:var(--lct);flex-shrink:0}
@@ -377,6 +382,7 @@ footer{background:var(--ft-bg);border-top:1px solid var(--bdr);padding:44px clam
   <div class="ci rev"><div><div class="ci-eyebrow">The place</div><h2 id="h-asi">Meet Green 2.0</h2></div><div class="ci-count" aria-hidden="true">07</div></div>
   <div class="grid2">
     <div class="txt rev">
+      <div class="resumen rev"><p><strong>At a glance.</strong> Green 2.0 is a restaurant, bar &amp; nightclub by Grupo 2.0 at Paseo de la Castellana, 40 bis, Madrid. Open Monday to Wednesday 08:00–22:00; Thursday and Friday 08:00–06:00; Saturday 18:00–06:00. Eating out costs around €20 per person on average, and the music is commercial, chart hits.</p><dl><div><dt>Type</dt><dd>Restaurant, bar &amp; nightclub</dd></div><div><dt>Average price</dt><dd>€20 per person</dd></div><div><dt>Music</dt><dd>Commercial / chart hits</dd></div><div><dt>Opening hours</dt><dd>Monday to Wednesday 08:00–22:00; Thursday and Friday 08:00–06:00; Saturday 18:00–06:00</dd></div><div><dt>Address</dt><dd>Paseo de la Castellana, 40 bis, 28046 Madrid</dd></div><div><dt>Bookings</dt><dd>WhatsApp; nightclub tickets online</dd></div></dl></div>
       <p>Green 2.0 is the three-in-one of the family: restaurant, cocktail bar and nightclub at Paseo de la Castellana, 40 bis. Come in for breakfast, stay for lunch, come back for dinner and end up dancing without changing address.</p><p>From Thursday to Saturday, Green becomes the Salamanca district’s nightclub: music until 6am, a snack menu between drinks and parties with tickets and guest lists on Fourvenues. We’re on the Castellana by Juan Bravo, next to Rubén Darío metro and a few minutes from Serrano, so you can end the night without a taxi into the centre.</p><p>Monday to Wednesday we’re open 8am to 10pm. Thursday and Friday, 8am to 6am; and Saturdays, 6pm to 6am. Check the menu, get tickets for our events and book via WhatsApp.</p>
       <ul class="planes"><li>Dinner and a party in the same place</li><li>Nightclub in the Salamanca district until 6am, Thursday to Saturday</li><li>Events, parties and company dinners on the Castellana</li></ul>
     </div>

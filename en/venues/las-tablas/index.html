@@ -217,6 +217,11 @@ h2{font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(30px,5
 .grid2{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(28px,5vw,64px);align-items:start}
 .txt p{color:var(--txt2);margin-bottom:16px;max-width:62ch;font-size:clamp(15px,1.3vw,17px)}
 .txt p a,.fq p a{color:var(--lct);border-bottom:1px solid currentColor}
+.resumen{border:1px solid var(--bdr2);border-left:3px solid rgb(var(--lcr));border-radius:16px;background:var(--card);padding:18px 20px;margin-bottom:24px}
+.txt .resumen p{color:var(--txt);margin-bottom:14px;font-size:15px;line-height:1.6}
+.resumen dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px 18px}
+.resumen dt{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--lct)}
+.resumen dd{font-size:14px;font-weight:600;line-height:1.4;margin:2px 0 0}
 .planes{list-style:none;margin-top:14px;border-top:1px solid var(--bdr)}
 .planes li{display:flex;gap:16px;align-items:baseline;padding:15px 0;border-bottom:1px solid var(--bdr);font-weight:600}
 .planes li::before{content:counter(p,decimal-leading-zero);counter-increment:p;font-family:'Anton',sans-serif;font-size:13px;letter-spacing:.2em;color:var(--lct);flex-shrink:0}
@@ -375,6 +380,7 @@ footer{background:var(--ft-bg);border-top:1px solid var(--bdr);padding:44px clam
   <div class="ci rev"><div><div class="ci-eyebrow">The place</div><h2 id="h-asi">Meet Las Tablas 2.0</h2></div><div class="ci-count" aria-hidden="true">01</div></div>
   <div class="grid2">
     <div class="txt rev">
+      <div class="resumen rev"><p><strong>At a glance.</strong> Las Tablas 2.0 is a cocktail bar by Grupo 2.0 at Calle del General Oraá, 26, Madrid (Salamanca district). Open Thursday to Saturday 20:00–02:00. A drink costs around €8 on average, and the music is commercial, chart hits.</p><dl><div><dt>Type</dt><dd>Cocktail bar</dd></div><div><dt>Average price</dt><dd>€8 per drink</dd></div><div><dt>Music</dt><dd>Commercial / chart hits</dd></div><div><dt>Opening hours</dt><dd>Thursday to Saturday 20:00–02:00</dd></div><div><dt>Address</dt><dd>Calle del General Oraá, 26, 28006 Madrid</dd></div><div><dt>Bookings</dt><dd>Via WhatsApp, +34 656 48 50 99</dd></div></dl></div>
       <p>Las Tablas 2.0 is our cocktail bar on Calle del General Oraá, right in the heart of the Salamanca district. A place to start the night with a well-poured drink, stay longer than planned and leave feeling that Thursday counts as the weekend too.</p><p>A proper neighbourhood bar with the cheeky touch of the 2.0 family: good music, people up for it and a curtain that keeps what happens inside, inside. Open Thursday to Saturday from 8pm until 2am.</p>
       <ul class="planes"><li>Drinks Thursday to Saturday without crossing Madrid</li><li>Birthdays and group get-togethers: message us and we’ll save you a spot</li><li>First stop before carrying on at La Pequeña 2.0, right across the street</li></ul>
     </div>
