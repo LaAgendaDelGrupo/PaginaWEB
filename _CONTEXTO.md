@@ -1,6 +1,6 @@
 # WEB 2.0 · Contexto del proyecto
 
-> Última actualización: **18/11/2026**
+> Última actualización: **19/11/2026**
 > Este archivo sirve para seguir el proyecto desde cualquier ordenador. Se actualiza al final de cada sesión de trabajo.
 > No se publica en la web (empieza por «_»), pero **el repositorio de GitHub es público**: aquí nunca van contraseñas, tokens, PINs, claves de API ni datos privados.
 
@@ -32,6 +32,7 @@ Web pública de **Grupo 2.0** (bares de copas, restaurante y discoteca en Madrid
 | `menu/` | Menú del día por QR (herramienta interna). **Oculto desde el 11/11/2026:** no se publica (`exclude` en `_config.yml`); para reactivarlo, quitar `menu` de ahí | Sí |
 | `cartas/` | Cartas originales (PDF/imagen) | Sustituir archivo |
 | `fotos/<local>/1-4.webp`, `logos/` | Imágenes | Sustituir archivo |
+| `_revision_diaria.py` | Revisión automática de la web (páginas, imágenes, redirecciones, HTTPS). La lanza cada día a las 9:00 la tarea programada «Revisión diaria de la web Grupo 2.0» de la app de Claude en este Mac, que manda el resultado por correo (no se publica) | Sí |
 | `robots.txt`, `llms.txt` | Instrucciones para buscadores e IA | Sí |
 | `CLAUDE.md`, `_CONTEXTO.md` | Instrucciones y contexto para Claude | Sí |
 
@@ -185,3 +186,5 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
   - Pedida en Search Console la reindexación de `/locales/green/` y `/en/venues/green/`.
   - Revisión GEO: los buscadores de IA (OAI-SearchBot, PerplexityBot, Claude-SearchBot) pueden entrar y el contenido se lee sin JavaScript. En los resúmenes con IA de Google de búsquedas genéricas no salimos todavía.
   - Añadidos a las páginas de local (ES/EN): coordenadas (`geo`) y fecha de revisión visible + `dateModified`, guardada en `locales/_fechas.json`.
+- **19/11/2026:**
+  - Revisión diaria automática: `_revision_diaria.py` + tarea programada en la app de Claude (cada día ~9:00, correo con «todo funciona» o lo que falla). Solo corre si la app está abierta en este Mac; si estaba cerrada, se ejecuta al abrirla.
