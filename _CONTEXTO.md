@@ -25,7 +25,7 @@ Web pública de **Grupo 2.0** (bares de copas, restaurante y discoteca en Madrid
 | `locales/<local>/` | Página de cada local (español) | **No** (generada) |
 | `locales/index.html` | Todos los locales por zona | **No** (generada) |
 | `en/`, `en/venues/<local>/` | Versión en inglés | **No** (generada) |
-| `eventos/` | Cenas de empresa y eventos privados | **No** (generada) |
+| `eventos/`, `en/events/` | Cenas de empresa y eventos privados (español e inglés) | **No** (generada) |
 | `404.html`, `sitemap.xml` | Página de error y sitemap | **No** (generados) |
 | `green-2-0/`, `contacto/`, `home/`… | Redirecciones de URLs de la web antigua (WordPress), lista `REDIRECCIONES` | **No** (generadas) |
 | `traviesa/` | Landing de Navidad de La Traviesa (diseño de su agencia) | Sí |
@@ -70,7 +70,7 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
 - **Páginas por local** en `/locales/<local>/`, con texto, horario, fotos, preguntas frecuentes, carta en texto (Traviesa y Green) y aviso «abierto ahora».
 - **`/locales/`**: los 6 locales por zona (Salamanca, Chamartín, Castellana), una tabla de direcciones y horarios y 8 preguntas frecuentes generales («¿dónde tomar una copa en el barrio de Salamanca?», «¿qué cierra más tarde?», «¿qué abre de lunes a miércoles?»…) con `FAQPage`. Los horarios de las respuestas salen solos de `LOCALES` (función `hub_faq()`).
 - **`/eventos/`**: cenas de empresa, cumpleaños, despedidas y menús de Navidad de 45–65 € en La Traviesa. Reserva en Komvo.
-- **Inglés**: portada en `/en/` y locales en `/en/venues/<local>/`.
+- **Inglés**: portada en `/en/`, locales en `/en/venues/<local>/` y eventos en `/en/events/` (desde el 19/11; textos en `EVENTOS_TIPOS`, `EVENTOS_LOCALES`, `EVENTOS_FAQ` y `EV_T`, con clave `es`/`en`).
   - Enlazadas con `hreflang` y botón ES/EN.
   - Los platos de la carta se quedan en español.
 - **`sitemap.xml`** con fotos, `robots.txt` (bloquea `/menu/`), `llms.txt` y página 404 propia.
@@ -124,7 +124,6 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
 - Página de Nochevieja de Green (falta confirmar fiesta y precios en Fourvenues).
 - Si el personal habla inglés, decirlo en la versión inglesa.
 - Página «Nos han mencionado en…» cuando salga algo en prensa.
-- Versión inglesa de `/eventos/`.
 
 ## 7. Historial de sesiones
 
@@ -190,4 +189,5 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
   - Menú: más espacio entre el logo y LOCALES.
   - SEO/GEO: códigos postales que faltaban, «Avenida de Alberto Alcocer», coordenadas en la portada y preguntas frecuentes en `/locales/`.
   - «En resumen» en cada página de local con precio medio, música, horario, dirección y reservas; año de fundación 2020.
+  - Versión inglesa de eventos en `/en/events/`, enlazada con hreflang, menú inglés, sitemap y `llms.txt`; preguntas de eventos con `FAQPage`.
   - Revisión diaria automática: `_revision_diaria.py` + tarea programada en la app de Claude (cada día ~9:00, correo con «todo funciona» o lo que falla). Solo corre si la app está abierta en este Mac; si estaba cerrada, se ejecuta al abrirla.

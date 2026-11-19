@@ -916,7 +916,7 @@ NAV_ES = """<ul class="nav-links">
   </ul>"""
 NAV_EN = """<ul class="nav-links">
     <li><a href="/en/#venues">Venues</a></li>
-    <li><a href="/en/#groups">Groups &amp; events</a></li>
+    <li><a href="/en/events/">Groups &amp; events</a></li>
     <li><a href="/en/#contact">Contact</a></li>
   </ul>"""
 
@@ -1113,7 +1113,7 @@ def pagina(l, lang='es'):
 <footer>
   <div class="ft-top">
     <div class="ft-logo">GRUPO_2.0</div>
-    <nav class="ft-locs" aria-label="{t['venues']}"><a href="{'/en/#venues' if en else '/locales/'}">{t['all_venues']}</a>{pie}<a href="{'/en/#groups' if en else '/eventos/'}">{t['events']}</a><a href="{ruta(s, t['other_lang'])}" hreflang="{t['other_lang']}" lang="{t['other_lang']}">{t['other_name']}</a></nav>
+    <nav class="ft-locs" aria-label="{t['venues']}"><a href="{'/en/#venues' if en else '/locales/'}">{t['all_venues']}</a>{pie}<a href="{'/en/events/' if en else '/eventos/'}">{t['events']}</a><a href="{ruta(s, t['other_lang'])}" hreflang="{t['other_lang']}" lang="{t['other_lang']}">{t['other_name']}</a></nav>
   </div>
   <div class="ft-bot">
     <div><p class="ft-copy">© 2026 Grupo 2.0 · Madrid · 656 485 099 · <a href="mailto:hola@grupodospuntocero.com">hola@grupodospuntocero.com</a></p>
@@ -1216,156 +1216,174 @@ JS_COMUN = """
 # ─────────────────────────── Página de eventos: /eventos/ ───────────────────────────
 KOMVO = 'https://grupodospuntocero.komvoapp.com/restaurantes'
 
-EVENTOS_TIPOS = [
+EVENTOS_TIPOS = {
+  'es': [
     ('Cenas y comidas de empresa', 'La cena de Navidad que sí apetece, la comida del equipo o el brindis de fin de trimestre. Mesa, menú cerrado y sobremesa sin mirar el reloj.', '231,47,138'),
     ('Cumpleaños', 'Cumples años, no neuronas. Tú pones las velas y la lista de invitados; nosotros, el sitio, las copas y la música.', '229,29,30'),
     ('Despedidas', 'De soltera, de soltero o del compañero que se va. Cena, copas y baile en la misma noche, sin tener que cruzar Madrid.', '29,183,217'),
     ('Afterwork y fiestas de equipo', 'El afterwork que mañana será leyenda en el grupo del curro. Te traes al jefe y te lo devolvemos bailando.', '74,222,128'),
-]
+  ],
+  'en': [
+    ('Company lunches & dinners', 'The Christmas dinner people actually want to go to, the team lunch or the end-of-quarter toast. A table, a set menu and a long, unhurried sobremesa.', '231,47,138'),
+    ('Birthdays', 'Another year older, none the wiser. You bring the candles and the guest list; we bring the venue, the drinks and the music.', '229,29,30'),
+    ('Hen & stag parties', 'For the bride, the groom or the colleague who’s leaving. Dinner, drinks and dancing in one night, without crossing Madrid.', '29,183,217'),
+    ('After-work & team parties', 'The after-work everyone will still be talking about on Monday. Bring the boss; we’ll send them back dancing.', '74,222,128'),
+  ],
+}
 # qué plan encaja en cada local (enlaza a su página)
-EVENTOS_LOCALES = [
+EVENTOS_LOCALES = {
+  'es': [
     ('la-traviesa', 'Comidas y cenas sentados', 'Restaurante en López de Hoyos con menús de grupo y de Navidad con bebida incluida.'),
     ('green', 'Cena + fiesta hasta las 6:00', 'Restaurante, bar y discoteca en la Castellana: empezar cenando y acabar bailando.'),
     ('la-chula', 'Cumpleaños con neón', 'Bar de copas en Claudio Coello abierto hasta las 3:30 los viernes y sábados.'),
     ('las-tablas', 'Copas en grupo', 'Bar de copas en General Oraá, justo enfrente de La Pequeña 2.0.'),
     ('la-pequena', 'Celebraciones de barrio', 'Bar de copas en General Oraá con trato de casa.'),
     ('la-peluqueria', 'Afterwork en la zona norte', 'Bar de copas en Alberto Alcocer (Chamartín).'),
-]
-EVENTOS_FAQ = [
-    ('¿Cómo reservo un evento en Grupo 2.0?', f'Puedes reservarlo online con el botón «Reservar evento online», escribirnos por WhatsApp al 656 48 50 99 o mandar un email a <a href="mailto:hola@grupodospuntocero.com">hola@grupodospuntocero.com</a> con la fecha, el número de personas y el tipo de plan.'),
+  ],
+  'en': [
+    ('la-traviesa', 'Sit-down lunches & dinners', 'Restaurant on López de Hoyos with group and Christmas menus, drinks included.'),
+    ('green', 'Dinner + party until 6am', 'Restaurant, bar and nightclub on the Castellana: start with dinner, end up dancing.'),
+    ('la-chula', 'Birthdays under the neon', 'Cocktail bar on Claudio Coello, open until 3:30am on Fridays and Saturdays.'),
+    ('las-tablas', 'Drinks with the crew', 'Cocktail bar on General Oraá, right across the street from La Pequeña 2.0.'),
+    ('la-pequena', 'Neighbourhood celebrations', 'Cocktail bar on General Oraá that treats you like family.'),
+    ('la-peluqueria', 'After-work up north', 'Cocktail bar on Alberto Alcocer (Chamartín).'),
+  ],
+}
+EVENTOS_FAQ = {
+  'es': [
+    ('¿Cómo reservo un evento en Grupo 2.0?', 'Puedes reservarlo online con el botón «Reservar evento online», escribirnos por WhatsApp al 656 48 50 99 o mandar un email a <a href="mailto:hola@grupodospuntocero.com">hola@grupodospuntocero.com</a> con la fecha, el número de personas y el tipo de plan.'),
     ('¿Tenéis menús cerrados para cenas de empresa?', 'Sí. En La Traviesa 2.0 hay menús de Navidad para grupos de 45 € a 65 € por persona con bebida incluida, y un formato cóctel para grupos grandes. Los tienes en <a href="/traviesa/">grupodospuntocero.com/traviesa</a>. Para otras fechas preparamos la propuesta a medida.'),
     ('¿Con cuánta antelación tengo que reservar?', 'Cuanto antes, mejor, sobre todo en diciembre y para viernes y sábados, que es cuando más se llenan los locales. Escríbenos aunque aún no tengas el número exacto de personas.'),
     ('¿Se puede cenar y seguir la fiesta en el mismo sitio?', 'Sí: en Green 2.0 (Paseo de la Castellana, 40 bis) puedes cenar y quedarte en la discoteca hasta las 6:00 de jueves a sábado.'),
     ('¿Se puede reservar un local entero?', 'Depende del local, la fecha y el tamaño del grupo. Cuéntanos tu plan y te decimos qué opciones hay.'),
-]
+  ],
+  'en': [
+    ('How do I book an event with Grupo 2.0?', 'Book online with the “Book an event online” button, message us on WhatsApp at +34 656 48 50 99 or email <a href="mailto:hola@grupodospuntocero.com">hola@grupodospuntocero.com</a> with the date, the number of people and the kind of plan. You can write to us in English.'),
+    ('Do you have set menus for company dinners?', 'Yes. La Traviesa 2.0 has Christmas group menus from €45 to €65 per person with drinks included, plus a cocktail-style option for large groups. They’re at <a href="/traviesa/" hreflang="es">grupodospuntocero.com/traviesa</a> (in Spanish). For other dates we put together a tailored proposal.'),
+    ('How far in advance should I book?', 'The sooner the better, especially in December and on Fridays and Saturdays, when the venues fill up most. Get in touch even if you don’t know the exact headcount yet.'),
+    ('Can we have dinner and keep partying in the same place?', 'Yes: at Green 2.0 (Paseo de la Castellana, 40 bis) you can have dinner and stay on in the nightclub until 6am, Thursday to Saturday.'),
+    ('Can I book out a whole venue?', 'It depends on the venue, the date and the size of your group. Tell us your plan and we’ll let you know the options.'),
+  ],
+}
+EV_T = {
+  'es': dict(
+    path='/eventos/', title='Cenas de empresa y eventos privados en Madrid · Grupo 2.0',
+    desc='Organiza tu cena de empresa, cumpleaños o despedida en Madrid en los locales de Grupo 2.0. Menús de Navidad desde 45 € con bebida. Reserva online o por WhatsApp.',
+    wa='Hola! Quiero organizar un evento con Grupo 2.0', wa_emp='Hola! Quiero organizar una cena de empresa con Grupo 2.0',
+    srv_name='Cenas de empresa y eventos privados en Madrid',
+    srv_type='Organización de cenas de empresa, cumpleaños, despedidas y eventos privados',
+    offer='Menús de Navidad para grupos en La Traviesa 2.0, bebida incluida', crumb='Eventos', og_alt='Cena de grupo en La Traviesa 2.0',
+    ticks=['Cenas de empresa', 'Cumpleaños', 'Despedidas', 'Afterwork', 'Navidad 2026', 'Menús desde 45 €'],
+    marq='Eventos 2.0', eyebrow='EVENTOS PRIVADOS · MADRID', h1='Cenas de empresa y eventos en <em>Madrid</em>',
+    tagline='Cenas de empresa, cumpleaños, despedidas y afterworks en seis locales de Grupo 2.0 en Salamanca, Chamartín y la Castellana. Tú traes a la gente; nosotros, el sitio, la comida, las copas y la música.',
+    tags=['Menús de Navidad desde 45 €', 'Bebida incluida', 'Reserva online'],
+    book_ev='Reservar evento online', tell='Cuéntanos tu plan', mail='¿Prefieres email?', mail_subj='Evento%20con%20Grupo%202.0',
+    tipos_e='Qué celebramos', tipos_h='Cualquier excusa vale',
+    nav_e='Navidad 2026', nav_h='Cenas de Navidad de empresa en La Traviesa',
+    nav_p='Comidas y cenas de Navidad para empresas, amigos y familia en La Traviesa 2.0 (López de Hoyos, 7): platos para compartir, principal a elegir, postres caseros y bebida incluida durante toda la comida.',
+    menus=['Menú Travieso', 'Menú Muy Travieso', 'Menú La Glotona', 'Menú Cóctel, para grupos grandes'],
+    ver_menus='Ver los menús de Navidad', comedor='Comedor de La Traviesa 2.0',
+    donde_e='Dónde', donde_h='Elige el sitio según el plan',
+    pasos_e='Cómo funciona', pasos_h='Tres pasos y a celebrar',
+    pasos=[('Cuéntanos el plan', 'Fecha, cuántos sois y qué queréis celebrar. Online, por WhatsApp o por email.'),
+           ('Te proponemos sitio y menú', 'Te decimos qué local encaja mejor y cerramos menú, bebida y horario.'),
+           ('Tú solo vienes', 'Nosotros nos encargamos del resto. Lo de mañana en la oficina ya es cosa tuya.')],
+    faq_e='Dudas', faq_h='Preguntas rápidas'),
+  'en': dict(
+    path='/en/events/', title='Company dinners & private events in Madrid · Grupo 2.0',
+    desc='Plan your company dinner, birthday, hen or stag party in Madrid at Grupo 2.0’s venues. Christmas group menus from €45 with drinks included. Book online or via WhatsApp.',
+    wa='Hi! I’d like to organise an event with Grupo 2.0', wa_emp='Hi! I’d like to organise a company dinner with Grupo 2.0',
+    srv_name='Company dinners and private events in Madrid',
+    srv_type='Company dinners, birthdays, hen and stag parties and private events',
+    offer='Christmas group menus at La Traviesa 2.0, drinks included', crumb='Events', og_alt='Group dinner at La Traviesa 2.0',
+    ticks=['Company dinners', 'Birthdays', 'Hen & stag parties', 'After-work', 'Christmas 2026', 'Menus from €45'],
+    marq='Events 2.0', eyebrow='PRIVATE EVENTS · MADRID', h1='Company dinners and events in <em>Madrid</em>',
+    tagline='Company dinners, birthdays, hen and stag parties and after-work drinks across six Grupo 2.0 venues in Salamanca, Chamartín and the Castellana. You bring the people; we bring the venue, the food, the drinks and the music.',
+    tags=['Christmas menus from €45', 'Drinks included', 'Book online'],
+    book_ev='Book an event online', tell='Tell us your plan', mail='Prefer email?', mail_subj='Event%20with%20Grupo%202.0',
+    tipos_e='What we celebrate', tipos_h='Any excuse will do',
+    nav_e='Christmas 2026', nav_h='Christmas company dinners at La Traviesa',
+    nav_p='Christmas lunches and dinners for companies, friends and family at La Traviesa 2.0 (López de Hoyos, 7): sharing plates, a choice of main, homemade desserts and drinks included throughout the meal.',
+    menus=['Menú Travieso', 'Menú Muy Travieso', 'Menú La Glotona', 'Cocktail menu, for large groups'],
+    ver_menus='See the Christmas menus (Spanish)', comedor='Dining room at La Traviesa 2.0',
+    donde_e='Where', donde_h='Pick the venue to match the plan',
+    pasos_e='How it works', pasos_h='Three steps to party',
+    pasos=[('Tell us the plan', 'The date, how many of you there are and what you’re celebrating. Online, on WhatsApp or by email.'),
+           ('We suggest venue and menu', 'We tell you which venue fits best and agree the menu, drinks and timing.'),
+           ('You just show up', 'We take care of the rest. Tomorrow morning at the office is your problem.')],
+    faq_e='FAQ', faq_h='Quick questions'),
+}
+
+CSS_EVENTOS = """
+.ev-hero{text-align:left}
+.ev-hero h1{font-size:clamp(34px,6.4vw,92px);max-width:14ch;margin-top:10px;line-height:.92}
+.ev-hero .tagline{max-width:560px}
+.ev h3{font-family:'Archivo Black',sans-serif;font-weight:400;font-size:20px;text-transform:uppercase;line-height:1.1}
+.ev{padding-bottom:26px}
+.nav-band{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,5vw,64px);align-items:center}
+.nav-band .lph{aspect-ratio:4/3}
+.precios{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:22px}
+.precio{border:1px solid var(--bdr2);border-radius:16px;padding:16px 18px;background:var(--card)}
+.precio b{display:block;font-family:'Archivo Black',sans-serif;font-weight:400;font-size:26px;color:var(--lct)}
+.precio span{font-size:13px;color:var(--txt2)}
+.pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;counter-reset:s}
+.paso{border-top:2px solid rgb(var(--lcr));padding-top:18px}
+.paso::before{counter-increment:s;content:'0' counter(s);font-family:'Anton',sans-serif;font-size:40px;line-height:1;color:transparent;-webkit-text-stroke:1.5px var(--lct);display:block;margin-bottom:10px}
+.paso b{display:block;font-size:17px;margin-bottom:6px}
+.paso span{color:var(--txt2);font-size:15px}
+.mail{margin-top:18px;font-size:14px;color:var(--txt2)}.mail a{color:var(--lct);border-bottom:1px solid currentColor}
+@media(max-width:1000px){.nav-band,.pasos{grid-template-columns:1fr}}
+"""
 
 
-def pagina_eventos():
-    url = f'{BASE}/eventos/'
-    title = 'Cenas de empresa y eventos privados en Madrid · Grupo 2.0'
-    desc = 'Organiza tu cena de empresa, cumpleaños o despedida en Madrid en los locales de Grupo 2.0. Menús de Navidad desde 45 € con bebida. Reserva online o por WhatsApp.'
-    wa = f'https://wa.me/{WA}?text=' + quote('Hola! Quiero organizar un evento con Grupo 2.0')
-    wa_emp = f'https://wa.me/{WA}?text=' + quote('Hola! Quiero organizar una cena de empresa con Grupo 2.0')
+def pagina_eventos(lang='es'):
+    e = EV_T[lang]
+    en = lang == 'en'
+    url = BASE + e['path']
+    wa = f'https://wa.me/{WA}?text=' + quote(e['wa'])
+    wa_emp = f'https://wa.me/{WA}?text=' + quote(e['wa_emp'])
     foto1 = quote('/fotos/la traviesa/1.webp')
+    inicio = '/en/' if en else '/'
     ld = json.dumps({'@context': 'https://schema.org', '@graph': [
-        {'@type': 'Service', '@id': f'{url}#servicio', 'name': 'Cenas de empresa y eventos privados en Madrid',
-         'serviceType': 'Organización de cenas de empresa, cumpleaños, despedidas y eventos privados',
-         'description': desc, 'url': url, 'areaServed': {'@type': 'City', 'name': 'Madrid'},
+        {'@type': 'Service', '@id': f'{url}#servicio', 'name': e['srv_name'], 'serviceType': e['srv_type'],
+         'description': e['desc'], 'url': url, 'inLanguage': lang, 'areaServed': {'@type': 'City', 'name': 'Madrid'},
          'provider': {'@id': f'{BASE}/#org'},
-         'offers': {'@type': 'AggregateOffer', 'priceCurrency': 'EUR', 'lowPrice': '45', 'highPrice': '65',
-                    'description': 'Menús de Navidad para grupos en La Traviesa 2.0, bebida incluida'},
+         'offers': {'@type': 'AggregateOffer', 'priceCurrency': 'EUR', 'lowPrice': '45', 'highPrice': '65', 'description': e['offer']},
          'potentialAction': {'@type': 'ReserveAction', 'target': KOMVO}},
+        {'@type': 'FAQPage', '@id': f'{url}#faq', 'inLanguage': lang, 'mainEntity': [
+            {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': re.sub(r'<[^>]+>', '', a)}}
+            for q, a in EVENTOS_FAQ[lang]]},
         {'@type': 'BreadcrumbList', 'itemListElement': [
-            {'@type': 'ListItem', 'position': 1, 'name': 'Grupo 2.0', 'item': BASE + '/'},
-            {'@type': 'ListItem', 'position': 2, 'name': 'Eventos', 'item': url}]},
+            {'@type': 'ListItem', 'position': 1, 'name': 'Grupo 2.0', 'item': BASE + inicio},
+            {'@type': 'ListItem', 'position': 2, 'name': e['crumb'], 'item': url}]},
     ]}, ensure_ascii=False, indent=1)
     tipos = '\n'.join(
         f'<div class="oc ev rev" style="--oc:rgb({rgb})"><span class="oc-n">0{i + 1}</span><h3>{esc(t)}</h3><span>{esc(p)}</span></div>'
-        for i, (t, p, rgb) in enumerate(EVENTOS_TIPOS))
+        for i, (t, p, rgb) in enumerate(EVENTOS_TIPOS[lang]))
     locs = '\n'.join(
-        f'<a class="oc rev" href="/locales/{s}/" style="--oc:rgb({ESTILO[POR_SLUG[s]["key"]]["rgb"]})"><span class="oc-n">{esc(POR_SLUG[s]["nombre"])}</span><b>{esc(plan)}</b><span>{esc(txt)}</span><i>{ICO["arrow"]}</i></a>'
-        for s, plan, txt in EVENTOS_LOCALES)
-    faqs = '\n'.join(f'<details class="fq rev"><summary>{esc(q)}<span class="fq-i" aria-hidden="true"></span></summary><p>{a}</p></details>' for q, a in EVENTOS_FAQ)
-    pie = ''.join(f'<a href="/locales/{o["slug"]}/">{esc(o["nombre"])}</a>' for o in LOCALES)
-    mob = '\n'.join(
-        f'<a class="mn-link" href="/locales/{o["slug"]}/" style="--oc:rgb({ESTILO[o["key"]]["rgb"]})"><span class="mn-i">{ESTILO[o["key"]]["num"]}</span>{esc(o["nombre"])}</a>'
-        for o in LOCALES)
-    ticks = ['Cenas de empresa', 'Cumpleaños', 'Despedidas', 'Afterwork', 'Navidad 2026', 'Menús desde 45 €']
-    tick_html = ''.join(f'<span class="tick">{esc(t)}<span class="tick-dot"></span></span>' for t in ticks * 2)
-    return f'''<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<!-- Página generada por locales/_generar.py — no editar a mano -->
-<title>{esc(title)}</title>
-<meta name="description" content="{esc(desc)}">
-<meta name="robots" content="index,follow,max-image-preview:large">
-<link rel="canonical" href="{url}">
-<meta name="theme-color" content="#0a0908" id="theme-color-meta">
-<link rel="icon" type="image/png" href="/favicon.png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Grupo 2.0">
-<meta property="og:locale" content="es_ES">
-<meta property="og:title" content="{esc(title)}">
-<meta property="og:description" content="{esc(desc)}">
-<meta property="og:url" content="{url}">
-<meta property="og:image" content="{BASE}{foto1}">
-<meta property="og:image:width" content="1600">
-<meta property="og:image:height" content="1066">
-<meta property="og:image:alt" content="Cena de grupo en La Traviesa 2.0">
-<meta name="twitter:card" content="summary_large_image">
-<script>
-(function(){{var t;try{{t=localStorage.getItem('g20theme')}}catch(e){{}}if(!t){{var h=new Date().getHours();t=(h>=7&&h<20)?'day':'night'}}document.documentElement.setAttribute('data-theme',t)}})();
-</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
-<script type="application/ld+json">
-{ld}
-</script>
-<style>{CSS}
-.ev-hero{{text-align:left}}
-.ev-hero h1{{font-size:clamp(34px,6.4vw,92px);max-width:14ch;margin-top:10px;line-height:.92}}
-.ev-hero .tagline{{max-width:560px}}
-.ev h3{{font-family:'Archivo Black',sans-serif;font-weight:400;font-size:20px;text-transform:uppercase;line-height:1.1}}
-.ev{{padding-bottom:26px}}
-.nav-band{{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,5vw,64px);align-items:center}}
-.nav-band .lph{{aspect-ratio:4/3}}
-.precios{{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:22px}}
-.precio{{border:1px solid var(--bdr2);border-radius:16px;padding:16px 18px;background:var(--card)}}
-.precio b{{display:block;font-family:'Archivo Black',sans-serif;font-weight:400;font-size:26px;color:var(--lct)}}
-.precio span{{font-size:13px;color:var(--txt2)}}
-.pasos{{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;counter-reset:s}}
-.paso{{border-top:2px solid rgb(var(--lcr));padding-top:18px}}
-.paso::before{{counter-increment:s;content:'0' counter(s);font-family:'Anton',sans-serif;font-size:40px;line-height:1;color:transparent;-webkit-text-stroke:1.5px var(--lct);display:block;margin-bottom:10px}}
-.paso b{{display:block;font-size:17px;margin-bottom:6px}}
-.paso span{{color:var(--txt2);font-size:15px}}
-.mail{{margin-top:18px;font-size:14px;color:var(--txt2)}}.mail a{{color:var(--lct);border-bottom:1px solid currentColor}}
-@media(max-width:1000px){{.nav-band,.pasos{{grid-template-columns:1fr}}}}
-</style>
-</head>
-<body style="--lc:rgb(231,47,138);--lcr:231,47,138;--lct-n:#ff6fb0;--lct-d:#c0186c;--on-lc:#fff">
-<a class="skip-link" href="#main">Saltar al contenido</a>
-<div id="cur" aria-hidden="true"></div>
-<button id="theme-btn" aria-label="Cambiar tema día/noche" title="Cambiar tema"></button>
-
-<nav id="nav" aria-label="Principal">
-  <a class="nav-pill" href="/">GRUPO_2.0</a>
-  <ul class="nav-links">
-    <li><a href="/locales/">Locales</a></li>
-    <li><a href="/eventos/" aria-current="page">Eventos</a></li>
-    <li><a href="/#socios">Socios</a></li>
-    <li><a href="/#contacto">Contacto</a></li>
-  </ul>
-  <a class="nav-res" href="{KOMVO}" target="_blank" rel="noopener">Reservar evento ↗</a>
-  <button id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobnav"><span></span><span></span><span></span></button>
-</nav>
-<div id="mobnav" aria-hidden="true">
-  <div class="mn-inner">
-    <p class="mn-t">Los locales de la familia</p>
-{mob}
-    <a class="mn-res" href="{wa}" target="_blank" rel="noopener">{ICO['wa']} Cuéntanos tu evento</a>
-  </div>
-</div>
-
-<main id="main">
-<header class="hero" id="hero">
-  <div class="marq" aria-hidden="true"><div class="marq-in"><span>Eventos 2.0</span><span>Eventos 2.0</span><span>Eventos 2.0</span></div></div>
+        f'<a class="oc rev" href="{ruta(s, lang)}" style="--oc:rgb({ESTILO[POR_SLUG[s]["key"]]["rgb"]})"><span class="oc-n">{esc(POR_SLUG[s]["nombre"])}</span><b>{esc(plan)}</b><span>{esc(txt)}</span><i>{ICO["arrow"]}</i></a>'
+        for s, plan, txt in EVENTOS_LOCALES[lang])
+    faqs = '\n'.join(f'<details class="fq rev"><summary>{esc(q)}<span class="fq-i" aria-hidden="true"></span></summary><p>{a}</p></details>' for q, a in EVENTOS_FAQ[lang])
+    tick_html = ''.join(f'<span class="tick">{esc(t)}<span class="tick-dot"></span></span>' for t in e['ticks'] * 2)
+    tags = ''.join(f'<span class="tag">{esc(t)}</span>' for t in e['tags'])
+    precios = ''.join(f'<div class="precio"><b>{p} €</b><span>{esc(m)}</span></div>' for p, m in zip((45, 55, 65, 45), e['menus']))
+    pasos = ''.join(f'<div class="paso rev"><b>{esc(b)}</b><span>{esc(sp)}</span></div>' for b, sp in e['pasos'])
+    trav = ' hreflang="es"' if en else ''
+    main = f'''<header class="hero" id="hero">
+  <div class="marq" aria-hidden="true"><div class="marq-in"><span>{e['marq']}</span><span>{e['marq']}</span><span>{e['marq']}</span></div></div>
   <div class="hero-in">
     <div class="ev-hero">
-      <nav class="crumbs rev" aria-label="Ruta"><a href="/">Grupo 2.0</a> / Eventos</nav>
+      <nav class="crumbs rev" aria-label="{T[lang]['crumbs']}"><a href="{inicio}">Grupo 2.0</a> / {e['crumb']}</nav>
       <div class="rev">
-        <span class="lc-num">EVENTOS PRIVADOS · MADRID</span>
-        <h1>Cenas de empresa y eventos en <em>Madrid</em></h1>
-        <p class="tagline">Cenas de empresa, cumpleaños, despedidas y afterworks en seis locales de Grupo 2.0 en Salamanca, Chamartín y la Castellana. Tú traes a la gente; nosotros, el sitio, la comida, las copas y la música.</p>
-        <div class="tags"><span class="tag">Menús de Navidad desde 45 €</span><span class="tag">Bebida incluida</span><span class="tag">Reserva online</span></div>
+        <span class="lc-num">{e['eyebrow']}</span>
+        <h1>{e['h1']}</h1>
+        <p class="tagline">{esc(e['tagline'])}</p>
+        <div class="tags">{tags}</div>
         <div class="ctas">
-          <a class="btn btn-pri" href="{KOMVO}" target="_blank" rel="noopener">{ICO['cal']} Reservar evento online</a>
-          <a class="btn btn-wa ghost" href="{wa_emp}" target="_blank" rel="noopener">{ICO['wa']} Cuéntanos tu plan</a>
+          <a class="btn btn-pri" href="{KOMVO}" target="_blank" rel="noopener">{ICO['cal']} {e['book_ev']}</a>
+          <a class="btn btn-wa ghost" href="{wa_emp}" target="_blank" rel="noopener">{ICO['wa']} {e['tell']}</a>
         </div>
-        <p class="mail">¿Prefieres email? <a href="mailto:hola@grupodospuntocero.com?subject=Evento%20con%20Grupo%202.0">hola@grupodospuntocero.com</a></p>
+        <p class="mail">{e['mail']} <a href="mailto:hola@grupodospuntocero.com?subject={e['mail_subj']}">hola@grupodospuntocero.com</a></p>
       </div>
     </div>
     <div class="hero-photos rev" aria-hidden="true">
@@ -1379,7 +1397,7 @@ def pagina_eventos():
 <div class="ticker" aria-hidden="true"><div class="ticker-track">{tick_html}</div></div>
 
 <section class="sec" aria-labelledby="h-tipos">
-  <div class="ci rev"><div><div class="ci-eyebrow">Qué celebramos</div><h2 id="h-tipos">Cualquier excusa vale</h2></div><div class="ci-count" aria-hidden="true">2.0</div></div>
+  <div class="ci rev"><div><div class="ci-eyebrow">{e['tipos_e']}</div><h2 id="h-tipos">{e['tipos_h']}</h2></div><div class="ci-count" aria-hidden="true">2.0</div></div>
   <div class="otros">
 {tipos}
   </div>
@@ -1388,68 +1406,40 @@ def pagina_eventos():
 <section class="sec" aria-labelledby="h-navidad">
   <div class="nav-band">
     <div class="rev">
-      <div class="ci-eyebrow">Navidad 2026</div>
-      <h2 id="h-navidad">Cenas de Navidad de empresa en La Traviesa</h2>
-      <p class="mn-intro" style="margin:18px 0 0">Comidas y cenas de Navidad para empresas, amigos y familia en La Traviesa 2.0 (López de Hoyos, 7): platos para compartir, principal a elegir, postres caseros y bebida incluida durante toda la comida.</p>
-      <div class="precios">
-        <div class="precio"><b>45 €</b><span>Menú Travieso</span></div>
-        <div class="precio"><b>55 €</b><span>Menú Muy Travieso</span></div>
-        <div class="precio"><b>65 €</b><span>Menú La Glotona</span></div>
-        <div class="precio"><b>45 €</b><span>Menú Cóctel, para grupos grandes</span></div>
-      </div>
-      <div class="ctas"><a class="btn btn-pri" href="/traviesa/">{ICO['carta']} Ver los menús de Navidad</a></div>
+      <div class="ci-eyebrow">{e['nav_e']}</div>
+      <h2 id="h-navidad">{e['nav_h']}</h2>
+      <p class="mn-intro" style="margin:18px 0 0">{esc(e['nav_p'])}</p>
+      <div class="precios">{precios}</div>
+      <div class="ctas"><a class="btn btn-pri" href="/traviesa/"{trav}>{ICO['carta']} {e['ver_menus']}</a></div>
     </div>
-    <div class="lph rev"><img src="{quote('/fotos/la traviesa/2.webp')}" alt="Comedor de La Traviesa 2.0" width="1600" height="1066" loading="lazy" decoding="async"></div>
+    <div class="lph rev"><img src="{quote('/fotos/la traviesa/2.webp')}" alt="{esc(e['comedor'])}" width="1600" height="1066" loading="lazy" decoding="async"></div>
   </div>
 </section>
 
 <section class="sec" aria-labelledby="h-donde">
-  <div class="ci rev"><div><div class="ci-eyebrow">Dónde</div><h2 id="h-donde">Elige el sitio según el plan</h2></div></div>
+  <div class="ci rev"><div><div class="ci-eyebrow">{e['donde_e']}</div><h2 id="h-donde">{e['donde_h']}</h2></div></div>
   <div class="otros">
 {locs}
   </div>
 </section>
 
 <section class="sec" aria-labelledby="h-pasos">
-  <div class="ci rev"><div><div class="ci-eyebrow">Cómo funciona</div><h2 id="h-pasos">Tres pasos y a celebrar</h2></div></div>
-  <div class="pasos">
-    <div class="paso rev"><b>Cuéntanos el plan</b><span>Fecha, cuántos sois y qué queréis celebrar. Online, por WhatsApp o por email.</span></div>
-    <div class="paso rev"><b>Te proponemos sitio y menú</b><span>Te decimos qué local encaja mejor y cerramos menú, bebida y horario.</span></div>
-    <div class="paso rev"><b>Tú solo vienes</b><span>Nosotros nos encargamos del resto. Lo de mañana en la oficina ya es cosa tuya.</span></div>
-  </div>
+  <div class="ci rev"><div><div class="ci-eyebrow">{e['pasos_e']}</div><h2 id="h-pasos">{e['pasos_h']}</h2></div></div>
+  <div class="pasos">{pasos}</div>
   <div class="ctas rev" style="margin-top:34px">
-    <a class="btn btn-pri" href="{KOMVO}" target="_blank" rel="noopener">{ICO['cal']} Reservar evento online</a>
+    <a class="btn btn-pri" href="{KOMVO}" target="_blank" rel="noopener">{ICO['cal']} {e['book_ev']}</a>
     <a class="btn btn-wa ghost" href="{wa}" target="_blank" rel="noopener">{ICO['wa']} WhatsApp</a>
   </div>
 </section>
 
 <section class="sec" aria-labelledby="h-faq">
-  <div class="ci rev"><div><div class="ci-eyebrow">Dudas</div><h2 id="h-faq">Preguntas rápidas</h2></div></div>
+  <div class="ci rev"><div><div class="ci-eyebrow">{e['faq_e']}</div><h2 id="h-faq">{e['faq_h']}</h2></div></div>
   {faqs}
-</section>
-</main>
+</section>'''
+    return envoltorio(e['title'], e['desc'], url, ld, CSS_EVENTOS, main, actual='eventos',
+                      og_img='/fotos/la traviesa/1.webp', og_alt=e['og_alt'], lang=lang,
+                      alt=('/eventos/', '/en/events/'))
 
-<footer>
-  <div class="ft-top">
-    <div class="ft-logo">GRUPO_2.0</div>
-    <nav class="ft-locs" aria-label="Locales"><a href="/locales/">Todos los locales</a>{pie}<a href="/eventos/" aria-current="page">Eventos</a></nav>
-  </div>
-  <div class="ft-bot">
-    <div><p class="ft-copy">© 2026 Grupo 2.0 · Madrid · 656 485 099 · <a href="mailto:hola@grupodospuntocero.com">hola@grupodospuntocero.com</a></p>
-    <div class="lg-links"><a href="/#aviso">Aviso legal</a><a href="/#privacidad">Privacidad</a><a href="/#cookies">Cookies</a></div></div>
-    <div class="ft-soc">
-      <a href="https://www.instagram.com/grupo_2.0" target="_blank" rel="noopener" aria-label="Instagram Grupo 2.0">{ICO['ig']}</a>
-      <a href="https://www.tiktok.com/@grupo2.0_" target="_blank" rel="noopener" aria-label="TikTok Grupo 2.0">{ICO['tt']}</a>
-      <a href="https://wa.me/{WA}" target="_blank" rel="noopener" aria-label="WhatsApp Grupo 2.0">{ICO['wa']}</a>
-    </div>
-  </div>
-</footer>
-
-<a href="{wa}" id="waf" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"><svg width="25" height="25" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="{WA_PATH}"/></svg></a>
-<script>{JS_COMUN}</script>
-</body>
-</html>
-'''
 
 def envoltorio(title, desc, url, ld, css_extra, main, actual='', robots='index,follow,max-image-preview:large',
                og_img='/fotos/green/1.webp', og_alt='Locales de Grupo 2.0 en Madrid', lang='es', alt=None):
@@ -1508,7 +1498,7 @@ def envoltorio(title, desc, url, ld, css_extra, main, actual='', robots='index,f
 
 <nav id="nav" aria-label="{t['nav']}">
   <a class="nav-pill" href="{'/en/' if en else '/'}">GRUPO_2.0</a>
-  {NAV_EN if en else NAV_ES.replace('<a href="/locales/">', '<a href="/locales/"' + cur('locales') + '>')}
+  {NAV_EN.replace('<a href="/en/events/">', '<a href="/en/events/"' + cur('eventos') + '>') if en else NAV_ES.replace('<a href="/locales/">', '<a href="/locales/"' + cur('locales') + '>').replace('<a href="/eventos/">', '<a href="/eventos/"' + cur('eventos') + '>')}
   {lang_btn}
   <a class="nav-res" href="{KOMVO}" target="_blank" rel="noopener">{t['book']}</a>
   <button id="burger" aria-label="{t['menu_open']}" aria-expanded="false" aria-controls="mobnav"><span></span><span></span><span></span></button>
@@ -1528,7 +1518,7 @@ def envoltorio(title, desc, url, ld, css_extra, main, actual='', robots='index,f
 <footer>
   <div class="ft-top">
     <div class="ft-logo">GRUPO_2.0</div>
-    <nav class="ft-locs" aria-label="{t['venues']}"><a href="{'/en/#venues' if en else '/locales/'}"{cur('locales')}>{t['all_venues']}</a>{pie}<a href="{'/en/#groups' if en else '/eventos/'}">{t['events']}</a><a href="{otro}" hreflang="{t['other_lang']}" lang="{t['other_lang']}">{t['other_name']}</a></nav>
+    <nav class="ft-locs" aria-label="{t['venues']}"><a href="{'/en/#venues' if en else '/locales/'}"{cur('locales')}>{t['all_venues']}</a>{pie}<a href="{'/en/events/' if en else '/eventos/'}">{t['events']}</a><a href="{otro}" hreflang="{t['other_lang']}" lang="{t['other_lang']}">{t['other_name']}</a></nav>
   </div>
   <div class="ft-bot">
     <div><p class="ft-copy">© 2026 Grupo 2.0 · Madrid · 656 485 099 · <a href="mailto:hola@grupodospuntocero.com">hola@grupodospuntocero.com</a></p>
@@ -1766,7 +1756,7 @@ def pagina_en_home():
         <p class="tagline">Grupo 2.0 is a family of six venues between the Salamanca district, Chamartín and the Paseo de la Castellana: neighbourhood cocktail bars, neon and music, a restaurant for lunch and dinner, and a restaurant, bar and nightclub open until 6am.</p>
         <div class="ctas">
           <a class="btn btn-pri" href="{KOMVO}" target="_blank" rel="noopener">{ICO['cal']} Book a table</a>
-          <a class="btn btn-wa ghost" href="#groups">Groups &amp; events</a>
+          <a class="btn btn-wa ghost" href="/en/events/">Groups &amp; events</a>
         </div>
       </div>
     </div>
@@ -1796,7 +1786,8 @@ def pagina_en_home():
   <div class="ci rev"><div><div class="ci-eyebrow">Groups &amp; events</div><h2 id="h-groups">Birthdays, company dinners and parties</h2></div></div>
   <p class="zona-intro rev">We host birthdays, company lunches and dinners, hen and stag parties and after-work drinks across our venues. For Christmas, La Traviesa 2.0 has group menus from €45 to €65 per person with drinks included, plus a cocktail-style option for large groups. Tell us the date and how many of you there are, and we’ll suggest the right venue and menu.</p>
   <div class="ctas rev">
-    <a class="btn btn-pri" href="{KOMVO}" target="_blank" rel="noopener">{ICO['cal']} Book an event online</a>
+    <a class="btn btn-pri" href="/en/events/">{ICO['arrow']} Company dinners &amp; events</a>
+    <a class="btn btn-ghost" href="{KOMVO}" target="_blank" rel="noopener">{ICO['cal']} Book an event online</a>
     <a class="btn btn-wa ghost" href="{wa_g}" target="_blank" rel="noopener">{ICO['wa']} WhatsApp</a>
     <a class="btn btn-ghost" href="/traviesa/" hreflang="es">{ICO['carta']} Christmas menus (Spanish)</a>
   </div>
@@ -1857,6 +1848,7 @@ def sitemap():
         out += url(BASE + ruta(l['slug'], 'en'), ''.join(
             img(f'/fotos/{l["fotos"]}/{i}.webp', f'{l["nombre"]}, {loc(l, "en")["tipo_txt"].lower()} at {l["calle"]}, Madrid') for i in (1, 2, 3, 4)))
     out += url(BASE + '/eventos/', img('/fotos/la traviesa/1.webp', 'Cenas de empresa en La Traviesa 2.0, Madrid'))
+    out += url(BASE + '/en/events/', img('/fotos/la traviesa/1.webp', 'Company dinners at La Traviesa 2.0, Madrid'))
     out += url(BASE + '/traviesa/')
     return out + '</urlset>\n'
 
@@ -1907,6 +1899,9 @@ if __name__ == '__main__':
     os.makedirs(os.path.join(raiz, '..', 'eventos'), exist_ok=True)
     with open(os.path.join(raiz, '..', 'eventos', 'index.html'), 'w', encoding='utf-8') as f:
         f.write(pagina_eventos())
+    os.makedirs(os.path.join(raiz, '..', 'en', 'events'), exist_ok=True)
+    with open(os.path.join(raiz, '..', 'en', 'events', 'index.html'), 'w', encoding='utf-8') as f:
+        f.write(pagina_eventos('en'))
     print('ok eventos')
     for l in LOCALES:
         d = os.path.join(raiz, '..', 'en', 'venues', l['slug'])
