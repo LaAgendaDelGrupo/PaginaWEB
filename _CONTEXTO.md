@@ -44,10 +44,10 @@ Web pública de **Grupo 2.0** (bares de copas, restaurante y discoteca en Madrid
 |---|---|---|---|
 | Las Tablas 2.0 | C/ General Oraá, 26 | Bar de copas | J–S 20:00–02:00 |
 | La Pequeña 2.0 | C/ General Oraá, 27 | Bar de copas (restaurante en pausa desde 03/11) | J–S 20:00–02:00 |
-| La Chula 2.0 | C/ Claudio Coello, 116 | Bar de copas | J 20:00–03:00 · V–S 20:00–03:30 |
-| La Peluquería 2.0 | C/ Alberto Alcocer, 32 | Bar de copas | J–S 20:00–02:00 |
+| La Chula 2.0 | C/ Claudio Coello, 116 (28006) | Bar de copas | J 20:00–03:00 · V–S 20:00–03:30 |
+| La Peluquería 2.0 | Av. de Alberto Alcocer, 32 (28036) | Bar de copas | J–S 20:00–02:00 |
 | La Traviesa 2.0 | C/ López de Hoyos, 7 | Restaurante y bar | L–X 08–17 · J–V 08–01 · S 18–01 · D cerrado |
-| Juanita 2.0 | C/ Alberto Alcocer, 33 | Discoteca | **Cerrada temporalmente** (sin página propia) |
+| Juanita 2.0 | Av. de Alberto Alcocer, 33 | Discoteca | **Cerrada temporalmente** (sin página propia) |
 | Green 2.0 | P.º de la Castellana, 40 bis | Restaurante, bar y discoteca | L–X 08–22 · J–V 08–06 · S 18–06 |
 
 **Si cambia un horario o una dirección, hay que actualizarlo en cuatro sitios:**
@@ -68,14 +68,14 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
   - Migas de pan.
   - `Service` para eventos.
 - **Páginas por local** en `/locales/<local>/`, con texto, horario, fotos, preguntas frecuentes, carta en texto (Traviesa y Green) y aviso «abierto ahora».
-- **`/locales/`**: los 6 locales por zona (Salamanca, Chamartín, Castellana) y una tabla de direcciones y horarios.
+- **`/locales/`**: los 6 locales por zona (Salamanca, Chamartín, Castellana), una tabla de direcciones y horarios y 8 preguntas frecuentes generales («¿dónde tomar una copa en el barrio de Salamanca?», «¿qué cierra más tarde?», «¿qué abre de lunes a miércoles?»…) con `FAQPage`. Los horarios de las respuestas salen solos de `LOCALES` (función `hub_faq()`).
 - **`/eventos/`**: cenas de empresa, cumpleaños, despedidas y menús de Navidad de 45–65 € en La Traviesa. Reserva en Komvo.
 - **Inglés**: portada en `/en/` y locales en `/en/venues/<local>/`.
   - Enlazadas con `hreflang` y botón ES/EN.
   - Los platos de la carta se quedan en español.
 - **`sitemap.xml`** con fotos, `robots.txt` (bloquea `/menu/`), `llms.txt` y página 404 propia.
 - **Redirecciones** de 16 URLs de la web antigua (WordPress) que Google seguía mostrando como 404 (p. ej. `/green-2-0/` → `/locales/green/`). Si aparece otra en Search Console > Indexación > «No se ha encontrado (404)», añadirla a `REDIRECCIONES` y regenerar.
-- **GEO (respuestas de IA)**: en cada página de local, coordenadas exactas (`geo`, sacadas de las fichas de Google Maps) y fecha de revisión visible bajo el horario y en los datos para Google (`dateModified`). La fecha solo cambia cuando cambia el contenido de esa página.
+- **GEO (respuestas de IA)**: coordenadas y código postal de los 6 locales también en el JSON-LD de la portada. En cada página de local, coordenadas exactas (`geo`, sacadas de las fichas de Google Maps) y fecha de revisión visible bajo el horario y en los datos para Google (`dateModified`). La fecha solo cambia cuando cambia el contenido de esa página.
 - **Diseño**: modo día/noche en todas las páginas (preferencia compartida `g20theme`).
 - **Rendimiento**: logos reducidos, animaciones solo en pantalla, sin `blur` ni `mix-blend-mode` en elementos animados.
 
@@ -105,7 +105,7 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
 - [ ] Search Console: a principios de diciembre, mirar si `/locales/green/` sube en «discotecas barrio salamanca», «discoteca en serrano», «discoteca castellana» y «discoteca juan bravo» (18/11: salía la URL antigua en posición 1–3 con 0 clics).
 - [ ] Search Console: la validación de los 404 sigue en curso (23 URLs el 18/11). La URL antigua `/green-2-0/` aún sale en búsquedas de «discoteca barrio Salamanca / Serrano / Castellana» en posición 2–4 con 0 clics; cuando Google aplique la redirección debería pasar a `/locales/green/`. Revisar a final de mes.
 - [x] Search Console: `/en/venues/green/` ya indexada (comprobado 12/11). Ya están en Google las 17 páginas del sitemap. Los «404» que quedan son archivos del WordPress antiguo (`wp-content/…`); es normal, desaparecerán solos.
-- [ ] Códigos postales de Claudio Coello 116 y Alberto Alcocer 32.
+- [x] Códigos postales: Claudio Coello 116 → 28006, Alberto Alcocer 32 → 28036 (puestos el 19/11). La calle es oficialmente «Avenida de Alberto Alcocer»: la web lo dice así desde el 19/11; conviene que Google Business coincida.
 - [x] URL del canal de WhatsApp: ya está puesta en la portada (sección Contacto).
 - [x] Datos fiscales del aviso legal: ya están en la portada (Aviso legal y Privacidad).
 - [x] Prensa: emails enviados a Time Out Madrid, Madrid Secreto y Guía del Ocio (10/11). Si publican algo, añadir «Nos han mencionado en…».
@@ -187,4 +187,6 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
   - Revisión GEO: los buscadores de IA (OAI-SearchBot, PerplexityBot, Claude-SearchBot) pueden entrar y el contenido se lee sin JavaScript. En los resúmenes con IA de Google de búsquedas genéricas no salimos todavía.
   - Añadidos a las páginas de local (ES/EN): coordenadas (`geo`) y fecha de revisión visible + `dateModified`, guardada en `locales/_fechas.json`.
 - **19/11/2026:**
+  - Menú: más espacio entre el logo y LOCALES.
+  - SEO/GEO: códigos postales que faltaban, «Avenida de Alberto Alcocer», coordenadas en la portada y preguntas frecuentes en `/locales/`.
   - Revisión diaria automática: `_revision_diaria.py` + tarea programada en la app de Claude (cada día ~9:00, correo con «todo funciona» o lo que falla). Solo corre si la app está abierta en este Mac; si estaba cerrada, se ejecuta al abrirla.

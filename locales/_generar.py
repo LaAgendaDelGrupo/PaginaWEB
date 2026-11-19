@@ -6,7 +6,7 @@ Al cambiar un horario, dirección o enlace: editarlo en LOCALES (abajo), volver 
 generar y actualizar también index.html (D{}, HORARIOS{} y el JSON-LD) y llms.txt.
 GitHub Pages no publica este archivo (empieza por "_").
 """
-import json, os, html
+import json, os, html, re
 from datetime import date
 from urllib.parse import quote
 
@@ -79,7 +79,7 @@ LOCALES = [
   dict(
     slug='la-chula', key='chula', ancla='sec-chula', nombre='La Chula 2.0', color='#e72f8a',
     tipo=['BarOrPub'], tipo_txt='Bar de copas', zona='Barrio de Salamanca',
-    calle='Calle de Claudio Coello, 116', cp=None, geo=(40.4364269, -3.6851834), maps='C+Claudio+Coello+116+Madrid',
+    calle='Calle de Claudio Coello, 116', cp='28006', geo=(40.4364269, -3.6851834), maps='C+Claudio+Coello+116+Madrid',
     ig='lachula2.0', fotos='la chula', logo='La Chula_Mesa de trabajo 1-trans.webp',
     horario=[(['Th'], '20:00', '03:00'), (['Fr', 'Sa'], '20:00', '03:30')],
     title='La Chula 2.0 · Bar de copas en Claudio Coello, Madrid',
@@ -96,14 +96,14 @@ LOCALES = [
   dict(
     slug='la-peluqueria', key='peluca', ancla='sec-peluca', nombre='La Peluquería 2.0', color='#1db7d9',
     tipo=['BarOrPub'], tipo_txt='Bar de copas', zona='Chamartín',
-    calle='Calle de Alberto Alcocer, 32', cp=None, geo=(40.4582432, -3.6827268), maps='C+Alberto+Alcocer+32+Madrid',
+    calle='Avenida de Alberto Alcocer, 32', cp='28036', geo=(40.4582432, -3.6827268), maps='C+Alberto+Alcocer+32+Madrid',
     ig='lapeluqueria_2.0', fotos='la peluqueria', logo='La Peluquería-04-trans.webp',
     horario=[(['Th', 'Fr', 'Sa'], '20:00', '02:00')],
     title='La Peluquería 2.0 · Bar de copas en Alberto Alcocer',
     desc='La Peluquería 2.0: bar de copas en Alberto Alcocer, 32 (Chamartín, Madrid). Abierto de jueves a sábado de 20:00 a 02:00. Reservas y cumpleaños por WhatsApp.',
     tagline='¿Nos volamos la peluca? Mientras nos quede pelo, aquí seguimos.',
     intro=[
-      'La Peluquería 2.0 es nuestro bar de copas en la calle Alberto Alcocer, 32, en Chamartín. Un sitio para volarse la peluca sin bajar al centro: copas, música y gente con ganas de que el fin de semana empiece el jueves.',
+      'La Peluquería 2.0 es nuestro bar de copas en la avenida de Alberto Alcocer, 32, en Chamartín. Un sitio para volarse la peluca sin bajar al centro: copas, música y gente con ganas de que el fin de semana empiece el jueves.',
       'Abrimos de jueves a sábado de ocho de la tarde a dos de la madrugada. Si vives o trabajas por la zona norte de la Castellana, es tu sitio para la copa de después.',
     ],
     planes=['La copa de la zona norte, sin bajar al centro', 'Afterwork de jueves y viernes', 'Cumpleaños y celebraciones de grupo'],
@@ -303,7 +303,7 @@ EN = {
     desc='La Peluquería 2.0: cocktail bar at Alberto Alcocer, 32 (Chamartín, Madrid). Open Thursday to Saturday, 8pm to 2am. Bookings and birthdays via WhatsApp.',
     tagline='Shall we let our hair down? As long as we’ve got some left, we’ll be here.',
     intro=[
-      'La Peluquería 2.0 is our cocktail bar at Calle de Alberto Alcocer, 32, in Chamartín. A place to let your hair down without heading into the centre: drinks, music and people who want the weekend to start on Thursday.',
+      'La Peluquería 2.0 is our cocktail bar at Avenida de Alberto Alcocer, 32, in Chamartín. A place to let your hair down without heading into the centre: drinks, music and people who want the weekend to start on Thursday.',
       'Open Thursday to Saturday from 8pm to 2am. If you live or work around the northern end of the Castellana, this is your spot for a drink after work.',
     ],
     planes=['Drinks in the north of the city, no need to go downtown', 'Thursday and Friday after-work', 'Birthdays and group celebrations'],
@@ -430,7 +430,7 @@ ESTILO = {
                      rgb='58,75,168', txt_n='#8d9cf0', txt_d='#2f388b'),
     'chula':    dict(num='03', label='COPAS Y NEÓN', tag_hor='J 20–03 · V–S 20–03:30', tag_dir='C/ Claudio Coello, 116',
                      rgb='231,47,138', txt_n='#ff6fb0', txt_d='#c0186c'),
-    'peluca':   dict(num='04', label='BAR DE COPAS', tag_hor='Jue–Sáb · 20:00–02:00', tag_dir='C/ Alberto Alcocer, 32',
+    'peluca':   dict(num='04', label='BAR DE COPAS', tag_hor='Jue–Sáb · 20:00–02:00', tag_dir='Av. Alberto Alcocer, 32',
                      rgb='29,183,217', txt_n='#4fd2ef', txt_d='#0b7590'),
     'traviesa': dict(num='05', label='RESTAURANTE', tag_hor='L–X 08–17 · J–V 08–01 · S 18–01', tag_dir='C/ López de Hoyos, 7',
                      rgb='138,127,192', txt_n='#b3a9ea', txt_d='#5b4f8a'),
@@ -1528,6 +1528,38 @@ CSS_HUB = """
 """
 
 
+def hub_faq():
+    """Preguntas generales de /locales/ (respuestas citables para buscadores e IA). Horarios sacados de LOCALES."""
+    h = lambda slug: horario_corto(POR_SLUG[slug])
+    return [
+        ('¿Dónde tomar una copa en el barrio de Salamanca?',
+         'Tenemos tres bares de copas en el barrio de Salamanca: <a href="/locales/las-tablas/">Las Tablas 2.0</a> (General Oraá, 26) y '
+         '<a href="/locales/la-pequena/">La Pequeña 2.0</a> (General Oraá, 27), uno enfrente del otro, y '
+         f'<a href="/locales/la-chula/">La Chula 2.0</a> (Claudio Coello, 116). Las Tablas y La Pequeña abren {h("las-tablas")}; '
+         f'La Chula, {h("la-chula")}.'),
+        ('¿Qué local de Grupo 2.0 cierra más tarde?',
+         f'<a href="/locales/green/">Green 2.0</a>, en la Castellana, 40 bis: restaurante, bar y discoteca que abre {h("green")}. '
+         'Entre los bares de copas, La Chula 2.0 es la que más aguanta: hasta las 03:30 los viernes y sábados.'),
+        ('¿Qué abre de lunes a miércoles?',
+         f'Entre semana tienes <a href="/locales/la-traviesa/">La Traviesa 2.0</a> (López de Hoyos, 7), que abre {h("la-traviesa")}, y '
+         f'Green 2.0 (Castellana, 40 bis), que abre {h("green")}. Los bares de copas abren de jueves a sábado.'),
+        ('¿Dónde cenar y salir de fiesta en el mismo sitio en Madrid?',
+         'En <a href="/locales/green/">Green 2.0</a>, en el Paseo de la Castellana, 40 bis (barrio de Salamanca, a la altura de Juan Bravo). '
+         'Es restaurante, bar y discoteca en el mismo local: cenas, copas y baile hasta las 06:00 de jueves a sábado.'),
+        ('¿Hay algún bar de copas de Grupo 2.0 en Chamartín?',
+         f'Sí, <a href="/locales/la-peluqueria/">La Peluquería 2.0</a>, en la avenida de Alberto Alcocer, 32, a un paso de la Castellana. Abre {h("la-peluqueria")}.'),
+        ('¿Dónde comer o cenar en el barrio de Salamanca?',
+         '<a href="/locales/la-traviesa/">La Traviesa 2.0</a>, en López de Hoyos, 7: cocina de producto para picar o sentarse a comer, '
+         'desayunos desde las 08:00 entre semana y cenas los jueves, viernes y sábados. Para cenar y quedarte a la fiesta, Green 2.0.'),
+        ('¿Dónde celebrar un cumpleaños, una despedida o una cena de empresa?',
+         'En cualquiera de los seis locales. Las cenas de empresa y menús de Navidad se hacen en La Traviesa 2.0 y Green 2.0; los cumpleaños y '
+         'despedidas, también en los bares de copas. Mira cómo funcionan los <a href="/eventos/">eventos en Grupo 2.0</a> o escríbenos por WhatsApp al 656 48 50 99.'),
+        ('¿Cómo se reserva?',
+         f'En La Traviesa 2.0 y Green 2.0 puedes reservar mesa online con el botón «Reservar mesa». En los bares de copas, escríbenos por WhatsApp '
+         'al 656 48 50 99 y te guardamos sitio; para grupos grandes, avísanos con unos días de antelación.'),
+    ]
+
+
 def pagina_locales():
     url = f'{BASE}/locales/'
     title = 'Bares de copas en Madrid: barrio de Salamanca y la Castellana · Grupo 2.0'
@@ -1542,6 +1574,9 @@ def pagina_locales():
         {'@type': 'BreadcrumbList', 'itemListElement': [
             {'@type': 'ListItem', 'position': 1, 'name': 'Grupo 2.0', 'item': BASE + '/'},
             {'@type': 'ListItem', 'position': 2, 'name': 'Locales', 'item': url}]},
+        {'@type': 'FAQPage', '@id': f'{url}#faq', 'inLanguage': 'es', 'mainEntity': [
+            {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': re.sub(r'<[^>]+>', '', a)}}
+            for q, a in hub_faq()]},
     ]}, ensure_ascii=False, indent=1)
 
     def tarjeta(l, primera):
@@ -1609,6 +1644,11 @@ def pagina_locales():
       </tbody>
     </table>
   </div>
+</section>
+
+<section class="sec" aria-labelledby="h-faq">
+  <div class="ci rev"><div><div class="ci-eyebrow">Dudas</div><h2 id="h-faq">Preguntas frecuentes</h2></div></div>
+  {chr(10).join(f'<details class="fq rev"><summary>{esc(q)}<span class="fq-i" aria-hidden="true"></span></summary><p>{a}</p></details>' for q, a in hub_faq())}
 </section>'''
     return envoltorio(title, desc, url, ld, CSS_HUB, main, actual='locales',
                       og_img='/fotos/la chula/1.webp', og_alt='Bar de copas La Chula 2.0 en Madrid')
