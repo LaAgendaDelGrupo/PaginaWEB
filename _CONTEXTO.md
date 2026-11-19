@@ -102,6 +102,7 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
 - [x] Search Console: «Validar corrección» de los 404 iniciada el 10/11. Google tarda hasta ~2 semanas; mirar el resultado en Indexación > «No se ha encontrado (404)».
 - [x] Search Console (revisado 11/11): sitemap leído el 11/11 con las 17 páginas, sin errores. Indexadas la portada, `/locales/`, `/eventos/`, `/traviesa/`, las 6 páginas de local en español, `/en/` y 5 de las 6 páginas de local en inglés. Pedida la indexación de `/en/venues/green/` (la única que Google no conocía).
 - [x] Search Console (18/11): La Traviesa ya sube. Posición media 10–16/11: «la traviesa madrid» 4,6 · «restaurante la traviesa» 5,6 · «bar la traviesa madrid» 3,1 (el 11/11: 8,3 / 10,4 / 15,1).
+- [ ] Search Console: comprobar a finales de noviembre que `/en/events/` está indexada (indexación pedida el 19/11).
 - [ ] Search Console: a principios de diciembre, mirar si `/locales/green/` sube en «discotecas barrio salamanca», «discoteca en serrano», «discoteca castellana» y «discoteca juan bravo» (18/11: salía la URL antigua en posición 1–3 con 0 clics).
 - [ ] Search Console: la validación de los 404 sigue en curso (23 URLs el 18/11). La URL antigua `/green-2-0/` aún sale en búsquedas de «discoteca barrio Salamanca / Serrano / Castellana» en posición 2–4 con 0 clics; cuando Google aplique la redirección debería pasar a `/locales/green/`. Revisar a final de mes.
 - [x] Search Console: `/en/venues/green/` ya indexada (comprobado 12/11). Ya están en Google las 17 páginas del sitemap. Los «404» que quedan son archivos del WordPress antiguo (`wp-content/…`); es normal, desaparecerán solos.
@@ -189,5 +190,6 @@ Marca: negro, rosa `#EF89B0`, fucsia `#e0477e`, cyan `#66c6e0` · Archivo Black 
   - Menú: más espacio entre el logo y LOCALES.
   - SEO/GEO: códigos postales que faltaban, «Avenida de Alberto Alcocer», coordenadas en la portada y preguntas frecuentes en `/locales/`.
   - «En resumen» en cada página de local con precio medio, música, horario, dirección y reservas; año de fundación 2020.
+  - Search Console: pedida la indexación de `/en/events/` (nueva), `/locales/` y `/eventos/`.
   - Versión inglesa de eventos en `/en/events/`, enlazada con hreflang, menú inglés, sitemap y `llms.txt`; preguntas de eventos con `FAQPage`.
   - Revisión diaria automática: `_revision_diaria.py` + tarea programada en la app de Claude (cada día ~9:00, correo con «todo funciona» o lo que falla). Solo corre si la app está abierta en este Mac; si estaba cerrada, se ejecuta al abrirla.
